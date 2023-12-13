@@ -1,0 +1,62 @@
+<section id="form-example">
+  <form>
+    <app-input
+      name="input"
+      label="Input"
+      className="w-full"
+      [(ngModel)]="form.input"
+      [initialValue]="form.input"
+    />
+
+    <app-datepicker
+      name="datepicker"
+      label="Datepicker"
+      className="w-full"
+      [(ngModel)]="form.datepicker"
+      [initialValue]="form.datepicker"
+    />
+
+    <app-datepicker
+      range
+      className="w-full"
+      name="datepickerRange"
+      label="Datepicker Range"
+      [(ngModel)]="form.datepickerRange"
+      [initialValue]="form.datepickerRange"
+    />
+
+    <app-select
+      name="select"
+      label="Select"
+      className="w-full"
+      [items]="defaultOptions"
+      [(ngModel)]="form.select"
+      [initialValue]="form.select"
+    />
+
+    <app-textarea
+      name="textarea"
+      label="Textarea"
+      className="w-full"
+      [(ngModel)]="form.textarea"
+      [initialValue]="form.textarea"
+    />
+
+    <app-radio-button
+      name="radio"
+      label="Radio"
+      [items]="defaultOptions"
+      [(ngModel)]="form.radio"
+      [initialValue]="form.radio"
+    />
+
+    <app-checkbox
+      name="Checkbox"
+      label="Checkbox"
+      [(ngModel)]="form.checkbox"
+      [initialValue]="form.checkbox"
+    />
+  </form>
+
+  <app-terminal-window [content]="form | json" />
+</section>

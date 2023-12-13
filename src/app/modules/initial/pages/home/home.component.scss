@@ -1,0 +1,39 @@
+@import "variables";
+
+#home {
+  // color: $bg-secondary;
+  background: $circular-gradient-bg;
+
+  > div {
+    @apply min-h-screen flex flex-col items-center justify-center;
+
+    > figure {
+      @apply rounded-full p-4 flex items-center justify-center shadow-xl;
+      background: $bg-secondary;
+
+      &:hover {
+        @apply shadow-2xl;
+
+        > img {
+          transform: scale(0.9);
+        }
+      }
+    }
+
+    > h1 {
+      @apply font-semibold text-xl text-center;
+    }
+
+    > div {
+      @apply flex gap-4 mt-4;
+    }
+
+    > section {
+      @apply w-4/5 mt-6 flex flex-col items-center gap-2 mobile:w-full;
+
+      > * {
+        @apply w-full;
+      }
+    }
+  }
+}

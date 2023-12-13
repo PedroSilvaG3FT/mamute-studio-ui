@@ -1,0 +1,48 @@
+@import "functions/index";
+
+:root {
+  --bg-primary: #f6f6f6;
+  --bg-secondary: #fff;
+  --text-primary: #313131;
+}
+
+// GLOBAL
+$danger: #f44336;
+$primary: #fc27b6;
+$secondary: #db46dd;
+$apple-red: #ff5f57;
+$apple-gray: #d9d8d9;
+$apple-green: #00d945;
+$apple-yellow: #fdbd2c;
+
+$bg-primary: var(--bg-primary);
+$bg-secondary: var(--bg-secondary);
+$text-primary: var(--text-primary);
+
+// THEME
+$light-bg-primary: #f6f6f6;
+$light-bg-secondary: #fff;
+$light-text-primary: #313131;
+
+$dark-bg-primary: #111418;
+$dark-bg-secondary: #0f1924;
+$dark-text-primary: #fff;
+
+$danger-palette: generate-color-palette($danger);
+$primary-palette: generate-color-palette($primary);
+$secondary-palette: generate-color-palette($secondary);
+
+// GRADIENT
+$circular-gradient: radial-gradient(circle, $primary 0%, $secondary 100%);
+$circular-gradient-bg: radial-gradient(
+  circle,
+  $bg-primary 0%,
+  $bg-secondary 100%
+);
+
+// BREAKPOINTS
+$breakpoint-xs: 475px;
+$breakpoint-sm: 640px;
+$breakpoint-md: 890px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;

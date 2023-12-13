@@ -1,0 +1,23 @@
+<section id="terminal-window">
+  <h5 *ngIf="!!title">{{ title }}</h5>
+
+  <article>
+    <nav>
+      <span></span>
+      <span></span>
+      <span></span>
+
+      <a mat-stroked-button (click)="handleCopyContent()">
+        <i class="iconify" data-icon="bi:copy"></i>
+        copy
+      </a>
+    </nav>
+
+    <section>
+      <p>
+        <span *ngIf="!hidePrefix">~ %:</span>
+        {{ content }}
+      </p>
+    </section>
+  </article>
+</section>

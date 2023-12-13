@@ -1,0 +1,41 @@
+@if(range) {
+<mat-form-field
+  [class]="className"
+  [appearance]="appearance"
+  id="app-datepicker-range"
+>
+  <mat-label>{{ label }}</mat-label>
+
+  <mat-date-range-input [formGroup]="rangeControl" [rangePicker]="pickerRange">
+    <input
+      matStartDate
+      formControlName="start"
+      [placeholder]="placeholderStart"
+    />
+    <input matEndDate formControlName="end" [placeholder]="placeholderEnd" />
+  </mat-date-range-input>
+
+  <mat-datepicker-toggle matIconSuffix [for]="pickerRange" />
+  <mat-date-range-picker #pickerRange />
+</mat-form-field>
+} @else {
+<mat-form-field
+  id="app-datepicker"
+  [class]="className"
+  [formGroup]="group"
+  [appearance]="appearance"
+>
+  <mat-label>{{ label }}</mat-label>
+
+  <input
+    matInput
+    [id]="id"
+    [name]="name"
+    [matDatepicker]="picker"
+    [placeholder]="placeholder"
+    [formControlName]="formControlName"
+  />
+  <mat-datepicker-toggle matIconSuffix [for]="picker" />
+  <mat-datepicker #picker />
+</mat-form-field>
+}

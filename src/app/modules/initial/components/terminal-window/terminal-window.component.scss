@@ -1,0 +1,56 @@
+@import "variables";
+
+#terminal-window {
+  > article {
+    @apply rounded-xl w-full shadow-lg;
+
+    > h5 {
+      color: $apple-gray;
+    }
+
+    > nav {
+      @apply h-6 w-full px-4 rounded-t-xl flex items-center gap-1.5 justify-start;
+      background: $apple-gray;
+
+      > span {
+        @apply w-2.5 h-2.5  rounded-full;
+
+        &:nth-child(1) {
+          background: $apple-red;
+        }
+
+        &:nth-child(2) {
+          background: $apple-yellow;
+        }
+
+        &:nth-child(3) {
+          background: $apple-green;
+        }
+      }
+
+      > a {
+        @apply text-sm ml-auto flex gap-2 items-center cursor-pointer;
+        color: $text-primary;
+
+        &:focus {
+          color: $apple-green;
+        }
+      }
+    }
+
+    > section {
+      @apply p-4 w-full rounded-b-xl;
+      background: black;
+
+      > p {
+        @apply w-full break-words;
+        color: #fff;
+
+        > span {
+          @apply text-sm;
+          color: $apple-gray;
+        }
+      }
+    }
+  }
+}

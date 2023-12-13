@@ -1,0 +1,5 @@
+@mixin fluid-grid($min-width, $gap) {
+  gap: $gap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax($min-width, 1fr));
+}

@@ -1,0 +1,25 @@
+@function generate-background-palette($background-color, $text-primary) {
+  $background-palette: (
+    card: $background-color,
+    dialog: $background-color,
+    app-bar: $background-color,
+    tooltip: $background-color,
+    background: $background-color,
+    raised-button: $background-color,
+
+    hover: rgba($text-primary, 0.04),
+    focused-button: rgba($text-primary, 0.12),
+    disabled-button: rgba($text-primary, 0.12),
+    // 200
+    disabled-list-option: rgba($background-color, 0.12),
+    disabled-button-toggle: rgba($background-color, 0.12),
+    // 300
+    status-bar: rgba($background-color, 0.13),
+    selected-button: rgba($background-color, 0.13),
+    unselected-chip: rgba($background-color, 0.13),
+    // 400
+    selected-disabled-button: rgba($background-color, 0.14),
+  );
+
+  @return $background-palette;
+}

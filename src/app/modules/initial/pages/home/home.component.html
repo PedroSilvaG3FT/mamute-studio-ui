@@ -1,0 +1,28 @@
+<section id="home">
+  <div class="app-container">
+    <figure>
+      <img src="favicon.ico" alt="ANGULAR" />
+    </figure>
+
+    <h1>Angular boilerplate</h1>
+
+    <div>
+      <a class="btn-primary" [routerLink]="['/components']">Components</a>
+    </div>
+
+    <section>
+      <app-terminal-window
+        class="mb-6"
+        [content]="gitClone"
+        title="Clone project"
+      />
+
+      <app-terminal-window
+        [content]="dependencies"
+        title="Dependencies and libraries present in the project"
+      />
+      <app-terminal-window [content]="dependenciesDev" />
+      <app-terminal-window [content]="angularMaterial" />
+    </section>
+  </div>
+</section>

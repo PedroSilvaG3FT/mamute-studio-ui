@@ -1,0 +1,50 @@
+@use "@angular/material" as mat;
+@include mat.core();
+
+@import "variables";
+
+.light {
+  color: $light-text-primary;
+  background: $light-bg-primary;
+
+  $light-background: generate-background-palette(
+    $light-bg-secondary,
+    $light-text-primary
+  );
+
+  $light-foreground: generate-foreground-palette($light-text-primary);
+
+  @include mat.all-component-themes(
+    generate-theme(
+      mat.define-palette($primary-palette, 500),
+      mat.define-palette($secondary-palette, 300, 100, 500),
+      mat.define-palette($danger-palette),
+      $light-background,
+      $light-foreground,
+      false
+    )
+  );
+}
+
+.dark {
+  color: $dark-text-primary;
+  background: $dark-bg-primary;
+
+  $dark-background: generate-background-palette(
+    $dark-bg-secondary,
+    $dark-text-primary
+  );
+
+  $dark-foreground: generate-foreground-palette($dark-text-primary);
+
+  @include mat.all-component-themes(
+    generate-theme(
+      mat.define-palette($primary-palette, 500),
+      mat.define-palette($secondary-palette, 300, 100, 500),
+      mat.define-palette($danger-palette),
+      $dark-background,
+      $dark-foreground,
+      true
+    )
+  );
+}

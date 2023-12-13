@@ -1,14 +1,33 @@
-import { Component } from '@angular/core';
+import { trigger } from '@angular/animations';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { RouterModule, RouterOutlet } from '@angular/router';
+import Iconify from '@iconify/iconify';
+import { ROUTER_STACK_ANIMATION } from './modules/@core/animations/router-stack.animation';
+import { SEOService } from './modules/@core/services/seo.service';
+import { ThemeService } from './modules/@core/services/theme.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
+  styleUrl: './app.component.scss',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  imports: [CommonModule, RouterOutlet, RouterModule],
+  animations: [trigger('triggerName', ROUTER_STACK_ANIMATION)],
 })
 export class AppComponent {
-  title = 'angular-boilerplate';
+  constructor(
+    private seoService: SEOService,
+    private themeService: ThemeService
+  ) {
+    Iconify.listIcons();
+    this.themeService.init();
+    this.seoService.initTitleMonitoring();
+  }
+
+  public prepareRoute(outlet: RouterOutlet) {
+    return (
+      outlet && outlet.activatedRouteData && outlet.activatedRouteData['id']
+    );
+  }
 }

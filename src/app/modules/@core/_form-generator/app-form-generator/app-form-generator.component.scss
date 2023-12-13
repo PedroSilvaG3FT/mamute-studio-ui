@@ -1,0 +1,47 @@
+#app-form-generator {
+  @apply flex flex-col w-full;
+
+  > nav {
+    @apply flex items-center;
+
+    &.top {
+      @apply order-1;
+    }
+    &.bottom {
+      @apply order-3;
+    }
+
+    &.left {
+      @apply justify-end;
+    }
+    &.right {
+      @apply justify-start;
+    }
+  }
+
+  > section {
+    @apply w-full order-2;
+
+    > article {
+      @apply flex;
+
+      > div {
+        > * {
+          @apply flex-1;
+
+          > * {
+            @apply w-full;
+          }
+        }
+      }
+
+      &.column {
+        @apply flex-col;
+      }
+
+      &.mobile-column {
+        @apply mobile:flex-col;
+      }
+    }
+  }
+}
