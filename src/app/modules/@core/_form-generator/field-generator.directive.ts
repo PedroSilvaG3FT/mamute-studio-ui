@@ -42,7 +42,7 @@ export class FieldGeneratorDirective {
 
   ngOnInit(): void {
     const factory = this.resolver.resolveComponentFactory(
-      components[this.field.type]
+      components[this.field.type] as any
     );
 
     this.componentRef = this.container.createComponent(factory);
@@ -56,6 +56,7 @@ export class FieldGeneratorDirective {
       const {
         hint,
         options,
+        isToggle,
         className,
         inputType,
         placeholder,
@@ -66,6 +67,7 @@ export class FieldGeneratorDirective {
       this.componentRef.instance.hint = hint || '';
       this.componentRef.instance.items = options || [];
       this.componentRef.instance.type = inputType || '';
+      this.componentRef.instance.toggle = isToggle || false;
       this.componentRef.instance.className = className || '';
       this.componentRef.instance.placeholder = placeholder || '';
       this.componentRef.instance.errorMessage = errorMessage || '';

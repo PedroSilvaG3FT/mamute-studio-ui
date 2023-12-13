@@ -8,16 +8,19 @@
 
   <mat-tab-group>
     <mat-tab label="Form Generator">
-      <app-form-generator
-        (onValueChanges)="onValueChange($event)"
-        [fields]="formExample.fields"
-        (onSubmit)="onSubmit($event)"
-        actionPositionX="left"
-        mobileColumn
-        watchValues
-      />
+      <section class="form-generator-container">
+        <app-form-generator
+          (onValueChanges)="onValueChange($event)"
+          [fields]="formExample.fields"
+          (onSubmit)="onSubmit($event)"
+          actionPositionY="bottom"
+          actionPositionX="left"
+          mobileColumn
+          watchValues
+        />
 
-      <app-terminal-window [content]="formValue | json" />
+        <app-terminal-window [content]="formValue | json" />
+      </section>
     </mat-tab>
     <mat-tab label="Form"> <app-form-example /> </mat-tab>
   </mat-tab-group>

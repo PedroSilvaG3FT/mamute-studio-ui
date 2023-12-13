@@ -39,19 +39,12 @@ export class ComponentsComponent {
     { label: 'Option 4', value: 4 },
   ];
 
+  private readonly fieldWidth: string = 'calc(50% - 12px)';
   public formValue: IFormGeneratorExample = {} as IFormGeneratorExample;
   public formExample = this.formGeneratorService.init<IFormGeneratorExample>([
     [
       {
-        width: '25%',
-        name: 'name',
-        label: 'Name',
-        type: 'input',
-        initialValue: '',
-        validators: [Validators.required],
-      },
-      {
-        width: '25%',
+        width: this.fieldWidth,
         type: 'input',
         name: 'password',
         label: 'Password',
@@ -60,7 +53,7 @@ export class ComponentsComponent {
         additional: { inputType: `password` },
       },
       {
-        width: '50%',
+        width: this.fieldWidth,
         name: 'email',
         type: 'input',
         label: 'email',
@@ -71,13 +64,33 @@ export class ComponentsComponent {
     ],
     [
       {
+        width: this.fieldWidth,
+        name: 'name',
+        label: 'Name',
+        type: 'input',
+        initialValue: '',
+        validators: [Validators.required],
+      },
+      {
+        width: this.fieldWidth,
         name: 'select',
         type: 'select',
         label: 'Select',
         initialValue: 0,
         validators: [Validators.required],
       },
+    ],
+    [
       {
+        width: this.fieldWidth,
+        name: 'age',
+        label: 'Age',
+        type: 'input',
+        initialValue: 0,
+        additional: { inputType: `number` },
+      },
+      {
+        width: this.fieldWidth,
         name: 'radio',
         type: 'radio',
         label: 'radio',
@@ -87,30 +100,14 @@ export class ComponentsComponent {
     ],
     [
       {
-        name: 'age',
-        label: 'Age',
-        type: 'input',
-        initialValue: 0,
-        width: 'calc(50% - 8px)',
-        additional: { inputType: `number` },
-      },
-    ],
-    [
-      {
-        name: 'isAdmin',
-        type: 'checkbox',
-        label: 'Is admin',
-        initialValue: false,
-      },
-    ],
-    [
-      {
+        width: this.fieldWidth,
         name: 'birthDate',
         type: 'datepicker',
         label: 'Birth date',
         initialValue: new Date(),
       },
       {
+        width: this.fieldWidth,
         name: 'rage',
         label: 'Rage',
         initialValue: '',
@@ -126,6 +123,16 @@ export class ComponentsComponent {
         label: 'Description',
       },
     ],
+    [
+      {
+        width: this.fieldWidth,
+        name: 'isAdmin',
+        type: 'checkbox',
+        label: 'Is admin',
+        initialValue: false,
+        additional: { isToggle: true },
+      },
+    ],
   ]);
 
   constructor(private formGeneratorService: FormGeneratorService) {}
@@ -138,7 +145,7 @@ export class ComponentsComponent {
   }
 
   public onSubmit(model: IFormGeneratorExample) {
-    console.log(model);
+    alert(JSON.stringify(model))
   }
 
   public onValueChange(model: IFormGeneratorExample) {

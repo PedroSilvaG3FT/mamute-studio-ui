@@ -1,11 +1,11 @@
-import { Component, forwardRef } from '@angular/core';
+import { Component, Input, booleanAttribute, forwardRef } from '@angular/core';
 import {
   FormsModule,
   NG_VALUE_ACCESSOR,
   ReactiveFormsModule,
 } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatInputModule } from '@angular/material/input';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ModelControl } from '../model-control';
 
 @Component({
@@ -16,8 +16,8 @@ import { ModelControl } from '../model-control';
   imports: [
     FormsModule,
     MatCheckboxModule,
-    MatInputModule,
     ReactiveFormsModule,
+    MatSlideToggleModule,
   ],
   providers: [
     {
@@ -28,6 +28,8 @@ import { ModelControl } from '../model-control';
   ],
 })
 export class AppCheckboxComponent extends ModelControl {
+  @Input({ transform: booleanAttribute }) toggle: boolean = false;
+
   ngOnInit() {
     if (!this.isDynamic) this.initMonitoringChanges();
   }

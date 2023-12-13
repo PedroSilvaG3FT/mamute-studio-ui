@@ -1,5 +1,11 @@
 <article id="app-checkbox" [class]="className" [formGroup]="group">
+  @if(toggle) {
+  <mat-slide-toggle [id]="id" [name]="name" [formControlName]="formControlName">
+    {{ label }}
+  </mat-slide-toggle>
+  } @else {
   <mat-checkbox [id]="id" [name]="name" [formControlName]="formControlName">
     {{ label }}
   </mat-checkbox>
+  }
 </article>

@@ -1,2 +1,7 @@
 @import "./form";
 @import "./snackbar";
+
+
+mat-tab-body {
+  @apply pt-4;
+}

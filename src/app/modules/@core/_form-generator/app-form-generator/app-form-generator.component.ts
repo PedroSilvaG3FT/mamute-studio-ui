@@ -40,6 +40,7 @@ export class AppFormGeneratorComponent {
   @Output() onSubmit = new EventEmitter();
   @Output() onValueChanges = new EventEmitter();
 
+  public dynamicColumClass: string = '';
   public readonly defaultFieldWidth: string = '100%';
   public formGroup: FormGroup = this.formBuilder.group({});
 
@@ -70,6 +71,7 @@ export class AppFormGeneratorComponent {
   }
 
   public handleSubmit() {
-    this.onSubmit.emit(this.formGroup.value);
+    console.log(this.formGroup)
+    // this.onSubmit.emit(this.formGroup.value);
   }
 }

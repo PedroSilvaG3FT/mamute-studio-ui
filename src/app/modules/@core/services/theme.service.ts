@@ -34,6 +34,6 @@ export class ThemeService {
     const variables = THEME_CONFIG[theme];
     appStyle.setProperty(`--bg-primary`, variables.bgPrimary);
     appStyle.setProperty(`--bg-secondary`, variables.bgSecondary);
-    appStyle.setProperty(`--text-primary`, variables.bgSecondary);
+    appStyle.setProperty(`--text-primary`, variables.textPrimary);
   }
 }

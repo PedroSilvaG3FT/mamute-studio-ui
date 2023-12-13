@@ -1,3 +1,11 @@
+@import 'variables';
+
 .mdc-notched-outline__notch {
   border-right: 0px !important;
+}
+
+.mdc-notched-outline {
+  z-index: 0 !important;
+  background: $bg-secondary;
+  border-radius: var(--mdc-outlined-text-field-container-shape);
 }

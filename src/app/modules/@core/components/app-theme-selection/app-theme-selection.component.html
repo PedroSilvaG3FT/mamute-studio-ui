@@ -1,9 +1,8 @@
 <app-checkbox
-  label="DarkMode"
+  toggle
+  label="Dark Mode"
   name="theme-selection"
   [(ngModel)]="isDarkMode"
   [initialValue]="isDarkMode"
   (ngModelChange)="onToggleDarkMode()"
 />
-
-{{ isDarkMode }}

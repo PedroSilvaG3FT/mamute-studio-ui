@@ -5,7 +5,7 @@
   (ngSubmit)="handleSubmit()"
 >
   <nav class="{{ actionPositionY }} {{ actionPositionX }}">
-    <button class="app-button" type="submit">{{ submitText }}</button>
+    <button class="btn-primary" [disabled]="formGroup.invalid" type="submit">{{ submitText }}</button>
   </nav>
 
   <section>
@@ -26,6 +26,4 @@
     </article>
     }
   </section>
-
-  <!-- <pre>{{ formGroup.controls | json }}</pre> -->
 </form>
