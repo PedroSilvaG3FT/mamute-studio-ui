@@ -54,7 +54,6 @@ export class FieldGeneratorDirective {
 
     if (this.field.additional) {
       const {
-        hint,
         options,
         isToggle,
         className,
@@ -64,7 +63,6 @@ export class FieldGeneratorDirective {
         isDatepickerRange,
       } = this.field.additional;
 
-      this.componentRef.instance.hint = hint || '';
       this.componentRef.instance.items = options || [];
       this.componentRef.instance.type = inputType || '';
       this.componentRef.instance.toggle = isToggle || false;

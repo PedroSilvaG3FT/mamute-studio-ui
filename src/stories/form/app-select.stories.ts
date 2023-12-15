@@ -1,19 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { AppCheckboxComponent } from '../../app/modules/@core/components/form/app-checkbox/app-checkbox.component';
+import { AppSelectComponent } from '../../app/modules/@core/components/form/app-select/app-select.component';
 import { StorybookFormBase } from './_base.form';
 
 const storybookFormBase = new StorybookFormBase();
 
-const meta: Meta<AppCheckboxComponent> = {
-  component: AppCheckboxComponent,
+const meta: Meta<AppSelectComponent> = {
+  component: AppSelectComponent,
   tags: ['autodocs'],
-  title: 'Form/Checkbox',
+  title: 'Form/Select',
   parameters: {
     layout: 'fullscreen',
     controls: {
       exclude: storybookFormBase.buildExcludeFormProps([
-        'appearance',
         'placeholder',
         'errorMessage',
       ]),
@@ -27,12 +26,13 @@ const meta: Meta<AppCheckboxComponent> = {
 };
 
 export default meta;
-export const component: StoryObj<AppCheckboxComponent> = {
+export const component: StoryObj<AppSelectComponent> = {
   args: {
-    initialValue: true,
-    name: 'checkbox-example',
-    label: 'Checkbox example',
+    initialValue: 1,
+    name: 'select-example',
+    label: 'Select example',
+    items: storybookFormBase.initialOptions,
   },
-  argTypes: { initialValue: { control: { type: 'boolean' } } },
-  render: (args: AppCheckboxComponent) => ({ props: args }),
+  argTypes: { initialValue: { control: { type: 'number' } } },
+  render: (args: AppSelectComponent) => ({ props: args }),
 };

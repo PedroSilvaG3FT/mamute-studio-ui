@@ -1,19 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { AppCheckboxComponent } from '../../app/modules/@core/components/form/app-checkbox/app-checkbox.component';
+import { AppDatepickerComponent } from '../../app/modules/@core/components/form/app-datepicker/app-datepicker.component';
 import { StorybookFormBase } from './_base.form';
 
 const storybookFormBase = new StorybookFormBase();
 
-const meta: Meta<AppCheckboxComponent> = {
-  component: AppCheckboxComponent,
+const meta: Meta<AppDatepickerComponent> = {
+  component: AppDatepickerComponent,
   tags: ['autodocs'],
-  title: 'Form/Checkbox',
+  title: 'Form/Datepicker',
   parameters: {
     layout: 'fullscreen',
     controls: {
       exclude: storybookFormBase.buildExcludeFormProps([
-        'appearance',
         'placeholder',
         'errorMessage',
       ]),
@@ -27,12 +26,11 @@ const meta: Meta<AppCheckboxComponent> = {
 };
 
 export default meta;
-export const component: StoryObj<AppCheckboxComponent> = {
+export const component: StoryObj<AppDatepickerComponent> = {
   args: {
-    initialValue: true,
-    name: 'checkbox-example',
-    label: 'Checkbox example',
+    initialValue: new Date(),
+    name: 'datepicker-example',
+    label: 'datepicker example',
   },
-  argTypes: { initialValue: { control: { type: 'boolean' } } },
-  render: (args: AppCheckboxComponent) => ({ props: args }),
+  render: (args: AppDatepickerComponent) => ({ props: args }),
 };

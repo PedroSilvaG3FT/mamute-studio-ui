@@ -7,7 +7,6 @@ import { ModelControlType } from '../../types/model-control.type';
 export class ModelControl implements ControlValueAccessor {
   @Input() id: string = '';
   @Input() name: string = '';
-  @Input() hint: string = '';
   @Input() label: string = '';
   @Input() className: string = '';
   @Input() placeholder: string = '';

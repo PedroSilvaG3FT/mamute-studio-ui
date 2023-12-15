@@ -5,7 +5,6 @@ import { ModelControlType } from '../types/model-control.type';
 import { FormGeneratorFieldType } from './field-generator.directive';
 
 export interface IFormGeneratorFieldAdditional {
-  hint: string;
   isToggle: boolean;
   className: string;
   placeholder: string;

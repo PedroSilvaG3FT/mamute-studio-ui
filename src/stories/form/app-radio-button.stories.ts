@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { AppCheckboxComponent } from '../../app/modules/@core/components/form/app-checkbox/app-checkbox.component';
+import { AppRadioButtonComponent } from '../../app/modules/@core/components/form/app-radio-button/app-radio-button.component';
 import { StorybookFormBase } from './_base.form';
 
 const storybookFormBase = new StorybookFormBase();
 
-const meta: Meta<AppCheckboxComponent> = {
-  component: AppCheckboxComponent,
+const meta: Meta<AppRadioButtonComponent> = {
+  component: AppRadioButtonComponent,
   tags: ['autodocs'],
-  title: 'Form/Checkbox',
+  title: 'Form/Radio Button',
   parameters: {
     layout: 'fullscreen',
     controls: {
@@ -27,12 +27,13 @@ const meta: Meta<AppCheckboxComponent> = {
 };
 
 export default meta;
-export const component: StoryObj<AppCheckboxComponent> = {
+export const component: StoryObj<AppRadioButtonComponent> = {
   args: {
-    initialValue: true,
-    name: 'checkbox-example',
-    label: 'Checkbox example',
+    initialValue: 1,
+    name: 'radio-button-example',
+    label: 'Radio button example',
+    items: storybookFormBase.initialOptions,
   },
-  argTypes: { initialValue: { control: { type: 'boolean' } } },
-  render: (args: AppCheckboxComponent) => ({ props: args }),
+  argTypes: { initialValue: { control: { type: 'number' } } },
+  render: (args: AppRadioButtonComponent) => ({ props: args }),
 };
