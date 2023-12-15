@@ -1276,7 +1276,7 @@
                     "defaultValue": "'outline'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 19,
+                    "line": 18,
                     "type": "\"outline\" | \"fill\"",
                     "decorators": [],
                     "inheritance": {
@@ -1300,7 +1300,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 15,
+                    "line": 14,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -1312,7 +1312,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 17,
+                    "line": 16,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -1324,7 +1324,7 @@
                     "defaultValue": "this.formBuilder.group({\n    [this.name]: [''],\n  })",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 21,
+                    "line": 20,
                     "type": "FormGroup",
                     "decorators": [],
                     "inheritance": {
@@ -1359,7 +1359,7 @@
                     "name": "initialValue",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 18,
+                    "line": 17,
                     "type": "ModelControlType",
                     "decorators": [],
                     "inheritance": {
@@ -1371,7 +1371,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 16,
+                    "line": 15,
                     "type": "boolean",
                     "decorators": [],
                     "inheritance": {
@@ -1407,18 +1407,6 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 14,
-                    "type": "string",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "ModelControl"
-                    }
-                },
-                {
-                    "name": "styleMode",
-                    "defaultValue": "''",
-                    "deprecated": false,
-                    "deprecationMessage": "",
                     "line": 13,
                     "type": "string",
                     "decorators": [],
@@ -1436,7 +1424,7 @@
                     "type": "Subscription",
                     "optional": false,
                     "description": "",
-                    "line": 26,
+                    "line": 25,
                     "modifierKind": [
                         125
                     ],
@@ -1451,7 +1439,7 @@
                     "type": "ModelControlType",
                     "optional": false,
                     "description": "",
-                    "line": 25,
+                    "line": 24,
                     "modifierKind": [
                         125
                     ],
@@ -1467,7 +1455,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 31,
+                    "line": 30,
                     "inheritance": {
                         "file": "ModelControl"
                     }
@@ -1480,7 +1468,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 30,
+                    "line": 29,
                     "inheritance": {
                         "file": "ModelControl"
                     }
@@ -1503,7 +1491,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 43,
+                    "line": 42,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -1516,7 +1504,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 57,
+                    "line": 56,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -1537,7 +1525,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 36,
+                    "line": 35,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1570,7 +1558,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 39,
+                    "line": 38,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1595,7 +1583,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 52,
+                    "line": 51,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -1615,7 +1603,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 33,
+                    "line": 32,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1849,7 +1837,7 @@
                     "defaultValue": "'outline'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 19,
+                    "line": 18,
                     "type": "\"outline\" | \"fill\"",
                     "decorators": [],
                     "inheritance": {
@@ -1873,7 +1861,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 15,
+                    "line": 14,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -1885,7 +1873,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 17,
+                    "line": 16,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -1897,7 +1885,7 @@
                     "defaultValue": "this.formBuilder.group({\n    [this.name]: [''],\n  })",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 21,
+                    "line": 20,
                     "type": "FormGroup",
                     "decorators": [],
                     "inheritance": {
@@ -1932,7 +1920,7 @@
                     "name": "initialValue",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 18,
+                    "line": 17,
                     "type": "ModelControlType",
                     "decorators": [],
                     "inheritance": {
@@ -1944,7 +1932,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 16,
+                    "line": 15,
                     "type": "boolean",
                     "decorators": [],
                     "inheritance": {
@@ -1980,18 +1968,6 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 14,
-                    "type": "string",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "ModelControl"
-                    }
-                },
-                {
-                    "name": "styleMode",
-                    "defaultValue": "''",
-                    "deprecated": false,
-                    "deprecationMessage": "",
                     "line": 13,
                     "type": "string",
                     "decorators": [],
@@ -2022,7 +1998,7 @@
                     "type": "Subscription",
                     "optional": false,
                     "description": "",
-                    "line": 26,
+                    "line": 25,
                     "modifierKind": [
                         125
                     ],
@@ -2037,7 +2013,7 @@
                     "type": "ModelControlType",
                     "optional": false,
                     "description": "",
-                    "line": 25,
+                    "line": 24,
                     "modifierKind": [
                         125
                     ],
@@ -2053,7 +2029,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 31,
+                    "line": 30,
                     "inheritance": {
                         "file": "ModelControl"
                     }
@@ -2066,7 +2042,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 30,
+                    "line": 29,
                     "inheritance": {
                         "file": "ModelControl"
                     }
@@ -2089,7 +2065,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 43,
+                    "line": 42,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -2102,7 +2078,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 57,
+                    "line": 56,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -2123,7 +2099,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 36,
+                    "line": 35,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2156,7 +2132,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 39,
+                    "line": 38,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2181,7 +2157,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 52,
+                    "line": 51,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -2201,7 +2177,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 33,
+                    "line": 32,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2559,7 +2535,7 @@
                     "defaultValue": "'outline'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 19,
+                    "line": 18,
                     "type": "\"outline\" | \"fill\"",
                     "decorators": [],
                     "inheritance": {
@@ -2583,7 +2559,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 15,
+                    "line": 14,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -2595,7 +2571,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 17,
+                    "line": 16,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -2607,7 +2583,7 @@
                     "defaultValue": "this.formBuilder.group({\n    [this.name]: [''],\n  })",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 21,
+                    "line": 20,
                     "type": "FormGroup",
                     "decorators": [],
                     "inheritance": {
@@ -2642,7 +2618,7 @@
                     "name": "initialValue",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 18,
+                    "line": 17,
                     "type": "ModelControlType",
                     "decorators": [],
                     "inheritance": {
@@ -2654,7 +2630,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 16,
+                    "line": 15,
                     "type": "boolean",
                     "decorators": [],
                     "inheritance": {
@@ -2690,18 +2666,6 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 14,
-                    "type": "string",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "ModelControl"
-                    }
-                },
-                {
-                    "name": "styleMode",
-                    "defaultValue": "''",
-                    "deprecated": false,
-                    "deprecationMessage": "",
                     "line": 13,
                     "type": "string",
                     "decorators": [],
@@ -2719,7 +2683,7 @@
                     "type": "Subscription",
                     "optional": false,
                     "description": "",
-                    "line": 26,
+                    "line": 25,
                     "modifierKind": [
                         125
                     ],
@@ -2734,7 +2698,7 @@
                     "type": "ModelControlType",
                     "optional": false,
                     "description": "",
-                    "line": 25,
+                    "line": 24,
                     "modifierKind": [
                         125
                     ],
@@ -2750,7 +2714,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 31,
+                    "line": 30,
                     "inheritance": {
                         "file": "ModelControl"
                     }
@@ -2763,7 +2727,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 30,
+                    "line": 29,
                     "inheritance": {
                         "file": "ModelControl"
                     }
@@ -2786,7 +2750,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 43,
+                    "line": 42,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -2799,7 +2763,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 57,
+                    "line": 56,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -2820,7 +2784,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 36,
+                    "line": 35,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2853,7 +2817,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 39,
+                    "line": 38,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2878,7 +2842,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 52,
+                    "line": 51,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -2898,7 +2862,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 33,
+                    "line": 32,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2988,7 +2952,7 @@
                     "defaultValue": "'outline'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 19,
+                    "line": 18,
                     "type": "\"outline\" | \"fill\"",
                     "decorators": [],
                     "inheritance": {
@@ -3012,7 +2976,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 15,
+                    "line": 14,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -3024,7 +2988,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 17,
+                    "line": 16,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -3036,7 +3000,7 @@
                     "defaultValue": "this.formBuilder.group({\n    [this.name]: [''],\n  })",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 21,
+                    "line": 20,
                     "type": "FormGroup",
                     "decorators": [],
                     "inheritance": {
@@ -3071,7 +3035,7 @@
                     "name": "initialValue",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 18,
+                    "line": 17,
                     "type": "ModelControlType",
                     "decorators": [],
                     "inheritance": {
@@ -3083,7 +3047,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 16,
+                    "line": 15,
                     "type": "boolean",
                     "decorators": [],
                     "inheritance": {
@@ -3119,18 +3083,6 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 14,
-                    "type": "string",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "ModelControl"
-                    }
-                },
-                {
-                    "name": "styleMode",
-                    "defaultValue": "''",
-                    "deprecated": false,
-                    "deprecationMessage": "",
                     "line": 13,
                     "type": "string",
                     "decorators": [],
@@ -3148,7 +3100,7 @@
                     "type": "Subscription",
                     "optional": false,
                     "description": "",
-                    "line": 26,
+                    "line": 25,
                     "modifierKind": [
                         125
                     ],
@@ -3163,7 +3115,7 @@
                     "type": "ModelControlType",
                     "optional": false,
                     "description": "",
-                    "line": 25,
+                    "line": 24,
                     "modifierKind": [
                         125
                     ],
@@ -3179,7 +3131,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 31,
+                    "line": 30,
                     "inheritance": {
                         "file": "ModelControl"
                     }
@@ -3192,7 +3144,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 30,
+                    "line": 29,
                     "inheritance": {
                         "file": "ModelControl"
                     }
@@ -3215,7 +3167,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 43,
+                    "line": 42,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -3228,7 +3180,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 57,
+                    "line": 56,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -3249,7 +3201,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 36,
+                    "line": 35,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3282,7 +3234,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 39,
+                    "line": 38,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3307,7 +3259,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 52,
+                    "line": 51,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -3327,7 +3279,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 33,
+                    "line": 32,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3421,7 +3373,7 @@
                     "defaultValue": "'outline'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 19,
+                    "line": 18,
                     "type": "\"outline\" | \"fill\"",
                     "decorators": [],
                     "inheritance": {
@@ -3445,7 +3397,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 15,
+                    "line": 14,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -3457,7 +3409,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 17,
+                    "line": 16,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -3469,7 +3421,7 @@
                     "defaultValue": "this.formBuilder.group({\n    [this.name]: [''],\n  })",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 21,
+                    "line": 20,
                     "type": "FormGroup",
                     "decorators": [],
                     "inheritance": {
@@ -3504,7 +3456,7 @@
                     "name": "initialValue",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 18,
+                    "line": 17,
                     "type": "ModelControlType",
                     "decorators": [],
                     "inheritance": {
@@ -3516,7 +3468,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 16,
+                    "line": 15,
                     "type": "boolean",
                     "decorators": [],
                     "inheritance": {
@@ -3552,18 +3504,6 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 14,
-                    "type": "string",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "ModelControl"
-                    }
-                },
-                {
-                    "name": "styleMode",
-                    "defaultValue": "''",
-                    "deprecated": false,
-                    "deprecationMessage": "",
                     "line": 13,
                     "type": "string",
                     "decorators": [],
@@ -3581,7 +3521,7 @@
                     "type": "Subscription",
                     "optional": false,
                     "description": "",
-                    "line": 26,
+                    "line": 25,
                     "modifierKind": [
                         125
                     ],
@@ -3596,7 +3536,7 @@
                     "type": "ModelControlType",
                     "optional": false,
                     "description": "",
-                    "line": 25,
+                    "line": 24,
                     "modifierKind": [
                         125
                     ],
@@ -3612,7 +3552,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 31,
+                    "line": 30,
                     "inheritance": {
                         "file": "ModelControl"
                     }
@@ -3625,7 +3565,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 30,
+                    "line": 29,
                     "inheritance": {
                         "file": "ModelControl"
                     }
@@ -3648,7 +3588,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 43,
+                    "line": 42,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -3661,7 +3601,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 57,
+                    "line": 56,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -3682,7 +3622,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 36,
+                    "line": 35,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3715,7 +3655,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 39,
+                    "line": 38,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3740,7 +3680,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 52,
+                    "line": 51,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -3760,7 +3700,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 33,
+                    "line": 32,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3848,7 +3788,7 @@
                     "defaultValue": "'outline'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 19,
+                    "line": 18,
                     "type": "\"outline\" | \"fill\"",
                     "decorators": [],
                     "inheritance": {
@@ -3872,7 +3812,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 15,
+                    "line": 14,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -3884,7 +3824,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 17,
+                    "line": 16,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -3896,7 +3836,7 @@
                     "defaultValue": "this.formBuilder.group({\n    [this.name]: [''],\n  })",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 21,
+                    "line": 20,
                     "type": "FormGroup",
                     "decorators": [],
                     "inheritance": {
@@ -3931,7 +3871,7 @@
                     "name": "initialValue",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 18,
+                    "line": 17,
                     "type": "ModelControlType",
                     "decorators": [],
                     "inheritance": {
@@ -3943,7 +3883,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 16,
+                    "line": 15,
                     "type": "boolean",
                     "decorators": [],
                     "inheritance": {
@@ -3979,18 +3919,6 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 14,
-                    "type": "string",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "ModelControl"
-                    }
-                },
-                {
-                    "name": "styleMode",
-                    "defaultValue": "''",
-                    "deprecated": false,
-                    "deprecationMessage": "",
                     "line": 13,
                     "type": "string",
                     "decorators": [],
@@ -4008,7 +3936,7 @@
                     "type": "Subscription",
                     "optional": false,
                     "description": "",
-                    "line": 26,
+                    "line": 25,
                     "modifierKind": [
                         125
                     ],
@@ -4023,7 +3951,7 @@
                     "type": "ModelControlType",
                     "optional": false,
                     "description": "",
-                    "line": 25,
+                    "line": 24,
                     "modifierKind": [
                         125
                     ],
@@ -4039,7 +3967,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 31,
+                    "line": 30,
                     "inheritance": {
                         "file": "ModelControl"
                     }
@@ -4052,7 +3980,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 30,
+                    "line": 29,
                     "inheritance": {
                         "file": "ModelControl"
                     }
@@ -4075,7 +4003,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 43,
+                    "line": 42,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -4088,7 +4016,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 57,
+                    "line": 56,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -4109,7 +4037,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 36,
+                    "line": 35,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -4142,7 +4070,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 39,
+                    "line": 38,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -4167,7 +4095,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 52,
+                    "line": 51,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -4187,7 +4115,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 33,
+                    "line": 32,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -4777,7 +4705,7 @@
         },
         {
             "name": "ModelControl",
-            "id": "component-ModelControl-43708ad504d747e6026115049b5019a56fef3131a8995903e0a2616246086946843e4946cd236de836b8a2eaec8fc8da3fdce9081136f7039acce86d84c9b65b",
+            "id": "component-ModelControl-93a1ab90bb3c40d179857a9df96abdd6347fdb1a1373fe25aa202982a9f97b4d7c490c16983cf19f2c0e1bd0cb5981f149219ef85fd66c0d789432a8f447b61f",
             "file": "src/app/modules/@core/components/form/model-control.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -4796,7 +4724,7 @@
                     "defaultValue": "'outline'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 19,
+                    "line": 18,
                     "type": "\"outline\" | \"fill\"",
                     "decorators": []
                 },
@@ -4814,7 +4742,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 15,
+                    "line": 14,
                     "type": "string",
                     "decorators": []
                 },
@@ -4823,7 +4751,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 17,
+                    "line": 16,
                     "type": "string",
                     "decorators": []
                 },
@@ -4832,7 +4760,7 @@
                     "defaultValue": "this.formBuilder.group({\n    [this.name]: [''],\n  })",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 21,
+                    "line": 20,
                     "type": "FormGroup",
                     "decorators": []
                 },
@@ -4858,7 +4786,7 @@
                     "name": "initialValue",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 18,
+                    "line": 17,
                     "type": "ModelControlType",
                     "decorators": []
                 },
@@ -4867,7 +4795,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 16,
+                    "line": 15,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -4894,15 +4822,6 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 14,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "styleMode",
-                    "defaultValue": "''",
-                    "deprecated": false,
-                    "deprecationMessage": "",
                     "line": 13,
                     "type": "string",
                     "decorators": []
@@ -4917,7 +4836,7 @@
                     "type": "Subscription",
                     "optional": false,
                     "description": "",
-                    "line": 26,
+                    "line": 25,
                     "modifierKind": [
                         125
                     ]
@@ -4929,7 +4848,7 @@
                     "type": "ModelControlType",
                     "optional": false,
                     "description": "",
-                    "line": 25,
+                    "line": 24,
                     "modifierKind": [
                         125
                     ]
@@ -4942,7 +4861,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 31
+                    "line": 30
                 },
                 {
                     "name": "onTouched",
@@ -4952,7 +4871,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 30
+                    "line": 29
                 }
             ],
             "methodsClass": [
@@ -4962,7 +4881,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 43,
+                    "line": 42,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -4972,7 +4891,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 57,
+                    "line": 56,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -4990,7 +4909,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 36,
+                    "line": 35,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -5020,7 +4939,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 39,
+                    "line": 38,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -5042,7 +4961,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 52,
+                    "line": 51,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -5059,7 +4978,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 33,
+                    "line": 32,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -5084,7 +5003,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { ControlValueAccessor, FormBuilder, FormGroup } from '@angular/forms';\nimport { Subscription } from 'rxjs';\nimport { ModelControlType } from '../../types/model-control.type';\n\n@Component({ template: `` })\nexport class ModelControl implements ControlValueAccessor {\n  @Input() id: string = '';\n  @Input() name: string = '';\n  @Input() hint: string = '';\n  @Input() label: string = '';\n  @Input() className: string = '';\n  @Input() styleMode: string = '';\n  @Input() placeholder: string = '';\n  @Input() errorMessage: string = '';\n  @Input() isDynamic: boolean = false;\n  @Input() formControlName: string = '';\n  @Input() initialValue?: ModelControlType;\n  @Input() appearance: 'outline' | 'fill' = 'outline';\n\n  @Input() group: FormGroup = this.formBuilder.group({\n    [this.name]: [''],\n  });\n\n  public model!: ModelControlType;\n  public $modelControl!: Subscription;\n\n  constructor(private formBuilder: FormBuilder) {}\n\n  onTouched = () => {};\n  onChange = (_: ModelControlType) => {};\n\n  writeValue(value: ModelControlType): void {\n    this.model = value;\n  }\n  registerOnChange(fn: () => void): void {\n    this.onChange = fn;\n  }\n  registerOnTouched(fn: () => void): void {\n    this.onTouched = fn;\n  }\n\n  initMonitoringChanges() {\n    this.setInitialValue();\n\n    this.$modelControl = this.group.valueChanges.subscribe((value) => {\n      if (!this.formControlName) this.onChange(value['']);\n      else this.onChange(value);\n    });\n  }\n\n  setInitialValue() {\n    if (!!this.formControlName || this.initialValue === undefined) return;\n    this.group.setValue({ '': this.initialValue });\n  }\n\n  ngOnDestroy() {\n    this.$modelControl?.unsubscribe();\n  }\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { ControlValueAccessor, FormBuilder, FormGroup } from '@angular/forms';\nimport { Subscription } from 'rxjs';\nimport { ModelControlType } from '../../types/model-control.type';\n\n@Component({ template: `` })\nexport class ModelControl implements ControlValueAccessor {\n  @Input() id: string = '';\n  @Input() name: string = '';\n  @Input() hint: string = '';\n  @Input() label: string = '';\n  @Input() className: string = '';\n  @Input() placeholder: string = '';\n  @Input() errorMessage: string = '';\n  @Input() isDynamic: boolean = false;\n  @Input() formControlName: string = '';\n  @Input() initialValue?: ModelControlType;\n  @Input() appearance: 'outline' | 'fill' = 'outline';\n\n  @Input() group: FormGroup = this.formBuilder.group({\n    [this.name]: [''],\n  });\n\n  public model!: ModelControlType;\n  public $modelControl!: Subscription;\n\n  constructor(private formBuilder: FormBuilder) {}\n\n  onTouched = () => {};\n  onChange = (_: ModelControlType) => {};\n\n  writeValue(value: ModelControlType): void {\n    this.model = value;\n  }\n  registerOnChange(fn: () => void): void {\n    this.onChange = fn;\n  }\n  registerOnTouched(fn: () => void): void {\n    this.onTouched = fn;\n  }\n\n  initMonitoringChanges() {\n    this.setInitialValue();\n\n    this.$modelControl = this.group.valueChanges.subscribe((value) => {\n      if (!this.formControlName) this.onChange(value['']);\n      else this.onChange(value);\n    });\n  }\n\n  setInitialValue() {\n    if (!!this.formControlName || this.initialValue === undefined) return;\n    this.group.setValue({ '': this.initialValue });\n  }\n\n  ngOnDestroy() {\n    this.$modelControl?.unsubscribe();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -5101,7 +5020,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 26,
+                "line": 25,
                 "jsdoctags": [
                     {
                         "name": "formBuilder",
@@ -5299,6 +5218,26 @@
                 "defaultValue": "[\n  AppInputComponent,\n  AppSelectComponent,\n  AppTextareaComponent,\n  AppCheckboxComponent,\n  AppDatepickerComponent,\n  AppRadioButtonComponent,\n]"
             },
             {
+                "name": "buildExcludeProps",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/form/_base.form.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "(items: string[], excludeCommon = true) => {\n  const commonProperties = ['$modelControl', 'onChange', 'onTouched'];\n  const commonInputs = ['model', 'isDynamic'];\n  const commonMethods = [\n    'ngOnInit',\n    'writeValue',\n    'ngOnDestroy',\n    'setInitialValue',\n    'registerOnChange',\n    'registerOnTouched',\n    'initMonitoringChanges',\n  ];\n\n  const commonItems = [...commonInputs, ...commonMethods, ...commonProperties];\n  const excludeItems = excludeCommon ? commonItems : [];\n\n  return [...excludeItems, ...items];\n}"
+            },
+            {
+                "name": "component",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/form/app-checkbok.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "StoryObj<AppCheckboxComponent>",
+                "defaultValue": "{\n  args: { label: 'Checkbox example' },\n  argTypes: { initialValue: { control: { type: 'boolean' } } },\n  render: (args: AppCheckboxComponent) => ({ props: args }),\n}"
+            },
+            {
                 "name": "components",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -5319,24 +5258,14 @@
                 "defaultValue": "withInMemoryScrolling({\n    scrollPositionRestoration: 'top',\n    anchorScrolling: 'enabled',\n  })"
             },
             {
-                "name": "LoggedOut",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/stories/Page.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  render: (args: AppInputComponent) => ({ props: args }),\n}"
-            },
-            {
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/Page.stories.ts",
+                "file": "src/stories/form/app-checkbok.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Meta<AppInputComponent>",
-                "defaultValue": "{\n  component: AppInputComponent,\n  title: 'Example/Page',\n  parameters: { layout: 'fullscreen' },\n  decorators: [\n    moduleMetadata({\n      declarations: [],\n      imports: [CommonModule],\n    }),\n  ],\n}"
+                "type": "Meta<AppCheckboxComponent>",
+                "defaultValue": "{\n  component: AppCheckboxComponent,\n  tags: ['autodocs'],\n  title: 'Form/Checkbox',\n  parameters: {\n    layout: 'fullscreen',\n    controls: {\n      exclude: buildExcludeProps([\n        'hint',\n        'appearance',\n        'placeholder',\n        'errorMessage',\n      ]),\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      declarations: [],\n      imports: [\n        FormsModule,\n        MatCheckboxModule,\n        ReactiveFormsModule,\n        MatSlideToggleModule,\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "preview",
@@ -5448,23 +5377,12 @@
                 "name": "ModelControlType",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "Date | string | number | boolean | object | DatePickerRangeValue | null",
+                "rawtype": "DatePickerRangeValue | boolean | string | number | object | Date | null",
                 "file": "src/app/modules/@core/types/model-control.type.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
                 "kind": 192
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "rawtype": "StoryObj<AppInputComponent>",
-                "file": "src/stories/Page.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 183
             },
             {
                 "name": "ThemeConfigType",
@@ -5525,6 +5443,40 @@
                     "defaultValue": "[\n  AppInputComponent,\n  AppSelectComponent,\n  AppTextareaComponent,\n  AppCheckboxComponent,\n  AppDatepickerComponent,\n  AppRadioButtonComponent,\n]"
                 }
             ],
+            "src/stories/form/_base.form.ts": [
+                {
+                    "name": "buildExcludeProps",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/form/_base.form.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "(items: string[], excludeCommon = true) => {\n  const commonProperties = ['$modelControl', 'onChange', 'onTouched'];\n  const commonInputs = ['model', 'isDynamic'];\n  const commonMethods = [\n    'ngOnInit',\n    'writeValue',\n    'ngOnDestroy',\n    'setInitialValue',\n    'registerOnChange',\n    'registerOnTouched',\n    'initMonitoringChanges',\n  ];\n\n  const commonItems = [...commonInputs, ...commonMethods, ...commonProperties];\n  const excludeItems = excludeCommon ? commonItems : [];\n\n  return [...excludeItems, ...items];\n}"
+                }
+            ],
+            "src/stories/form/app-checkbok.stories.ts": [
+                {
+                    "name": "component",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/form/app-checkbok.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "StoryObj<AppCheckboxComponent>",
+                    "defaultValue": "{\n  args: { label: 'Checkbox example' },\n  argTypes: { initialValue: { control: { type: 'boolean' } } },\n  render: (args: AppCheckboxComponent) => ({ props: args }),\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/form/app-checkbok.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<AppCheckboxComponent>",
+                    "defaultValue": "{\n  component: AppCheckboxComponent,\n  tags: ['autodocs'],\n  title: 'Form/Checkbox',\n  parameters: {\n    layout: 'fullscreen',\n    controls: {\n      exclude: buildExcludeProps([\n        'hint',\n        'appearance',\n        'placeholder',\n        'errorMessage',\n      ]),\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      declarations: [],\n      imports: [\n        FormsModule,\n        MatCheckboxModule,\n        ReactiveFormsModule,\n        MatSlideToggleModule,\n      ],\n    }),\n  ],\n}"
+                }
+            ],
             "src/app/modules/@core/_form-generator/field-generator.directive.ts": [
                 {
                     "name": "components",
@@ -5535,28 +5487,6 @@
                     "deprecationMessage": "",
                     "type": "object",
                     "defaultValue": "{\n  input: AppInputComponent,\n  select: AppSelectComponent,\n  radio: AppRadioButtonComponent,\n  textarea: AppTextareaComponent,\n  checkbox: AppCheckboxComponent,\n  datepicker: AppDatepickerComponent,\n}"
-                }
-            ],
-            "src/stories/Page.stories.ts": [
-                {
-                    "name": "LoggedOut",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/Page.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  render: (args: AppInputComponent) => ({ props: args }),\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/Page.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<AppInputComponent>",
-                    "defaultValue": "{\n  component: AppInputComponent,\n  title: 'Example/Page',\n  parameters: { layout: 'fullscreen' },\n  decorators: [\n    moduleMetadata({\n      declarations: [],\n      imports: [CommonModule],\n    }),\n  ],\n}"
                 }
             ],
             ".storybook/preview.ts": [
@@ -5687,25 +5617,12 @@
                     "name": "ModelControlType",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "Date | string | number | boolean | object | DatePickerRangeValue | null",
+                    "rawtype": "DatePickerRangeValue | boolean | string | number | object | Date | null",
                     "file": "src/app/modules/@core/types/model-control.type.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
                     "kind": 192
-                }
-            ],
-            "src/stories/Page.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<AppInputComponent>",
-                    "file": "src/stories/Page.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
                 }
             ],
             "src/app/modules/@core/types/theme.type.ts": [
@@ -5906,7 +5823,7 @@
                 "linktype": "component",
                 "name": "AppCheckboxComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/26",
+                "coverageCount": "0/25",
                 "status": "low"
             },
             {
@@ -5915,7 +5832,7 @@
                 "linktype": "component",
                 "name": "AppDatepickerComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/29",
+                "coverageCount": "0/28",
                 "status": "low"
             },
             {
@@ -5924,7 +5841,7 @@
                 "linktype": "component",
                 "name": "AppInputComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/26",
+                "coverageCount": "0/25",
                 "status": "low"
             },
             {
@@ -5933,7 +5850,7 @@
                 "linktype": "component",
                 "name": "AppRadioButtonComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/26",
+                "coverageCount": "0/25",
                 "status": "low"
             },
             {
@@ -5942,7 +5859,7 @@
                 "linktype": "component",
                 "name": "AppSelectComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/26",
+                "coverageCount": "0/25",
                 "status": "low"
             },
             {
@@ -5951,7 +5868,7 @@
                 "linktype": "component",
                 "name": "AppTextareaComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/26",
+                "coverageCount": "0/25",
                 "status": "low"
             },
             {
@@ -5970,7 +5887,7 @@
                 "linktype": "component",
                 "name": "ModelControl",
                 "coveragePercent": 0,
-                "coverageCount": "0/25",
+                "coverageCount": "0/24",
                 "status": "low"
             },
             {
@@ -6111,17 +6028,27 @@
                 "status": "low"
             },
             {
-                "filePath": "src/stories/Page.stories.ts",
+                "filePath": "src/stories/form/_base.form.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "LoggedOut",
+                "name": "buildExcludeProps",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
             },
             {
-                "filePath": "src/stories/Page.stories.ts",
+                "filePath": "src/stories/form/app-checkbok.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "component",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/form/app-checkbok.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",

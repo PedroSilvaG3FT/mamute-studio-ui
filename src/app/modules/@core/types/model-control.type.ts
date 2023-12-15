@@ -1,10 +1,10 @@
 import { DatePickerRangeValue } from './datepicker.type';
 
 export type ModelControlType =
-  | Date
+  | DatePickerRangeValue
+  | boolean
   | string
   | number
-  | boolean
   | object
-  | DatePickerRangeValue
+  | Date
   | null;
