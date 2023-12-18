@@ -1,7 +1,8 @@
 <article id="app-text-editor" [class]="className" [formGroup]="group">
+  <label [for]="id">{{ label }}</label>
   <angular-editor
     [id]="id"
-    [formControlName]="formControlName"
     [config]="configModel"
+    [formControlName]="formControlName"
   ></angular-editor>
 </article>

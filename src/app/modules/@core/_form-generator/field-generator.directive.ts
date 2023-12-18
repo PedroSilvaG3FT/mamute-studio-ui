@@ -59,7 +59,6 @@ export class FieldGeneratorDirective {
         className,
         inputType,
         placeholder,
-        errorMessage,
         isDatepickerRange,
       } = this.field.additional;
 
@@ -68,7 +67,6 @@ export class FieldGeneratorDirective {
       this.componentRef.instance.toggle = isToggle || false;
       this.componentRef.instance.className = className || '';
       this.componentRef.instance.placeholder = placeholder || '';
-      this.componentRef.instance.errorMessage = errorMessage || '';
       this.componentRef.instance.range = isDatepickerRange || false;
     }
   }

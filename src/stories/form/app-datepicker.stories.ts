@@ -12,10 +12,7 @@ const meta: Meta<AppDatepickerComponent> = {
   parameters: {
     layout: 'fullscreen',
     controls: {
-      exclude: storybookFormBase.buildExcludeFormProps([
-        'placeholder',
-        'errorMessage',
-      ]),
+      exclude: storybookFormBase.buildExcludeFormProps(['placeholder']),
     },
   },
   decorators: [

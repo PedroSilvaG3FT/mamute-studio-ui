@@ -15,7 +15,6 @@ const meta: Meta<AppRadioButtonComponent> = {
       exclude: storybookFormBase.buildExcludeFormProps([
         'appearance',
         'placeholder',
-        'errorMessage',
       ]),
     },
   },

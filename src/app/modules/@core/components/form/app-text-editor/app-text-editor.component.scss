@@ -1,3 +1,7 @@
 #app-text-editor {
   @apply mb-12;
+
+  > label {
+    @apply relative bottom-1;
+  }
 }

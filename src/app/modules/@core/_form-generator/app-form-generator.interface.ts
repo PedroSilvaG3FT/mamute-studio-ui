@@ -8,7 +8,6 @@ export interface IFormGeneratorFieldAdditional {
   isToggle: boolean;
   className: string;
   placeholder: string;
-  errorMessage: string;
   inputType: InputType;
   options: IFormOption[];
   isDatepickerRange: boolean;

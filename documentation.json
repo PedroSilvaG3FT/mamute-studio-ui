@@ -3,12 +3,12 @@
     "interfaces": [
         {
             "name": "IFormGeneratorConfig",
-            "id": "interface-IFormGeneratorConfig-0692dabe84cd7081a20c7da2fe6427d6ec5e107f02302c7dfb63297aaa98335e0b8fb2f41ebb23302393561cf401a945fa4c9014d2e9b3812c309a47646c8d33",
+            "id": "interface-IFormGeneratorConfig-23e848a53de6ddd4127d3494c9a9e613eb43e7092ea71d92f5094a85008306eb1108d47a87d65c550967c5a5cb8825e94497a9556aa81772d5177ac9388fb918",
             "file": "src/app/modules/@core/_form-generator/app-form-generator.interface.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { AbstractControl, ValidationErrors } from '@angular/forms';\nimport { IFormOption } from '../interfaces/app-form.interface';\nimport { InputType } from '../types/input.type';\nimport { ModelControlType } from '../types/model-control.type';\nimport { FormGeneratorFieldType } from './field-generator.directive';\n\nexport interface IFormGeneratorFieldAdditional {\n  isToggle: boolean;\n  className: string;\n  placeholder: string;\n  errorMessage: string;\n  inputType: InputType;\n  options: IFormOption[];\n  isDatepickerRange: boolean;\n}\n\nexport interface IFormGeneratorField {\n  name: string;\n  label: string;\n  type: FormGeneratorFieldType;\n  initialValue: ModelControlType;\n  additional?: Partial<IFormGeneratorFieldAdditional>;\n  width?: string;\n  validators?: ((\n    control: AbstractControl<any, any>\n  ) => ValidationErrors | null)[];\n}\n\nexport interface IFormGeneratorConfig {\n  fields: IFormGeneratorField[][];\n}\n\nexport interface IFormGeneratorFields {\n  fields: IFormGeneratorField[][];\n}\n",
+            "sourceCode": "import { AbstractControl, ValidationErrors } from '@angular/forms';\nimport { IFormOption } from '../interfaces/app-form.interface';\nimport { InputType } from '../types/input.type';\nimport { ModelControlType } from '../types/model-control.type';\nimport { FormGeneratorFieldType } from './field-generator.directive';\n\nexport interface IFormGeneratorFieldAdditional {\n  isToggle: boolean;\n  className: string;\n  placeholder: string;\n  inputType: InputType;\n  options: IFormOption[];\n  isDatepickerRange: boolean;\n}\n\nexport interface IFormGeneratorField {\n  name: string;\n  label: string;\n  type: FormGeneratorFieldType;\n  initialValue: ModelControlType;\n  additional?: Partial<IFormGeneratorFieldAdditional>;\n  width?: string;\n  validators?: ((\n    control: AbstractControl<any, any>\n  ) => ValidationErrors | null)[];\n}\n\nexport interface IFormGeneratorConfig {\n  fields: IFormGeneratorField[][];\n}\n\nexport interface IFormGeneratorFields {\n  fields: IFormGeneratorField[][];\n}\n",
             "properties": [
                 {
                     "name": "fields",
@@ -17,7 +17,7 @@
                     "type": "IFormGeneratorField[][]",
                     "optional": false,
                     "description": "",
-                    "line": 30
+                    "line": 29
                 }
             ],
             "indexSignatures": [],
@@ -27,12 +27,12 @@
         },
         {
             "name": "IFormGeneratorExample",
-            "id": "interface-IFormGeneratorExample-641effd2c50fc61a61ed390e0b20df804279c27f67117e2dc302ba3eadc945b355bf706a1551e639b4eb954af89854767fdf00926bbed2a7d0bfae909491202e",
+            "id": "interface-IFormGeneratorExample-abb528749a22f34bcbde3e096d1829051247117b89be6ba0128bc72c6f804b88c987cc0448331dcdf1c5426125a87a201a1167b501bd37e99bfa34c68dace4e4",
             "file": "src/app/modules/initial/pages/components/components.component.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { MatTabsModule } from '@angular/material/tabs';\nimport { RouterModule } from '@angular/router';\n\nimport { JsonPipe } from '@angular/common';\nimport { FormsModule, Validators } from '@angular/forms';\nimport { AppFormGeneratorComponent } from '../../../@core/_form-generator/app-form-generator/app-form-generator.component';\nimport { FormGeneratorService } from '../../../@core/_form-generator/form-generator.service';\nimport { IFormOption } from '../../../@core/interfaces/app-form.interface';\nimport { DatePickerRangeValue } from '../../../@core/types/datepicker.type';\nimport { FormExampleComponent } from '../../components/form-example/form-example.component';\nimport { TerminalWindowComponent } from '../../components/terminal-window/terminal-window.component';\n\nimport { AppThemeSelectionComponent } from '../../../@core/components/app-theme-selection/app-theme-selection.component';\nimport { AppCheckboxComponent } from '../../../@core/components/form/app-checkbox/app-checkbox.component';\n\n@Component({\n  standalone: true,\n  selector: 'app-components',\n  styleUrl: './components.component.scss',\n  templateUrl: './components.component.html',\n  imports: [\n    JsonPipe,\n    FormsModule,\n    RouterModule,\n    MatTabsModule,\n    AppCheckboxComponent,\n    FormExampleComponent,\n    TerminalWindowComponent,\n    AppFormGeneratorComponent,\n    AppThemeSelectionComponent,\n  ],\n})\nexport class ComponentsComponent {\n  public defaultOptions: IFormOption[] = [\n    { label: 'Option 1', value: 1 },\n    { label: 'Option 2', value: 2 },\n    { label: 'Option 3', value: 3 },\n    { label: 'Option 4', value: 4 },\n  ];\n\n  private readonly fieldWidth: string = 'calc(50% - 12px)';\n  public formValue: IFormGeneratorExample = {} as IFormGeneratorExample;\n  public formExample = this.formGeneratorService.init<IFormGeneratorExample>([\n    [\n      {\n        width: this.fieldWidth,\n        type: 'input',\n        name: 'password',\n        label: 'Password',\n        initialValue: '',\n        validators: [Validators.required],\n        additional: { inputType: `password` },\n      },\n      {\n        width: this.fieldWidth,\n        name: 'email',\n        type: 'input',\n        label: 'email',\n        initialValue: '',\n        validators: [Validators.required],\n        additional: { inputType: `email` },\n      },\n    ],\n    [\n      {\n        width: this.fieldWidth,\n        name: 'name',\n        label: 'Name',\n        type: 'input',\n        initialValue: '',\n        validators: [Validators.required],\n      },\n      {\n        width: this.fieldWidth,\n        name: 'select',\n        type: 'select',\n        label: 'Select',\n        initialValue: 0,\n        validators: [Validators.required],\n      },\n    ],\n    [\n      {\n        width: this.fieldWidth,\n        name: 'age',\n        label: 'Age',\n        type: 'input',\n        initialValue: 0,\n        additional: { inputType: `number` },\n      },\n      {\n        width: this.fieldWidth,\n        name: 'radio',\n        type: 'radio',\n        label: 'radio',\n        initialValue: 0,\n        validators: [Validators.required],\n      },\n    ],\n    [\n      {\n        width: this.fieldWidth,\n        name: 'birthDate',\n        type: 'datepicker',\n        label: 'Birth date',\n        initialValue: new Date(),\n      },\n      {\n        width: this.fieldWidth,\n        name: 'rage',\n        label: 'Rage',\n        initialValue: '',\n        type: 'datepicker',\n        additional: { isDatepickerRange: true },\n      },\n    ],\n    [\n      {\n        initialValue: '',\n        type: 'textarea',\n        name: 'description',\n        label: 'Description',\n      },\n    ],\n    [\n      {\n        width: this.fieldWidth,\n        name: 'isAdmin',\n        type: 'checkbox',\n        label: 'Is admin',\n        initialValue: false,\n        additional: { isToggle: true },\n      },\n    ],\n  ]);\n\n  constructor(private formGeneratorService: FormGeneratorService) {}\n\n  ngOnInit() {\n    this.formExample.setOptionsField('radio', this.defaultOptions);\n    this.formExample.setOptionsField('select', this.defaultOptions);\n\n    this.formExample.setInitialValue('name', 'Valor inicial');\n  }\n\n  public onSubmit(model: IFormGeneratorExample) {\n    alert(JSON.stringify(model))\n  }\n\n  public onValueChange(model: IFormGeneratorExample) {\n    this.formValue = model;\n  }\n}\n\ninterface IFormGeneratorExample {\n  age: number;\n  name: string;\n  email: string;\n  radio: number;\n  select: number;\n  isAdmin: boolean;\n  description: string;\n  birthDate: string | Date;\n  rage: DatePickerRangeValue;\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { MatTabsModule } from '@angular/material/tabs';\nimport { RouterModule } from '@angular/router';\n\nimport { JsonPipe } from '@angular/common';\nimport { FormsModule, Validators } from '@angular/forms';\nimport { AppFormGeneratorComponent } from '../../../@core/_form-generator/app-form-generator/app-form-generator.component';\nimport { FormGeneratorService } from '../../../@core/_form-generator/form-generator.service';\nimport { IFormOption } from '../../../@core/interfaces/app-form.interface';\nimport { DatePickerRangeValue } from '../../../@core/types/datepicker.type';\nimport { FormExampleComponent } from '../../components/form-example/form-example.component';\nimport { TerminalWindowComponent } from '../../components/terminal-window/terminal-window.component';\n\nimport { AppThemeSelectionComponent } from '../../../@core/components/app-theme-selection/app-theme-selection.component';\nimport { AppCheckboxComponent } from '../../../@core/components/form/app-checkbox/app-checkbox.component';\n\n@Component({\n  standalone: true,\n  selector: 'app-components',\n  styleUrl: './components.component.scss',\n  templateUrl: './components.component.html',\n  imports: [\n    JsonPipe,\n    FormsModule,\n    RouterModule,\n    MatTabsModule,\n    AppCheckboxComponent,\n    FormExampleComponent,\n    TerminalWindowComponent,\n    AppFormGeneratorComponent,\n    AppThemeSelectionComponent,\n  ],\n})\nexport class ComponentsComponent {\n  public defaultOptions: IFormOption[] = [\n    { label: 'Option 1', value: 1 },\n    { label: 'Option 2', value: 2 },\n    { label: 'Option 3', value: 3 },\n    { label: 'Option 4', value: 4 },\n  ];\n\n  private readonly fieldWidth: string = 'calc(50% - 12px)';\n  public formValue: IFormGeneratorExample = {} as IFormGeneratorExample;\n  public formExample = this.formGeneratorService.init<IFormGeneratorExample>([\n    [\n      {\n        width: this.fieldWidth,\n        type: 'input',\n        name: 'password',\n        label: 'Password',\n        initialValue: '',\n        validators: [Validators.required],\n        additional: { inputType: `password` },\n      },\n      {\n        width: this.fieldWidth,\n        name: 'email',\n        type: 'input',\n        label: 'email',\n        initialValue: '',\n        validators: [Validators.required],\n        additional: { inputType: `email` },\n      },\n    ],\n    [\n      {\n        width: this.fieldWidth,\n        name: 'name',\n        label: 'Name',\n        type: 'input',\n        initialValue: '',\n        validators: [Validators.required],\n      },\n      {\n        width: this.fieldWidth,\n        name: 'select',\n        type: 'select',\n        label: 'Select',\n        initialValue: 0,\n        validators: [Validators.required],\n      },\n    ],\n    [\n      {\n        width: this.fieldWidth,\n        name: 'age',\n        label: 'Age',\n        type: 'input',\n        initialValue: 0,\n        additional: { inputType: `number` },\n      },\n      {\n        width: this.fieldWidth,\n        name: 'radio',\n        type: 'radio',\n        label: 'radio',\n        initialValue: 0,\n        validators: [Validators.required],\n      },\n    ],\n    [\n      {\n        width: this.fieldWidth,\n        name: 'birthDate',\n        type: 'datepicker',\n        label: 'Birth date',\n        initialValue: new Date(),\n      },\n      {\n        width: this.fieldWidth,\n        name: 'rage',\n        label: 'Rage',\n        initialValue: '',\n        type: 'datepicker',\n        additional: { isDatepickerRange: true },\n      },\n    ],\n    [\n      {\n        initialValue: '',\n        type: 'textarea',\n        name: 'description',\n        label: 'Description',\n      },\n    ],\n    [\n      {\n        width: this.fieldWidth,\n        name: 'isAdmin',\n        type: 'checkbox',\n        label: 'Is admin',\n        initialValue: false,\n        additional: { isToggle: true },\n      },\n    ],\n  ]);\n\n  constructor(private formGeneratorService: FormGeneratorService) {}\n\n  ngOnInit() {\n    this.formExample.setOptionsField('radio', this.defaultOptions);\n    this.formExample.setOptionsField('select', this.defaultOptions);\n\n    this.formExample.setInitialValue('name', 'Valor inicial');\n  }\n\n  public onSubmit(model: IFormGeneratorExample) {\n    alert(JSON.stringify(model));\n  }\n\n  public onValueChange(model: IFormGeneratorExample) {\n    this.formValue = model;\n  }\n}\n\ninterface IFormGeneratorExample {\n  age: number;\n  name: string;\n  email: string;\n  radio: number;\n  select: number;\n  isAdmin: boolean;\n  description: string;\n  birthDate: string | Date;\n  rage: DatePickerRangeValue;\n}\n",
             "properties": [
                 {
                     "name": "age",
@@ -123,12 +123,12 @@
         },
         {
             "name": "IFormGeneratorField",
-            "id": "interface-IFormGeneratorField-0692dabe84cd7081a20c7da2fe6427d6ec5e107f02302c7dfb63297aaa98335e0b8fb2f41ebb23302393561cf401a945fa4c9014d2e9b3812c309a47646c8d33",
+            "id": "interface-IFormGeneratorField-23e848a53de6ddd4127d3494c9a9e613eb43e7092ea71d92f5094a85008306eb1108d47a87d65c550967c5a5cb8825e94497a9556aa81772d5177ac9388fb918",
             "file": "src/app/modules/@core/_form-generator/app-form-generator.interface.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { AbstractControl, ValidationErrors } from '@angular/forms';\nimport { IFormOption } from '../interfaces/app-form.interface';\nimport { InputType } from '../types/input.type';\nimport { ModelControlType } from '../types/model-control.type';\nimport { FormGeneratorFieldType } from './field-generator.directive';\n\nexport interface IFormGeneratorFieldAdditional {\n  isToggle: boolean;\n  className: string;\n  placeholder: string;\n  errorMessage: string;\n  inputType: InputType;\n  options: IFormOption[];\n  isDatepickerRange: boolean;\n}\n\nexport interface IFormGeneratorField {\n  name: string;\n  label: string;\n  type: FormGeneratorFieldType;\n  initialValue: ModelControlType;\n  additional?: Partial<IFormGeneratorFieldAdditional>;\n  width?: string;\n  validators?: ((\n    control: AbstractControl<any, any>\n  ) => ValidationErrors | null)[];\n}\n\nexport interface IFormGeneratorConfig {\n  fields: IFormGeneratorField[][];\n}\n\nexport interface IFormGeneratorFields {\n  fields: IFormGeneratorField[][];\n}\n",
+            "sourceCode": "import { AbstractControl, ValidationErrors } from '@angular/forms';\nimport { IFormOption } from '../interfaces/app-form.interface';\nimport { InputType } from '../types/input.type';\nimport { ModelControlType } from '../types/model-control.type';\nimport { FormGeneratorFieldType } from './field-generator.directive';\n\nexport interface IFormGeneratorFieldAdditional {\n  isToggle: boolean;\n  className: string;\n  placeholder: string;\n  inputType: InputType;\n  options: IFormOption[];\n  isDatepickerRange: boolean;\n}\n\nexport interface IFormGeneratorField {\n  name: string;\n  label: string;\n  type: FormGeneratorFieldType;\n  initialValue: ModelControlType;\n  additional?: Partial<IFormGeneratorFieldAdditional>;\n  width?: string;\n  validators?: ((\n    control: AbstractControl<any, any>\n  ) => ValidationErrors | null)[];\n}\n\nexport interface IFormGeneratorConfig {\n  fields: IFormGeneratorField[][];\n}\n\nexport interface IFormGeneratorFields {\n  fields: IFormGeneratorField[][];\n}\n",
             "properties": [
                 {
                     "name": "additional",
@@ -137,7 +137,7 @@
                     "type": "Partial<IFormGeneratorFieldAdditional>",
                     "optional": true,
                     "description": "",
-                    "line": 22
+                    "line": 21
                 },
                 {
                     "name": "initialValue",
@@ -146,7 +146,7 @@
                     "type": "ModelControlType",
                     "optional": false,
                     "description": "",
-                    "line": 21
+                    "line": 20
                 },
                 {
                     "name": "label",
@@ -155,7 +155,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 19
+                    "line": 18
                 },
                 {
                     "name": "name",
@@ -164,7 +164,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 18
+                    "line": 17
                 },
                 {
                     "name": "type",
@@ -173,7 +173,7 @@
                     "type": "FormGeneratorFieldType",
                     "optional": false,
                     "description": "",
-                    "line": 20
+                    "line": 19
                 },
                 {
                     "name": "validators",
@@ -182,7 +182,7 @@
                     "type": "(function)[]",
                     "optional": true,
                     "description": "",
-                    "line": 24
+                    "line": 23
                 },
                 {
                     "name": "width",
@@ -191,7 +191,7 @@
                     "type": "string",
                     "optional": true,
                     "description": "",
-                    "line": 23
+                    "line": 22
                 }
             ],
             "indexSignatures": [],
@@ -201,12 +201,12 @@
         },
         {
             "name": "IFormGeneratorFieldAdditional",
-            "id": "interface-IFormGeneratorFieldAdditional-0692dabe84cd7081a20c7da2fe6427d6ec5e107f02302c7dfb63297aaa98335e0b8fb2f41ebb23302393561cf401a945fa4c9014d2e9b3812c309a47646c8d33",
+            "id": "interface-IFormGeneratorFieldAdditional-23e848a53de6ddd4127d3494c9a9e613eb43e7092ea71d92f5094a85008306eb1108d47a87d65c550967c5a5cb8825e94497a9556aa81772d5177ac9388fb918",
             "file": "src/app/modules/@core/_form-generator/app-form-generator.interface.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { AbstractControl, ValidationErrors } from '@angular/forms';\nimport { IFormOption } from '../interfaces/app-form.interface';\nimport { InputType } from '../types/input.type';\nimport { ModelControlType } from '../types/model-control.type';\nimport { FormGeneratorFieldType } from './field-generator.directive';\n\nexport interface IFormGeneratorFieldAdditional {\n  isToggle: boolean;\n  className: string;\n  placeholder: string;\n  errorMessage: string;\n  inputType: InputType;\n  options: IFormOption[];\n  isDatepickerRange: boolean;\n}\n\nexport interface IFormGeneratorField {\n  name: string;\n  label: string;\n  type: FormGeneratorFieldType;\n  initialValue: ModelControlType;\n  additional?: Partial<IFormGeneratorFieldAdditional>;\n  width?: string;\n  validators?: ((\n    control: AbstractControl<any, any>\n  ) => ValidationErrors | null)[];\n}\n\nexport interface IFormGeneratorConfig {\n  fields: IFormGeneratorField[][];\n}\n\nexport interface IFormGeneratorFields {\n  fields: IFormGeneratorField[][];\n}\n",
+            "sourceCode": "import { AbstractControl, ValidationErrors } from '@angular/forms';\nimport { IFormOption } from '../interfaces/app-form.interface';\nimport { InputType } from '../types/input.type';\nimport { ModelControlType } from '../types/model-control.type';\nimport { FormGeneratorFieldType } from './field-generator.directive';\n\nexport interface IFormGeneratorFieldAdditional {\n  isToggle: boolean;\n  className: string;\n  placeholder: string;\n  inputType: InputType;\n  options: IFormOption[];\n  isDatepickerRange: boolean;\n}\n\nexport interface IFormGeneratorField {\n  name: string;\n  label: string;\n  type: FormGeneratorFieldType;\n  initialValue: ModelControlType;\n  additional?: Partial<IFormGeneratorFieldAdditional>;\n  width?: string;\n  validators?: ((\n    control: AbstractControl<any, any>\n  ) => ValidationErrors | null)[];\n}\n\nexport interface IFormGeneratorConfig {\n  fields: IFormGeneratorField[][];\n}\n\nexport interface IFormGeneratorFields {\n  fields: IFormGeneratorField[][];\n}\n",
             "properties": [
                 {
                     "name": "className",
@@ -218,22 +218,13 @@
                     "line": 9
                 },
                 {
-                    "name": "errorMessage",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "optional": false,
-                    "description": "",
-                    "line": 11
-                },
-                {
                     "name": "inputType",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "InputType",
                     "optional": false,
                     "description": "",
-                    "line": 12
+                    "line": 11
                 },
                 {
                     "name": "isDatepickerRange",
@@ -242,7 +233,7 @@
                     "type": "boolean",
                     "optional": false,
                     "description": "",
-                    "line": 14
+                    "line": 13
                 },
                 {
                     "name": "isToggle",
@@ -260,7 +251,7 @@
                     "type": "IFormOption[]",
                     "optional": false,
                     "description": "",
-                    "line": 13
+                    "line": 12
                 },
                 {
                     "name": "placeholder",
@@ -279,12 +270,12 @@
         },
         {
             "name": "IFormGeneratorFields",
-            "id": "interface-IFormGeneratorFields-0692dabe84cd7081a20c7da2fe6427d6ec5e107f02302c7dfb63297aaa98335e0b8fb2f41ebb23302393561cf401a945fa4c9014d2e9b3812c309a47646c8d33",
+            "id": "interface-IFormGeneratorFields-23e848a53de6ddd4127d3494c9a9e613eb43e7092ea71d92f5094a85008306eb1108d47a87d65c550967c5a5cb8825e94497a9556aa81772d5177ac9388fb918",
             "file": "src/app/modules/@core/_form-generator/app-form-generator.interface.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { AbstractControl, ValidationErrors } from '@angular/forms';\nimport { IFormOption } from '../interfaces/app-form.interface';\nimport { InputType } from '../types/input.type';\nimport { ModelControlType } from '../types/model-control.type';\nimport { FormGeneratorFieldType } from './field-generator.directive';\n\nexport interface IFormGeneratorFieldAdditional {\n  isToggle: boolean;\n  className: string;\n  placeholder: string;\n  errorMessage: string;\n  inputType: InputType;\n  options: IFormOption[];\n  isDatepickerRange: boolean;\n}\n\nexport interface IFormGeneratorField {\n  name: string;\n  label: string;\n  type: FormGeneratorFieldType;\n  initialValue: ModelControlType;\n  additional?: Partial<IFormGeneratorFieldAdditional>;\n  width?: string;\n  validators?: ((\n    control: AbstractControl<any, any>\n  ) => ValidationErrors | null)[];\n}\n\nexport interface IFormGeneratorConfig {\n  fields: IFormGeneratorField[][];\n}\n\nexport interface IFormGeneratorFields {\n  fields: IFormGeneratorField[][];\n}\n",
+            "sourceCode": "import { AbstractControl, ValidationErrors } from '@angular/forms';\nimport { IFormOption } from '../interfaces/app-form.interface';\nimport { InputType } from '../types/input.type';\nimport { ModelControlType } from '../types/model-control.type';\nimport { FormGeneratorFieldType } from './field-generator.directive';\n\nexport interface IFormGeneratorFieldAdditional {\n  isToggle: boolean;\n  className: string;\n  placeholder: string;\n  inputType: InputType;\n  options: IFormOption[];\n  isDatepickerRange: boolean;\n}\n\nexport interface IFormGeneratorField {\n  name: string;\n  label: string;\n  type: FormGeneratorFieldType;\n  initialValue: ModelControlType;\n  additional?: Partial<IFormGeneratorFieldAdditional>;\n  width?: string;\n  validators?: ((\n    control: AbstractControl<any, any>\n  ) => ValidationErrors | null)[];\n}\n\nexport interface IFormGeneratorConfig {\n  fields: IFormGeneratorField[][];\n}\n\nexport interface IFormGeneratorFields {\n  fields: IFormGeneratorField[][];\n}\n",
             "properties": [
                 {
                     "name": "fields",
@@ -293,7 +284,7 @@
                     "type": "IFormGeneratorField[][]",
                     "optional": false,
                     "description": "",
-                    "line": 34
+                    "line": 33
                 }
             ],
             "indexSignatures": [],
@@ -1038,12 +1029,12 @@
     "classes": [
         {
             "name": "StorybookFormBase",
-            "id": "class-StorybookFormBase-442edc4d9c371cfa0953ff4bab48ebc2a1f55b230c96dc9296763cc3d2cdd8a666e80f298695529a69b229d9ad6f9d46e8343954496067bc313978c461cca4ad",
+            "id": "class-StorybookFormBase-f06dae442fc9eec28dc56aac0145cb6305e2079542f83334c43c03ebbe656447e6811d2ff2292dd4ed2eb19a26f2ae3694a71302e1ac96aca16d5e7d11cdd65c",
             "file": "src/stories/form/_base.form.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "class",
-            "sourceCode": "import { FormsModule, ReactiveFormsModule } from '@angular/forms';\nimport { MatCheckboxModule } from '@angular/material/checkbox';\nimport { MatNativeDateModule } from '@angular/material/core';\nimport { MatDatepickerModule } from '@angular/material/datepicker';\nimport { MatFormFieldModule } from '@angular/material/form-field';\nimport { MatInputModule } from '@angular/material/input';\nimport { MatSlideToggleModule } from '@angular/material/slide-toggle';\nimport { BrowserAnimationsModule } from '@angular/platform-browser/animations';\n\nexport class StorybookFormBase {\n  public commonImports = [\n    FormsModule,\n    MatCheckboxModule,\n    ReactiveFormsModule,\n    MatSlideToggleModule,\n\n    MatInputModule,\n    MatFormFieldModule,\n    MatDatepickerModule,\n    MatNativeDateModule,\n    BrowserAnimationsModule,\n  ];\n\n  public buildExcludeFormProps(items: string[], excludeCommon = true) {\n    const commonInputs = ['model', 'isDynamic'];\n    const commonProperties = [\n      'onChange',\n      'onTouched',\n      'rangeControl',\n      '$modelControl',\n    ];\n    const commonMethods = [\n      'ngOnInit',\n      'writeValue',\n      'ngOnDestroy',\n      'setInitialValue',\n      'registerOnChange',\n      'registerOnTouched',\n      'initMonitoringChanges',\n    ];\n\n    const commonItems = [\n      ...commonInputs,\n      ...commonMethods,\n      ...commonProperties,\n    ];\n    const excludeItems = excludeCommon ? commonItems : [];\n\n    return [...excludeItems, ...items];\n  }\n}\n",
+            "sourceCode": "import { FormsModule, ReactiveFormsModule } from '@angular/forms';\nimport { MatCheckboxModule } from '@angular/material/checkbox';\nimport { MatNativeDateModule } from '@angular/material/core';\nimport { MatDatepickerModule } from '@angular/material/datepicker';\nimport { MatFormFieldModule } from '@angular/material/form-field';\nimport { MatInputModule } from '@angular/material/input';\nimport { MatSlideToggleModule } from '@angular/material/slide-toggle';\nimport { BrowserAnimationsModule } from '@angular/platform-browser/animations';\nimport { IFormOption } from '../../app/modules/@core/interfaces/app-form.interface';\n\nexport class StorybookFormBase {\n  public initialOptions: IFormOption[] = [\n    { label: 'Option 1', value: 1 },\n    { label: 'Option 2', value: 2 },\n  ];\n\n  public commonImports = [\n    FormsModule,\n    MatCheckboxModule,\n    ReactiveFormsModule,\n    MatSlideToggleModule,\n\n    MatInputModule,\n    MatFormFieldModule,\n    MatDatepickerModule,\n    MatNativeDateModule,\n    BrowserAnimationsModule,\n  ];\n\n  public buildExcludeFormProps(items: string[], excludeCommon = true) {\n    const commonInputs = ['model', 'isDynamic'];\n    const commonProperties = [\n      'onChange',\n      'onTouched',\n      'rangeControl',\n      '$modelControl',\n    ];\n    const commonMethods = [\n      'ngOnInit',\n      'writeValue',\n      'ngOnDestroy',\n      'setInitialValue',\n      'registerOnChange',\n      'registerOnTouched',\n      'initMonitoringChanges',\n    ];\n\n    const commonItems = [\n      ...commonInputs,\n      ...commonMethods,\n      ...commonProperties,\n    ];\n    const excludeItems = excludeCommon ? commonItems : [];\n\n    return [...excludeItems, ...items];\n  }\n}\n",
             "properties": [
                 {
                     "name": "commonImports",
@@ -1053,7 +1044,20 @@
                     "type": "[]",
                     "optional": false,
                     "description": "",
-                    "line": 11,
+                    "line": 17,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "initialOptions",
+                    "defaultValue": "[\n    { label: 'Option 1', value: 1 },\n    { label: 'Option 2', value: 2 },\n  ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "IFormOption[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 12,
                     "modifierKind": [
                         125
                     ]
@@ -1080,7 +1084,7 @@
                     "optional": false,
                     "returnType": "{}",
                     "typeParameters": [],
-                    "line": 24,
+                    "line": 30,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -1202,12 +1206,12 @@
         },
         {
             "name": "FieldGeneratorDirective",
-            "id": "directive-FieldGeneratorDirective-7891169ea09211fa8e95f3465e233cf3f9060ac8f165c323e31e3a815fec1af6b2ee862392ffd467b913f64a2925a82ec1212bcd16ee8211b6f26158a995710e",
+            "id": "directive-FieldGeneratorDirective-7942ef8c07003ce4f3254ba154b8e5769c40f098140e14f3d5d115d67b07743f9e0df87a4a5ecae5a73def35aa3e59c151bb3c6ebac33d48156253fa325debc0",
             "file": "src/app/modules/@core/_form-generator/field-generator.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import {\n  ComponentFactoryResolver,\n  ComponentRef,\n  Directive,\n  Input,\n  ViewContainerRef,\n} from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { AppCheckboxComponent } from '../components/form/app-checkbox/app-checkbox.component';\nimport { AppDatepickerComponent } from '../components/form/app-datepicker/app-datepicker.component';\nimport { AppInputComponent } from '../components/form/app-input/app-input.component';\nimport { AppRadioButtonComponent } from '../components/form/app-radio-button/app-radio-button.component';\nimport { AppSelectComponent } from '../components/form/app-select/app-select.component';\nimport { AppTextareaComponent } from '../components/form/app-textarea/app-textarea.component';\nimport { IFormGeneratorField } from './app-form-generator.interface';\n\nconst components = {\n  input: AppInputComponent,\n  select: AppSelectComponent,\n  radio: AppRadioButtonComponent,\n  textarea: AppTextareaComponent,\n  checkbox: AppCheckboxComponent,\n  datepicker: AppDatepickerComponent,\n};\n\nexport type FormGeneratorFieldType = keyof typeof components;\n\n@Directive({\n  standalone: true,\n  selector: '[appFieldGenerator]',\n})\nexport class FieldGeneratorDirective {\n  @Input({ required: true }) group!: FormGroup;\n  @Input({ required: true }) field!: IFormGeneratorField;\n\n  private componentRef!: ComponentRef<any>;\n\n  constructor(\n    private container: ViewContainerRef,\n    private resolver: ComponentFactoryResolver\n  ) {}\n\n  ngOnInit(): void {\n    const factory = this.resolver.resolveComponentFactory(\n      components[this.field.type] as any\n    );\n\n    this.componentRef = this.container.createComponent(factory);\n\n    this.componentRef.instance.isDynamic = true;\n    this.componentRef.instance.group = this.group;\n    this.componentRef.instance.label = this.field.label;\n    this.componentRef.instance.formControlName = this.field.name;\n\n    if (this.field.additional) {\n      const {\n        options,\n        isToggle,\n        className,\n        inputType,\n        placeholder,\n        errorMessage,\n        isDatepickerRange,\n      } = this.field.additional;\n\n      this.componentRef.instance.items = options || [];\n      this.componentRef.instance.type = inputType || '';\n      this.componentRef.instance.toggle = isToggle || false;\n      this.componentRef.instance.className = className || '';\n      this.componentRef.instance.placeholder = placeholder || '';\n      this.componentRef.instance.errorMessage = errorMessage || '';\n      this.componentRef.instance.range = isDatepickerRange || false;\n    }\n  }\n}\n",
+            "sourceCode": "import {\n  ComponentFactoryResolver,\n  ComponentRef,\n  Directive,\n  Input,\n  ViewContainerRef,\n} from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { AppCheckboxComponent } from '../components/form/app-checkbox/app-checkbox.component';\nimport { AppDatepickerComponent } from '../components/form/app-datepicker/app-datepicker.component';\nimport { AppInputComponent } from '../components/form/app-input/app-input.component';\nimport { AppRadioButtonComponent } from '../components/form/app-radio-button/app-radio-button.component';\nimport { AppSelectComponent } from '../components/form/app-select/app-select.component';\nimport { AppTextareaComponent } from '../components/form/app-textarea/app-textarea.component';\nimport { IFormGeneratorField } from './app-form-generator.interface';\n\nconst components = {\n  input: AppInputComponent,\n  select: AppSelectComponent,\n  radio: AppRadioButtonComponent,\n  textarea: AppTextareaComponent,\n  checkbox: AppCheckboxComponent,\n  datepicker: AppDatepickerComponent,\n};\n\nexport type FormGeneratorFieldType = keyof typeof components;\n\n@Directive({\n  standalone: true,\n  selector: '[appFieldGenerator]',\n})\nexport class FieldGeneratorDirective {\n  @Input({ required: true }) group!: FormGroup;\n  @Input({ required: true }) field!: IFormGeneratorField;\n\n  private componentRef!: ComponentRef<any>;\n\n  constructor(\n    private container: ViewContainerRef,\n    private resolver: ComponentFactoryResolver\n  ) {}\n\n  ngOnInit(): void {\n    const factory = this.resolver.resolveComponentFactory(\n      components[this.field.type] as any\n    );\n\n    this.componentRef = this.container.createComponent(factory);\n\n    this.componentRef.instance.isDynamic = true;\n    this.componentRef.instance.group = this.group;\n    this.componentRef.instance.label = this.field.label;\n    this.componentRef.instance.formControlName = this.field.name;\n\n    if (this.field.additional) {\n      const {\n        options,\n        isToggle,\n        className,\n        inputType,\n        placeholder,\n        isDatepickerRange,\n      } = this.field.additional;\n\n      this.componentRef.instance.items = options || [];\n      this.componentRef.instance.type = inputType || '';\n      this.componentRef.instance.toggle = isToggle || false;\n      this.componentRef.instance.className = className || '';\n      this.componentRef.instance.placeholder = placeholder || '';\n      this.componentRef.instance.range = isDatepickerRange || false;\n    }\n  }\n}\n",
             "selector": "[appFieldGenerator]",
             "providers": [],
             "hostDirectives": [],
@@ -1348,7 +1352,7 @@
                     "defaultValue": "'outline'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 17,
+                    "line": 16,
                     "type": "\"outline\" | \"fill\"",
                     "decorators": [],
                     "inheritance": {
@@ -1368,23 +1372,11 @@
                     }
                 },
                 {
-                    "name": "errorMessage",
-                    "defaultValue": "''",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 13,
-                    "type": "string",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "ModelControl"
-                    }
-                },
-                {
                     "name": "formControlName",
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 15,
+                    "line": 14,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -1396,7 +1388,7 @@
                     "defaultValue": "this.formBuilder.group({\n    [this.name]: [''],\n  })",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 19,
+                    "line": 18,
                     "type": "FormGroup",
                     "decorators": [],
                     "inheritance": {
@@ -1419,7 +1411,7 @@
                     "name": "initialValue",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 16,
+                    "line": 15,
                     "type": "ModelControlType",
                     "decorators": [],
                     "inheritance": {
@@ -1431,7 +1423,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 14,
+                    "line": 13,
                     "type": "boolean",
                     "decorators": [],
                     "inheritance": {
@@ -1484,7 +1476,7 @@
                     "type": "Subscription",
                     "optional": false,
                     "description": "",
-                    "line": 24,
+                    "line": 23,
                     "modifierKind": [
                         125
                     ],
@@ -1499,7 +1491,7 @@
                     "type": "ModelControlType",
                     "optional": false,
                     "description": "",
-                    "line": 23,
+                    "line": 22,
                     "modifierKind": [
                         125
                     ],
@@ -1515,7 +1507,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 29,
+                    "line": 28,
                     "inheritance": {
                         "file": "ModelControl"
                     }
@@ -1528,7 +1520,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 28,
+                    "line": 27,
                     "inheritance": {
                         "file": "ModelControl"
                     }
@@ -1551,7 +1543,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 41,
+                    "line": 40,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -1564,7 +1556,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 55,
+                    "line": 54,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -1585,7 +1577,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 34,
+                    "line": 33,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1618,7 +1610,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 37,
+                    "line": 36,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1643,7 +1635,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 50,
+                    "line": 49,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -1663,7 +1655,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 31,
+                    "line": 30,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1897,7 +1889,7 @@
                     "defaultValue": "'outline'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 17,
+                    "line": 16,
                     "type": "\"outline\" | \"fill\"",
                     "decorators": [],
                     "inheritance": {
@@ -1917,23 +1909,11 @@
                     }
                 },
                 {
-                    "name": "errorMessage",
-                    "defaultValue": "''",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 13,
-                    "type": "string",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "ModelControl"
-                    }
-                },
-                {
                     "name": "formControlName",
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 15,
+                    "line": 14,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -1945,7 +1925,7 @@
                     "defaultValue": "this.formBuilder.group({\n    [this.name]: [''],\n  })",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 19,
+                    "line": 18,
                     "type": "FormGroup",
                     "decorators": [],
                     "inheritance": {
@@ -1968,7 +1948,7 @@
                     "name": "initialValue",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 16,
+                    "line": 15,
                     "type": "ModelControlType",
                     "decorators": [],
                     "inheritance": {
@@ -1980,7 +1960,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 14,
+                    "line": 13,
                     "type": "boolean",
                     "decorators": [],
                     "inheritance": {
@@ -2046,7 +2026,7 @@
                     "type": "Subscription",
                     "optional": false,
                     "description": "",
-                    "line": 24,
+                    "line": 23,
                     "modifierKind": [
                         125
                     ],
@@ -2061,7 +2041,7 @@
                     "type": "ModelControlType",
                     "optional": false,
                     "description": "",
-                    "line": 23,
+                    "line": 22,
                     "modifierKind": [
                         125
                     ],
@@ -2077,7 +2057,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 29,
+                    "line": 28,
                     "inheritance": {
                         "file": "ModelControl"
                     }
@@ -2090,7 +2070,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 28,
+                    "line": 27,
                     "inheritance": {
                         "file": "ModelControl"
                     }
@@ -2113,7 +2093,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 41,
+                    "line": 40,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -2126,7 +2106,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 55,
+                    "line": 54,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -2147,7 +2127,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 34,
+                    "line": 33,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2180,7 +2160,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 37,
+                    "line": 36,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2205,7 +2185,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 50,
+                    "line": 49,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -2225,7 +2205,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 31,
+                    "line": 30,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2547,6 +2527,44 @@
             "templateData": "<form\n  novalidate\n  id=\"app-form-generator\"\n  [formGroup]=\"formGroup\"\n  (ngSubmit)=\"handleSubmit()\"\n>\n  <nav class=\"{{ actionPositionY }} {{ actionPositionX }}\">\n    <button class=\"btn-primary\" [disabled]=\"formGroup.invalid\" type=\"submit\">{{ submitText }}</button>\n  </nav>\n\n  <section>\n    @for (row of fields; track row) {\n    <article\n      [ngStyle]=\"{ gap: fieldGap }\"\n      [ngClass]=\"{ column, 'mobile-column': mobileColumn }\"\n    >\n      @for (item of row; track $index) {\n      <div [ngStyle]=\"{ width: item.width || defaultFieldWidth }\">\n        <ng-container\n          appFieldGenerator\n          [group]=\"formGroup\"\n          [field]=\"item\"\n        ></ng-container>\n      </div>\n      }\n    </article>\n    }\n  </section>\n</form>\n"
         },
         {
+            "name": "AppFormImageComponent",
+            "id": "component-AppFormImageComponent-e2d9a9691c45ff0b6e435ff37879f34fcbc7c7f47ef1262548337b342d46e4c30398a603aa99cfbeb23265fe04dd4fced27d5fed356e9a288f5ebea57f3b83d7",
+            "file": "src/app/modules/@core/components/form/app-form-image/app-form-image.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-form-image",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./app-form-image.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  imports: [],\n  standalone: true,\n  selector: 'app-form-image',\n  styleUrl: './app-form-image.component.scss',\n  templateUrl: './app-form-image.component.html',\n})\nexport class AppFormImageComponent {}\n",
+            "styleUrl": "./app-form-image.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<p>app-form-image works!</p>\n"
+        },
+        {
             "name": "AppInputComponent",
             "id": "component-AppInputComponent-6de5ea60ece5f09eb83639e5fe4ccbd130c47f8ac0306db1926079b518708e4ff292d875f8f820271d9ea418ffa3220f9a4df1c7f91d58ef9e854a43ef09a6ba",
             "file": "src/app/modules/@core/components/form/app-input/app-input.component.ts",
@@ -2583,7 +2601,7 @@
                     "defaultValue": "'outline'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 17,
+                    "line": 16,
                     "type": "\"outline\" | \"fill\"",
                     "decorators": [],
                     "inheritance": {
@@ -2603,23 +2621,11 @@
                     }
                 },
                 {
-                    "name": "errorMessage",
-                    "defaultValue": "''",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 13,
-                    "type": "string",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "ModelControl"
-                    }
-                },
-                {
                     "name": "formControlName",
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 15,
+                    "line": 14,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -2631,7 +2637,7 @@
                     "defaultValue": "this.formBuilder.group({\n    [this.name]: [''],\n  })",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 19,
+                    "line": 18,
                     "type": "FormGroup",
                     "decorators": [],
                     "inheritance": {
@@ -2654,7 +2660,7 @@
                     "name": "initialValue",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 16,
+                    "line": 15,
                     "type": "ModelControlType",
                     "decorators": [],
                     "inheritance": {
@@ -2666,7 +2672,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 14,
+                    "line": 13,
                     "type": "boolean",
                     "decorators": [],
                     "inheritance": {
@@ -2719,7 +2725,7 @@
                     "type": "Subscription",
                     "optional": false,
                     "description": "",
-                    "line": 24,
+                    "line": 23,
                     "modifierKind": [
                         125
                     ],
@@ -2734,7 +2740,7 @@
                     "type": "ModelControlType",
                     "optional": false,
                     "description": "",
-                    "line": 23,
+                    "line": 22,
                     "modifierKind": [
                         125
                     ],
@@ -2750,7 +2756,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 29,
+                    "line": 28,
                     "inheritance": {
                         "file": "ModelControl"
                     }
@@ -2763,7 +2769,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 28,
+                    "line": 27,
                     "inheritance": {
                         "file": "ModelControl"
                     }
@@ -2786,7 +2792,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 41,
+                    "line": 40,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -2799,7 +2805,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 55,
+                    "line": 54,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -2820,7 +2826,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 34,
+                    "line": 33,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2853,7 +2859,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 37,
+                    "line": 36,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2878,7 +2884,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 50,
+                    "line": 49,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -2898,7 +2904,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 31,
+                    "line": 30,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2947,7 +2953,7 @@
             "extends": [
                 "ModelControl"
             ],
-            "templateData": "<mat-form-field\n  id=\"app-input\"\n  mode=\"outline\"\n  [class]=\"className\"\n  [formGroup]=\"group\"\n  [appearance]=\"appearance\"\n>\n  <mat-label>{{ label }}</mat-label>\n  <input\n    matInput\n    [id]=\"id\"\n    [name]=\"name\"\n    [type]=\"type\"\n    [placeholder]=\"placeholder\"\n    [formControlName]=\"formControlName\"\n  />\n\n  @if (errorMessage) {\n  <mat-error>{{ errorMessage }}</mat-error>\n  }\n</mat-form-field>\n"
+            "templateData": "<mat-form-field\n  id=\"app-input\"\n  mode=\"outline\"\n  [class]=\"className\"\n  [formGroup]=\"group\"\n  [appearance]=\"appearance\"\n>\n  <mat-label>{{ label }}</mat-label>\n  <input\n    matInput\n    [id]=\"id\"\n    [name]=\"name\"\n    [type]=\"type\"\n    [placeholder]=\"placeholder\"\n    [formControlName]=\"formControlName\"\n  />\n</mat-form-field>\n"
         },
         {
             "name": "AppRadioButtonComponent",
@@ -2988,7 +2994,7 @@
                     "defaultValue": "'outline'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 17,
+                    "line": 16,
                     "type": "\"outline\" | \"fill\"",
                     "decorators": [],
                     "inheritance": {
@@ -3008,23 +3014,11 @@
                     }
                 },
                 {
-                    "name": "errorMessage",
-                    "defaultValue": "''",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 13,
-                    "type": "string",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "ModelControl"
-                    }
-                },
-                {
                     "name": "formControlName",
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 15,
+                    "line": 14,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -3036,7 +3030,7 @@
                     "defaultValue": "this.formBuilder.group({\n    [this.name]: [''],\n  })",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 19,
+                    "line": 18,
                     "type": "FormGroup",
                     "decorators": [],
                     "inheritance": {
@@ -3059,7 +3053,7 @@
                     "name": "initialValue",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 16,
+                    "line": 15,
                     "type": "ModelControlType",
                     "decorators": [],
                     "inheritance": {
@@ -3071,7 +3065,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 14,
+                    "line": 13,
                     "type": "boolean",
                     "decorators": [],
                     "inheritance": {
@@ -3124,7 +3118,7 @@
                     "type": "Subscription",
                     "optional": false,
                     "description": "",
-                    "line": 24,
+                    "line": 23,
                     "modifierKind": [
                         125
                     ],
@@ -3139,7 +3133,7 @@
                     "type": "ModelControlType",
                     "optional": false,
                     "description": "",
-                    "line": 23,
+                    "line": 22,
                     "modifierKind": [
                         125
                     ],
@@ -3155,7 +3149,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 29,
+                    "line": 28,
                     "inheritance": {
                         "file": "ModelControl"
                     }
@@ -3168,7 +3162,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 28,
+                    "line": 27,
                     "inheritance": {
                         "file": "ModelControl"
                     }
@@ -3191,7 +3185,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 41,
+                    "line": 40,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -3204,7 +3198,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 55,
+                    "line": 54,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -3225,7 +3219,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 34,
+                    "line": 33,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3258,7 +3252,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 37,
+                    "line": 36,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3283,7 +3277,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 50,
+                    "line": 49,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -3303,7 +3297,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 31,
+                    "line": 30,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3397,7 +3391,7 @@
                     "defaultValue": "'outline'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 17,
+                    "line": 16,
                     "type": "\"outline\" | \"fill\"",
                     "decorators": [],
                     "inheritance": {
@@ -3417,23 +3411,11 @@
                     }
                 },
                 {
-                    "name": "errorMessage",
-                    "defaultValue": "''",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 13,
-                    "type": "string",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "ModelControl"
-                    }
-                },
-                {
                     "name": "formControlName",
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 15,
+                    "line": 14,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -3445,7 +3427,7 @@
                     "defaultValue": "this.formBuilder.group({\n    [this.name]: [''],\n  })",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 19,
+                    "line": 18,
                     "type": "FormGroup",
                     "decorators": [],
                     "inheritance": {
@@ -3468,7 +3450,7 @@
                     "name": "initialValue",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 16,
+                    "line": 15,
                     "type": "ModelControlType",
                     "decorators": [],
                     "inheritance": {
@@ -3480,7 +3462,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 14,
+                    "line": 13,
                     "type": "boolean",
                     "decorators": [],
                     "inheritance": {
@@ -3533,7 +3515,7 @@
                     "type": "Subscription",
                     "optional": false,
                     "description": "",
-                    "line": 24,
+                    "line": 23,
                     "modifierKind": [
                         125
                     ],
@@ -3548,7 +3530,7 @@
                     "type": "ModelControlType",
                     "optional": false,
                     "description": "",
-                    "line": 23,
+                    "line": 22,
                     "modifierKind": [
                         125
                     ],
@@ -3564,7 +3546,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 29,
+                    "line": 28,
                     "inheritance": {
                         "file": "ModelControl"
                     }
@@ -3577,7 +3559,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 28,
+                    "line": 27,
                     "inheritance": {
                         "file": "ModelControl"
                     }
@@ -3600,7 +3582,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 41,
+                    "line": 40,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -3613,7 +3595,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 55,
+                    "line": 54,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -3634,7 +3616,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 34,
+                    "line": 33,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3667,7 +3649,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 37,
+                    "line": 36,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3692,7 +3674,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 50,
+                    "line": 49,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -3712,7 +3694,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 31,
+                    "line": 30,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3761,7 +3743,7 @@
             "extends": [
                 "ModelControl"
             ],
-            "templateData": "<mat-form-field\n  id=\"app-select\"\n  [class]=\"className\"\n  [formGroup]=\"group\"\n  [appearance]=\"appearance\"\n>\n  <mat-label>{{ label }}</mat-label>\n  <mat-select\n    [id]=\"id\"\n    [placeholder]=\"placeholder\"\n    [formControlName]=\"formControlName\"\n  >\n    @for (item of items; track item) {\n    <mat-option [value]=\"item.value\">{{ item.label }}</mat-option>\n    }\n  </mat-select>\n\n  @if (errorMessage) {\n  <mat-error>{{ errorMessage }}</mat-error>\n  }\n</mat-form-field>\n"
+            "templateData": "<mat-form-field\n  id=\"app-select\"\n  [class]=\"className\"\n  [formGroup]=\"group\"\n  [appearance]=\"appearance\"\n>\n  <mat-label>{{ label }}</mat-label>\n  <mat-select\n    [id]=\"id\"\n    [placeholder]=\"placeholder\"\n    [formControlName]=\"formControlName\"\n  >\n    @for (item of items; track item) {\n    <mat-option [value]=\"item.value\">{{ item.label }}</mat-option>\n    }\n  </mat-select>\n</mat-form-field>\n"
         },
         {
             "name": "AppTextareaComponent",
@@ -3800,7 +3782,7 @@
                     "defaultValue": "'outline'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 17,
+                    "line": 16,
                     "type": "\"outline\" | \"fill\"",
                     "decorators": [],
                     "inheritance": {
@@ -3820,23 +3802,11 @@
                     }
                 },
                 {
-                    "name": "errorMessage",
-                    "defaultValue": "''",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 13,
-                    "type": "string",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "ModelControl"
-                    }
-                },
-                {
                     "name": "formControlName",
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 15,
+                    "line": 14,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -3848,7 +3818,7 @@
                     "defaultValue": "this.formBuilder.group({\n    [this.name]: [''],\n  })",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 19,
+                    "line": 18,
                     "type": "FormGroup",
                     "decorators": [],
                     "inheritance": {
@@ -3871,7 +3841,7 @@
                     "name": "initialValue",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 16,
+                    "line": 15,
                     "type": "ModelControlType",
                     "decorators": [],
                     "inheritance": {
@@ -3883,7 +3853,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 14,
+                    "line": 13,
                     "type": "boolean",
                     "decorators": [],
                     "inheritance": {
@@ -3936,7 +3906,7 @@
                     "type": "Subscription",
                     "optional": false,
                     "description": "",
-                    "line": 24,
+                    "line": 23,
                     "modifierKind": [
                         125
                     ],
@@ -3951,7 +3921,7 @@
                     "type": "ModelControlType",
                     "optional": false,
                     "description": "",
-                    "line": 23,
+                    "line": 22,
                     "modifierKind": [
                         125
                     ],
@@ -3967,7 +3937,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 29,
+                    "line": 28,
                     "inheritance": {
                         "file": "ModelControl"
                     }
@@ -3980,7 +3950,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 28,
+                    "line": 27,
                     "inheritance": {
                         "file": "ModelControl"
                     }
@@ -4003,7 +3973,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 41,
+                    "line": 40,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -4016,7 +3986,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 55,
+                    "line": 54,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -4037,7 +4007,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 34,
+                    "line": 33,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -4070,7 +4040,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 37,
+                    "line": 36,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -4095,7 +4065,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 50,
+                    "line": 49,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -4115,7 +4085,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 31,
+                    "line": 30,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -4164,7 +4134,415 @@
             "extends": [
                 "ModelControl"
             ],
-            "templateData": "<mat-form-field\n  id=\"app-textarea\"\n  [class]=\"className\"\n  [formGroup]=\"group\"\n  [appearance]=\"appearance\"\n>\n  <mat-label>{{ label }}</mat-label>\n  <textarea\n    matInput\n    [id]=\"id\"\n    [name]=\"name\"\n    [rows]=\"rows\"\n    [placeholder]=\"placeholder\"\n    [formControlName]=\"formControlName\"\n  ></textarea>\n\n  @if (errorMessage) {\n  <mat-error>{{ errorMessage }}</mat-error>\n  }\n</mat-form-field>\n"
+            "templateData": "<mat-form-field\n  id=\"app-textarea\"\n  [class]=\"className\"\n  [formGroup]=\"group\"\n  [appearance]=\"appearance\"\n>\n  <mat-label>{{ label }}</mat-label>\n  <textarea\n    matInput\n    [id]=\"id\"\n    [name]=\"name\"\n    [rows]=\"rows\"\n    [placeholder]=\"placeholder\"\n    [formControlName]=\"formControlName\"\n  ></textarea>\n</mat-form-field>\n"
+        },
+        {
+            "name": "AppTextEditorComponent",
+            "id": "component-AppTextEditorComponent-9bd49f2a791503df935c0410ff31908d8903feab681b4536ea7115ec2a4a3381c78c6dac096699210969fdf32070cc88f2ba2f93a68483e9a54a210e1e25b956",
+            "file": "src/app/modules/@core/components/form/app-text-editor/app-text-editor.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [
+                {
+                    "name": "{\n    multi: true, provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AppTextEditorComponent),\n}",
+                    "type": "component"
+                }
+            ],
+            "selector": "app-text-editor",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./app-text-editor.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "config",
+                    "defaultValue": "{} as AngularEditorConfig",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 34,
+                    "type": "AngularEditorConfig",
+                    "decorators": []
+                },
+                {
+                    "name": "appearance",
+                    "defaultValue": "'outline'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "\"outline\" | \"fill\"",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "ModelControl"
+                    }
+                },
+                {
+                    "name": "className",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 11,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "ModelControl"
+                    }
+                },
+                {
+                    "name": "formControlName",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "ModelControl"
+                    }
+                },
+                {
+                    "name": "group",
+                    "defaultValue": "this.formBuilder.group({\n    [this.name]: [''],\n  })",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "FormGroup",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "ModelControl"
+                    }
+                },
+                {
+                    "name": "id",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 8,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "ModelControl"
+                    }
+                },
+                {
+                    "name": "initialValue",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "ModelControlType",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "ModelControl"
+                    }
+                },
+                {
+                    "name": "isDynamic",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "boolean",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "ModelControl"
+                    }
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 10,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "ModelControl"
+                    }
+                },
+                {
+                    "name": "name",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 9,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "ModelControl"
+                    }
+                },
+                {
+                    "name": "placeholder",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "ModelControl"
+                    }
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "configModel",
+                    "defaultValue": "{\n    height: '100',\n    editable: true,\n    translate: 'yes',\n    toolbarPosition: 'bottom',\n    toolbarHiddenButtons: [\n      ['heading', 'insertUnorderedList', 'insertOrderedList'],\n      [\n        'unlink',\n        'htmlCode',\n        'insertImage',\n        'insertVideo',\n        'customClasses',\n        'backgroundColor',\n      ],\n    ],\n    ...this.config,\n  }",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "AngularEditorConfig",
+                    "optional": false,
+                    "description": "",
+                    "line": 36,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "$modelControl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Subscription",
+                    "optional": false,
+                    "description": "",
+                    "line": 23,
+                    "modifierKind": [
+                        125
+                    ],
+                    "inheritance": {
+                        "file": "ModelControl"
+                    }
+                },
+                {
+                    "name": "model",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ModelControlType",
+                    "optional": false,
+                    "description": "",
+                    "line": 22,
+                    "modifierKind": [
+                        125
+                    ],
+                    "inheritance": {
+                        "file": "ModelControl"
+                    }
+                },
+                {
+                    "name": "onChange",
+                    "defaultValue": "() => {...}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 28,
+                    "inheritance": {
+                        "file": "ModelControl"
+                    }
+                },
+                {
+                    "name": "onTouched",
+                    "defaultValue": "() => {...}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 27,
+                    "inheritance": {
+                        "file": "ModelControl"
+                    }
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 55,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "initMonitoringChanges",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 40,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "ModelControl"
+                    }
+                },
+                {
+                    "name": "ngOnDestroy",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 54,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "ModelControl"
+                    }
+                },
+                {
+                    "name": "registerOnChange",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": []
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 33,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": [],
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "ModelControl"
+                    }
+                },
+                {
+                    "name": "registerOnTouched",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": []
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 36,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": [],
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "ModelControl"
+                    }
+                },
+                {
+                    "name": "setInitialValue",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 49,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "ModelControl"
+                    }
+                },
+                {
+                    "name": "writeValue",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "ModelControlType",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 30,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "ModelControlType",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "ModelControl"
+                    }
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "FormsModule",
+                    "type": "module"
+                },
+                {
+                    "name": "HttpClientModule",
+                    "type": "module"
+                },
+                {
+                    "name": "AngularEditorModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ReactiveFormsModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { HttpClientModule } from '@angular/common/http';\nimport { Component, Input, forwardRef } from '@angular/core';\nimport {\n  FormsModule,\n  NG_VALUE_ACCESSOR,\n  ReactiveFormsModule,\n} from '@angular/forms';\nimport {\n  AngularEditorConfig,\n  AngularEditorModule,\n} from '@kolkov/angular-editor';\nimport { ModelControl } from '../model-control';\n\n@Component({\n  standalone: true,\n  selector: 'app-text-editor',\n  styleUrl: './app-text-editor.component.scss',\n  templateUrl: './app-text-editor.component.html',\n  imports: [\n    FormsModule,\n    HttpClientModule,\n    AngularEditorModule,\n    ReactiveFormsModule,\n  ],\n  providers: [\n    {\n      multi: true,\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => AppTextEditorComponent),\n    },\n  ],\n})\nexport class AppTextEditorComponent extends ModelControl {\n  @Input() config: AngularEditorConfig = {} as AngularEditorConfig;\n\n  public configModel: AngularEditorConfig = {\n    height: '100',\n    editable: true,\n    translate: 'yes',\n    toolbarPosition: 'bottom',\n    toolbarHiddenButtons: [\n      ['heading', 'insertUnorderedList', 'insertOrderedList'],\n      [\n        'unlink',\n        'htmlCode',\n        'insertImage',\n        'insertVideo',\n        'customClasses',\n        'backgroundColor',\n      ],\n    ],\n    ...this.config,\n  };\n\n  ngOnInit() {\n    Object.assign(this.configModel, this.config);\n    if (!this.isDynamic) this.initMonitoringChanges();\n  }\n}\n",
+            "styleUrl": "./app-text-editor.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [
+                "ModelControl"
+            ],
+            "templateData": "<article id=\"app-text-editor\" [class]=\"className\" [formGroup]=\"group\">\n  <label [for]=\"id\">{{ label }}</label>\n  <angular-editor\n    [id]=\"id\"\n    [formControlName]=\"formControlName\"\n    [config]=\"configModel\"\n  ></angular-editor>\n</article>\n"
         },
         {
             "name": "AppThemeSelectionComponent",
@@ -4279,7 +4657,7 @@
         },
         {
             "name": "ComponentsComponent",
-            "id": "component-ComponentsComponent-641effd2c50fc61a61ed390e0b20df804279c27f67117e2dc302ba3eadc945b355bf706a1551e639b4eb954af89854767fdf00926bbed2a7d0bfae909491202e",
+            "id": "component-ComponentsComponent-abb528749a22f34bcbde3e096d1829051247117b89be6ba0128bc72c6f804b88c987cc0448331dcdf1c5426125a87a201a1167b501bd37e99bfa34c68dace4e4",
             "file": "src/app/modules/initial/pages/components/components.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -4471,7 +4849,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { MatTabsModule } from '@angular/material/tabs';\nimport { RouterModule } from '@angular/router';\n\nimport { JsonPipe } from '@angular/common';\nimport { FormsModule, Validators } from '@angular/forms';\nimport { AppFormGeneratorComponent } from '../../../@core/_form-generator/app-form-generator/app-form-generator.component';\nimport { FormGeneratorService } from '../../../@core/_form-generator/form-generator.service';\nimport { IFormOption } from '../../../@core/interfaces/app-form.interface';\nimport { DatePickerRangeValue } from '../../../@core/types/datepicker.type';\nimport { FormExampleComponent } from '../../components/form-example/form-example.component';\nimport { TerminalWindowComponent } from '../../components/terminal-window/terminal-window.component';\n\nimport { AppThemeSelectionComponent } from '../../../@core/components/app-theme-selection/app-theme-selection.component';\nimport { AppCheckboxComponent } from '../../../@core/components/form/app-checkbox/app-checkbox.component';\n\n@Component({\n  standalone: true,\n  selector: 'app-components',\n  styleUrl: './components.component.scss',\n  templateUrl: './components.component.html',\n  imports: [\n    JsonPipe,\n    FormsModule,\n    RouterModule,\n    MatTabsModule,\n    AppCheckboxComponent,\n    FormExampleComponent,\n    TerminalWindowComponent,\n    AppFormGeneratorComponent,\n    AppThemeSelectionComponent,\n  ],\n})\nexport class ComponentsComponent {\n  public defaultOptions: IFormOption[] = [\n    { label: 'Option 1', value: 1 },\n    { label: 'Option 2', value: 2 },\n    { label: 'Option 3', value: 3 },\n    { label: 'Option 4', value: 4 },\n  ];\n\n  private readonly fieldWidth: string = 'calc(50% - 12px)';\n  public formValue: IFormGeneratorExample = {} as IFormGeneratorExample;\n  public formExample = this.formGeneratorService.init<IFormGeneratorExample>([\n    [\n      {\n        width: this.fieldWidth,\n        type: 'input',\n        name: 'password',\n        label: 'Password',\n        initialValue: '',\n        validators: [Validators.required],\n        additional: { inputType: `password` },\n      },\n      {\n        width: this.fieldWidth,\n        name: 'email',\n        type: 'input',\n        label: 'email',\n        initialValue: '',\n        validators: [Validators.required],\n        additional: { inputType: `email` },\n      },\n    ],\n    [\n      {\n        width: this.fieldWidth,\n        name: 'name',\n        label: 'Name',\n        type: 'input',\n        initialValue: '',\n        validators: [Validators.required],\n      },\n      {\n        width: this.fieldWidth,\n        name: 'select',\n        type: 'select',\n        label: 'Select',\n        initialValue: 0,\n        validators: [Validators.required],\n      },\n    ],\n    [\n      {\n        width: this.fieldWidth,\n        name: 'age',\n        label: 'Age',\n        type: 'input',\n        initialValue: 0,\n        additional: { inputType: `number` },\n      },\n      {\n        width: this.fieldWidth,\n        name: 'radio',\n        type: 'radio',\n        label: 'radio',\n        initialValue: 0,\n        validators: [Validators.required],\n      },\n    ],\n    [\n      {\n        width: this.fieldWidth,\n        name: 'birthDate',\n        type: 'datepicker',\n        label: 'Birth date',\n        initialValue: new Date(),\n      },\n      {\n        width: this.fieldWidth,\n        name: 'rage',\n        label: 'Rage',\n        initialValue: '',\n        type: 'datepicker',\n        additional: { isDatepickerRange: true },\n      },\n    ],\n    [\n      {\n        initialValue: '',\n        type: 'textarea',\n        name: 'description',\n        label: 'Description',\n      },\n    ],\n    [\n      {\n        width: this.fieldWidth,\n        name: 'isAdmin',\n        type: 'checkbox',\n        label: 'Is admin',\n        initialValue: false,\n        additional: { isToggle: true },\n      },\n    ],\n  ]);\n\n  constructor(private formGeneratorService: FormGeneratorService) {}\n\n  ngOnInit() {\n    this.formExample.setOptionsField('radio', this.defaultOptions);\n    this.formExample.setOptionsField('select', this.defaultOptions);\n\n    this.formExample.setInitialValue('name', 'Valor inicial');\n  }\n\n  public onSubmit(model: IFormGeneratorExample) {\n    alert(JSON.stringify(model))\n  }\n\n  public onValueChange(model: IFormGeneratorExample) {\n    this.formValue = model;\n  }\n}\n\ninterface IFormGeneratorExample {\n  age: number;\n  name: string;\n  email: string;\n  radio: number;\n  select: number;\n  isAdmin: boolean;\n  description: string;\n  birthDate: string | Date;\n  rage: DatePickerRangeValue;\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { MatTabsModule } from '@angular/material/tabs';\nimport { RouterModule } from '@angular/router';\n\nimport { JsonPipe } from '@angular/common';\nimport { FormsModule, Validators } from '@angular/forms';\nimport { AppFormGeneratorComponent } from '../../../@core/_form-generator/app-form-generator/app-form-generator.component';\nimport { FormGeneratorService } from '../../../@core/_form-generator/form-generator.service';\nimport { IFormOption } from '../../../@core/interfaces/app-form.interface';\nimport { DatePickerRangeValue } from '../../../@core/types/datepicker.type';\nimport { FormExampleComponent } from '../../components/form-example/form-example.component';\nimport { TerminalWindowComponent } from '../../components/terminal-window/terminal-window.component';\n\nimport { AppThemeSelectionComponent } from '../../../@core/components/app-theme-selection/app-theme-selection.component';\nimport { AppCheckboxComponent } from '../../../@core/components/form/app-checkbox/app-checkbox.component';\n\n@Component({\n  standalone: true,\n  selector: 'app-components',\n  styleUrl: './components.component.scss',\n  templateUrl: './components.component.html',\n  imports: [\n    JsonPipe,\n    FormsModule,\n    RouterModule,\n    MatTabsModule,\n    AppCheckboxComponent,\n    FormExampleComponent,\n    TerminalWindowComponent,\n    AppFormGeneratorComponent,\n    AppThemeSelectionComponent,\n  ],\n})\nexport class ComponentsComponent {\n  public defaultOptions: IFormOption[] = [\n    { label: 'Option 1', value: 1 },\n    { label: 'Option 2', value: 2 },\n    { label: 'Option 3', value: 3 },\n    { label: 'Option 4', value: 4 },\n  ];\n\n  private readonly fieldWidth: string = 'calc(50% - 12px)';\n  public formValue: IFormGeneratorExample = {} as IFormGeneratorExample;\n  public formExample = this.formGeneratorService.init<IFormGeneratorExample>([\n    [\n      {\n        width: this.fieldWidth,\n        type: 'input',\n        name: 'password',\n        label: 'Password',\n        initialValue: '',\n        validators: [Validators.required],\n        additional: { inputType: `password` },\n      },\n      {\n        width: this.fieldWidth,\n        name: 'email',\n        type: 'input',\n        label: 'email',\n        initialValue: '',\n        validators: [Validators.required],\n        additional: { inputType: `email` },\n      },\n    ],\n    [\n      {\n        width: this.fieldWidth,\n        name: 'name',\n        label: 'Name',\n        type: 'input',\n        initialValue: '',\n        validators: [Validators.required],\n      },\n      {\n        width: this.fieldWidth,\n        name: 'select',\n        type: 'select',\n        label: 'Select',\n        initialValue: 0,\n        validators: [Validators.required],\n      },\n    ],\n    [\n      {\n        width: this.fieldWidth,\n        name: 'age',\n        label: 'Age',\n        type: 'input',\n        initialValue: 0,\n        additional: { inputType: `number` },\n      },\n      {\n        width: this.fieldWidth,\n        name: 'radio',\n        type: 'radio',\n        label: 'radio',\n        initialValue: 0,\n        validators: [Validators.required],\n      },\n    ],\n    [\n      {\n        width: this.fieldWidth,\n        name: 'birthDate',\n        type: 'datepicker',\n        label: 'Birth date',\n        initialValue: new Date(),\n      },\n      {\n        width: this.fieldWidth,\n        name: 'rage',\n        label: 'Rage',\n        initialValue: '',\n        type: 'datepicker',\n        additional: { isDatepickerRange: true },\n      },\n    ],\n    [\n      {\n        initialValue: '',\n        type: 'textarea',\n        name: 'description',\n        label: 'Description',\n      },\n    ],\n    [\n      {\n        width: this.fieldWidth,\n        name: 'isAdmin',\n        type: 'checkbox',\n        label: 'Is admin',\n        initialValue: false,\n        additional: { isToggle: true },\n      },\n    ],\n  ]);\n\n  constructor(private formGeneratorService: FormGeneratorService) {}\n\n  ngOnInit() {\n    this.formExample.setOptionsField('radio', this.defaultOptions);\n    this.formExample.setOptionsField('select', this.defaultOptions);\n\n    this.formExample.setInitialValue('name', 'Valor inicial');\n  }\n\n  public onSubmit(model: IFormGeneratorExample) {\n    alert(JSON.stringify(model));\n  }\n\n  public onValueChange(model: IFormGeneratorExample) {\n    this.formValue = model;\n  }\n}\n\ninterface IFormGeneratorExample {\n  age: number;\n  name: string;\n  email: string;\n  radio: number;\n  select: number;\n  isAdmin: boolean;\n  description: string;\n  birthDate: string | Date;\n  rage: DatePickerRangeValue;\n}\n",
             "styleUrl": "./components.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -4503,11 +4881,11 @@
                 ]
             },
             "extends": [],
-            "templateData": "<section id=\"components\" class=\"app-container\">\n  <nav>\n    <a [routerLink]=\"['/']\">Voltar</a>\n    <h1>Components</h1>\n\n    <app-theme-selection />\n  </nav>\n\n  <mat-tab-group>\n    <mat-tab label=\"Form Generator\">\n      <section class=\"form-generator-container\">\n        <app-form-generator\n          (onValueChanges)=\"onValueChange($event)\"\n          [fields]=\"formExample.fields\"\n          (onSubmit)=\"onSubmit($event)\"\n          actionPositionY=\"bottom\"\n          actionPositionX=\"left\"\n          mobileColumn\n          watchValues\n        />\n\n        <app-terminal-window [content]=\"formValue | json\" />\n      </section>\n    </mat-tab>\n    <mat-tab label=\"Form\"> <app-form-example /> </mat-tab>\n  </mat-tab-group>\n</section>\n"
+            "templateData": "<section id=\"components\" class=\"app-container\">\n  <nav>\n    <a [routerLink]=\"['/']\">Voltar</a>\n    <h1>Components</h1>\n\n    <app-theme-selection />\n  </nav>\n\n  <mat-tab-group>\n    <mat-tab label=\"Form\"> <app-form-example /> </mat-tab>\n\n    <mat-tab label=\"Form Generator\">\n      <section class=\"form-generator-container\">\n        <app-form-generator\n          (onValueChanges)=\"onValueChange($event)\"\n          [fields]=\"formExample.fields\"\n          (onSubmit)=\"onSubmit($event)\"\n          actionPositionY=\"bottom\"\n          actionPositionX=\"left\"\n          mobileColumn\n          watchValues\n        />\n\n        <app-terminal-window [content]=\"formValue | json\" />\n      </section>\n    </mat-tab>\n  </mat-tab-group>\n</section>\n"
         },
         {
             "name": "FormExampleComponent",
-            "id": "component-FormExampleComponent-b3df649845eb7f4913508a7bf451f8acddd52b41cdf2dbe894d73cfe505cae966f5ae97e2ecbdc80e45dc3b4983204a4451376a4b1f385e45b317931167b7663",
+            "id": "component-FormExampleComponent-c36d01fffb004334123c91d15ae629960df2edc4dbc2cc4f3a1e1e3c0e0f154086d2e08dcab20658a942d94ebb3d1b05c832445c125cb8fb0346db5f486ca725",
             "file": "src/app/modules/initial/components/form-example/form-example.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -4540,7 +4918,7 @@
                 },
                 {
                     "name": "form",
-                    "defaultValue": "{\n    input: 'Teste',\n    radio: 1,\n    select: 1,\n    textarea: 'Textarea',\n    checkbox: true,\n    datepicker: new Date(),\n    datepickerRange: null,\n  }",
+                    "defaultValue": "{\n    input: 'Teste',\n    radio: 1,\n    select: 1,\n    textarea: 'Textarea',\n    checkbox: true,\n    datepicker: new Date(),\n    datepickerRange: null,\n    textEditor: `<b>INITIAL</b>`,\n  }",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "object",
@@ -4583,17 +4961,17 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { JsonPipe } from '@angular/common';\nimport { Component } from '@angular/core';\nimport { FormsModule } from '@angular/forms';\nimport { RouterModule } from '@angular/router';\nimport { AppFormComponents } from '../../../@core/components/form';\nimport { IFormOption } from '../../../@core/interfaces/app-form.interface';\nimport { TerminalWindowComponent } from '../terminal-window/terminal-window.component';\n\n@Component({\n  standalone: true,\n  selector: 'app-form-example',\n  styleUrl: './form-example.component.scss',\n  templateUrl: './form-example.component.html',\n  imports: [\n    ...AppFormComponents,\n    JsonPipe,\n    FormsModule,\n    RouterModule,\n    TerminalWindowComponent,\n  ],\n})\nexport class FormExampleComponent {\n  public defaultOptions: IFormOption[] = [\n    { label: 'Option 1', value: 1 },\n    { label: 'Option 2', value: 2 },\n    { label: 'Option 3', value: 3 },\n  ];\n\n  public form = {\n    input: 'Teste',\n    radio: 1,\n    select: 1,\n    textarea: 'Textarea',\n    checkbox: true,\n    datepicker: new Date(),\n    datepickerRange: null,\n  };\n}\n",
+            "sourceCode": "import { JsonPipe } from '@angular/common';\nimport { Component } from '@angular/core';\nimport { FormsModule } from '@angular/forms';\nimport { RouterModule } from '@angular/router';\nimport { AppFormComponents } from '../../../@core/components/form';\nimport { IFormOption } from '../../../@core/interfaces/app-form.interface';\nimport { TerminalWindowComponent } from '../terminal-window/terminal-window.component';\n\n@Component({\n  standalone: true,\n  selector: 'app-form-example',\n  styleUrl: './form-example.component.scss',\n  templateUrl: './form-example.component.html',\n  imports: [\n    ...AppFormComponents,\n    JsonPipe,\n    FormsModule,\n    RouterModule,\n    TerminalWindowComponent,\n  ],\n})\nexport class FormExampleComponent {\n  public defaultOptions: IFormOption[] = [\n    { label: 'Option 1', value: 1 },\n    { label: 'Option 2', value: 2 },\n    { label: 'Option 3', value: 3 },\n  ];\n\n  public form = {\n    input: 'Teste',\n    radio: 1,\n    select: 1,\n    textarea: 'Textarea',\n    checkbox: true,\n    datepicker: new Date(),\n    datepickerRange: null,\n    textEditor: `<b>INITIAL</b>`,\n  };\n}\n",
             "styleUrl": "./form-example.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<section id=\"form-example\">\n  <form>\n    <app-input\n      name=\"input\"\n      label=\"Input\"\n      className=\"w-full\"\n      [(ngModel)]=\"form.input\"\n      [initialValue]=\"form.input\"\n    />\n\n    <app-datepicker\n      name=\"datepicker\"\n      label=\"Datepicker\"\n      className=\"w-full\"\n      [(ngModel)]=\"form.datepicker\"\n      [initialValue]=\"form.datepicker\"\n    />\n\n    <app-datepicker\n      range\n      className=\"w-full\"\n      name=\"datepickerRange\"\n      label=\"Datepicker Range\"\n      [(ngModel)]=\"form.datepickerRange\"\n      [initialValue]=\"form.datepickerRange\"\n    />\n\n    <app-select\n      name=\"select\"\n      label=\"Select\"\n      className=\"w-full\"\n      [items]=\"defaultOptions\"\n      [(ngModel)]=\"form.select\"\n      [initialValue]=\"form.select\"\n    />\n\n    <app-textarea\n      name=\"textarea\"\n      label=\"Textarea\"\n      className=\"w-full\"\n      [(ngModel)]=\"form.textarea\"\n      [initialValue]=\"form.textarea\"\n    />\n\n    <app-radio-button\n      name=\"radio\"\n      label=\"Radio\"\n      [items]=\"defaultOptions\"\n      [(ngModel)]=\"form.radio\"\n      [initialValue]=\"form.radio\"\n    />\n\n    <app-checkbox\n      name=\"Checkbox\"\n      label=\"Checkbox\"\n      [(ngModel)]=\"form.checkbox\"\n      [initialValue]=\"form.checkbox\"\n    />\n  </form>\n\n  <app-terminal-window [content]=\"form | json\" />\n</section>\n"
+            "templateData": "<section id=\"form-example\">\n  <form>\n    <app-text-editor\n      name=\"input\"\n      label=\"Input\"\n      className=\"w-full\"\n      [(ngModel)]=\"form.textEditor\"\n      [initialValue]=\"form.textEditor\"\n    />\n\n    <app-input\n      name=\"input\"\n      label=\"Input\"\n      className=\"w-full\"\n      [(ngModel)]=\"form.input\"\n      [initialValue]=\"form.input\"\n    />\n\n    <app-datepicker\n      name=\"datepicker\"\n      label=\"Datepicker\"\n      className=\"w-full\"\n      [(ngModel)]=\"form.datepicker\"\n      [initialValue]=\"form.datepicker\"\n    />\n\n    <app-datepicker\n      range\n      className=\"w-full\"\n      name=\"datepickerRange\"\n      label=\"Datepicker Range\"\n      [(ngModel)]=\"form.datepickerRange\"\n      [initialValue]=\"form.datepickerRange\"\n    />\n\n    <app-select\n      name=\"select\"\n      label=\"Select\"\n      className=\"w-full\"\n      [items]=\"defaultOptions\"\n      [(ngModel)]=\"form.select\"\n      [initialValue]=\"form.select\"\n    />\n\n    <app-textarea\n      name=\"textarea\"\n      label=\"Textarea\"\n      className=\"w-full\"\n      [(ngModel)]=\"form.textarea\"\n      [initialValue]=\"form.textarea\"\n    />\n\n    <app-radio-button\n      name=\"radio\"\n      label=\"Radio\"\n      [items]=\"defaultOptions\"\n      [(ngModel)]=\"form.radio\"\n      [initialValue]=\"form.radio\"\n    />\n\n    <app-checkbox\n      name=\"Checkbox\"\n      label=\"Checkbox\"\n      [(ngModel)]=\"form.checkbox\"\n      [initialValue]=\"form.checkbox\"\n    />\n  </form>\n\n  <app-terminal-window [content]=\"form | json\" />\n</section>\n"
         },
         {
             "name": "HomeComponent",
-            "id": "component-HomeComponent-d72f0a4d635d428e7dc692c6641da2f10219bbf57c8d4dc91214ad850b79826ed5cd45d0ea2baca67fe0c84f12e9105dc53c331df6bec4b97bc9fb5101a0208d",
+            "id": "component-HomeComponent-4d4abb65edb9d3289ae782d8a76ea6f45fc29be1c8f5f65a68f87443427d571b58b775069ee1eb97efe179536ab1a64fa809b652e322801ce774401dd2a91b01",
             "file": "src/app/modules/initial/pages/home/home.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -4626,7 +5004,7 @@
                 },
                 {
                     "name": "dependencies",
-                    "defaultValue": "`npm i animate.css @iconify/iconify`",
+                    "defaultValue": "`npm i animate.css @iconify/iconify @kolkov/angular-editor`",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
@@ -4646,6 +5024,19 @@
                     "optional": false,
                     "description": "",
                     "line": 16,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "dependenciesTextEditor",
+                    "defaultValue": "`npm i @kolkov/angular-editor @fortawesome/free-solid-svg-icons @fortawesome/angular-fontawesome @fortawesome/fontawesome-svg-core`",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 19,
                     "modifierKind": [
                         125
                     ]
@@ -4687,7 +5078,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component } from '@angular/core';\nimport { RouterModule } from '@angular/router';\nimport { TerminalWindowComponent } from '../../components/terminal-window/terminal-window.component';\n\n@Component({\n  standalone: true,\n  selector: 'app-home',\n  styleUrl: './home.component.scss',\n  templateUrl: './home.component.html',\n  imports: [CommonModule, RouterModule, TerminalWindowComponent],\n})\nexport class HomeComponent {\n  public angularMaterial: string = `ng add @angular/material`;\n  public dependencies: string = `npm i animate.css @iconify/iconify`;\n  public dependenciesDev: string = `npm i autoprefixer postcss tailwindcss -D`;\n  public gitClone: string = `git clone https://github.com/PedroSilvaG3FT/angular-boilerplate.git`;\n\n  constructor() {}\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component } from '@angular/core';\nimport { RouterModule } from '@angular/router';\nimport { TerminalWindowComponent } from '../../components/terminal-window/terminal-window.component';\n\n@Component({\n  standalone: true,\n  selector: 'app-home',\n  styleUrl: './home.component.scss',\n  templateUrl: './home.component.html',\n  imports: [CommonModule, RouterModule, TerminalWindowComponent],\n})\nexport class HomeComponent {\n  public angularMaterial: string = `ng add @angular/material`;\n  public dependencies: string = `npm i animate.css @iconify/iconify @kolkov/angular-editor`;\n  public dependenciesDev: string = `npm i autoprefixer postcss tailwindcss -D`;\n  public gitClone: string = `git clone https://github.com/PedroSilvaG3FT/angular-boilerplate.git`;\n\n  public dependenciesTextEditor: string = `npm i @kolkov/angular-editor @fortawesome/free-solid-svg-icons @fortawesome/angular-fontawesome @fortawesome/fontawesome-svg-core`;\n\n  constructor() {}\n}\n",
             "styleUrl": "./home.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -4698,14 +5089,14 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 17
+                "line": 19
             },
             "extends": [],
             "templateData": "<section id=\"home\">\n  <div class=\"app-container\">\n    <figure>\n      <img src=\"favicon.ico\" alt=\"ANGULAR\" />\n    </figure>\n\n    <h1>Angular boilerplate</h1>\n\n    <div>\n      <a class=\"btn-primary\" [routerLink]=\"['/components']\">Components</a>\n    </div>\n\n    <section>\n      <app-terminal-window\n        class=\"mb-6\"\n        [content]=\"gitClone\"\n        title=\"Clone project\"\n      />\n\n      <app-terminal-window\n        [content]=\"dependencies\"\n        title=\"Dependencies and libraries present in the project\"\n      />\n      <app-terminal-window [content]=\"dependenciesDev\" />\n      <app-terminal-window [content]=\"angularMaterial\" />\n    </section>\n  </div>\n</section>\n"
         },
         {
             "name": "ModelControl",
-            "id": "component-ModelControl-d96a9dcc475971356f077f97b1e98a7c3323a8c867b4ce0a8f43925aa5b1e7f2154f29265591d48976139e4724bf6bd607e6b6db05bb41beaa084679ae5b21db",
+            "id": "component-ModelControl-b741b29a8d352fc48553582f398fd9701784c2f1853790b0b0264d8215e677b11323a931485a1744a0dd026f6ed35fff4c94b9109f7ab6160f2a81594faa6d9f",
             "file": "src/app/modules/@core/components/form/model-control.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -4724,7 +5115,7 @@
                     "defaultValue": "'outline'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 17,
+                    "line": 16,
                     "type": "\"outline\" | \"fill\"",
                     "decorators": []
                 },
@@ -4738,20 +5129,11 @@
                     "decorators": []
                 },
                 {
-                    "name": "errorMessage",
-                    "defaultValue": "''",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 13,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
                     "name": "formControlName",
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 15,
+                    "line": 14,
                     "type": "string",
                     "decorators": []
                 },
@@ -4760,7 +5142,7 @@
                     "defaultValue": "this.formBuilder.group({\n    [this.name]: [''],\n  })",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 19,
+                    "line": 18,
                     "type": "FormGroup",
                     "decorators": []
                 },
@@ -4777,7 +5159,7 @@
                     "name": "initialValue",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 16,
+                    "line": 15,
                     "type": "ModelControlType",
                     "decorators": []
                 },
@@ -4786,7 +5168,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 14,
+                    "line": 13,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -4827,7 +5209,7 @@
                     "type": "Subscription",
                     "optional": false,
                     "description": "",
-                    "line": 24,
+                    "line": 23,
                     "modifierKind": [
                         125
                     ]
@@ -4839,7 +5221,7 @@
                     "type": "ModelControlType",
                     "optional": false,
                     "description": "",
-                    "line": 23,
+                    "line": 22,
                     "modifierKind": [
                         125
                     ]
@@ -4852,7 +5234,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 29
+                    "line": 28
                 },
                 {
                     "name": "onTouched",
@@ -4862,7 +5244,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 28
+                    "line": 27
                 }
             ],
             "methodsClass": [
@@ -4872,7 +5254,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 41,
+                    "line": 40,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -4882,7 +5264,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 55,
+                    "line": 54,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -4900,7 +5282,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 34,
+                    "line": 33,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -4930,7 +5312,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 37,
+                    "line": 36,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -4952,7 +5334,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 50,
+                    "line": 49,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -4969,7 +5351,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 31,
+                    "line": 30,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -4994,7 +5376,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { ControlValueAccessor, FormBuilder, FormGroup } from '@angular/forms';\nimport { Subscription } from 'rxjs';\nimport { ModelControlType } from '../../types/model-control.type';\n\n@Component({ template: `` })\nexport class ModelControl implements ControlValueAccessor {\n  @Input() id: string = '';\n  @Input() name: string = '';\n  @Input() label: string = '';\n  @Input() className: string = '';\n  @Input() placeholder: string = '';\n  @Input() errorMessage: string = '';\n  @Input() isDynamic: boolean = false;\n  @Input() formControlName: string = '';\n  @Input() initialValue?: ModelControlType;\n  @Input() appearance: 'outline' | 'fill' = 'outline';\n\n  @Input() group: FormGroup = this.formBuilder.group({\n    [this.name]: [''],\n  });\n\n  public model!: ModelControlType;\n  public $modelControl!: Subscription;\n\n  constructor(private formBuilder: FormBuilder) {}\n\n  onTouched = () => {};\n  onChange = (_: ModelControlType) => {};\n\n  writeValue(value: ModelControlType): void {\n    this.model = value;\n  }\n  registerOnChange(fn: () => void): void {\n    this.onChange = fn;\n  }\n  registerOnTouched(fn: () => void): void {\n    this.onTouched = fn;\n  }\n\n  initMonitoringChanges() {\n    this.setInitialValue();\n\n    this.$modelControl = this.group.valueChanges.subscribe((value) => {\n      if (!this.formControlName) this.onChange(value['']);\n      else this.onChange(value);\n    });\n  }\n\n  setInitialValue() {\n    if (!!this.formControlName || this.initialValue === undefined) return;\n    this.group.setValue({ '': this.initialValue });\n  }\n\n  ngOnDestroy() {\n    this.$modelControl?.unsubscribe();\n  }\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { ControlValueAccessor, FormBuilder, FormGroup } from '@angular/forms';\nimport { Subscription } from 'rxjs';\nimport { ModelControlType } from '../../types/model-control.type';\n\n@Component({ template: `` })\nexport class ModelControl implements ControlValueAccessor {\n  @Input() id: string = '';\n  @Input() name: string = '';\n  @Input() label: string = '';\n  @Input() className: string = '';\n  @Input() placeholder: string = '';\n  @Input() isDynamic: boolean = false;\n  @Input() formControlName: string = '';\n  @Input() initialValue?: ModelControlType;\n  @Input() appearance: 'outline' | 'fill' = 'outline';\n\n  @Input() group: FormGroup = this.formBuilder.group({\n    [this.name]: [''],\n  });\n\n  public model!: ModelControlType;\n  public $modelControl!: Subscription;\n\n  constructor(private formBuilder: FormBuilder) {}\n\n  onTouched = () => {};\n  onChange = (_: ModelControlType) => {};\n\n  writeValue(value: ModelControlType): void {\n    this.model = value;\n  }\n  registerOnChange(fn: () => void): void {\n    this.onChange = fn;\n  }\n  registerOnTouched(fn: () => void): void {\n    this.onTouched = fn;\n  }\n\n  initMonitoringChanges() {\n    this.setInitialValue();\n\n    this.$modelControl = this.group.valueChanges.subscribe((value) => {\n      if (!this.formControlName) this.onChange(value['']);\n      else this.onChange(value);\n    });\n  }\n\n  setInitialValue() {\n    if (!!this.formControlName || this.initialValue === undefined) return;\n    this.group.setValue({ '': this.initialValue });\n  }\n\n  ngOnDestroy() {\n    this.$modelControl?.unsubscribe();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -5011,7 +5393,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 24,
+                "line": 23,
                 "jsdoctags": [
                     {
                         "name": "formBuilder",
@@ -5206,7 +5588,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "[]",
-                "defaultValue": "[\n  AppInputComponent,\n  AppSelectComponent,\n  AppTextareaComponent,\n  AppCheckboxComponent,\n  AppDatepickerComponent,\n  AppRadioButtonComponent,\n]"
+                "defaultValue": "[\n  AppInputComponent,\n  AppSelectComponent,\n  AppTextareaComponent,\n  AppCheckboxComponent,\n  AppFormImageComponent,\n  AppDatepickerComponent,\n  AppTextEditorComponent,\n  AppRadioButtonComponent,\n]"
             },
             {
                 "name": "component",
@@ -5232,11 +5614,21 @@
                 "name": "component",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "src/stories/form/app-form-generator.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "StoryObj<AppFormGeneratorComponent>",
+                "defaultValue": "{\n  args: {\n    fields: [\n      [\n        {\n          type: 'input',\n          name: 'password',\n          initialValue: '',\n          label: 'Password',\n          width: fieldWidth,\n          validators: [Validators.required],\n          additional: { inputType: `password` },\n        },\n        {\n          name: 'email',\n          type: 'input',\n          label: 'email',\n          initialValue: '',\n          width: fieldWidth,\n          validators: [Validators.required],\n          additional: { inputType: `email` },\n        },\n      ],\n      [\n        {\n          width: fieldWidth,\n          name: 'name',\n          label: 'Name',\n          type: 'input',\n          initialValue: '',\n          validators: [Validators.required],\n        },\n        {\n          name: 'select',\n          type: 'select',\n          label: 'Select',\n          initialValue: 0,\n          width: fieldWidth,\n          validators: [Validators.required],\n          additional: { options: storybookFormBase.initialOptions },\n        },\n      ],\n      [\n        {\n          name: 'age',\n          label: 'Age',\n          type: 'input',\n          initialValue: 0,\n          width: fieldWidth,\n          additional: { inputType: `number` },\n        },\n        {\n          name: 'radio',\n          type: 'radio',\n          label: 'radio',\n          initialValue: 0,\n          width: fieldWidth,\n          validators: [Validators.required],\n          additional: { options: storybookFormBase.initialOptions },\n        },\n      ],\n      [\n        {\n          width: fieldWidth,\n          name: 'birthDate',\n          type: 'datepicker',\n          label: 'Birth date',\n          initialValue: new Date(),\n        },\n        {\n          name: 'rage',\n          label: 'Rage',\n          initialValue: '',\n          width: fieldWidth,\n          type: 'datepicker',\n          additional: { isDatepickerRange: true },\n        },\n      ],\n      [\n        {\n          initialValue: '',\n          type: 'textarea',\n          name: 'description',\n          label: 'Description',\n        },\n      ],\n      [\n        {\n          name: 'isAdmin',\n          type: 'checkbox',\n          label: 'Is admin',\n          width: fieldWidth,\n          initialValue: false,\n          additional: { isToggle: true },\n        },\n      ],\n    ],\n  },\n  render: (args: AppFormGeneratorComponent) => ({ props: args }),\n}"
+            },
+            {
+                "name": "component",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "src/stories/form/app-input.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "StoryObj<AppInputComponent>",
-                "defaultValue": "{\n  args: {\n    name: 'input-example',\n    label: 'input example',\n    placeholder: 'input example placeholder',\n  },\n  argTypes: { initialValue: { control: { type: 'string' } } },\n  render: (args: AppInputComponent) => ({ props: args }),\n}"
+                "defaultValue": "{\n  args: {\n    initialValue: '',\n    name: 'input-example',\n    label: 'input example',\n    placeholder: 'input example placeholder',\n  },\n  render: (args: AppInputComponent) => ({ props: args }),\n}"
             },
             {
                 "name": "component",
@@ -5245,8 +5637,8 @@
                 "file": "src/stories/form/app-radio-button.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "StoryObj<AppCheckboxComponent>",
-                "defaultValue": "{\n  args: {\n    initialValue: true,\n    name: 'checkbox-example',\n    label: 'Checkbox example',\n  },\n  argTypes: { initialValue: { control: { type: 'boolean' } } },\n  render: (args: AppCheckboxComponent) => ({ props: args }),\n}"
+                "type": "StoryObj<AppRadioButtonComponent>",
+                "defaultValue": "{\n  args: {\n    initialValue: 1,\n    name: 'radio-button-example',\n    label: 'Radio button example',\n    items: storybookFormBase.initialOptions,\n  },\n  argTypes: { initialValue: { control: { type: 'number' } } },\n  render: (args: AppRadioButtonComponent) => ({ props: args }),\n}"
             },
             {
                 "name": "component",
@@ -5255,8 +5647,18 @@
                 "file": "src/stories/form/app-select.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "StoryObj<AppCheckboxComponent>",
-                "defaultValue": "{\n  args: {\n    initialValue: true,\n    name: 'checkbox-example',\n    label: 'Checkbox example',\n  },\n  argTypes: { initialValue: { control: { type: 'boolean' } } },\n  render: (args: AppCheckboxComponent) => ({ props: args }),\n}"
+                "type": "StoryObj<AppSelectComponent>",
+                "defaultValue": "{\n  args: {\n    initialValue: 1,\n    name: 'select-example',\n    label: 'Select example',\n    items: storybookFormBase.initialOptions,\n  },\n  argTypes: { initialValue: { control: { type: 'number' } } },\n  render: (args: AppSelectComponent) => ({ props: args }),\n}"
+            },
+            {
+                "name": "component",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/form/app-text-editor.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "StoryObj<AppTextEditorComponent>",
+                "defaultValue": "{\n  args: {\n    initialValue: '',\n    name: 'text-editor-example',\n    label: 'Text editor example',\n  },\n  render: (args: AppTextEditorComponent) => ({ props: args }),\n}"
             },
             {
                 "name": "component",
@@ -5265,8 +5667,8 @@
                 "file": "src/stories/form/app-textarea.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "StoryObj<AppCheckboxComponent>",
-                "defaultValue": "{\n  args: {\n    initialValue: true,\n    name: 'checkbox-example',\n    label: 'Checkbox example',\n  },\n  argTypes: { initialValue: { control: { type: 'boolean' } } },\n  render: (args: AppCheckboxComponent) => ({ props: args }),\n}"
+                "type": "StoryObj<AppTextareaComponent>",
+                "defaultValue": "{\n  args: {\n    initialValue: '',\n    name: 'textarea-example',\n    label: 'Textarea example',\n    placeholder: 'Textarea example placeholder',\n  },\n  render: (args: AppTextareaComponent) => ({ props: args }),\n}"
             },
             {
                 "name": "components",
@@ -5277,6 +5679,16 @@
                 "deprecationMessage": "",
                 "type": "object",
                 "defaultValue": "{\n  input: AppInputComponent,\n  select: AppSelectComponent,\n  radio: AppRadioButtonComponent,\n  textarea: AppTextareaComponent,\n  checkbox: AppCheckboxComponent,\n  datepicker: AppDatepickerComponent,\n}"
+            },
+            {
+                "name": "fieldWidth",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/form/app-form-generator.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "string",
+                "defaultValue": "'calc(50% - 12px)'"
             },
             {
                 "name": "inMemoryScrollingFeature",
@@ -5296,7 +5708,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<AppCheckboxComponent>",
-                "defaultValue": "{\n  component: AppCheckboxComponent,\n  tags: ['autodocs'],\n  title: 'Form/Checkbox',\n  parameters: {\n    layout: 'fullscreen',\n    controls: {\n      exclude: storybookFormBase.buildExcludeFormProps([\n        'appearance',\n        'placeholder',\n        'errorMessage',\n      ]),\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [...storybookFormBase.commonImports],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: AppCheckboxComponent,\n  tags: ['autodocs'],\n  title: 'Form/Checkbox',\n  parameters: {\n    layout: 'fullscreen',\n    controls: {\n      exclude: storybookFormBase.buildExcludeFormProps([\n        'appearance',\n        'placeholder',\n      ]),\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [...storybookFormBase.commonImports],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -5306,7 +5718,17 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<AppDatepickerComponent>",
-                "defaultValue": "{\n  component: AppDatepickerComponent,\n  tags: ['autodocs'],\n  title: 'Form/Datepicker',\n  parameters: {\n    layout: 'fullscreen',\n    controls: {\n      exclude: storybookFormBase.buildExcludeFormProps([\n        'placeholder',\n        'errorMessage',\n      ]),\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [...storybookFormBase.commonImports],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: AppDatepickerComponent,\n  tags: ['autodocs'],\n  title: 'Form/Datepicker',\n  parameters: {\n    layout: 'fullscreen',\n    controls: {\n      exclude: storybookFormBase.buildExcludeFormProps(['placeholder']),\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [...storybookFormBase.commonImports],\n    }),\n  ],\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/form/app-form-generator.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<AppFormGeneratorComponent>",
+                "defaultValue": "{\n  component: AppFormGeneratorComponent,\n  tags: ['autodocs'],\n  title: 'Form/Form Generator',\n  parameters: {\n    layout: 'fullscreen',\n    controls: {\n      exclude: [\n        'initForm',\n        'ngOnInit',\n        'formGroup',\n        'handleSubmit',\n        'defaultFieldWidth',\n        'dynamicColumClass',\n      ],\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [\n        NgStyle,\n        NgClass,\n        JsonPipe,\n        ReactiveFormsModule,\n        FieldGeneratorDirective,\n        ...storybookFormBase.commonImports,\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -5325,8 +5747,8 @@
                 "file": "src/stories/form/app-radio-button.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Meta<AppCheckboxComponent>",
-                "defaultValue": "{\n  component: AppCheckboxComponent,\n  tags: ['autodocs'],\n  title: 'Form/Radio Button',\n  parameters: {\n    layout: 'fullscreen',\n    controls: {\n      exclude: storybookFormBase.buildExcludeFormProps([\n        'appearance',\n        'placeholder',\n        'errorMessage',\n      ]),\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [...storybookFormBase.commonImports],\n    }),\n  ],\n}"
+                "type": "Meta<AppRadioButtonComponent>",
+                "defaultValue": "{\n  component: AppRadioButtonComponent,\n  tags: ['autodocs'],\n  title: 'Form/Radio Button',\n  parameters: {\n    layout: 'fullscreen',\n    controls: {\n      exclude: storybookFormBase.buildExcludeFormProps([\n        'appearance',\n        'placeholder',\n      ]),\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [...storybookFormBase.commonImports],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -5335,8 +5757,18 @@
                 "file": "src/stories/form/app-select.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Meta<AppCheckboxComponent>",
-                "defaultValue": "{\n  component: AppCheckboxComponent,\n  tags: ['autodocs'],\n  title: 'Form/Select',\n  parameters: {\n    layout: 'fullscreen',\n    controls: {\n      exclude: storybookFormBase.buildExcludeFormProps([\n        'appearance',\n        'placeholder',\n        'errorMessage',\n      ]),\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [...storybookFormBase.commonImports],\n    }),\n  ],\n}"
+                "type": "Meta<AppSelectComponent>",
+                "defaultValue": "{\n  component: AppSelectComponent,\n  tags: ['autodocs'],\n  title: 'Form/Select',\n  parameters: {\n    layout: 'fullscreen',\n    controls: {\n      exclude: storybookFormBase.buildExcludeFormProps(['placeholder']),\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [...storybookFormBase.commonImports],\n    }),\n  ],\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/form/app-text-editor.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<AppTextEditorComponent>",
+                "defaultValue": "{\n  component: AppTextEditorComponent,\n  tags: ['autodocs'],\n  title: 'Form/Text Editor',\n  parameters: {\n    layout: 'fullscreen',\n    controls: {\n      exclude: storybookFormBase.buildExcludeFormProps([\n        'name',\n        'appearance',\n        'placeholder',\n        'configModel',\n      ]),\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [...storybookFormBase.commonImports],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -5345,8 +5777,8 @@
                 "file": "src/stories/form/app-textarea.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Meta<AppCheckboxComponent>",
-                "defaultValue": "{\n  component: AppCheckboxComponent,\n  tags: ['autodocs'],\n  title: 'Form/Textarea',\n  parameters: {\n    layout: 'fullscreen',\n    controls: {\n      exclude: storybookFormBase.buildExcludeFormProps([\n        'appearance',\n        'placeholder',\n        'errorMessage',\n      ]),\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [...storybookFormBase.commonImports],\n    }),\n  ],\n}"
+                "type": "Meta<AppTextareaComponent>",
+                "defaultValue": "{\n  component: AppTextareaComponent,\n  tags: ['autodocs'],\n  title: 'Form/Textarea',\n  parameters: {\n    layout: 'fullscreen',\n    controls: {\n      exclude: storybookFormBase.buildExcludeFormProps([]),\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [...storybookFormBase.commonImports],\n    }),\n  ],\n}"
             },
             {
                 "name": "preview",
@@ -5422,6 +5854,16 @@
                 "name": "storybookFormBase",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "src/stories/form/app-form-generator.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "new StorybookFormBase()"
+            },
+            {
+                "name": "storybookFormBase",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "src/stories/form/app-input.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -5443,6 +5885,16 @@
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "src/stories/form/app-select.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "new StorybookFormBase()"
+            },
+            {
+                "name": "storybookFormBase",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/form/app-text-editor.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -5581,7 +6033,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[]",
-                    "defaultValue": "[\n  AppInputComponent,\n  AppSelectComponent,\n  AppTextareaComponent,\n  AppCheckboxComponent,\n  AppDatepickerComponent,\n  AppRadioButtonComponent,\n]"
+                    "defaultValue": "[\n  AppInputComponent,\n  AppSelectComponent,\n  AppTextareaComponent,\n  AppCheckboxComponent,\n  AppFormImageComponent,\n  AppDatepickerComponent,\n  AppTextEditorComponent,\n  AppRadioButtonComponent,\n]"
                 }
             ],
             "src/stories/form/app-checkbok.stories.ts": [
@@ -5603,7 +6055,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<AppCheckboxComponent>",
-                    "defaultValue": "{\n  component: AppCheckboxComponent,\n  tags: ['autodocs'],\n  title: 'Form/Checkbox',\n  parameters: {\n    layout: 'fullscreen',\n    controls: {\n      exclude: storybookFormBase.buildExcludeFormProps([\n        'appearance',\n        'placeholder',\n        'errorMessage',\n      ]),\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [...storybookFormBase.commonImports],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: AppCheckboxComponent,\n  tags: ['autodocs'],\n  title: 'Form/Checkbox',\n  parameters: {\n    layout: 'fullscreen',\n    controls: {\n      exclude: storybookFormBase.buildExcludeFormProps([\n        'appearance',\n        'placeholder',\n      ]),\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [...storybookFormBase.commonImports],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "storybookFormBase",
@@ -5635,13 +6087,55 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<AppDatepickerComponent>",
-                    "defaultValue": "{\n  component: AppDatepickerComponent,\n  tags: ['autodocs'],\n  title: 'Form/Datepicker',\n  parameters: {\n    layout: 'fullscreen',\n    controls: {\n      exclude: storybookFormBase.buildExcludeFormProps([\n        'placeholder',\n        'errorMessage',\n      ]),\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [...storybookFormBase.commonImports],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: AppDatepickerComponent,\n  tags: ['autodocs'],\n  title: 'Form/Datepicker',\n  parameters: {\n    layout: 'fullscreen',\n    controls: {\n      exclude: storybookFormBase.buildExcludeFormProps(['placeholder']),\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [...storybookFormBase.commonImports],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "storybookFormBase",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "src/stories/form/app-datepicker.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "new StorybookFormBase()"
+                }
+            ],
+            "src/stories/form/app-form-generator.stories.ts": [
+                {
+                    "name": "component",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/form/app-form-generator.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "StoryObj<AppFormGeneratorComponent>",
+                    "defaultValue": "{\n  args: {\n    fields: [\n      [\n        {\n          type: 'input',\n          name: 'password',\n          initialValue: '',\n          label: 'Password',\n          width: fieldWidth,\n          validators: [Validators.required],\n          additional: { inputType: `password` },\n        },\n        {\n          name: 'email',\n          type: 'input',\n          label: 'email',\n          initialValue: '',\n          width: fieldWidth,\n          validators: [Validators.required],\n          additional: { inputType: `email` },\n        },\n      ],\n      [\n        {\n          width: fieldWidth,\n          name: 'name',\n          label: 'Name',\n          type: 'input',\n          initialValue: '',\n          validators: [Validators.required],\n        },\n        {\n          name: 'select',\n          type: 'select',\n          label: 'Select',\n          initialValue: 0,\n          width: fieldWidth,\n          validators: [Validators.required],\n          additional: { options: storybookFormBase.initialOptions },\n        },\n      ],\n      [\n        {\n          name: 'age',\n          label: 'Age',\n          type: 'input',\n          initialValue: 0,\n          width: fieldWidth,\n          additional: { inputType: `number` },\n        },\n        {\n          name: 'radio',\n          type: 'radio',\n          label: 'radio',\n          initialValue: 0,\n          width: fieldWidth,\n          validators: [Validators.required],\n          additional: { options: storybookFormBase.initialOptions },\n        },\n      ],\n      [\n        {\n          width: fieldWidth,\n          name: 'birthDate',\n          type: 'datepicker',\n          label: 'Birth date',\n          initialValue: new Date(),\n        },\n        {\n          name: 'rage',\n          label: 'Rage',\n          initialValue: '',\n          width: fieldWidth,\n          type: 'datepicker',\n          additional: { isDatepickerRange: true },\n        },\n      ],\n      [\n        {\n          initialValue: '',\n          type: 'textarea',\n          name: 'description',\n          label: 'Description',\n        },\n      ],\n      [\n        {\n          name: 'isAdmin',\n          type: 'checkbox',\n          label: 'Is admin',\n          width: fieldWidth,\n          initialValue: false,\n          additional: { isToggle: true },\n        },\n      ],\n    ],\n  },\n  render: (args: AppFormGeneratorComponent) => ({ props: args }),\n}"
+                },
+                {
+                    "name": "fieldWidth",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/form/app-form-generator.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "defaultValue": "'calc(50% - 12px)'"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/form/app-form-generator.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<AppFormGeneratorComponent>",
+                    "defaultValue": "{\n  component: AppFormGeneratorComponent,\n  tags: ['autodocs'],\n  title: 'Form/Form Generator',\n  parameters: {\n    layout: 'fullscreen',\n    controls: {\n      exclude: [\n        'initForm',\n        'ngOnInit',\n        'formGroup',\n        'handleSubmit',\n        'defaultFieldWidth',\n        'dynamicColumClass',\n      ],\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [\n        NgStyle,\n        NgClass,\n        JsonPipe,\n        ReactiveFormsModule,\n        FieldGeneratorDirective,\n        ...storybookFormBase.commonImports,\n      ],\n    }),\n  ],\n}"
+                },
+                {
+                    "name": "storybookFormBase",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/form/app-form-generator.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
@@ -5657,7 +6151,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "StoryObj<AppInputComponent>",
-                    "defaultValue": "{\n  args: {\n    name: 'input-example',\n    label: 'input example',\n    placeholder: 'input example placeholder',\n  },\n  argTypes: { initialValue: { control: { type: 'string' } } },\n  render: (args: AppInputComponent) => ({ props: args }),\n}"
+                    "defaultValue": "{\n  args: {\n    initialValue: '',\n    name: 'input-example',\n    label: 'input example',\n    placeholder: 'input example placeholder',\n  },\n  render: (args: AppInputComponent) => ({ props: args }),\n}"
                 },
                 {
                     "name": "meta",
@@ -5688,8 +6182,8 @@
                     "file": "src/stories/form/app-radio-button.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "StoryObj<AppCheckboxComponent>",
-                    "defaultValue": "{\n  args: {\n    initialValue: true,\n    name: 'checkbox-example',\n    label: 'Checkbox example',\n  },\n  argTypes: { initialValue: { control: { type: 'boolean' } } },\n  render: (args: AppCheckboxComponent) => ({ props: args }),\n}"
+                    "type": "StoryObj<AppRadioButtonComponent>",
+                    "defaultValue": "{\n  args: {\n    initialValue: 1,\n    name: 'radio-button-example',\n    label: 'Radio button example',\n    items: storybookFormBase.initialOptions,\n  },\n  argTypes: { initialValue: { control: { type: 'number' } } },\n  render: (args: AppRadioButtonComponent) => ({ props: args }),\n}"
                 },
                 {
                     "name": "meta",
@@ -5698,8 +6192,8 @@
                     "file": "src/stories/form/app-radio-button.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Meta<AppCheckboxComponent>",
-                    "defaultValue": "{\n  component: AppCheckboxComponent,\n  tags: ['autodocs'],\n  title: 'Form/Radio Button',\n  parameters: {\n    layout: 'fullscreen',\n    controls: {\n      exclude: storybookFormBase.buildExcludeFormProps([\n        'appearance',\n        'placeholder',\n        'errorMessage',\n      ]),\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [...storybookFormBase.commonImports],\n    }),\n  ],\n}"
+                    "type": "Meta<AppRadioButtonComponent>",
+                    "defaultValue": "{\n  component: AppRadioButtonComponent,\n  tags: ['autodocs'],\n  title: 'Form/Radio Button',\n  parameters: {\n    layout: 'fullscreen',\n    controls: {\n      exclude: storybookFormBase.buildExcludeFormProps([\n        'appearance',\n        'placeholder',\n      ]),\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [...storybookFormBase.commonImports],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "storybookFormBase",
@@ -5720,8 +6214,8 @@
                     "file": "src/stories/form/app-select.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "StoryObj<AppCheckboxComponent>",
-                    "defaultValue": "{\n  args: {\n    initialValue: true,\n    name: 'checkbox-example',\n    label: 'Checkbox example',\n  },\n  argTypes: { initialValue: { control: { type: 'boolean' } } },\n  render: (args: AppCheckboxComponent) => ({ props: args }),\n}"
+                    "type": "StoryObj<AppSelectComponent>",
+                    "defaultValue": "{\n  args: {\n    initialValue: 1,\n    name: 'select-example',\n    label: 'Select example',\n    items: storybookFormBase.initialOptions,\n  },\n  argTypes: { initialValue: { control: { type: 'number' } } },\n  render: (args: AppSelectComponent) => ({ props: args }),\n}"
                 },
                 {
                     "name": "meta",
@@ -5730,14 +6224,46 @@
                     "file": "src/stories/form/app-select.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Meta<AppCheckboxComponent>",
-                    "defaultValue": "{\n  component: AppCheckboxComponent,\n  tags: ['autodocs'],\n  title: 'Form/Select',\n  parameters: {\n    layout: 'fullscreen',\n    controls: {\n      exclude: storybookFormBase.buildExcludeFormProps([\n        'appearance',\n        'placeholder',\n        'errorMessage',\n      ]),\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [...storybookFormBase.commonImports],\n    }),\n  ],\n}"
+                    "type": "Meta<AppSelectComponent>",
+                    "defaultValue": "{\n  component: AppSelectComponent,\n  tags: ['autodocs'],\n  title: 'Form/Select',\n  parameters: {\n    layout: 'fullscreen',\n    controls: {\n      exclude: storybookFormBase.buildExcludeFormProps(['placeholder']),\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [...storybookFormBase.commonImports],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "storybookFormBase",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "src/stories/form/app-select.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "new StorybookFormBase()"
+                }
+            ],
+            "src/stories/form/app-text-editor.stories.ts": [
+                {
+                    "name": "component",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/form/app-text-editor.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "StoryObj<AppTextEditorComponent>",
+                    "defaultValue": "{\n  args: {\n    initialValue: '',\n    name: 'text-editor-example',\n    label: 'Text editor example',\n  },\n  render: (args: AppTextEditorComponent) => ({ props: args }),\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/form/app-text-editor.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<AppTextEditorComponent>",
+                    "defaultValue": "{\n  component: AppTextEditorComponent,\n  tags: ['autodocs'],\n  title: 'Form/Text Editor',\n  parameters: {\n    layout: 'fullscreen',\n    controls: {\n      exclude: storybookFormBase.buildExcludeFormProps([\n        'name',\n        'appearance',\n        'placeholder',\n        'configModel',\n      ]),\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [...storybookFormBase.commonImports],\n    }),\n  ],\n}"
+                },
+                {
+                    "name": "storybookFormBase",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/form/app-text-editor.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
@@ -5752,8 +6278,8 @@
                     "file": "src/stories/form/app-textarea.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "StoryObj<AppCheckboxComponent>",
-                    "defaultValue": "{\n  args: {\n    initialValue: true,\n    name: 'checkbox-example',\n    label: 'Checkbox example',\n  },\n  argTypes: { initialValue: { control: { type: 'boolean' } } },\n  render: (args: AppCheckboxComponent) => ({ props: args }),\n}"
+                    "type": "StoryObj<AppTextareaComponent>",
+                    "defaultValue": "{\n  args: {\n    initialValue: '',\n    name: 'textarea-example',\n    label: 'Textarea example',\n    placeholder: 'Textarea example placeholder',\n  },\n  render: (args: AppTextareaComponent) => ({ props: args }),\n}"
                 },
                 {
                     "name": "meta",
@@ -5762,8 +6288,8 @@
                     "file": "src/stories/form/app-textarea.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Meta<AppCheckboxComponent>",
-                    "defaultValue": "{\n  component: AppCheckboxComponent,\n  tags: ['autodocs'],\n  title: 'Form/Textarea',\n  parameters: {\n    layout: 'fullscreen',\n    controls: {\n      exclude: storybookFormBase.buildExcludeFormProps([\n        'appearance',\n        'placeholder',\n        'errorMessage',\n      ]),\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [...storybookFormBase.commonImports],\n    }),\n  ],\n}"
+                    "type": "Meta<AppTextareaComponent>",
+                    "defaultValue": "{\n  component: AppTextareaComponent,\n  tags: ['autodocs'],\n  title: 'Form/Textarea',\n  parameters: {\n    layout: 'fullscreen',\n    controls: {\n      exclude: storybookFormBase.buildExcludeFormProps([]),\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [...storybookFormBase.commonImports],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "storybookFormBase",
@@ -6018,7 +6544,7 @@
                 "linktype": "interface",
                 "name": "IFormGeneratorFieldAdditional",
                 "coveragePercent": 0,
-                "coverageCount": "0/8",
+                "coverageCount": "0/7",
                 "status": "low"
             },
             {
@@ -6122,7 +6648,7 @@
                 "linktype": "component",
                 "name": "AppCheckboxComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/24",
+                "coverageCount": "0/23",
                 "status": "low"
             },
             {
@@ -6131,7 +6657,16 @@
                 "linktype": "component",
                 "name": "AppDatepickerComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/27",
+                "coverageCount": "0/26",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/@core/components/form/app-form-image/app-form-image.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AppFormImageComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
@@ -6140,7 +6675,7 @@
                 "linktype": "component",
                 "name": "AppInputComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/24",
+                "coverageCount": "0/23",
                 "status": "low"
             },
             {
@@ -6149,7 +6684,7 @@
                 "linktype": "component",
                 "name": "AppRadioButtonComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/24",
+                "coverageCount": "0/23",
                 "status": "low"
             },
             {
@@ -6157,6 +6692,15 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "AppSelectComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/23",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/@core/components/form/app-text-editor/app-text-editor.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AppTextEditorComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/24",
                 "status": "low"
@@ -6167,7 +6711,7 @@
                 "linktype": "component",
                 "name": "AppTextareaComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/24",
+                "coverageCount": "0/23",
                 "status": "low"
             },
             {
@@ -6186,7 +6730,7 @@
                 "linktype": "component",
                 "name": "ModelControl",
                 "coveragePercent": 0,
-                "coverageCount": "0/23",
+                "coverageCount": "0/22",
                 "status": "low"
             },
             {
@@ -6323,7 +6867,7 @@
                 "linktype": "component",
                 "name": "HomeComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/6",
+                "coverageCount": "0/7",
                 "status": "low"
             },
             {
@@ -6332,7 +6876,7 @@
                 "linktype": "classe",
                 "name": "StorybookFormBase",
                 "coveragePercent": 0,
-                "coverageCount": "0/3",
+                "coverageCount": "0/4",
                 "status": "low"
             },
             {
@@ -6387,6 +6931,46 @@
             },
             {
                 "filePath": "src/stories/form/app-datepicker.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "storybookFormBase",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/form/app-form-generator.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "component",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/form/app-form-generator.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "fieldWidth",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/form/app-form-generator.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/form/app-form-generator.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -6477,6 +7061,36 @@
             },
             {
                 "filePath": "src/stories/form/app-select.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "storybookFormBase",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/form/app-text-editor.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "component",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/form/app-text-editor.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/form/app-text-editor.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",

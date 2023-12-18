@@ -10,7 +10,6 @@ export class ModelControl implements ControlValueAccessor {
   @Input() label: string = '';
   @Input() className: string = '';
   @Input() placeholder: string = '';
-  @Input() errorMessage: string = '';
   @Input() isDynamic: boolean = false;
   @Input() formControlName: string = '';
   @Input() initialValue?: ModelControlType;
