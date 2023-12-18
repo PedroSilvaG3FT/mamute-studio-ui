@@ -12,9 +12,11 @@ import { TerminalWindowComponent } from '../../components/terminal-window/termin
 })
 export class HomeComponent {
   public angularMaterial: string = `ng add @angular/material`;
-  public dependencies: string = `npm i animate.css @iconify/iconify`;
+  public dependencies: string = `npm i animate.css @iconify/iconify @kolkov/angular-editor`;
   public dependenciesDev: string = `npm i autoprefixer postcss tailwindcss -D`;
   public gitClone: string = `git clone https://github.com/PedroSilvaG3FT/angular-boilerplate.git`;
+
+  public dependenciesTextEditor: string = `npm i @kolkov/angular-editor @fortawesome/free-solid-svg-icons @fortawesome/angular-fontawesome @fortawesome/fontawesome-svg-core`;
 
   constructor() {}
 }

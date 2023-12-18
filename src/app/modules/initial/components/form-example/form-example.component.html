@@ -1,5 +1,13 @@
 <section id="form-example">
   <form>
+    <app-text-editor
+      name="input"
+      label="Input"
+      className="w-full"
+      [(ngModel)]="form.textEditor"
+      [initialValue]="form.textEditor"
+    />
+
     <app-input
       name="input"
       label="Input"

@@ -1,0 +1,68 @@
+@import "variables";
+
+@mixin set-text-editor-theme($background, $text-color) {
+  $darken-bg: darken($background, 4);
+
+  .angular-editor {
+    @apply flex flex-col;
+
+    .angular-editor-wrapper {
+      @apply order-2;
+    }
+  }
+
+  .angular-editor-toolbar {
+    @apply rounded-t-md;
+    padding-top: 6px !important;
+    background-color: $darken-bg !important;
+    border-bottom-color: transparent !important;
+  }
+
+  .angular-editor-textarea {
+    @apply rounded-b-md;
+    margin-top: 0px !important;
+    border-top: none !important;
+    background-color: $background !important;
+  }
+
+  .angular-editor-toolbar,
+  .angular-editor-textarea {
+    border-color: #e0e1e3;
+
+    &:focus-visible {
+      outline: #e0e1e3;
+    }
+  }
+
+  .angular-editor-textarea::after {
+    display: none !important;
+  }
+
+  .ae-picker-label,
+  .ae-picker-options,
+  .angular-editor-button {
+    color: $text-color;
+    border-radius: 4px !important;
+    border-color: $darken-bg !important;
+    background-color: $background !important;
+  }
+
+  .angular-editor-button:hover {
+    color: $primary;
+  }
+
+  .ae-picker-label:before {
+    background: $background !important;
+  }
+
+  ae-select:hover {
+    background-color: transparent !important;
+  }
+
+  .ae-font .ae-picker-options .ae-picker-item.selected,
+  .ae-font .ae-picker-options .ae-picker-item.focused,
+  .ae-font .ae-picker-options .ae-picker-item:hover {
+    color: $primary !important;
+    background-color: $background !important;
+  }
+}

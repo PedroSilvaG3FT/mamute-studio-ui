@@ -145,7 +145,7 @@ export class ComponentsComponent {
   }
 
   public onSubmit(model: IFormGeneratorExample) {
-    alert(JSON.stringify(model))
+    alert(JSON.stringify(model));
   }
 
   public onValueChange(model: IFormGeneratorExample) {

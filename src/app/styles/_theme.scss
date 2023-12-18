@@ -2,6 +2,7 @@
 @include mat.core();
 
 @import "variables";
+@import "mixins/text-editor";
 
 .light {
   color: $light-text-primary;
@@ -13,6 +14,8 @@
   );
 
   $light-foreground: generate-foreground-palette($light-text-primary);
+
+  @include set-text-editor-theme($light-bg-secondary, $light-text-primary);
 
   @include mat.all-component-themes(
     generate-theme(
@@ -36,6 +39,8 @@
   );
 
   $dark-foreground: generate-foreground-palette($dark-text-primary);
+
+  @include set-text-editor-theme($dark-bg-secondary, $dark-text-primary);
 
   @include mat.all-component-themes(
     generate-theme(

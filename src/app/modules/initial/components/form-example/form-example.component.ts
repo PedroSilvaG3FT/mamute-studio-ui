@@ -34,5 +34,6 @@ export class FormExampleComponent {
     checkbox: true,
     datepicker: new Date(),
     datepickerRange: null,
+    textEditor: `<b>INITIAL</b>`,
   };
 }
