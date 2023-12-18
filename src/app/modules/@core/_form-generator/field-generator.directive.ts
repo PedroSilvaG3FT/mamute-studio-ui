@@ -11,6 +11,7 @@ import { AppDatepickerComponent } from '../components/form/app-datepicker/app-da
 import { AppInputComponent } from '../components/form/app-input/app-input.component';
 import { AppRadioButtonComponent } from '../components/form/app-radio-button/app-radio-button.component';
 import { AppSelectComponent } from '../components/form/app-select/app-select.component';
+import { AppTextEditorComponent } from '../components/form/app-text-editor/app-text-editor.component';
 import { AppTextareaComponent } from '../components/form/app-textarea/app-textarea.component';
 import { IFormGeneratorField } from './app-form-generator.interface';
 
@@ -21,6 +22,7 @@ const components = {
   textarea: AppTextareaComponent,
   checkbox: AppCheckboxComponent,
   datepicker: AppDatepickerComponent,
+  'text-editor': AppTextEditorComponent,
 };
 
 export type FormGeneratorFieldType = keyof typeof components;
@@ -59,6 +61,7 @@ export class FieldGeneratorDirective {
         className,
         inputType,
         placeholder,
+        textEditorConfig,
         isDatepickerRange,
       } = this.field.additional;
 
@@ -66,6 +69,7 @@ export class FieldGeneratorDirective {
       this.componentRef.instance.type = inputType || '';
       this.componentRef.instance.toggle = isToggle || false;
       this.componentRef.instance.className = className || '';
+      this.componentRef.instance.config = textEditorConfig || {};
       this.componentRef.instance.placeholder = placeholder || '';
       this.componentRef.instance.range = isDatepickerRange || false;
     }

@@ -1,5 +1,7 @@
 <article id="app-text-editor" [class]="className" [formGroup]="group">
+  @if (!!label) {
   <label [for]="id">{{ label }}</label>
+  }
   <angular-editor
     [id]="id"
     [config]="configModel"

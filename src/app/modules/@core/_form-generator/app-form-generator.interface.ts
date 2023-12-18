@@ -1,4 +1,5 @@
 import { AbstractControl, ValidationErrors } from '@angular/forms';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { IFormOption } from '../interfaces/app-form.interface';
 import { InputType } from '../types/input.type';
 import { ModelControlType } from '../types/model-control.type';
@@ -11,13 +12,14 @@ export interface IFormGeneratorFieldAdditional {
   inputType: InputType;
   options: IFormOption[];
   isDatepickerRange: boolean;
+  textEditorConfig: AngularEditorConfig;
 }
 
 export interface IFormGeneratorField {
   name: string;
   label: string;
   type: FormGeneratorFieldType;
-  initialValue: ModelControlType;
+  initialValue?: ModelControlType;
   additional?: Partial<IFormGeneratorFieldAdditional>;
   width?: string;
   validators?: ((
