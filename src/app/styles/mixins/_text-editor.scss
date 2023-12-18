@@ -10,6 +10,17 @@
     .angular-editor-wrapper {
       @apply order-2;
     }
+
+    &:has(.angular-editor-textarea:focus-visible) {
+      .angular-editor-toolbar,
+      .angular-editor-textarea {
+        border-color: $primary !important;
+
+        &:focus-visible {
+          outline: $primary !important;
+        }
+      }
+    }
   }
 
   .angular-editor-toolbar {
