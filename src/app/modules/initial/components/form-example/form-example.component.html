@@ -1,5 +1,14 @@
 <section id="form-example">
   <form>
+    <app-file-upload
+      [maxFiles]="5"
+      name="fileUpload"
+      label="File upload"
+      placeholder="Insert fles"
+      [(ngModel)]="form.fileUpload"
+      [initialValue]="form.fileUpload"
+    />
+
     <app-text-editor
       name="textEditor"
       className="w-full"
@@ -64,6 +73,10 @@
       [(ngModel)]="form.checkbox"
       [initialValue]="form.checkbox"
     />
+
+    <button class="btn-primary my-4" type="button" (click)="onSubmit()">
+      Submit
+    </button>
   </form>
 
   <app-terminal-window [content]="form | json" />

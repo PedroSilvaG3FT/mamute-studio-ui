@@ -1,0 +1,40 @@
+<article id="app-file-upload" [formGroup]="filesControl">
+  <input
+    type="file"
+    [name]="name"
+    [formGroup]="group"
+    id="file-upload-input"
+    formControlName="model"
+    (change)="handleFileChange($event)"
+    [attr.multiple]="isMultiple ? true : null"
+  />
+
+  <label
+    for="file-upload-input"
+    (drop)="handleDrop($event)"
+    (dragover)="handleDragOver($event)"
+  >
+    <h3>{{ label }}</h3>
+
+    @if(!files.length) {
+    <p>{{ placeholder }}</p>
+    } @if(files.length === 1) {
+    <span>{{ files[0].name }}</span>
+    } @else if(files.length > 1) {
+    <span>{{ files.length }}/{{ maxFiles }}</span>
+    }
+  </label>
+
+  @if(files.length > 1) {
+  <ul>
+    @for (item of files; track $index) {
+    <li>
+      <span>{{ item.name }}</span>
+      <button (click)="handleRemove($index)">
+        <i class="iconify" data-icon="ep:close-bold"></i>
+      </button>
+    </li>
+    }
+  </ul>
+  }
+</article>

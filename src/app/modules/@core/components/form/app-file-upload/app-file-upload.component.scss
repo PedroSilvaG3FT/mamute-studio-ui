@@ -1,0 +1,34 @@
+@import "variables";
+
+#app-file-upload {
+  @apply w-full mb-6 relative;
+
+  > input {
+    @apply absolute invisible z-[-1];
+  }
+
+  > label {
+    @apply p-12 flex flex-col items-center justify-center rounded-xl w-full;
+    border: 2px dashed $placeholder;
+    color: $placeholder;
+  }
+
+  > ul {
+    @apply rounded-xl p-4 mt-4;
+    background: $bg-secondary;
+
+    > li {
+      @apply mb-2 p-2 px-4 rounded-xl flex items-center gap-4;
+      background: $bg-primary;
+
+      &:last-of-type {
+        @apply mb-0;
+      }
+
+      > button {
+        @apply ml-auto;
+        color: $danger;
+      }
+    }
+  }
+}

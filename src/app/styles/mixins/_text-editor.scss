@@ -1,7 +1,6 @@
 @import "variables";
 
 @mixin set-text-editor-theme($background, $text-color) {
-  $border-color: #9fa3a7b0;
   $darken-bg: darken($background, 4);
 
   .angular-editor {
@@ -39,10 +38,10 @@
 
   .angular-editor-toolbar,
   .angular-editor-textarea {
-    border-color: $border-color !important;
+    border-color: $placeholder !important;
 
     &:focus-visible {
-      outline: $border-color !important;
+      outline: $placeholder !important;
     }
   }
 

@@ -27,13 +27,18 @@ export class FormExampleComponent {
   ];
 
   public form = {
-    input: 'Teste',
     radio: 1,
     select: 1,
-    textarea: 'Textarea',
+    input: 'Teste',
     checkbox: true,
+    fileUpload: [],
+    textarea: 'Textarea',
     datepicker: new Date(),
     datepickerRange: null,
     textEditor: `<b>INITIAL</b>`,
   };
+
+  public onSubmit() {
+    console.log('FORM', this.form);
+  }
 }

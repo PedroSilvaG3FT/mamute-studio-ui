@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ControlValueAccessor, FormBuilder, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { AlertService } from '../../services/alert.service';
 import { ModelControlType } from '../../types/model-control.type';
 
 @Component({ template: `` })
@@ -22,7 +23,10 @@ export class ModelControl implements ControlValueAccessor {
   public model!: ModelControlType;
   public $modelControl!: Subscription;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    public alertService: AlertService
+  ) {}
 
   onTouched = () => {};
   onChange = (_: ModelControlType) => {};
