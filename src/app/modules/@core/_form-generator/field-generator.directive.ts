@@ -8,6 +8,7 @@ import {
 import { FormGroup } from '@angular/forms';
 import { AppCheckboxComponent } from '../components/form/app-checkbox/app-checkbox.component';
 import { AppDatepickerComponent } from '../components/form/app-datepicker/app-datepicker.component';
+import { AppFileUploadComponent } from '../components/form/app-file-upload/app-file-upload.component';
 import { AppInputComponent } from '../components/form/app-input/app-input.component';
 import { AppRadioButtonComponent } from '../components/form/app-radio-button/app-radio-button.component';
 import { AppSelectComponent } from '../components/form/app-select/app-select.component';
@@ -23,6 +24,7 @@ const components = {
   checkbox: AppCheckboxComponent,
   datepicker: AppDatepickerComponent,
   'text-editor': AppTextEditorComponent,
+  'file-upload': AppFileUploadComponent,
 };
 
 export type FormGeneratorFieldType = keyof typeof components;
@@ -58,11 +60,14 @@ export class FieldGeneratorDirective {
       const {
         options,
         isToggle,
+        maxFiles,
         className,
+        fileTypes,
         inputType,
         placeholder,
         textEditorConfig,
         isDatepickerRange,
+        limitErrorMessage,
       } = this.field.additional;
 
       this.componentRef.instance.items = options || [];
@@ -72,6 +77,11 @@ export class FieldGeneratorDirective {
       this.componentRef.instance.config = textEditorConfig || {};
       this.componentRef.instance.placeholder = placeholder || '';
       this.componentRef.instance.range = isDatepickerRange || false;
+
+      this.componentRef.instance.maxFiles = maxFiles || 1;
+      this.componentRef.instance.fileTypes = fileTypes || ['*/*'];
+      this.componentRef.instance.limitErrorMessage =
+        limitErrorMessage || 'File limit reached';
     }
   }
 }

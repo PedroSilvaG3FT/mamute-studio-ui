@@ -44,6 +44,14 @@ export class ComponentsComponent {
   public formExample = this.formGeneratorService.init<IFormGeneratorExample>([
     [
       {
+        name: 'fileUpload',
+        type: 'file-upload',
+        label: 'File upload',
+        additional: { maxFiles: 3 },
+      },
+    ],
+    [
+      {
         type: 'input',
         name: 'password',
         label: 'Password',

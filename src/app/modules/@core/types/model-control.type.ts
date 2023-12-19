@@ -6,5 +6,7 @@ export type ModelControlType =
   | string
   | number
   | object
+  | File[]
+  | File
   | Date
   | null;

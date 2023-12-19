@@ -5,6 +5,7 @@ import {
   NG_VALUE_ACCESSOR,
   ReactiveFormsModule,
 } from '@angular/forms';
+import { FileUploadType } from '../../../types/file-upload.type';
 import { ModelControl } from '../model-control';
 
 @Component({
@@ -23,15 +24,17 @@ import { ModelControl } from '../model-control';
 })
 export class AppFileUploadComponent extends ModelControl {
   @Input() maxFiles: number = 1;
-  @Input() fileType: string = '';
+  @Input() fileTypes: FileUploadType[] = ['*/*'];
   @Input() limitErrorMessage: string = `File limit reached`;
 
   public files: File[] = [];
   public isMultiple?: boolean;
+  public fileType: string = '';
   public filesControl = new FormGroup({ model: new FormControl<File[]>([]) });
 
   ngOnInit() {
     this.isMultiple = this.maxFiles > 1;
+    this.fileType = this.fileTypes.join(',');
     if (!this.isDynamic) this.initMonitoringChanges();
 
     this.$modelControl = this.filesControl.valueChanges.subscribe(() => {
@@ -64,11 +67,13 @@ export class AppFileUploadComponent extends ModelControl {
     const items = [];
     for (let i = 0; i < files.length; i++) items.push(files[i]);
 
+    console.log(items);
+
     const filesControl =
       this.maxFiles === 1 ? items : [...this.files, ...items];
 
     if (files.length > this.maxFiles || filesControl.length > this.maxFiles) {
-      this.alertService.snackBar.open(this.limitErrorMessage);
+      this.alertService.snackBar.open(this.limitErrorMessage, 'Close');
       return;
     }
 
