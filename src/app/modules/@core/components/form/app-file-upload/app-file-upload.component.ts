@@ -67,8 +67,6 @@ export class AppFileUploadComponent extends ModelControl {
     const items = [];
     for (let i = 0; i < files.length; i++) items.push(files[i]);
 
-    console.log(items);
-
     const filesControl =
       this.maxFiles === 1 ? items : [...this.files, ...items];
 

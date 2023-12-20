@@ -1,5 +1,11 @@
 <section id="form-example">
   <form>
+    <app-image-cropper
+      name="imageCropper"
+      [(ngModel)]="form.imageCropper"
+      [initialValue]="form.imageCropper"
+    />
+
     <app-file-upload
       [maxFiles]="5"
       name="fileUpload"

@@ -1,0 +1,77 @@
+<article id="app-image-cropper">
+  <input
+    type="file"
+    [id]="inputId"
+    accept="image/*"
+    class="h-0 w-0 invisible"
+    (change)="fileChangeEvent($event)"
+  />
+
+  <section [class.disable-actions]="!(imageURL || imageChangedEvent)">
+    <label [for]="inputId">
+      <i class="iconify" data-icon="uil:image-upload"></i>
+    </label>
+
+    <hr />
+
+    <button (click)="rotateLeft()">
+      <i
+        class="iconify"
+        data-flip="horizontal"
+        data-icon="tabler:rotate-rectangle"
+      ></i>
+    </button>
+    <button (click)="flipHorizontal()">
+      <i class="iconify" data-icon="gg:edit-flip-h"></i>
+    </button>
+    <button (click)="flipVertical()">
+      <i class="iconify" data-icon="gg:edit-flip-v"></i>
+    </button>
+    <button (click)="zoomOut()">
+      <i class="iconify" data-icon="octicon:zoom-out-24"></i>
+    </button>
+    <button (click)="zoomIn()">
+      <i class="iconify" data-icon="octicon:zoom-in-24"></i>
+    </button>
+    <button (click)="toggleContainWithinAspectRatio()">
+      <i class="iconify" data-icon="fluent:table-image-20-regular"></i>
+    </button>
+
+    <button (click)="resetImage()">
+      <i class="iconify" data-icon="system-uicons:reset"></i>
+    </button>
+  </section>
+
+  <div [style.min-height]="height">
+    <image-cropper
+      format="png"
+      output="blob"
+      [imageURL]="imageURL"
+      [roundCropper]="rounded"
+      [allowMoveImage]="true"
+      [(transform)]="transform"
+      [aspectRatio]="aspectRatio"
+      [style.max-height]="height"
+      [backgroundColor]="background"
+      [onlyScaleDown]="onlyScaleDown"
+      [canvasRotation]="canvasRotation"
+      [cropperMinWidth]="cropperMinWidth"
+      [imageChangedEvent]="imageChangedEvent"
+      [maintainAspectRatio]="maintainAspectRatio"
+      [style.display]="showCropper ? null : 'none'"
+      [containWithinAspectRatio]="containWithinAspectRatio"
+      (imageLoaded)="imageLoaded()"
+      (cropperReady)="cropperReady()"
+      (imageCropped)="imageCropped($event)"
+      (loadImageFailed)="loadImageFailed()"
+    ></image-cropper>
+
+    @if(!(imageURL || imageChangedEvent)) {
+    <label [for]="inputId" [style.height]="height" [style.width]="height">
+      {{ buttonText }}
+    </label>
+    } @if(loading) {
+    <div class="loader">Loading...</div>
+    }
+  </div>
+</article>

@@ -32,6 +32,7 @@ export class FormExampleComponent {
     input: 'Teste',
     checkbox: true,
     fileUpload: [],
+    imageCropper: null,
     textarea: 'Textarea',
     datepicker: new Date(),
     datepickerRange: null,

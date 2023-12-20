@@ -1,0 +1,74 @@
+@import "variables";
+
+.button-action {
+  @apply rounded-md p-2 flex items-center justify-center cursor-pointer;
+  background: $bg-primary;
+
+  &:hover {
+    color: $primary;
+  }
+}
+
+#app-image-cropper {
+  @apply flex flex-col items-center p-8 mb-10 rounded-xl shadow-lg;
+  background: $bg-secondary;
+
+  > section {
+    @apply mb-2 flex gap-2 flex-wrap;
+
+    &.disable-actions {
+      @apply cursor-not-allowed;
+
+      > button {
+        @apply pointer-events-none opacity-70;
+      }
+    }
+
+    > button {
+      @extend .button-action;
+    }
+
+    > label {
+      @extend .button-action;
+      background: $primary;
+      color: #fff;
+
+      &:hover {
+        color: #fff;
+      }
+    }
+
+    > hr {
+      @apply h-auto w-[1px] rounded-sm;
+      background: $bg-primary;
+      border-color: $bg-primary;
+    }
+  }
+
+  > div {
+    @apply flex flex-col items-center relative;
+
+    > label {
+      @apply rounded-md h-full w-full flex items-center justify-center;
+      border: 2px dashed $placeholder;
+      color: $placeholder;
+    }
+
+    .ngx-ic-source-image {
+      @apply m-auto relative rounded-md;
+    }
+
+    .ngx-ic-overlay {
+      @apply rounded-md;
+    }
+
+    .ngx-ic-cropper {
+      @apply z-[2];
+    }
+
+    .loader {
+      @apply top-0 left-0 right-0 bottom-0 flex absolute items-center justify-center;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  }
+}
