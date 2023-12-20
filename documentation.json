@@ -2,13 +2,103 @@
     "pipes": [],
     "interfaces": [
         {
-            "name": "IFormGeneratorConfig",
-            "id": "interface-IFormGeneratorConfig-e422d790197b01af073b826e24883f29487386fe09d2c97855b08f0801c4ef169c53701239f0838045eaa59650e9f9f656ef066aad49aec4796f224f25985553",
+            "name": "ICheckboxAdditional",
+            "id": "interface-ICheckboxAdditional-f4f4fb7694b6b9863eeb5322fb355da465c1a1c790b03289db9f78fce8ca26933dff4e2b3631f9d6b2f878e021635317eb020c01137dc95bab91b7ed73e3101a",
             "file": "src/app/modules/@core/_form-generator/app-form-generator.interface.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { AbstractControl, ValidationErrors } from '@angular/forms';\nimport { AngularEditorConfig } from '@kolkov/angular-editor';\nimport { IFormOption } from '../interfaces/app-form.interface';\nimport { InputType } from '../types/input.type';\nimport { ModelControlType } from '../types/model-control.type';\nimport { FormGeneratorFieldType } from './field-generator.directive';\n\nexport interface IFormGeneratorFieldAdditional {\n  isToggle: boolean;\n  className: string;\n  placeholder: string;\n  inputType: InputType;\n  options: IFormOption[];\n  isDatepickerRange: boolean;\n  textEditorConfig: AngularEditorConfig;\n}\n\nexport interface IFormGeneratorField {\n  name: string;\n  label: string;\n  type: FormGeneratorFieldType;\n  initialValue?: ModelControlType;\n  additional?: Partial<IFormGeneratorFieldAdditional>;\n  width?: string;\n  validators?: ((\n    control: AbstractControl<any, any>\n  ) => ValidationErrors | null)[];\n}\n\nexport interface IFormGeneratorConfig {\n  fields: IFormGeneratorField[][];\n}\n\nexport interface IFormGeneratorFields {\n  fields: IFormGeneratorField[][];\n}\n",
+            "sourceCode": "import { AbstractControl, ValidationErrors } from '@angular/forms';\nimport { AngularEditorConfig } from '@kolkov/angular-editor';\nimport { IFormOption } from '../interfaces/app-form.interface';\nimport { FileUploadType } from '../types/file-upload.type';\nimport { InputType } from '../types/input.type';\nimport { ModelControlType } from '../types/model-control.type';\nimport { FormGeneratorFieldType } from './field-generator.directive';\n\nexport interface ICheckboxAdditional {\n  isToggle: boolean;\n}\nexport interface ITextEditorAdditional {\n  config: AngularEditorConfig;\n}\nexport interface IFileUploadAdditional {\n  maxFiles: number;\n  limitErrorMessage: string;\n  fileTypes: FileUploadType[];\n}\nexport interface IDatePickerAdditional {\n  isDatepickerRange: boolean;\n}\n\nexport interface IImageCropperAdditional {\n  scale: number;\n  imageURL: string;\n  height: string;\n  aspectRatio: number;\n  background: string;\n  cropperMinWidth: number;\n  buttonText: string;\n  rounded: boolean;\n  onlyScaleDown: boolean;\n  maintainAspectRatio: boolean;\n}\nexport interface IFormGeneratorFieldAdditional {\n  checkbox: Partial<ICheckboxAdditional>;\n  textEditor: Partial<ITextEditorAdditional>;\n  fileUpload: Partial<IFileUploadAdditional>;\n  datepicker: Partial<IDatePickerAdditional>;\n  imageCropper: Partial<IImageCropperAdditional>;\n\n  className: string;\n  placeholder: string;\n  inputType: InputType;\n  options: IFormOption[];\n}\n\nexport interface IFormGeneratorField {\n  name: string;\n  label: string;\n  type: FormGeneratorFieldType;\n  initialValue?: ModelControlType;\n  additional?: Partial<IFormGeneratorFieldAdditional>;\n  width?: string;\n  validators?: ((\n    control: AbstractControl<any, any>\n  ) => ValidationErrors | null)[];\n}\n\nexport interface IFormGeneratorConfig {\n  fields: IFormGeneratorField[][];\n}\n\nexport interface IFormGeneratorFields {\n  fields: IFormGeneratorField[][];\n}\n",
+            "properties": [
+                {
+                    "name": "isToggle",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 10
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "IDatePickerAdditional",
+            "id": "interface-IDatePickerAdditional-f4f4fb7694b6b9863eeb5322fb355da465c1a1c790b03289db9f78fce8ca26933dff4e2b3631f9d6b2f878e021635317eb020c01137dc95bab91b7ed73e3101a",
+            "file": "src/app/modules/@core/_form-generator/app-form-generator.interface.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { AbstractControl, ValidationErrors } from '@angular/forms';\nimport { AngularEditorConfig } from '@kolkov/angular-editor';\nimport { IFormOption } from '../interfaces/app-form.interface';\nimport { FileUploadType } from '../types/file-upload.type';\nimport { InputType } from '../types/input.type';\nimport { ModelControlType } from '../types/model-control.type';\nimport { FormGeneratorFieldType } from './field-generator.directive';\n\nexport interface ICheckboxAdditional {\n  isToggle: boolean;\n}\nexport interface ITextEditorAdditional {\n  config: AngularEditorConfig;\n}\nexport interface IFileUploadAdditional {\n  maxFiles: number;\n  limitErrorMessage: string;\n  fileTypes: FileUploadType[];\n}\nexport interface IDatePickerAdditional {\n  isDatepickerRange: boolean;\n}\n\nexport interface IImageCropperAdditional {\n  scale: number;\n  imageURL: string;\n  height: string;\n  aspectRatio: number;\n  background: string;\n  cropperMinWidth: number;\n  buttonText: string;\n  rounded: boolean;\n  onlyScaleDown: boolean;\n  maintainAspectRatio: boolean;\n}\nexport interface IFormGeneratorFieldAdditional {\n  checkbox: Partial<ICheckboxAdditional>;\n  textEditor: Partial<ITextEditorAdditional>;\n  fileUpload: Partial<IFileUploadAdditional>;\n  datepicker: Partial<IDatePickerAdditional>;\n  imageCropper: Partial<IImageCropperAdditional>;\n\n  className: string;\n  placeholder: string;\n  inputType: InputType;\n  options: IFormOption[];\n}\n\nexport interface IFormGeneratorField {\n  name: string;\n  label: string;\n  type: FormGeneratorFieldType;\n  initialValue?: ModelControlType;\n  additional?: Partial<IFormGeneratorFieldAdditional>;\n  width?: string;\n  validators?: ((\n    control: AbstractControl<any, any>\n  ) => ValidationErrors | null)[];\n}\n\nexport interface IFormGeneratorConfig {\n  fields: IFormGeneratorField[][];\n}\n\nexport interface IFormGeneratorFields {\n  fields: IFormGeneratorField[][];\n}\n",
+            "properties": [
+                {
+                    "name": "isDatepickerRange",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 21
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "IFileUploadAdditional",
+            "id": "interface-IFileUploadAdditional-f4f4fb7694b6b9863eeb5322fb355da465c1a1c790b03289db9f78fce8ca26933dff4e2b3631f9d6b2f878e021635317eb020c01137dc95bab91b7ed73e3101a",
+            "file": "src/app/modules/@core/_form-generator/app-form-generator.interface.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { AbstractControl, ValidationErrors } from '@angular/forms';\nimport { AngularEditorConfig } from '@kolkov/angular-editor';\nimport { IFormOption } from '../interfaces/app-form.interface';\nimport { FileUploadType } from '../types/file-upload.type';\nimport { InputType } from '../types/input.type';\nimport { ModelControlType } from '../types/model-control.type';\nimport { FormGeneratorFieldType } from './field-generator.directive';\n\nexport interface ICheckboxAdditional {\n  isToggle: boolean;\n}\nexport interface ITextEditorAdditional {\n  config: AngularEditorConfig;\n}\nexport interface IFileUploadAdditional {\n  maxFiles: number;\n  limitErrorMessage: string;\n  fileTypes: FileUploadType[];\n}\nexport interface IDatePickerAdditional {\n  isDatepickerRange: boolean;\n}\n\nexport interface IImageCropperAdditional {\n  scale: number;\n  imageURL: string;\n  height: string;\n  aspectRatio: number;\n  background: string;\n  cropperMinWidth: number;\n  buttonText: string;\n  rounded: boolean;\n  onlyScaleDown: boolean;\n  maintainAspectRatio: boolean;\n}\nexport interface IFormGeneratorFieldAdditional {\n  checkbox: Partial<ICheckboxAdditional>;\n  textEditor: Partial<ITextEditorAdditional>;\n  fileUpload: Partial<IFileUploadAdditional>;\n  datepicker: Partial<IDatePickerAdditional>;\n  imageCropper: Partial<IImageCropperAdditional>;\n\n  className: string;\n  placeholder: string;\n  inputType: InputType;\n  options: IFormOption[];\n}\n\nexport interface IFormGeneratorField {\n  name: string;\n  label: string;\n  type: FormGeneratorFieldType;\n  initialValue?: ModelControlType;\n  additional?: Partial<IFormGeneratorFieldAdditional>;\n  width?: string;\n  validators?: ((\n    control: AbstractControl<any, any>\n  ) => ValidationErrors | null)[];\n}\n\nexport interface IFormGeneratorConfig {\n  fields: IFormGeneratorField[][];\n}\n\nexport interface IFormGeneratorFields {\n  fields: IFormGeneratorField[][];\n}\n",
+            "properties": [
+                {
+                    "name": "fileTypes",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "FileUploadType[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 18
+                },
+                {
+                    "name": "limitErrorMessage",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 17
+                },
+                {
+                    "name": "maxFiles",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 16
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "IFormGeneratorConfig",
+            "id": "interface-IFormGeneratorConfig-f4f4fb7694b6b9863eeb5322fb355da465c1a1c790b03289db9f78fce8ca26933dff4e2b3631f9d6b2f878e021635317eb020c01137dc95bab91b7ed73e3101a",
+            "file": "src/app/modules/@core/_form-generator/app-form-generator.interface.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { AbstractControl, ValidationErrors } from '@angular/forms';\nimport { AngularEditorConfig } from '@kolkov/angular-editor';\nimport { IFormOption } from '../interfaces/app-form.interface';\nimport { FileUploadType } from '../types/file-upload.type';\nimport { InputType } from '../types/input.type';\nimport { ModelControlType } from '../types/model-control.type';\nimport { FormGeneratorFieldType } from './field-generator.directive';\n\nexport interface ICheckboxAdditional {\n  isToggle: boolean;\n}\nexport interface ITextEditorAdditional {\n  config: AngularEditorConfig;\n}\nexport interface IFileUploadAdditional {\n  maxFiles: number;\n  limitErrorMessage: string;\n  fileTypes: FileUploadType[];\n}\nexport interface IDatePickerAdditional {\n  isDatepickerRange: boolean;\n}\n\nexport interface IImageCropperAdditional {\n  scale: number;\n  imageURL: string;\n  height: string;\n  aspectRatio: number;\n  background: string;\n  cropperMinWidth: number;\n  buttonText: string;\n  rounded: boolean;\n  onlyScaleDown: boolean;\n  maintainAspectRatio: boolean;\n}\nexport interface IFormGeneratorFieldAdditional {\n  checkbox: Partial<ICheckboxAdditional>;\n  textEditor: Partial<ITextEditorAdditional>;\n  fileUpload: Partial<IFileUploadAdditional>;\n  datepicker: Partial<IDatePickerAdditional>;\n  imageCropper: Partial<IImageCropperAdditional>;\n\n  className: string;\n  placeholder: string;\n  inputType: InputType;\n  options: IFormOption[];\n}\n\nexport interface IFormGeneratorField {\n  name: string;\n  label: string;\n  type: FormGeneratorFieldType;\n  initialValue?: ModelControlType;\n  additional?: Partial<IFormGeneratorFieldAdditional>;\n  width?: string;\n  validators?: ((\n    control: AbstractControl<any, any>\n  ) => ValidationErrors | null)[];\n}\n\nexport interface IFormGeneratorConfig {\n  fields: IFormGeneratorField[][];\n}\n\nexport interface IFormGeneratorFields {\n  fields: IFormGeneratorField[][];\n}\n",
             "properties": [
                 {
                     "name": "fields",
@@ -17,7 +107,7 @@
                     "type": "IFormGeneratorField[][]",
                     "optional": false,
                     "description": "",
-                    "line": 31
+                    "line": 62
                 }
             ],
             "indexSignatures": [],
@@ -27,12 +117,12 @@
         },
         {
             "name": "IFormGeneratorExample",
-            "id": "interface-IFormGeneratorExample-c043d315f8ec127b9bf597453392b414eecac9db98e7810d55250f09150f969f026a023fc92c1d4bddf0a65b40b0a55af971a24b6945ec039c782687846954af",
+            "id": "interface-IFormGeneratorExample-01ae622be31497fa2908318cad80fff48025798986d2f66710e315a7375705095bc994aee4ddee67a7c4c6c7f75177b78813c987d6b7f4980436a28f3696d821",
             "file": "src/app/modules/initial/pages/components/components.component.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { MatTabsModule } from '@angular/material/tabs';\nimport { RouterModule } from '@angular/router';\n\nimport { JsonPipe } from '@angular/common';\nimport { FormsModule, Validators } from '@angular/forms';\nimport { AppFormGeneratorComponent } from '../../../@core/_form-generator/app-form-generator/app-form-generator.component';\nimport { FormGeneratorService } from '../../../@core/_form-generator/form-generator.service';\nimport { IFormOption } from '../../../@core/interfaces/app-form.interface';\nimport { DatePickerRangeValue } from '../../../@core/types/datepicker.type';\nimport { FormExampleComponent } from '../../components/form-example/form-example.component';\nimport { TerminalWindowComponent } from '../../components/terminal-window/terminal-window.component';\n\nimport { AppThemeSelectionComponent } from '../../../@core/components/app-theme-selection/app-theme-selection.component';\nimport { AppCheckboxComponent } from '../../../@core/components/form/app-checkbox/app-checkbox.component';\n\n@Component({\n  standalone: true,\n  selector: 'app-components',\n  styleUrl: './components.component.scss',\n  templateUrl: './components.component.html',\n  imports: [\n    JsonPipe,\n    FormsModule,\n    RouterModule,\n    MatTabsModule,\n    AppCheckboxComponent,\n    FormExampleComponent,\n    TerminalWindowComponent,\n    AppFormGeneratorComponent,\n    AppThemeSelectionComponent,\n  ],\n})\nexport class ComponentsComponent {\n  public defaultOptions: IFormOption[] = [\n    { label: 'Option 1', value: 1 },\n    { label: 'Option 2', value: 2 },\n    { label: 'Option 3', value: 3 },\n    { label: 'Option 4', value: 4 },\n  ];\n\n  private readonly fieldWidth: string = 'calc(50% - 12px)';\n  public formValue: IFormGeneratorExample = {} as IFormGeneratorExample;\n  public formExample = this.formGeneratorService.init<IFormGeneratorExample>([\n    [\n      {\n        type: 'input',\n        name: 'password',\n        label: 'Password',\n        width: this.fieldWidth,\n        validators: [Validators.required],\n        additional: { inputType: `password` },\n      },\n      {\n        name: 'email',\n        type: 'input',\n        label: 'email',\n        width: this.fieldWidth,\n        validators: [Validators.required],\n        additional: { inputType: `email` },\n      },\n    ],\n    [\n      {\n        name: 'name',\n        label: 'Name',\n        type: 'input',\n        width: this.fieldWidth,\n        validators: [Validators.required],\n      },\n      {\n        name: 'select',\n        type: 'select',\n        label: 'Select',\n        width: this.fieldWidth,\n        validators: [Validators.required],\n      },\n    ],\n    [\n      {\n        name: 'age',\n        label: 'Age',\n        type: 'input',\n        width: this.fieldWidth,\n        additional: { inputType: `number` },\n      },\n      {\n        name: 'radio',\n        type: 'radio',\n        label: 'radio',\n        width: this.fieldWidth,\n        validators: [Validators.required],\n      },\n    ],\n    [\n      {\n        name: 'birthDate',\n        type: 'datepicker',\n        label: 'Birth date',\n        width: this.fieldWidth,\n      },\n      {\n        name: 'rage',\n        label: 'Rage',\n        type: 'datepicker',\n        width: this.fieldWidth,\n        additional: { isDatepickerRange: true },\n      },\n    ],\n    [{ type: 'textarea', name: 'description', label: 'Description' }],\n    [{ label: '', type: 'text-editor', name: 'text-editor' }],\n    [\n      {\n        name: 'isAdmin',\n        type: 'checkbox',\n        label: 'Is admin',\n        width: this.fieldWidth,\n        additional: { isToggle: true },\n      },\n    ],\n  ]);\n\n  constructor(private formGeneratorService: FormGeneratorService) {}\n\n  ngOnInit() {\n    this.formExample.setOptionsField('radio', this.defaultOptions);\n    this.formExample.setOptionsField('select', this.defaultOptions);\n\n    this.formExample.setInitialValue('name', 'Valor inicial');\n  }\n\n  public onSubmit(model: IFormGeneratorExample) {\n    alert(JSON.stringify(model));\n  }\n\n  public onValueChange(model: IFormGeneratorExample) {\n    this.formValue = model;\n  }\n}\n\ninterface IFormGeneratorExample {\n  age: number;\n  name: string;\n  email: string;\n  radio: number;\n  select: number;\n  isAdmin: boolean;\n  description: string;\n  birthDate: string | Date;\n  rage: DatePickerRangeValue;\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { MatTabsModule } from '@angular/material/tabs';\nimport { RouterModule } from '@angular/router';\n\nimport { JsonPipe } from '@angular/common';\nimport { FormsModule, Validators } from '@angular/forms';\nimport { AppFormGeneratorComponent } from '../../../@core/_form-generator/app-form-generator/app-form-generator.component';\nimport { FormGeneratorService } from '../../../@core/_form-generator/form-generator.service';\nimport { IFormOption } from '../../../@core/interfaces/app-form.interface';\nimport { DatePickerRangeValue } from '../../../@core/types/datepicker.type';\nimport { FormExampleComponent } from '../../components/form-example/form-example.component';\nimport { TerminalWindowComponent } from '../../components/terminal-window/terminal-window.component';\n\nimport { AppThemeSelectionComponent } from '../../../@core/components/app-theme-selection/app-theme-selection.component';\nimport { AppCheckboxComponent } from '../../../@core/components/form/app-checkbox/app-checkbox.component';\n\n@Component({\n  standalone: true,\n  selector: 'app-components',\n  styleUrl: './components.component.scss',\n  templateUrl: './components.component.html',\n  imports: [\n    JsonPipe,\n    FormsModule,\n    RouterModule,\n    MatTabsModule,\n    AppCheckboxComponent,\n    FormExampleComponent,\n    TerminalWindowComponent,\n    AppFormGeneratorComponent,\n    AppThemeSelectionComponent,\n  ],\n})\nexport class ComponentsComponent {\n  public defaultOptions: IFormOption[] = [\n    { label: 'Option 1', value: 1 },\n    { label: 'Option 2', value: 2 },\n    { label: 'Option 3', value: 3 },\n    { label: 'Option 4', value: 4 },\n  ];\n\n  private readonly fieldWidth: string = 'calc(50% - 12px)';\n  public formValue: IFormGeneratorExample = {} as IFormGeneratorExample;\n  public formExample = this.formGeneratorService.init<IFormGeneratorExample>([\n    [\n      {\n        name: 'fileUpload',\n        type: 'file-upload',\n        label: 'File upload',\n        additional: { fileUpload: { maxFiles: 3 } },\n      },\n    ],\n    [\n      {\n        name: 'imageCropper',\n        type: 'image-cropper',\n        label: 'Image Cropper',\n      },\n      {\n        name: 'imageCropperOutro',\n        type: 'image-cropper',\n        label: 'Image Cropper 2',\n        additional: {\n          imageCropper: {\n            rounded: true,\n          },\n        },\n      },\n    ],\n    [\n      {\n        type: 'input',\n        name: 'password',\n        label: 'Password',\n        width: this.fieldWidth,\n        validators: [Validators.required],\n        additional: { inputType: `password` },\n      },\n      {\n        name: 'email',\n        type: 'input',\n        label: 'email',\n        width: this.fieldWidth,\n        validators: [Validators.required],\n        additional: { inputType: `email` },\n      },\n    ],\n    [\n      {\n        name: 'name',\n        label: 'Name',\n        type: 'input',\n        width: this.fieldWidth,\n        validators: [Validators.required],\n      },\n      {\n        name: 'select',\n        type: 'select',\n        label: 'Select',\n        width: this.fieldWidth,\n        validators: [Validators.required],\n      },\n    ],\n    [\n      {\n        name: 'age',\n        label: 'Age',\n        type: 'input',\n        width: this.fieldWidth,\n        additional: { inputType: `number` },\n      },\n      {\n        name: 'radio',\n        type: 'radio',\n        label: 'radio',\n        width: this.fieldWidth,\n        validators: [Validators.required],\n      },\n    ],\n    [\n      {\n        name: 'birthDate',\n        type: 'datepicker',\n        label: 'Birth date',\n        width: this.fieldWidth,\n      },\n      {\n        name: 'rage',\n        label: 'Rage',\n        type: 'datepicker',\n        width: this.fieldWidth,\n        additional: { datepicker: { isDatepickerRange: true } },\n      },\n    ],\n    [{ type: 'textarea', name: 'description', label: 'Description' }],\n    [{ label: '', type: 'text-editor', name: 'text-editor' }],\n    [\n      {\n        name: 'isAdmin',\n        type: 'checkbox',\n        label: 'Is admin',\n        width: this.fieldWidth,\n        additional: { checkbox: { isToggle: true } },\n      },\n    ],\n  ]);\n\n  constructor(private formGeneratorService: FormGeneratorService) {}\n\n  ngOnInit() {\n    this.formExample.setOptionsField('radio', this.defaultOptions);\n    this.formExample.setOptionsField('select', this.defaultOptions);\n\n    this.formExample.setInitialValue('name', 'Valor inicial');\n  }\n\n  public onSubmit(model: IFormGeneratorExample) {\n    alert(JSON.stringify(model));\n  }\n\n  public onValueChange(model: IFormGeneratorExample) {\n    this.formValue = model;\n  }\n}\n\ninterface IFormGeneratorExample {\n  age: number;\n  name: string;\n  email: string;\n  radio: number;\n  select: number;\n  isAdmin: boolean;\n  description: string;\n  birthDate: string | Date;\n  rage: DatePickerRangeValue;\n}\n",
             "properties": [
                 {
                     "name": "age",
@@ -41,7 +131,7 @@
                     "type": "number",
                     "optional": false,
                     "description": "",
-                    "line": 142
+                    "line": 167
                 },
                 {
                     "name": "birthDate",
@@ -50,7 +140,7 @@
                     "type": "string | Date",
                     "optional": false,
                     "description": "",
-                    "line": 149
+                    "line": 174
                 },
                 {
                     "name": "description",
@@ -59,7 +149,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 148
+                    "line": 173
                 },
                 {
                     "name": "email",
@@ -68,7 +158,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 144
+                    "line": 169
                 },
                 {
                     "name": "isAdmin",
@@ -77,7 +167,7 @@
                     "type": "boolean",
                     "optional": false,
                     "description": "",
-                    "line": 147
+                    "line": 172
                 },
                 {
                     "name": "name",
@@ -86,7 +176,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 143
+                    "line": 168
                 },
                 {
                     "name": "radio",
@@ -95,7 +185,7 @@
                     "type": "number",
                     "optional": false,
                     "description": "",
-                    "line": 145
+                    "line": 170
                 },
                 {
                     "name": "rage",
@@ -104,7 +194,7 @@
                     "type": "DatePickerRangeValue",
                     "optional": false,
                     "description": "",
-                    "line": 150
+                    "line": 175
                 },
                 {
                     "name": "select",
@@ -113,7 +203,7 @@
                     "type": "number",
                     "optional": false,
                     "description": "",
-                    "line": 146
+                    "line": 171
                 }
             ],
             "indexSignatures": [],
@@ -123,12 +213,12 @@
         },
         {
             "name": "IFormGeneratorField",
-            "id": "interface-IFormGeneratorField-e422d790197b01af073b826e24883f29487386fe09d2c97855b08f0801c4ef169c53701239f0838045eaa59650e9f9f656ef066aad49aec4796f224f25985553",
+            "id": "interface-IFormGeneratorField-f4f4fb7694b6b9863eeb5322fb355da465c1a1c790b03289db9f78fce8ca26933dff4e2b3631f9d6b2f878e021635317eb020c01137dc95bab91b7ed73e3101a",
             "file": "src/app/modules/@core/_form-generator/app-form-generator.interface.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { AbstractControl, ValidationErrors } from '@angular/forms';\nimport { AngularEditorConfig } from '@kolkov/angular-editor';\nimport { IFormOption } from '../interfaces/app-form.interface';\nimport { InputType } from '../types/input.type';\nimport { ModelControlType } from '../types/model-control.type';\nimport { FormGeneratorFieldType } from './field-generator.directive';\n\nexport interface IFormGeneratorFieldAdditional {\n  isToggle: boolean;\n  className: string;\n  placeholder: string;\n  inputType: InputType;\n  options: IFormOption[];\n  isDatepickerRange: boolean;\n  textEditorConfig: AngularEditorConfig;\n}\n\nexport interface IFormGeneratorField {\n  name: string;\n  label: string;\n  type: FormGeneratorFieldType;\n  initialValue?: ModelControlType;\n  additional?: Partial<IFormGeneratorFieldAdditional>;\n  width?: string;\n  validators?: ((\n    control: AbstractControl<any, any>\n  ) => ValidationErrors | null)[];\n}\n\nexport interface IFormGeneratorConfig {\n  fields: IFormGeneratorField[][];\n}\n\nexport interface IFormGeneratorFields {\n  fields: IFormGeneratorField[][];\n}\n",
+            "sourceCode": "import { AbstractControl, ValidationErrors } from '@angular/forms';\nimport { AngularEditorConfig } from '@kolkov/angular-editor';\nimport { IFormOption } from '../interfaces/app-form.interface';\nimport { FileUploadType } from '../types/file-upload.type';\nimport { InputType } from '../types/input.type';\nimport { ModelControlType } from '../types/model-control.type';\nimport { FormGeneratorFieldType } from './field-generator.directive';\n\nexport interface ICheckboxAdditional {\n  isToggle: boolean;\n}\nexport interface ITextEditorAdditional {\n  config: AngularEditorConfig;\n}\nexport interface IFileUploadAdditional {\n  maxFiles: number;\n  limitErrorMessage: string;\n  fileTypes: FileUploadType[];\n}\nexport interface IDatePickerAdditional {\n  isDatepickerRange: boolean;\n}\n\nexport interface IImageCropperAdditional {\n  scale: number;\n  imageURL: string;\n  height: string;\n  aspectRatio: number;\n  background: string;\n  cropperMinWidth: number;\n  buttonText: string;\n  rounded: boolean;\n  onlyScaleDown: boolean;\n  maintainAspectRatio: boolean;\n}\nexport interface IFormGeneratorFieldAdditional {\n  checkbox: Partial<ICheckboxAdditional>;\n  textEditor: Partial<ITextEditorAdditional>;\n  fileUpload: Partial<IFileUploadAdditional>;\n  datepicker: Partial<IDatePickerAdditional>;\n  imageCropper: Partial<IImageCropperAdditional>;\n\n  className: string;\n  placeholder: string;\n  inputType: InputType;\n  options: IFormOption[];\n}\n\nexport interface IFormGeneratorField {\n  name: string;\n  label: string;\n  type: FormGeneratorFieldType;\n  initialValue?: ModelControlType;\n  additional?: Partial<IFormGeneratorFieldAdditional>;\n  width?: string;\n  validators?: ((\n    control: AbstractControl<any, any>\n  ) => ValidationErrors | null)[];\n}\n\nexport interface IFormGeneratorConfig {\n  fields: IFormGeneratorField[][];\n}\n\nexport interface IFormGeneratorFields {\n  fields: IFormGeneratorField[][];\n}\n",
             "properties": [
                 {
                     "name": "additional",
@@ -137,7 +227,7 @@
                     "type": "Partial<IFormGeneratorFieldAdditional>",
                     "optional": true,
                     "description": "",
-                    "line": 23
+                    "line": 54
                 },
                 {
                     "name": "initialValue",
@@ -146,7 +236,7 @@
                     "type": "ModelControlType",
                     "optional": true,
                     "description": "",
-                    "line": 22
+                    "line": 53
                 },
                 {
                     "name": "label",
@@ -155,7 +245,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 20
+                    "line": 51
                 },
                 {
                     "name": "name",
@@ -164,7 +254,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 19
+                    "line": 50
                 },
                 {
                     "name": "type",
@@ -173,7 +263,7 @@
                     "type": "FormGeneratorFieldType",
                     "optional": false,
                     "description": "",
-                    "line": 21
+                    "line": 52
                 },
                 {
                     "name": "validators",
@@ -182,7 +272,7 @@
                     "type": "(function)[]",
                     "optional": true,
                     "description": "",
-                    "line": 25
+                    "line": 56
                 },
                 {
                     "name": "width",
@@ -191,7 +281,7 @@
                     "type": "string",
                     "optional": true,
                     "description": "",
-                    "line": 24
+                    "line": 55
                 }
             ],
             "indexSignatures": [],
@@ -201,13 +291,22 @@
         },
         {
             "name": "IFormGeneratorFieldAdditional",
-            "id": "interface-IFormGeneratorFieldAdditional-e422d790197b01af073b826e24883f29487386fe09d2c97855b08f0801c4ef169c53701239f0838045eaa59650e9f9f656ef066aad49aec4796f224f25985553",
+            "id": "interface-IFormGeneratorFieldAdditional-f4f4fb7694b6b9863eeb5322fb355da465c1a1c790b03289db9f78fce8ca26933dff4e2b3631f9d6b2f878e021635317eb020c01137dc95bab91b7ed73e3101a",
             "file": "src/app/modules/@core/_form-generator/app-form-generator.interface.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { AbstractControl, ValidationErrors } from '@angular/forms';\nimport { AngularEditorConfig } from '@kolkov/angular-editor';\nimport { IFormOption } from '../interfaces/app-form.interface';\nimport { InputType } from '../types/input.type';\nimport { ModelControlType } from '../types/model-control.type';\nimport { FormGeneratorFieldType } from './field-generator.directive';\n\nexport interface IFormGeneratorFieldAdditional {\n  isToggle: boolean;\n  className: string;\n  placeholder: string;\n  inputType: InputType;\n  options: IFormOption[];\n  isDatepickerRange: boolean;\n  textEditorConfig: AngularEditorConfig;\n}\n\nexport interface IFormGeneratorField {\n  name: string;\n  label: string;\n  type: FormGeneratorFieldType;\n  initialValue?: ModelControlType;\n  additional?: Partial<IFormGeneratorFieldAdditional>;\n  width?: string;\n  validators?: ((\n    control: AbstractControl<any, any>\n  ) => ValidationErrors | null)[];\n}\n\nexport interface IFormGeneratorConfig {\n  fields: IFormGeneratorField[][];\n}\n\nexport interface IFormGeneratorFields {\n  fields: IFormGeneratorField[][];\n}\n",
+            "sourceCode": "import { AbstractControl, ValidationErrors } from '@angular/forms';\nimport { AngularEditorConfig } from '@kolkov/angular-editor';\nimport { IFormOption } from '../interfaces/app-form.interface';\nimport { FileUploadType } from '../types/file-upload.type';\nimport { InputType } from '../types/input.type';\nimport { ModelControlType } from '../types/model-control.type';\nimport { FormGeneratorFieldType } from './field-generator.directive';\n\nexport interface ICheckboxAdditional {\n  isToggle: boolean;\n}\nexport interface ITextEditorAdditional {\n  config: AngularEditorConfig;\n}\nexport interface IFileUploadAdditional {\n  maxFiles: number;\n  limitErrorMessage: string;\n  fileTypes: FileUploadType[];\n}\nexport interface IDatePickerAdditional {\n  isDatepickerRange: boolean;\n}\n\nexport interface IImageCropperAdditional {\n  scale: number;\n  imageURL: string;\n  height: string;\n  aspectRatio: number;\n  background: string;\n  cropperMinWidth: number;\n  buttonText: string;\n  rounded: boolean;\n  onlyScaleDown: boolean;\n  maintainAspectRatio: boolean;\n}\nexport interface IFormGeneratorFieldAdditional {\n  checkbox: Partial<ICheckboxAdditional>;\n  textEditor: Partial<ITextEditorAdditional>;\n  fileUpload: Partial<IFileUploadAdditional>;\n  datepicker: Partial<IDatePickerAdditional>;\n  imageCropper: Partial<IImageCropperAdditional>;\n\n  className: string;\n  placeholder: string;\n  inputType: InputType;\n  options: IFormOption[];\n}\n\nexport interface IFormGeneratorField {\n  name: string;\n  label: string;\n  type: FormGeneratorFieldType;\n  initialValue?: ModelControlType;\n  additional?: Partial<IFormGeneratorFieldAdditional>;\n  width?: string;\n  validators?: ((\n    control: AbstractControl<any, any>\n  ) => ValidationErrors | null)[];\n}\n\nexport interface IFormGeneratorConfig {\n  fields: IFormGeneratorField[][];\n}\n\nexport interface IFormGeneratorFields {\n  fields: IFormGeneratorField[][];\n}\n",
             "properties": [
+                {
+                    "name": "checkbox",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Partial<ICheckboxAdditional>",
+                    "optional": false,
+                    "description": "",
+                    "line": 37
+                },
                 {
                     "name": "className",
                     "deprecated": false,
@@ -215,7 +314,34 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 10
+                    "line": 43
+                },
+                {
+                    "name": "datepicker",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Partial<IDatePickerAdditional>",
+                    "optional": false,
+                    "description": "",
+                    "line": 40
+                },
+                {
+                    "name": "fileUpload",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Partial<IFileUploadAdditional>",
+                    "optional": false,
+                    "description": "",
+                    "line": 39
+                },
+                {
+                    "name": "imageCropper",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Partial<IImageCropperAdditional>",
+                    "optional": false,
+                    "description": "",
+                    "line": 41
                 },
                 {
                     "name": "inputType",
@@ -224,25 +350,7 @@
                     "type": "InputType",
                     "optional": false,
                     "description": "",
-                    "line": 12
-                },
-                {
-                    "name": "isDatepickerRange",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "boolean",
-                    "optional": false,
-                    "description": "",
-                    "line": 14
-                },
-                {
-                    "name": "isToggle",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "boolean",
-                    "optional": false,
-                    "description": "",
-                    "line": 9
+                    "line": 45
                 },
                 {
                     "name": "options",
@@ -251,7 +359,7 @@
                     "type": "IFormOption[]",
                     "optional": false,
                     "description": "",
-                    "line": 13
+                    "line": 46
                 },
                 {
                     "name": "placeholder",
@@ -260,16 +368,16 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 11
+                    "line": 44
                 },
                 {
-                    "name": "textEditorConfig",
+                    "name": "textEditor",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "AngularEditorConfig",
+                    "type": "Partial<ITextEditorAdditional>",
                     "optional": false,
                     "description": "",
-                    "line": 15
+                    "line": 38
                 }
             ],
             "indexSignatures": [],
@@ -279,12 +387,12 @@
         },
         {
             "name": "IFormGeneratorFields",
-            "id": "interface-IFormGeneratorFields-e422d790197b01af073b826e24883f29487386fe09d2c97855b08f0801c4ef169c53701239f0838045eaa59650e9f9f656ef066aad49aec4796f224f25985553",
+            "id": "interface-IFormGeneratorFields-f4f4fb7694b6b9863eeb5322fb355da465c1a1c790b03289db9f78fce8ca26933dff4e2b3631f9d6b2f878e021635317eb020c01137dc95bab91b7ed73e3101a",
             "file": "src/app/modules/@core/_form-generator/app-form-generator.interface.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { AbstractControl, ValidationErrors } from '@angular/forms';\nimport { AngularEditorConfig } from '@kolkov/angular-editor';\nimport { IFormOption } from '../interfaces/app-form.interface';\nimport { InputType } from '../types/input.type';\nimport { ModelControlType } from '../types/model-control.type';\nimport { FormGeneratorFieldType } from './field-generator.directive';\n\nexport interface IFormGeneratorFieldAdditional {\n  isToggle: boolean;\n  className: string;\n  placeholder: string;\n  inputType: InputType;\n  options: IFormOption[];\n  isDatepickerRange: boolean;\n  textEditorConfig: AngularEditorConfig;\n}\n\nexport interface IFormGeneratorField {\n  name: string;\n  label: string;\n  type: FormGeneratorFieldType;\n  initialValue?: ModelControlType;\n  additional?: Partial<IFormGeneratorFieldAdditional>;\n  width?: string;\n  validators?: ((\n    control: AbstractControl<any, any>\n  ) => ValidationErrors | null)[];\n}\n\nexport interface IFormGeneratorConfig {\n  fields: IFormGeneratorField[][];\n}\n\nexport interface IFormGeneratorFields {\n  fields: IFormGeneratorField[][];\n}\n",
+            "sourceCode": "import { AbstractControl, ValidationErrors } from '@angular/forms';\nimport { AngularEditorConfig } from '@kolkov/angular-editor';\nimport { IFormOption } from '../interfaces/app-form.interface';\nimport { FileUploadType } from '../types/file-upload.type';\nimport { InputType } from '../types/input.type';\nimport { ModelControlType } from '../types/model-control.type';\nimport { FormGeneratorFieldType } from './field-generator.directive';\n\nexport interface ICheckboxAdditional {\n  isToggle: boolean;\n}\nexport interface ITextEditorAdditional {\n  config: AngularEditorConfig;\n}\nexport interface IFileUploadAdditional {\n  maxFiles: number;\n  limitErrorMessage: string;\n  fileTypes: FileUploadType[];\n}\nexport interface IDatePickerAdditional {\n  isDatepickerRange: boolean;\n}\n\nexport interface IImageCropperAdditional {\n  scale: number;\n  imageURL: string;\n  height: string;\n  aspectRatio: number;\n  background: string;\n  cropperMinWidth: number;\n  buttonText: string;\n  rounded: boolean;\n  onlyScaleDown: boolean;\n  maintainAspectRatio: boolean;\n}\nexport interface IFormGeneratorFieldAdditional {\n  checkbox: Partial<ICheckboxAdditional>;\n  textEditor: Partial<ITextEditorAdditional>;\n  fileUpload: Partial<IFileUploadAdditional>;\n  datepicker: Partial<IDatePickerAdditional>;\n  imageCropper: Partial<IImageCropperAdditional>;\n\n  className: string;\n  placeholder: string;\n  inputType: InputType;\n  options: IFormOption[];\n}\n\nexport interface IFormGeneratorField {\n  name: string;\n  label: string;\n  type: FormGeneratorFieldType;\n  initialValue?: ModelControlType;\n  additional?: Partial<IFormGeneratorFieldAdditional>;\n  width?: string;\n  validators?: ((\n    control: AbstractControl<any, any>\n  ) => ValidationErrors | null)[];\n}\n\nexport interface IFormGeneratorConfig {\n  fields: IFormGeneratorField[][];\n}\n\nexport interface IFormGeneratorFields {\n  fields: IFormGeneratorField[][];\n}\n",
             "properties": [
                 {
                     "name": "fields",
@@ -293,7 +401,7 @@
                     "type": "IFormGeneratorField[][]",
                     "optional": false,
                     "description": "",
-                    "line": 35
+                    "line": 66
                 }
             ],
             "indexSignatures": [],
@@ -327,6 +435,135 @@
                     "optional": false,
                     "description": "",
                     "line": 5
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "IImageCropperAdditional",
+            "id": "interface-IImageCropperAdditional-f4f4fb7694b6b9863eeb5322fb355da465c1a1c790b03289db9f78fce8ca26933dff4e2b3631f9d6b2f878e021635317eb020c01137dc95bab91b7ed73e3101a",
+            "file": "src/app/modules/@core/_form-generator/app-form-generator.interface.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { AbstractControl, ValidationErrors } from '@angular/forms';\nimport { AngularEditorConfig } from '@kolkov/angular-editor';\nimport { IFormOption } from '../interfaces/app-form.interface';\nimport { FileUploadType } from '../types/file-upload.type';\nimport { InputType } from '../types/input.type';\nimport { ModelControlType } from '../types/model-control.type';\nimport { FormGeneratorFieldType } from './field-generator.directive';\n\nexport interface ICheckboxAdditional {\n  isToggle: boolean;\n}\nexport interface ITextEditorAdditional {\n  config: AngularEditorConfig;\n}\nexport interface IFileUploadAdditional {\n  maxFiles: number;\n  limitErrorMessage: string;\n  fileTypes: FileUploadType[];\n}\nexport interface IDatePickerAdditional {\n  isDatepickerRange: boolean;\n}\n\nexport interface IImageCropperAdditional {\n  scale: number;\n  imageURL: string;\n  height: string;\n  aspectRatio: number;\n  background: string;\n  cropperMinWidth: number;\n  buttonText: string;\n  rounded: boolean;\n  onlyScaleDown: boolean;\n  maintainAspectRatio: boolean;\n}\nexport interface IFormGeneratorFieldAdditional {\n  checkbox: Partial<ICheckboxAdditional>;\n  textEditor: Partial<ITextEditorAdditional>;\n  fileUpload: Partial<IFileUploadAdditional>;\n  datepicker: Partial<IDatePickerAdditional>;\n  imageCropper: Partial<IImageCropperAdditional>;\n\n  className: string;\n  placeholder: string;\n  inputType: InputType;\n  options: IFormOption[];\n}\n\nexport interface IFormGeneratorField {\n  name: string;\n  label: string;\n  type: FormGeneratorFieldType;\n  initialValue?: ModelControlType;\n  additional?: Partial<IFormGeneratorFieldAdditional>;\n  width?: string;\n  validators?: ((\n    control: AbstractControl<any, any>\n  ) => ValidationErrors | null)[];\n}\n\nexport interface IFormGeneratorConfig {\n  fields: IFormGeneratorField[][];\n}\n\nexport interface IFormGeneratorFields {\n  fields: IFormGeneratorField[][];\n}\n",
+            "properties": [
+                {
+                    "name": "aspectRatio",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 28
+                },
+                {
+                    "name": "background",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 29
+                },
+                {
+                    "name": "buttonText",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 31
+                },
+                {
+                    "name": "cropperMinWidth",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 30
+                },
+                {
+                    "name": "height",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 27
+                },
+                {
+                    "name": "imageURL",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 26
+                },
+                {
+                    "name": "maintainAspectRatio",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 34
+                },
+                {
+                    "name": "onlyScaleDown",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 33
+                },
+                {
+                    "name": "rounded",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 32
+                },
+                {
+                    "name": "scale",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 25
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "ITextEditorAdditional",
+            "id": "interface-ITextEditorAdditional-f4f4fb7694b6b9863eeb5322fb355da465c1a1c790b03289db9f78fce8ca26933dff4e2b3631f9d6b2f878e021635317eb020c01137dc95bab91b7ed73e3101a",
+            "file": "src/app/modules/@core/_form-generator/app-form-generator.interface.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { AbstractControl, ValidationErrors } from '@angular/forms';\nimport { AngularEditorConfig } from '@kolkov/angular-editor';\nimport { IFormOption } from '../interfaces/app-form.interface';\nimport { FileUploadType } from '../types/file-upload.type';\nimport { InputType } from '../types/input.type';\nimport { ModelControlType } from '../types/model-control.type';\nimport { FormGeneratorFieldType } from './field-generator.directive';\n\nexport interface ICheckboxAdditional {\n  isToggle: boolean;\n}\nexport interface ITextEditorAdditional {\n  config: AngularEditorConfig;\n}\nexport interface IFileUploadAdditional {\n  maxFiles: number;\n  limitErrorMessage: string;\n  fileTypes: FileUploadType[];\n}\nexport interface IDatePickerAdditional {\n  isDatepickerRange: boolean;\n}\n\nexport interface IImageCropperAdditional {\n  scale: number;\n  imageURL: string;\n  height: string;\n  aspectRatio: number;\n  background: string;\n  cropperMinWidth: number;\n  buttonText: string;\n  rounded: boolean;\n  onlyScaleDown: boolean;\n  maintainAspectRatio: boolean;\n}\nexport interface IFormGeneratorFieldAdditional {\n  checkbox: Partial<ICheckboxAdditional>;\n  textEditor: Partial<ITextEditorAdditional>;\n  fileUpload: Partial<IFileUploadAdditional>;\n  datepicker: Partial<IDatePickerAdditional>;\n  imageCropper: Partial<IImageCropperAdditional>;\n\n  className: string;\n  placeholder: string;\n  inputType: InputType;\n  options: IFormOption[];\n}\n\nexport interface IFormGeneratorField {\n  name: string;\n  label: string;\n  type: FormGeneratorFieldType;\n  initialValue?: ModelControlType;\n  additional?: Partial<IFormGeneratorFieldAdditional>;\n  width?: string;\n  validators?: ((\n    control: AbstractControl<any, any>\n  ) => ValidationErrors | null)[];\n}\n\nexport interface IFormGeneratorConfig {\n  fields: IFormGeneratorField[][];\n}\n\nexport interface IFormGeneratorFields {\n  fields: IFormGeneratorField[][];\n}\n",
+            "properties": [
+                {
+                    "name": "config",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "AngularEditorConfig",
+                    "optional": false,
+                    "description": "",
+                    "line": 13
                 }
             ],
             "indexSignatures": [],
@@ -1215,12 +1452,12 @@
         },
         {
             "name": "FieldGeneratorDirective",
-            "id": "directive-FieldGeneratorDirective-0d992635ca0efd09a825ac21499757bc252c161d50f1a18b5ef306f8af04e21b0cf25c0f1619988795002d965f6063a34026e2c549e35b90ffc926d9b1cfc74c",
+            "id": "directive-FieldGeneratorDirective-61e812226bc711ea452ade1a14bb781f7a2fef778908a0e84eab6989b320d69ed38cd905d0654f08dc311c73a3ea16d2d9b74c8888737a739d7eb294cbabfdd5",
             "file": "src/app/modules/@core/_form-generator/field-generator.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import {\n  ComponentFactoryResolver,\n  ComponentRef,\n  Directive,\n  Input,\n  ViewContainerRef,\n} from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { AppCheckboxComponent } from '../components/form/app-checkbox/app-checkbox.component';\nimport { AppDatepickerComponent } from '../components/form/app-datepicker/app-datepicker.component';\nimport { AppInputComponent } from '../components/form/app-input/app-input.component';\nimport { AppRadioButtonComponent } from '../components/form/app-radio-button/app-radio-button.component';\nimport { AppSelectComponent } from '../components/form/app-select/app-select.component';\nimport { AppTextEditorComponent } from '../components/form/app-text-editor/app-text-editor.component';\nimport { AppTextareaComponent } from '../components/form/app-textarea/app-textarea.component';\nimport { IFormGeneratorField } from './app-form-generator.interface';\n\nconst components = {\n  input: AppInputComponent,\n  select: AppSelectComponent,\n  radio: AppRadioButtonComponent,\n  textarea: AppTextareaComponent,\n  checkbox: AppCheckboxComponent,\n  datepicker: AppDatepickerComponent,\n  'text-editor': AppTextEditorComponent,\n};\n\nexport type FormGeneratorFieldType = keyof typeof components;\n\n@Directive({\n  standalone: true,\n  selector: '[appFieldGenerator]',\n})\nexport class FieldGeneratorDirective {\n  @Input({ required: true }) group!: FormGroup;\n  @Input({ required: true }) field!: IFormGeneratorField;\n\n  private componentRef!: ComponentRef<any>;\n\n  constructor(\n    private container: ViewContainerRef,\n    private resolver: ComponentFactoryResolver\n  ) {}\n\n  ngOnInit(): void {\n    const factory = this.resolver.resolveComponentFactory(\n      components[this.field.type] as any\n    );\n\n    this.componentRef = this.container.createComponent(factory);\n\n    this.componentRef.instance.isDynamic = true;\n    this.componentRef.instance.group = this.group;\n    this.componentRef.instance.label = this.field.label;\n    this.componentRef.instance.formControlName = this.field.name;\n\n    if (this.field.additional) {\n      const {\n        options,\n        isToggle,\n        className,\n        inputType,\n        placeholder,\n        textEditorConfig,\n        isDatepickerRange,\n      } = this.field.additional;\n\n      this.componentRef.instance.items = options || [];\n      this.componentRef.instance.type = inputType || '';\n      this.componentRef.instance.toggle = isToggle || false;\n      this.componentRef.instance.className = className || '';\n      this.componentRef.instance.config = textEditorConfig || {};\n      this.componentRef.instance.placeholder = placeholder || '';\n      this.componentRef.instance.range = isDatepickerRange || false;\n    }\n  }\n}\n",
+            "sourceCode": "import {\n  ComponentFactoryResolver,\n  ComponentRef,\n  Directive,\n  Input,\n  ViewContainerRef,\n} from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { AppCheckboxComponent } from '../components/form/app-checkbox/app-checkbox.component';\nimport { AppDatepickerComponent } from '../components/form/app-datepicker/app-datepicker.component';\nimport {\n  APP_FILE_UPLOAD_DEFAULT_VALUES,\n  AppFileUploadComponent,\n} from '../components/form/app-file-upload/app-file-upload.component';\nimport {\n  APP_IMAGE_CROPPER_DEFAULT_VALUES,\n  AppImageCropperComponent,\n} from '../components/form/app-image-cropper/app-image-cropper.component';\nimport { AppInputComponent } from '../components/form/app-input/app-input.component';\nimport { AppRadioButtonComponent } from '../components/form/app-radio-button/app-radio-button.component';\nimport { AppSelectComponent } from '../components/form/app-select/app-select.component';\nimport { AppTextEditorComponent } from '../components/form/app-text-editor/app-text-editor.component';\nimport { AppTextareaComponent } from '../components/form/app-textarea/app-textarea.component';\nimport { IFormGeneratorField } from './app-form-generator.interface';\n\nconst components = {\n  input: AppInputComponent,\n  select: AppSelectComponent,\n  radio: AppRadioButtonComponent,\n  textarea: AppTextareaComponent,\n  checkbox: AppCheckboxComponent,\n  datepicker: AppDatepickerComponent,\n  'text-editor': AppTextEditorComponent,\n  'file-upload': AppFileUploadComponent,\n  'image-cropper': AppImageCropperComponent,\n};\n\nexport type FormGeneratorFieldType = keyof typeof components;\ntype HandlerCallbackPropsType = { [key in FormGeneratorFieldType]: Function };\n\n@Directive({\n  standalone: true,\n  selector: '[appFieldGenerator]',\n})\nexport class FieldGeneratorDirective {\n  @Input({ required: true }) group!: FormGroup;\n  @Input({ required: true }) field!: IFormGeneratorField;\n\n  private componentRef!: ComponentRef<any>;\n\n  constructor(\n    private container: ViewContainerRef,\n    private resolver: ComponentFactoryResolver\n  ) {}\n\n  ngOnInit(): void {\n    const factory = this.resolver.resolveComponentFactory(\n      components[this.field.type] as any\n    );\n\n    this.componentRef = this.container.createComponent(factory);\n\n    this.componentRef.instance.isDynamic = true;\n    this.componentRef.instance.group = this.group;\n    this.componentRef.instance.name = this.field.name;\n    this.componentRef.instance.label = this.field.label;\n    this.componentRef.instance.formControlName = this.field.name;\n\n    if (this.field.additional) {\n      const callbacks: HandlerCallbackPropsType = {\n        input: () => {},\n        radio: () => {},\n        select: () => {},\n        textarea: () => {},\n        checkbox: () => this.setCheckboxProps(),\n        datepicker: () => this.setDatePickerProps(),\n        'text-editor': () => this.setTextEditorProps(),\n        'file-upload': () => this.setFileUploadProps(),\n        'image-cropper': () => this.setImageCropperProps(),\n      };\n\n      this.setCommonProps();\n      callbacks[this.field.type]();\n    }\n  }\n\n  private setCommonProps() {\n    if (!this.field.additional) return;\n\n    const { options, inputType, className, placeholder } =\n      this.field.additional;\n\n    this.componentRef.instance.items = options || [];\n    this.componentRef.instance.type = inputType || '';\n\n    this.componentRef.instance.className = className || '';\n    this.componentRef.instance.placeholder = placeholder || '';\n  }\n\n  private setCheckboxProps() {\n    if (!this.field.additional) return;\n\n    this.componentRef.instance.toggle =\n      this.field.additional.checkbox?.isToggle || false;\n  }\n\n  private setTextEditorProps() {\n    if (!this.field.additional) return;\n\n    this.componentRef.instance.config =\n      this.field.additional.textEditor?.config || {};\n  }\n\n  private setDatePickerProps() {\n    if (!this.field.additional) return;\n\n    this.componentRef.instance.range =\n      this.field.additional.datepicker?.isDatepickerRange || false;\n  }\n\n  private setFileUploadProps() {\n    if (!this.field.additional) return;\n\n    const { instance } = this.componentRef;\n    const { fileUpload } = this.field.additional;\n    const props = APP_FILE_UPLOAD_DEFAULT_VALUES;\n\n    instance.maxFiles = fileUpload?.maxFiles || props.maxFiles;\n    instance.fileTypes = fileUpload?.fileTypes || props.fileTypes;\n    instance.limitErrorMessage =\n      fileUpload?.limitErrorMessage || props.limitErrorMessage;\n  }\n\n  private setImageCropperProps() {\n    if (!this.field.additional) return;\n\n    const { instance } = this.componentRef;\n    const { imageCropper } = this.field.additional;\n    const props = APP_IMAGE_CROPPER_DEFAULT_VALUES;\n\n    instance.scale = imageCropper?.scale || props.scale;\n    instance.height = imageCropper?.height || props.height;\n    instance.rounded = imageCropper?.rounded || props.rounded;\n    instance.imageURL = imageCropper?.imageURL || props.imageURL;\n    instance.buttonText = imageCropper?.buttonText || props.buttonText;\n    instance.background = imageCropper?.background || props.background;\n    instance.aspectRatio = imageCropper?.aspectRatio || props.aspectRatio;\n    instance.onlyScaleDown = imageCropper?.onlyScaleDown || props.onlyScaleDown;\n    instance.cropperMinWidth =\n      imageCropper?.cropperMinWidth || props.cropperMinWidth;\n    instance.maintainAspectRatio =\n      imageCropper?.maintainAspectRatio || props.maintainAspectRatio;\n  }\n}\n",
             "selector": "[appFieldGenerator]",
             "providers": [],
             "hostDirectives": [],
@@ -1232,7 +1469,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "optional": false,
-                    "line": 36,
+                    "line": 47,
                     "type": "IFormGeneratorField",
                     "decorators": []
                 },
@@ -1242,7 +1479,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "optional": false,
-                    "line": 35,
+                    "line": 46,
                     "type": "FormGroup",
                     "decorators": []
                 }
@@ -1260,7 +1497,7 @@
                     "type": "ComponentRef<any>",
                     "optional": false,
                     "description": "",
-                    "line": 38,
+                    "line": 49,
                     "modifierKind": [
                         123
                     ]
@@ -1273,9 +1510,87 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 45,
+                    "line": 56,
                     "deprecated": false,
                     "deprecationMessage": ""
+                },
+                {
+                    "name": "setCheckboxProps",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 100,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "setCommonProps",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 87,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "setDatePickerProps",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 114,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "setFileUploadProps",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 121,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "setImageCropperProps",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 134,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "setTextEditorProps",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 107,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
                 }
             ],
             "extends": [],
@@ -1298,7 +1613,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 38,
+                "line": 49,
                 "jsdoctags": [
                     {
                         "name": "container",
@@ -2309,7 +2624,7 @@
         },
         {
             "name": "AppFileUploadComponent",
-            "id": "component-AppFileUploadComponent-194f7b9b0df094348a9e2dab7a987bf4b1a6b8b7e36155e3396d9a4c6ed00b3b17a33b386bc582d82b00217f569c26002af3c7aa90a6b3ae0dab6b1a86cb86e8",
+            "id": "component-AppFileUploadComponent-b7d837ccbe7ef400563d7a565454ec680ba1fcaab912f3fa1908ebddc38523140946ef52cdc5312a551f6892ff5b827393a65988758b1eca8565c7adaaf6c766",
             "file": "src/app/modules/@core/components/form/app-file-upload/app-file-upload.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2331,12 +2646,12 @@
             "hostDirectives": [],
             "inputsClass": [
                 {
-                    "name": "fileType",
-                    "defaultValue": "''",
+                    "name": "fileTypes",
+                    "defaultValue": "['*/*']",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 26,
-                    "type": "string",
+                    "line": 27,
+                    "type": "FileUploadType[]",
                     "decorators": []
                 },
                 {
@@ -2344,7 +2659,7 @@
                     "defaultValue": "`File limit reached`",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 27,
+                    "line": 28,
                     "type": "string",
                     "decorators": []
                 },
@@ -2353,7 +2668,7 @@
                     "defaultValue": "1",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 25,
+                    "line": 26,
                     "type": "number",
                     "decorators": []
                 },
@@ -2487,7 +2802,7 @@
                     "type": "File[]",
                     "optional": false,
                     "description": "",
-                    "line": 29,
+                    "line": 30,
                     "modifierKind": [
                         125
                     ]
@@ -2500,7 +2815,33 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 31,
+                    "line": 34,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "fileType",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 32,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "inputId",
+                    "defaultValue": "'file-upload-input'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 33,
                     "modifierKind": [
                         125
                     ]
@@ -2512,7 +2853,7 @@
                     "type": "boolean",
                     "optional": true,
                     "description": "",
-                    "line": 30,
+                    "line": 31,
                     "modifierKind": [
                         125
                     ]
@@ -2603,7 +2944,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 42,
+                    "line": 48,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -2634,7 +2975,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 46,
+                    "line": 52,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -2665,7 +3006,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 51,
+                    "line": 57,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -2696,7 +3037,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 56,
+                    "line": 62,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -2720,7 +3061,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 33,
+                    "line": 36,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -2738,7 +3079,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 61,
+                    "line": 67,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -2908,7 +3249,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, forwardRef } from '@angular/core';\nimport {\n  FormControl,\n  FormGroup,\n  NG_VALUE_ACCESSOR,\n  ReactiveFormsModule,\n} from '@angular/forms';\nimport { ModelControl } from '../model-control';\n\n@Component({\n  standalone: true,\n  selector: 'app-file-upload',\n  styleUrl: './app-file-upload.component.scss',\n  templateUrl: './app-file-upload.component.html',\n  imports: [ReactiveFormsModule],\n  providers: [\n    {\n      multi: true,\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => AppFileUploadComponent),\n    },\n  ],\n})\nexport class AppFileUploadComponent extends ModelControl {\n  @Input() maxFiles: number = 1;\n  @Input() fileType: string = '';\n  @Input() limitErrorMessage: string = `File limit reached`;\n\n  public files: File[] = [];\n  public isMultiple?: boolean;\n  public filesControl = new FormGroup({ model: new FormControl<File[]>([]) });\n\n  ngOnInit() {\n    this.isMultiple = this.maxFiles > 1;\n    if (!this.isDynamic) this.initMonitoringChanges();\n\n    this.$modelControl = this.filesControl.valueChanges.subscribe(() => {\n      this.group.patchValue({ [this.formControlName]: this.files });\n    });\n  }\n\n  public handleDragOver(event: DragEvent) {\n    event.preventDefault();\n  }\n\n  public handleDrop(event: DragEvent) {\n    event.preventDefault();\n    this.processFiles(event.dataTransfer?.files);\n  }\n\n  public handleFileChange(event: Event) {\n    const inputElement = event.target as HTMLInputElement;\n    this.processFiles(inputElement.files);\n  }\n\n  public handleRemove(index: number) {\n    this.files.splice(index, 1);\n    this.filesControl.setValue({ model: [] });\n  }\n\n  public processFiles(files?: FileList | null) {\n    if (!files || !files.length) return;\n\n    const items = [];\n    for (let i = 0; i < files.length; i++) items.push(files[i]);\n\n    const filesControl =\n      this.maxFiles === 1 ? items : [...this.files, ...items];\n\n    if (files.length > this.maxFiles || filesControl.length > this.maxFiles) {\n      this.alertService.snackBar.open(this.limitErrorMessage);\n      return;\n    }\n\n    this.files = filesControl;\n    this.filesControl.setValue({ model: [] });\n  }\n}\n",
+            "sourceCode": "import { Component, Input, forwardRef } from '@angular/core';\nimport {\n  FormControl,\n  FormGroup,\n  NG_VALUE_ACCESSOR,\n  ReactiveFormsModule,\n} from '@angular/forms';\nimport { FileUploadType } from '../../../types/file-upload.type';\nimport { ModelControl } from '../model-control';\n\n@Component({\n  standalone: true,\n  selector: 'app-file-upload',\n  styleUrl: './app-file-upload.component.scss',\n  templateUrl: './app-file-upload.component.html',\n  imports: [ReactiveFormsModule],\n  providers: [\n    {\n      multi: true,\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => AppFileUploadComponent),\n    },\n  ],\n})\nexport class AppFileUploadComponent extends ModelControl {\n  @Input() maxFiles: number = 1;\n  @Input() fileTypes: FileUploadType[] = ['*/*'];\n  @Input() limitErrorMessage: string = `File limit reached`;\n\n  public files: File[] = [];\n  public isMultiple?: boolean;\n  public fileType: string = '';\n  public inputId: string = 'file-upload-input';\n  public filesControl = new FormGroup({ model: new FormControl<File[]>([]) });\n\n  ngOnInit() {\n    this.isMultiple = this.maxFiles > 1;\n    this.fileType = this.fileTypes.join(',');\n    this.inputId = `${this.inputId}-${this.name}`;\n\n    if (!this.isDynamic) this.initMonitoringChanges();\n\n    this.$modelControl = this.filesControl.valueChanges.subscribe(() => {\n      this.group.patchValue({ [this.formControlName]: this.files });\n    });\n  }\n\n  public handleDragOver(event: DragEvent) {\n    event.preventDefault();\n  }\n\n  public handleDrop(event: DragEvent) {\n    event.preventDefault();\n    this.processFiles(event.dataTransfer?.files);\n  }\n\n  public handleFileChange(event: Event) {\n    const inputElement = event.target as HTMLInputElement;\n    this.processFiles(inputElement.files);\n  }\n\n  public handleRemove(index: number) {\n    this.files.splice(index, 1);\n    this.filesControl.setValue({ model: [] });\n  }\n\n  public processFiles(files?: FileList | null) {\n    if (!files || !files.length) return;\n\n    const items = [];\n    for (let i = 0; i < files.length; i++) items.push(files[i]);\n\n    const filesControl =\n      this.maxFiles === 1 ? items : [...this.files, ...items];\n\n    if (files.length > this.maxFiles || filesControl.length > this.maxFiles) {\n      this.alertService.snackBar.open(this.limitErrorMessage, 'Close');\n      return;\n    }\n\n    this.files = filesControl;\n    this.filesControl.setValue({ model: [] });\n  }\n}\n\nexport const APP_FILE_UPLOAD_DEFAULT_VALUES = {\n  maxFiles: 1,\n  fileTypes: ['*/*'],\n  limitErrorMessage: `File limit reached`,\n};\n",
             "styleUrl": "./app-file-upload.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -2916,7 +3257,7 @@
             "extends": [
                 "ModelControl"
             ],
-            "templateData": "<article id=\"app-file-upload\" [formGroup]=\"filesControl\">\n  <input\n    type=\"file\"\n    [name]=\"name\"\n    [formGroup]=\"group\"\n    id=\"file-upload-input\"\n    formControlName=\"model\"\n    (change)=\"handleFileChange($event)\"\n    [attr.multiple]=\"isMultiple ? true : null\"\n  />\n\n  <label\n    for=\"file-upload-input\"\n    (drop)=\"handleDrop($event)\"\n    (dragover)=\"handleDragOver($event)\"\n  >\n    <h3>{{ label }}</h3>\n\n    @if(!files.length) {\n    <p>{{ placeholder }}</p>\n    } @if(files.length === 1) {\n    <span>{{ files[0].name }}</span>\n    } @else if(files.length > 1) {\n    <span>{{ files.length }}/{{ maxFiles }}</span>\n    }\n  </label>\n\n  @if(files.length > 1) {\n  <ul>\n    @for (item of files; track $index) {\n    <li>\n      <span>{{ item.name }}</span>\n      <button (click)=\"handleRemove($index)\">\n        <i class=\"iconify\" data-icon=\"ep:close-bold\"></i>\n      </button>\n    </li>\n    }\n  </ul>\n  }\n</article>\n"
+            "templateData": "<article id=\"app-file-upload\" [formGroup]=\"filesControl\">\n  <input\n    type=\"file\"\n    [name]=\"name\"\n    [id]=\"inputId\"\n    [accept]=\"fileType\"\n    [formGroup]=\"group\"\n    formControlName=\"model\"\n    (change)=\"handleFileChange($event)\"\n    [attr.multiple]=\"isMultiple ? true : null\"\n  />\n\n  <label\n    [for]=\"inputId\"\n    (drop)=\"handleDrop($event)\"\n    (dragover)=\"handleDragOver($event)\"\n  >\n    <h3>{{ label }}</h3>\n\n    @if(!files.length) {\n    <p>{{ placeholder }}</p>\n    } @if(files.length === 1) {\n    <span>{{ files[0].name }}</span>\n    } @else if(files.length > 1) {\n    <span>{{ files.length }}/{{ maxFiles }}</span>\n    }\n  </label>\n\n  @if(files.length > 1) {\n  <ul>\n    @for (item of files; track $index) {\n    <li>\n      <span>{{ item.name }}</span>\n      <button (click)=\"handleRemove($index)\">\n        <i class=\"iconify\" data-icon=\"ep:close-bold\"></i>\n      </button>\n    </li>\n    }\n  </ul>\n  }\n</article>\n"
         },
         {
             "name": "AppFormGeneratorComponent",
@@ -3213,6 +3554,841 @@
             "stylesData": "",
             "extends": [],
             "templateData": "<p>app-form-image works!</p>\n"
+        },
+        {
+            "name": "AppImageCropperComponent",
+            "id": "component-AppImageCropperComponent-0b71fcbed20117e3462da9bbf1a3fdfcef2e1d2061141383469268d3894db71af2125fe2271efaabd163f0ee905fafc91a422d750068e9f884e8f719fbbe917c",
+            "file": "src/app/modules/@core/components/form/app-image-cropper/app-image-cropper.component.ts",
+            "encapsulation": [
+                "ViewEncapsulation.None"
+            ],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [
+                {
+                    "name": "{\n    multi: true, provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AppImageCropperComponent),\n}",
+                    "type": "component"
+                }
+            ],
+            "selector": "app-image-cropper",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./app-image-cropper.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "aspectRatio",
+                    "defaultValue": "APP_IMAGE_CROPPER_DEFAULT_VALUES.aspectRatio",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 39,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "background",
+                    "defaultValue": "APP_IMAGE_CROPPER_DEFAULT_VALUES.background",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 37,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "buttonText",
+                    "defaultValue": "APP_IMAGE_CROPPER_DEFAULT_VALUES.buttonText",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 38,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "cropperMinWidth",
+                    "defaultValue": "APP_IMAGE_CROPPER_DEFAULT_VALUES.cropperMinWidth",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 41,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "height",
+                    "defaultValue": "APP_IMAGE_CROPPER_DEFAULT_VALUES.height",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 35,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "imageURL",
+                    "defaultValue": "APP_IMAGE_CROPPER_DEFAULT_VALUES.imageURL",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 36,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "required": false,
+                    "name": "maintainAspectRatio",
+                    "defaultValue": "APP_IMAGE_CROPPER_DEFAULT_VALUES.maintainAspectRatio",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 47,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "required": false,
+                    "name": "onlyScaleDown",
+                    "defaultValue": "APP_IMAGE_CROPPER_DEFAULT_VALUES.onlyScaleDown",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 45,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "required": false,
+                    "name": "rounded",
+                    "defaultValue": "APP_IMAGE_CROPPER_DEFAULT_VALUES.rounded",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 43,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "scale",
+                    "defaultValue": "APP_IMAGE_CROPPER_DEFAULT_VALUES.scale",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 34,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "appearance",
+                    "defaultValue": "'outline'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 17,
+                    "type": "\"outline\" | \"fill\"",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "ModelControl"
+                    }
+                },
+                {
+                    "name": "className",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "ModelControl"
+                    }
+                },
+                {
+                    "name": "formControlName",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "ModelControl"
+                    }
+                },
+                {
+                    "name": "group",
+                    "defaultValue": "this.formBuilder.group({\n    [this.name]: [''],\n  })",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "FormGroup",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "ModelControl"
+                    }
+                },
+                {
+                    "name": "id",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 9,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "ModelControl"
+                    }
+                },
+                {
+                    "name": "initialValue",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "ModelControlType",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "ModelControl"
+                    }
+                },
+                {
+                    "name": "isDynamic",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "boolean",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "ModelControl"
+                    }
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 11,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "ModelControl"
+                    }
+                },
+                {
+                    "name": "name",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 10,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "ModelControl"
+                    }
+                },
+                {
+                    "name": "placeholder",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "ModelControl"
+                    }
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "canvasRotation",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 54,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "containWithinAspectRatio",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 57,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "imageChangedEvent",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 56,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "inputId",
+                    "defaultValue": "'image-upload-input'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 58,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "loading",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 52,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "rotation",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": true,
+                    "description": "",
+                    "line": 53,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "sanitizer",
+                    "defaultValue": "inject(DomSanitizer)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 61,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "showCropper",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 55,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "transform",
+                    "defaultValue": "{ translateUnit: 'px' }",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ImageTransform",
+                    "optional": false,
+                    "description": "",
+                    "line": 59,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "translateH",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 50,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "translateV",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 51,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "$modelControl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Subscription",
+                    "optional": false,
+                    "description": "",
+                    "line": 24,
+                    "modifierKind": [
+                        125
+                    ],
+                    "inheritance": {
+                        "file": "ModelControl"
+                    }
+                },
+                {
+                    "name": "alertService",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "AlertService",
+                    "optional": false,
+                    "description": "",
+                    "line": 28,
+                    "modifierKind": [
+                        125
+                    ],
+                    "inheritance": {
+                        "file": "ModelControl"
+                    }
+                },
+                {
+                    "name": "model",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ModelControlType",
+                    "optional": false,
+                    "description": "",
+                    "line": 23,
+                    "modifierKind": [
+                        125
+                    ],
+                    "inheritance": {
+                        "file": "ModelControl"
+                    }
+                },
+                {
+                    "name": "onChange",
+                    "defaultValue": "() => {...}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 32,
+                    "inheritance": {
+                        "file": "ModelControl"
+                    }
+                },
+                {
+                    "name": "onTouched",
+                    "defaultValue": "() => {...}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 31,
+                    "inheritance": {
+                        "file": "ModelControl"
+                    }
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "cropperReady",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 82,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "fileChangeEvent",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 90,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        125
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "flipAfterRotate",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 134,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "flipHorizontal",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 105,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "flipVertical",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 109,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "imageCropped",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "ImageCroppedEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 70,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        125
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "ImageCroppedEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "imageLoaded",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 78,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "loadImageFailed",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 86,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 63,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "resetImage",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 113,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "rotateLeft",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 97,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "toggleContainWithinAspectRatio",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 130,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "zoomIn",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 125,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "zoomOut",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 120,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "initMonitoringChanges",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 44,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "ModelControl"
+                    }
+                },
+                {
+                    "name": "ngOnDestroy",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 58,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "ModelControl"
+                    }
+                },
+                {
+                    "name": "registerOnChange",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": []
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 37,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": [],
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "ModelControl"
+                    }
+                },
+                {
+                    "name": "registerOnTouched",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": []
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 40,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": [],
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "ModelControl"
+                    }
+                },
+                {
+                    "name": "setInitialValue",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 53,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "ModelControl"
+                    }
+                },
+                {
+                    "name": "writeValue",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "ModelControlType",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 34,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "ModelControlType",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "ModelControl"
+                    }
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "ImageCropperModule",
+                    "type": "module"
+                },
+                {
+                    "name": "FormsModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {\n  Component,\n  Input,\n  ViewEncapsulation,\n  booleanAttribute,\n  forwardRef,\n  inject,\n} from '@angular/core';\nimport { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';\nimport { DomSanitizer } from '@angular/platform-browser';\nimport {\n  ImageCroppedEvent,\n  ImageCropperModule,\n  ImageTransform,\n} from 'ngx-image-cropper';\nimport { ModelControl } from '../model-control';\n\n@Component({\n  standalone: true,\n  selector: 'app-image-cropper',\n  styleUrl: './app-image-cropper.component.scss',\n  templateUrl: './app-image-cropper.component.html',\n  imports: [ImageCropperModule, FormsModule],\n  encapsulation: ViewEncapsulation.None,\n  providers: [\n    {\n      multi: true,\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => AppImageCropperComponent),\n    },\n  ],\n})\nexport class AppImageCropperComponent extends ModelControl {\n  @Input() scale: number = APP_IMAGE_CROPPER_DEFAULT_VALUES.scale;\n  @Input() height: string = APP_IMAGE_CROPPER_DEFAULT_VALUES.height;\n  @Input() imageURL: string = APP_IMAGE_CROPPER_DEFAULT_VALUES.imageURL;\n  @Input() background: string = APP_IMAGE_CROPPER_DEFAULT_VALUES.background;\n  @Input() buttonText: string = APP_IMAGE_CROPPER_DEFAULT_VALUES.buttonText;\n  @Input() aspectRatio: number = APP_IMAGE_CROPPER_DEFAULT_VALUES.aspectRatio;\n\n  @Input() cropperMinWidth: number =\n    APP_IMAGE_CROPPER_DEFAULT_VALUES.cropperMinWidth;\n  @Input({ transform: booleanAttribute }) rounded =\n    APP_IMAGE_CROPPER_DEFAULT_VALUES.rounded;\n  @Input({ transform: booleanAttribute }) onlyScaleDown =\n    APP_IMAGE_CROPPER_DEFAULT_VALUES.onlyScaleDown;\n  @Input({ transform: booleanAttribute }) maintainAspectRatio =\n    APP_IMAGE_CROPPER_DEFAULT_VALUES.maintainAspectRatio;\n\n  public translateH = 0;\n  public translateV = 0;\n  public loading = false;\n  public rotation?: number;\n  public canvasRotation = 0;\n  public showCropper = false;\n  public imageChangedEvent = '';\n  public containWithinAspectRatio = false;\n  public inputId: string = 'image-upload-input';\n  public transform: ImageTransform = { translateUnit: 'px' };\n\n  private sanitizer = inject(DomSanitizer);\n\n  ngOnInit() {\n    if (this.rounded) this.aspectRatio = 4 / 4;\n    if (!this.isDynamic) this.initMonitoringChanges();\n\n    this.inputId = `${this.inputId}-${this.name}`;\n  }\n\n  public imageCropped(event: ImageCroppedEvent) {\n    const preview = this.sanitizer.bypassSecurityTrustUrl(\n      event.objectUrl || event.base64 || ''\n    );\n\n    this.group.patchValue({ [this.formControlName]: event.objectUrl });\n  }\n\n  public imageLoaded() {\n    this.showCropper = true;\n  }\n\n  public cropperReady() {\n    this.loading = false;\n  }\n\n  public loadImageFailed() {\n    console.error('Load image failed');\n  }\n\n  public fileChangeEvent(event: any): void {\n    this.loading = true;\n    this.imageChangedEvent = event;\n\n    setTimeout(() => this.resetImage());\n  }\n\n  public rotateLeft() {\n    this.loading = true;\n    setTimeout(() => {\n      this.canvasRotation--;\n      this.flipAfterRotate();\n    });\n  }\n\n  public flipHorizontal() {\n    this.transform = { ...this.transform, flipH: !this.transform.flipH };\n  }\n\n  public flipVertical() {\n    this.transform = { ...this.transform, flipV: !this.transform.flipV };\n  }\n\n  public resetImage() {\n    this.scale = 1;\n    this.rotation = 0;\n    this.canvasRotation = 0;\n    this.transform = { translateUnit: 'px' };\n  }\n\n  public zoomOut() {\n    this.scale -= 0.1;\n    this.transform = { ...this.transform, scale: this.scale };\n  }\n\n  public zoomIn() {\n    this.scale += 0.1;\n    this.transform = { ...this.transform, scale: this.scale };\n  }\n\n  public toggleContainWithinAspectRatio() {\n    this.containWithinAspectRatio = !this.containWithinAspectRatio;\n  }\n\n  private flipAfterRotate() {\n    this.transform = {\n      ...this.transform,\n      flipH: this.transform.flipV,\n      flipV: this.transform.flipH,\n    };\n\n    this.translateH = 0;\n    this.translateV = 0;\n  }\n}\n\nexport const APP_IMAGE_CROPPER_DEFAULT_VALUES = {\n  scale: 1,\n  imageURL: '',\n  height: '200px',\n  aspectRatio: 4 / 3,\n  background: 'black',\n  cropperMinWidth: 128,\n  buttonText: 'Select file',\n  rounded: false,\n  onlyScaleDown: true,\n  maintainAspectRatio: true,\n};\n",
+            "styleUrl": "./app-image-cropper.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [
+                "ModelControl"
+            ],
+            "templateData": "<label [for]=\"inputId\">{{ label }}</label>\n\n<article id=\"app-image-cropper\">\n  <input\n    type=\"file\"\n    [id]=\"inputId\"\n    accept=\"image/*\"\n    class=\"h-0 w-0 invisible\"\n    (change)=\"fileChangeEvent($event)\"\n  />\n\n  <section [class.disable-actions]=\"!(imageURL || imageChangedEvent)\">\n    <label [for]=\"inputId\">\n      <i class=\"iconify\" data-icon=\"uil:image-upload\"></i>\n    </label>\n\n    <hr />\n\n    <button (click)=\"rotateLeft()\">\n      <i\n        class=\"iconify\"\n        data-flip=\"horizontal\"\n        data-icon=\"tabler:rotate-rectangle\"\n      ></i>\n    </button>\n    <button (click)=\"flipHorizontal()\">\n      <i class=\"iconify\" data-icon=\"gg:edit-flip-h\"></i>\n    </button>\n    <button (click)=\"flipVertical()\">\n      <i class=\"iconify\" data-icon=\"gg:edit-flip-v\"></i>\n    </button>\n    <button (click)=\"zoomOut()\">\n      <i class=\"iconify\" data-icon=\"octicon:zoom-out-24\"></i>\n    </button>\n    <button (click)=\"zoomIn()\">\n      <i class=\"iconify\" data-icon=\"octicon:zoom-in-24\"></i>\n    </button>\n    <button (click)=\"toggleContainWithinAspectRatio()\">\n      <i class=\"iconify\" data-icon=\"fluent:table-image-20-regular\"></i>\n    </button>\n\n    <button (click)=\"resetImage()\">\n      <i class=\"iconify\" data-icon=\"system-uicons:reset\"></i>\n    </button>\n  </section>\n\n  <div>\n    <image-cropper\n      format=\"png\"\n      output=\"blob\"\n      [imageURL]=\"imageURL\"\n      [roundCropper]=\"rounded\"\n      [allowMoveImage]=\"true\"\n      [(transform)]=\"transform\"\n      [aspectRatio]=\"aspectRatio\"\n      [style.max-height]=\"height\"\n      [backgroundColor]=\"background\"\n      [onlyScaleDown]=\"onlyScaleDown\"\n      [canvasRotation]=\"canvasRotation\"\n      [cropperMinWidth]=\"cropperMinWidth\"\n      [imageChangedEvent]=\"imageChangedEvent\"\n      [maintainAspectRatio]=\"maintainAspectRatio\"\n      [style.display]=\"showCropper ? null : 'none'\"\n      [containWithinAspectRatio]=\"containWithinAspectRatio\"\n      (imageLoaded)=\"imageLoaded()\"\n      (cropperReady)=\"cropperReady()\"\n      (imageCropped)=\"imageCropped($event)\"\n      (loadImageFailed)=\"loadImageFailed()\"\n    ></image-cropper>\n\n    @if(!(imageURL || imageChangedEvent)) {\n    <label [for]=\"inputId\" [style.height]=\"height\">\n      {{ buttonText }}\n    </label>\n    } @if(loading) {\n    <div class=\"loader\">Loading...</div>\n    }\n  </div>\n</article>\n"
         },
         {
             "name": "AppInputComponent",
@@ -5382,7 +6558,7 @@
         },
         {
             "name": "ComponentsComponent",
-            "id": "component-ComponentsComponent-c043d315f8ec127b9bf597453392b414eecac9db98e7810d55250f09150f969f026a023fc92c1d4bddf0a65b40b0a55af971a24b6945ec039c782687846954af",
+            "id": "component-ComponentsComponent-01ae622be31497fa2908318cad80fff48025798986d2f66710e315a7375705095bc994aee4ddee67a7c4c6c7f75177b78813c987d6b7f4980436a28f3696d821",
             "file": "src/app/modules/initial/pages/components/components.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -5429,7 +6605,7 @@
                 },
                 {
                     "name": "formExample",
-                    "defaultValue": "this.formGeneratorService.init<IFormGeneratorExample>([\n    [\n      {\n        type: 'input',\n        name: 'password',\n        label: 'Password',\n        width: this.fieldWidth,\n        validators: [Validators.required],\n        additional: { inputType: `password` },\n      },\n      {\n        name: 'email',\n        type: 'input',\n        label: 'email',\n        width: this.fieldWidth,\n        validators: [Validators.required],\n        additional: { inputType: `email` },\n      },\n    ],\n    [\n      {\n        name: 'name',\n        label: 'Name',\n        type: 'input',\n        width: this.fieldWidth,\n        validators: [Validators.required],\n      },\n      {\n        name: 'select',\n        type: 'select',\n        label: 'Select',\n        width: this.fieldWidth,\n        validators: [Validators.required],\n      },\n    ],\n    [\n      {\n        name: 'age',\n        label: 'Age',\n        type: 'input',\n        width: this.fieldWidth,\n        additional: { inputType: `number` },\n      },\n      {\n        name: 'radio',\n        type: 'radio',\n        label: 'radio',\n        width: this.fieldWidth,\n        validators: [Validators.required],\n      },\n    ],\n    [\n      {\n        name: 'birthDate',\n        type: 'datepicker',\n        label: 'Birth date',\n        width: this.fieldWidth,\n      },\n      {\n        name: 'rage',\n        label: 'Rage',\n        type: 'datepicker',\n        width: this.fieldWidth,\n        additional: { isDatepickerRange: true },\n      },\n    ],\n    [{ type: 'textarea', name: 'description', label: 'Description' }],\n    [{ label: '', type: 'text-editor', name: 'text-editor' }],\n    [\n      {\n        name: 'isAdmin',\n        type: 'checkbox',\n        label: 'Is admin',\n        width: this.fieldWidth,\n        additional: { isToggle: true },\n      },\n    ],\n  ])",
+                    "defaultValue": "this.formGeneratorService.init<IFormGeneratorExample>([\n    [\n      {\n        name: 'fileUpload',\n        type: 'file-upload',\n        label: 'File upload',\n        additional: { fileUpload: { maxFiles: 3 } },\n      },\n    ],\n    [\n      {\n        name: 'imageCropper',\n        type: 'image-cropper',\n        label: 'Image Cropper',\n      },\n      {\n        name: 'imageCropperOutro',\n        type: 'image-cropper',\n        label: 'Image Cropper 2',\n        additional: {\n          imageCropper: {\n            rounded: true,\n          },\n        },\n      },\n    ],\n    [\n      {\n        type: 'input',\n        name: 'password',\n        label: 'Password',\n        width: this.fieldWidth,\n        validators: [Validators.required],\n        additional: { inputType: `password` },\n      },\n      {\n        name: 'email',\n        type: 'input',\n        label: 'email',\n        width: this.fieldWidth,\n        validators: [Validators.required],\n        additional: { inputType: `email` },\n      },\n    ],\n    [\n      {\n        name: 'name',\n        label: 'Name',\n        type: 'input',\n        width: this.fieldWidth,\n        validators: [Validators.required],\n      },\n      {\n        name: 'select',\n        type: 'select',\n        label: 'Select',\n        width: this.fieldWidth,\n        validators: [Validators.required],\n      },\n    ],\n    [\n      {\n        name: 'age',\n        label: 'Age',\n        type: 'input',\n        width: this.fieldWidth,\n        additional: { inputType: `number` },\n      },\n      {\n        name: 'radio',\n        type: 'radio',\n        label: 'radio',\n        width: this.fieldWidth,\n        validators: [Validators.required],\n      },\n    ],\n    [\n      {\n        name: 'birthDate',\n        type: 'datepicker',\n        label: 'Birth date',\n        width: this.fieldWidth,\n      },\n      {\n        name: 'rage',\n        label: 'Rage',\n        type: 'datepicker',\n        width: this.fieldWidth,\n        additional: { datepicker: { isDatepickerRange: true } },\n      },\n    ],\n    [{ type: 'textarea', name: 'description', label: 'Description' }],\n    [{ label: '', type: 'text-editor', name: 'text-editor' }],\n    [\n      {\n        name: 'isAdmin',\n        type: 'checkbox',\n        label: 'Is admin',\n        width: this.fieldWidth,\n        additional: { checkbox: { isToggle: true } },\n      },\n    ],\n  ])",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
@@ -5461,7 +6637,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 125,
+                    "line": 150,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -5478,7 +6654,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 132,
+                    "line": 157,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -5509,7 +6685,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 136,
+                    "line": 161,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -5574,7 +6750,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { MatTabsModule } from '@angular/material/tabs';\nimport { RouterModule } from '@angular/router';\n\nimport { JsonPipe } from '@angular/common';\nimport { FormsModule, Validators } from '@angular/forms';\nimport { AppFormGeneratorComponent } from '../../../@core/_form-generator/app-form-generator/app-form-generator.component';\nimport { FormGeneratorService } from '../../../@core/_form-generator/form-generator.service';\nimport { IFormOption } from '../../../@core/interfaces/app-form.interface';\nimport { DatePickerRangeValue } from '../../../@core/types/datepicker.type';\nimport { FormExampleComponent } from '../../components/form-example/form-example.component';\nimport { TerminalWindowComponent } from '../../components/terminal-window/terminal-window.component';\n\nimport { AppThemeSelectionComponent } from '../../../@core/components/app-theme-selection/app-theme-selection.component';\nimport { AppCheckboxComponent } from '../../../@core/components/form/app-checkbox/app-checkbox.component';\n\n@Component({\n  standalone: true,\n  selector: 'app-components',\n  styleUrl: './components.component.scss',\n  templateUrl: './components.component.html',\n  imports: [\n    JsonPipe,\n    FormsModule,\n    RouterModule,\n    MatTabsModule,\n    AppCheckboxComponent,\n    FormExampleComponent,\n    TerminalWindowComponent,\n    AppFormGeneratorComponent,\n    AppThemeSelectionComponent,\n  ],\n})\nexport class ComponentsComponent {\n  public defaultOptions: IFormOption[] = [\n    { label: 'Option 1', value: 1 },\n    { label: 'Option 2', value: 2 },\n    { label: 'Option 3', value: 3 },\n    { label: 'Option 4', value: 4 },\n  ];\n\n  private readonly fieldWidth: string = 'calc(50% - 12px)';\n  public formValue: IFormGeneratorExample = {} as IFormGeneratorExample;\n  public formExample = this.formGeneratorService.init<IFormGeneratorExample>([\n    [\n      {\n        type: 'input',\n        name: 'password',\n        label: 'Password',\n        width: this.fieldWidth,\n        validators: [Validators.required],\n        additional: { inputType: `password` },\n      },\n      {\n        name: 'email',\n        type: 'input',\n        label: 'email',\n        width: this.fieldWidth,\n        validators: [Validators.required],\n        additional: { inputType: `email` },\n      },\n    ],\n    [\n      {\n        name: 'name',\n        label: 'Name',\n        type: 'input',\n        width: this.fieldWidth,\n        validators: [Validators.required],\n      },\n      {\n        name: 'select',\n        type: 'select',\n        label: 'Select',\n        width: this.fieldWidth,\n        validators: [Validators.required],\n      },\n    ],\n    [\n      {\n        name: 'age',\n        label: 'Age',\n        type: 'input',\n        width: this.fieldWidth,\n        additional: { inputType: `number` },\n      },\n      {\n        name: 'radio',\n        type: 'radio',\n        label: 'radio',\n        width: this.fieldWidth,\n        validators: [Validators.required],\n      },\n    ],\n    [\n      {\n        name: 'birthDate',\n        type: 'datepicker',\n        label: 'Birth date',\n        width: this.fieldWidth,\n      },\n      {\n        name: 'rage',\n        label: 'Rage',\n        type: 'datepicker',\n        width: this.fieldWidth,\n        additional: { isDatepickerRange: true },\n      },\n    ],\n    [{ type: 'textarea', name: 'description', label: 'Description' }],\n    [{ label: '', type: 'text-editor', name: 'text-editor' }],\n    [\n      {\n        name: 'isAdmin',\n        type: 'checkbox',\n        label: 'Is admin',\n        width: this.fieldWidth,\n        additional: { isToggle: true },\n      },\n    ],\n  ]);\n\n  constructor(private formGeneratorService: FormGeneratorService) {}\n\n  ngOnInit() {\n    this.formExample.setOptionsField('radio', this.defaultOptions);\n    this.formExample.setOptionsField('select', this.defaultOptions);\n\n    this.formExample.setInitialValue('name', 'Valor inicial');\n  }\n\n  public onSubmit(model: IFormGeneratorExample) {\n    alert(JSON.stringify(model));\n  }\n\n  public onValueChange(model: IFormGeneratorExample) {\n    this.formValue = model;\n  }\n}\n\ninterface IFormGeneratorExample {\n  age: number;\n  name: string;\n  email: string;\n  radio: number;\n  select: number;\n  isAdmin: boolean;\n  description: string;\n  birthDate: string | Date;\n  rage: DatePickerRangeValue;\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { MatTabsModule } from '@angular/material/tabs';\nimport { RouterModule } from '@angular/router';\n\nimport { JsonPipe } from '@angular/common';\nimport { FormsModule, Validators } from '@angular/forms';\nimport { AppFormGeneratorComponent } from '../../../@core/_form-generator/app-form-generator/app-form-generator.component';\nimport { FormGeneratorService } from '../../../@core/_form-generator/form-generator.service';\nimport { IFormOption } from '../../../@core/interfaces/app-form.interface';\nimport { DatePickerRangeValue } from '../../../@core/types/datepicker.type';\nimport { FormExampleComponent } from '../../components/form-example/form-example.component';\nimport { TerminalWindowComponent } from '../../components/terminal-window/terminal-window.component';\n\nimport { AppThemeSelectionComponent } from '../../../@core/components/app-theme-selection/app-theme-selection.component';\nimport { AppCheckboxComponent } from '../../../@core/components/form/app-checkbox/app-checkbox.component';\n\n@Component({\n  standalone: true,\n  selector: 'app-components',\n  styleUrl: './components.component.scss',\n  templateUrl: './components.component.html',\n  imports: [\n    JsonPipe,\n    FormsModule,\n    RouterModule,\n    MatTabsModule,\n    AppCheckboxComponent,\n    FormExampleComponent,\n    TerminalWindowComponent,\n    AppFormGeneratorComponent,\n    AppThemeSelectionComponent,\n  ],\n})\nexport class ComponentsComponent {\n  public defaultOptions: IFormOption[] = [\n    { label: 'Option 1', value: 1 },\n    { label: 'Option 2', value: 2 },\n    { label: 'Option 3', value: 3 },\n    { label: 'Option 4', value: 4 },\n  ];\n\n  private readonly fieldWidth: string = 'calc(50% - 12px)';\n  public formValue: IFormGeneratorExample = {} as IFormGeneratorExample;\n  public formExample = this.formGeneratorService.init<IFormGeneratorExample>([\n    [\n      {\n        name: 'fileUpload',\n        type: 'file-upload',\n        label: 'File upload',\n        additional: { fileUpload: { maxFiles: 3 } },\n      },\n    ],\n    [\n      {\n        name: 'imageCropper',\n        type: 'image-cropper',\n        label: 'Image Cropper',\n      },\n      {\n        name: 'imageCropperOutro',\n        type: 'image-cropper',\n        label: 'Image Cropper 2',\n        additional: {\n          imageCropper: {\n            rounded: true,\n          },\n        },\n      },\n    ],\n    [\n      {\n        type: 'input',\n        name: 'password',\n        label: 'Password',\n        width: this.fieldWidth,\n        validators: [Validators.required],\n        additional: { inputType: `password` },\n      },\n      {\n        name: 'email',\n        type: 'input',\n        label: 'email',\n        width: this.fieldWidth,\n        validators: [Validators.required],\n        additional: { inputType: `email` },\n      },\n    ],\n    [\n      {\n        name: 'name',\n        label: 'Name',\n        type: 'input',\n        width: this.fieldWidth,\n        validators: [Validators.required],\n      },\n      {\n        name: 'select',\n        type: 'select',\n        label: 'Select',\n        width: this.fieldWidth,\n        validators: [Validators.required],\n      },\n    ],\n    [\n      {\n        name: 'age',\n        label: 'Age',\n        type: 'input',\n        width: this.fieldWidth,\n        additional: { inputType: `number` },\n      },\n      {\n        name: 'radio',\n        type: 'radio',\n        label: 'radio',\n        width: this.fieldWidth,\n        validators: [Validators.required],\n      },\n    ],\n    [\n      {\n        name: 'birthDate',\n        type: 'datepicker',\n        label: 'Birth date',\n        width: this.fieldWidth,\n      },\n      {\n        name: 'rage',\n        label: 'Rage',\n        type: 'datepicker',\n        width: this.fieldWidth,\n        additional: { datepicker: { isDatepickerRange: true } },\n      },\n    ],\n    [{ type: 'textarea', name: 'description', label: 'Description' }],\n    [{ label: '', type: 'text-editor', name: 'text-editor' }],\n    [\n      {\n        name: 'isAdmin',\n        type: 'checkbox',\n        label: 'Is admin',\n        width: this.fieldWidth,\n        additional: { checkbox: { isToggle: true } },\n      },\n    ],\n  ]);\n\n  constructor(private formGeneratorService: FormGeneratorService) {}\n\n  ngOnInit() {\n    this.formExample.setOptionsField('radio', this.defaultOptions);\n    this.formExample.setOptionsField('select', this.defaultOptions);\n\n    this.formExample.setInitialValue('name', 'Valor inicial');\n  }\n\n  public onSubmit(model: IFormGeneratorExample) {\n    alert(JSON.stringify(model));\n  }\n\n  public onValueChange(model: IFormGeneratorExample) {\n    this.formValue = model;\n  }\n}\n\ninterface IFormGeneratorExample {\n  age: number;\n  name: string;\n  email: string;\n  radio: number;\n  select: number;\n  isAdmin: boolean;\n  description: string;\n  birthDate: string | Date;\n  rage: DatePickerRangeValue;\n}\n",
             "styleUrl": "./components.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -5592,7 +6768,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 121,
+                "line": 146,
                 "jsdoctags": [
                     {
                         "name": "formGeneratorService",
@@ -5610,7 +6786,7 @@
         },
         {
             "name": "FormExampleComponent",
-            "id": "component-FormExampleComponent-71529b3e55a23dc9bb4b2943272ad7d9775654f1f359c571faf5a5f6a7fd04f1c276ab54cfe64d73fb564ce8173b46de3f625ab735babeeb07580a9a757d8d31",
+            "id": "component-FormExampleComponent-15f14610fcc616ae2fd2ee4b20c0e441688c36cc6124e2e225889a80d330891a899b41b6c8e3a7d4d5dd9f5f32e8956195f9847fc143055a9af9869f70c33aae",
             "file": "src/app/modules/initial/components/form-example/form-example.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -5643,7 +6819,7 @@
                 },
                 {
                     "name": "form",
-                    "defaultValue": "{\n    radio: 1,\n    select: 1,\n    input: 'Teste',\n    checkbox: true,\n    fileUpload: [],\n    textarea: 'Textarea',\n    datepicker: new Date(),\n    datepickerRange: null,\n    textEditor: `<b>INITIAL</b>`,\n  }",
+                    "defaultValue": "{\n    radio: 1,\n    select: 1,\n    input: 'Teste',\n    checkbox: true,\n    fileUpload: [],\n    imageCropper: null,\n    textarea: 'Textarea',\n    datepicker: new Date(),\n    datepickerRange: null,\n    textEditor: `<b>INITIAL</b>`,\n  }",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "object",
@@ -5662,7 +6838,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 41,
+                    "line": 42,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -5700,13 +6876,13 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { JsonPipe } from '@angular/common';\nimport { Component } from '@angular/core';\nimport { FormsModule } from '@angular/forms';\nimport { RouterModule } from '@angular/router';\nimport { AppFormComponents } from '../../../@core/components/form';\nimport { IFormOption } from '../../../@core/interfaces/app-form.interface';\nimport { TerminalWindowComponent } from '../terminal-window/terminal-window.component';\n\n@Component({\n  standalone: true,\n  selector: 'app-form-example',\n  styleUrl: './form-example.component.scss',\n  templateUrl: './form-example.component.html',\n  imports: [\n    ...AppFormComponents,\n    JsonPipe,\n    FormsModule,\n    RouterModule,\n    TerminalWindowComponent,\n  ],\n})\nexport class FormExampleComponent {\n  public defaultOptions: IFormOption[] = [\n    { label: 'Option 1', value: 1 },\n    { label: 'Option 2', value: 2 },\n    { label: 'Option 3', value: 3 },\n  ];\n\n  public form = {\n    radio: 1,\n    select: 1,\n    input: 'Teste',\n    checkbox: true,\n    fileUpload: [],\n    textarea: 'Textarea',\n    datepicker: new Date(),\n    datepickerRange: null,\n    textEditor: `<b>INITIAL</b>`,\n  };\n\n  public onSubmit() {\n    console.log('FORM', this.form);\n  }\n}\n",
+            "sourceCode": "import { JsonPipe } from '@angular/common';\nimport { Component } from '@angular/core';\nimport { FormsModule } from '@angular/forms';\nimport { RouterModule } from '@angular/router';\nimport { AppFormComponents } from '../../../@core/components/form';\nimport { IFormOption } from '../../../@core/interfaces/app-form.interface';\nimport { TerminalWindowComponent } from '../terminal-window/terminal-window.component';\n\n@Component({\n  standalone: true,\n  selector: 'app-form-example',\n  styleUrl: './form-example.component.scss',\n  templateUrl: './form-example.component.html',\n  imports: [\n    ...AppFormComponents,\n    JsonPipe,\n    FormsModule,\n    RouterModule,\n    TerminalWindowComponent,\n  ],\n})\nexport class FormExampleComponent {\n  public defaultOptions: IFormOption[] = [\n    { label: 'Option 1', value: 1 },\n    { label: 'Option 2', value: 2 },\n    { label: 'Option 3', value: 3 },\n  ];\n\n  public form = {\n    radio: 1,\n    select: 1,\n    input: 'Teste',\n    checkbox: true,\n    fileUpload: [],\n    imageCropper: null,\n    textarea: 'Textarea',\n    datepicker: new Date(),\n    datepickerRange: null,\n    textEditor: `<b>INITIAL</b>`,\n  };\n\n  public onSubmit() {\n    console.log('FORM', this.form);\n  }\n}\n",
             "styleUrl": "./form-example.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<section id=\"form-example\">\n  <form>\n    <app-file-upload\n      [maxFiles]=\"5\"\n      name=\"fileUpload\"\n      label=\"File upload\"\n      placeholder=\"Insert fles\"\n      [(ngModel)]=\"form.fileUpload\"\n      [initialValue]=\"form.fileUpload\"\n    />\n\n    <app-text-editor\n      name=\"textEditor\"\n      className=\"w-full\"\n      label=\"Text editor\"\n      [(ngModel)]=\"form.textEditor\"\n      [initialValue]=\"form.textEditor\"\n    />\n\n    <app-input\n      name=\"input\"\n      label=\"Input\"\n      className=\"w-full\"\n      [(ngModel)]=\"form.input\"\n      [initialValue]=\"form.input\"\n    />\n\n    <app-datepicker\n      name=\"datepicker\"\n      label=\"Datepicker\"\n      className=\"w-full\"\n      [(ngModel)]=\"form.datepicker\"\n      [initialValue]=\"form.datepicker\"\n    />\n\n    <app-datepicker\n      range\n      className=\"w-full\"\n      name=\"datepickerRange\"\n      label=\"Datepicker Range\"\n      [(ngModel)]=\"form.datepickerRange\"\n      [initialValue]=\"form.datepickerRange\"\n    />\n\n    <app-select\n      name=\"select\"\n      label=\"Select\"\n      className=\"w-full\"\n      [items]=\"defaultOptions\"\n      [(ngModel)]=\"form.select\"\n      [initialValue]=\"form.select\"\n    />\n\n    <app-textarea\n      name=\"textarea\"\n      label=\"Textarea\"\n      className=\"w-full\"\n      [(ngModel)]=\"form.textarea\"\n      [initialValue]=\"form.textarea\"\n    />\n\n    <app-radio-button\n      name=\"radio\"\n      label=\"Radio\"\n      [items]=\"defaultOptions\"\n      [(ngModel)]=\"form.radio\"\n      [initialValue]=\"form.radio\"\n    />\n\n    <app-checkbox\n      name=\"Checkbox\"\n      label=\"Checkbox\"\n      [(ngModel)]=\"form.checkbox\"\n      [initialValue]=\"form.checkbox\"\n    />\n\n    <button class=\"btn-primary my-4\" type=\"button\" (click)=\"onSubmit()\">\n      Submit\n    </button>\n  </form>\n\n  <app-terminal-window [content]=\"form | json\" />\n</section>\n"
+            "templateData": "<section id=\"form-example\">\n  <form>\n    <app-image-cropper\n      name=\"imageCropper\"\n      [(ngModel)]=\"form.imageCropper\"\n      [initialValue]=\"form.imageCropper\"\n    />\n\n    <app-file-upload\n      [maxFiles]=\"5\"\n      name=\"fileUpload\"\n      label=\"File upload\"\n      [fileTypes]=\"['image/*']\"\n      placeholder=\"Insert fles\"\n      [(ngModel)]=\"form.fileUpload\"\n      [initialValue]=\"form.fileUpload\"\n    />\n\n    <app-text-editor\n      name=\"textEditor\"\n      className=\"w-full\"\n      label=\"Text editor\"\n      [(ngModel)]=\"form.textEditor\"\n      [initialValue]=\"form.textEditor\"\n    />\n\n    <app-input\n      name=\"input\"\n      label=\"Input\"\n      className=\"w-full\"\n      [(ngModel)]=\"form.input\"\n      [initialValue]=\"form.input\"\n    />\n\n    <app-datepicker\n      name=\"datepicker\"\n      label=\"Datepicker\"\n      className=\"w-full\"\n      [(ngModel)]=\"form.datepicker\"\n      [initialValue]=\"form.datepicker\"\n    />\n\n    <app-datepicker\n      range\n      className=\"w-full\"\n      name=\"datepickerRange\"\n      label=\"Datepicker Range\"\n      [(ngModel)]=\"form.datepickerRange\"\n      [initialValue]=\"form.datepickerRange\"\n    />\n\n    <app-select\n      name=\"select\"\n      label=\"Select\"\n      className=\"w-full\"\n      [items]=\"defaultOptions\"\n      [(ngModel)]=\"form.select\"\n      [initialValue]=\"form.select\"\n    />\n\n    <app-textarea\n      name=\"textarea\"\n      label=\"Textarea\"\n      className=\"w-full\"\n      [(ngModel)]=\"form.textarea\"\n      [initialValue]=\"form.textarea\"\n    />\n\n    <app-radio-button\n      name=\"radio\"\n      label=\"Radio\"\n      [items]=\"defaultOptions\"\n      [(ngModel)]=\"form.radio\"\n      [initialValue]=\"form.radio\"\n    />\n\n    <app-checkbox\n      name=\"Checkbox\"\n      label=\"Checkbox\"\n      [(ngModel)]=\"form.checkbox\"\n      [initialValue]=\"form.checkbox\"\n    />\n\n    <button class=\"btn-primary my-4\" type=\"button\" (click)=\"onSubmit()\">\n      Submit\n    </button>\n  </form>\n\n  <app-terminal-window [content]=\"form | json\" />\n</section>\n"
         },
         {
             "name": "HomeComponent",
@@ -6337,6 +7513,26 @@
     "miscellaneous": {
         "variables": [
             {
+                "name": "APP_FILE_UPLOAD_DEFAULT_VALUES",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/modules/@core/components/form/app-file-upload/app-file-upload.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  maxFiles: 1,\n  fileTypes: ['*/*'],\n  limitErrorMessage: `File limit reached`,\n}"
+            },
+            {
+                "name": "APP_IMAGE_CROPPER_DEFAULT_VALUES",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/modules/@core/components/form/app-image-cropper/app-image-cropper.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  scale: 1,\n  imageURL: '',\n  height: '200px',\n  aspectRatio: 4 / 3,\n  background: 'black',\n  cropperMinWidth: 128,\n  buttonText: 'Select file',\n  rounded: false,\n  onlyScaleDown: true,\n  maintainAspectRatio: true,\n}"
+            },
+            {
                 "name": "appConfig",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -6354,7 +7550,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "[]",
-                "defaultValue": "[\n  AppInputComponent,\n  AppSelectComponent,\n  AppTextareaComponent,\n  AppCheckboxComponent,\n  AppFormImageComponent,\n  AppDatepickerComponent,\n  AppTextEditorComponent,\n  AppFileUploadComponent,\n  AppRadioButtonComponent,\n]"
+                "defaultValue": "[\n  AppInputComponent,\n  AppSelectComponent,\n  AppTextareaComponent,\n  AppCheckboxComponent,\n  AppFormImageComponent,\n  AppDatepickerComponent,\n  AppTextEditorComponent,\n  AppFileUploadComponent,\n  AppRadioButtonComponent,\n  AppImageCropperComponent,\n]"
             },
             {
                 "name": "component",
@@ -6384,7 +7580,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "StoryObj<AppFileUploadComponent>",
-                "defaultValue": "{\n  args: {\n    initialValue: [],\n    name: 'file-upload-example',\n    label: 'File Upload example',\n  },\n  argTypes: { initialValue: { control: { type: 'boolean' } } },\n  render: (args: AppFileUploadComponent) => ({ props: args }),\n}"
+                "defaultValue": "{\n  args: {\n    initialValue: [],\n    name: 'file-upload-example',\n    label: 'File Upload example',\n  },\n  render: (args: AppFileUploadComponent) => ({ props: args }),\n}"
             },
             {
                 "name": "component",
@@ -6394,7 +7590,17 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "StoryObj<AppFormGeneratorComponent>",
-                "defaultValue": "{\n  args: {\n    fields: [\n      [\n        {\n          type: 'input',\n          name: 'password',\n          initialValue: '',\n          label: 'Password',\n          width: fieldWidth,\n          validators: [Validators.required],\n          additional: { inputType: `password` },\n        },\n        {\n          name: 'email',\n          type: 'input',\n          label: 'email',\n          initialValue: '',\n          width: fieldWidth,\n          validators: [Validators.required],\n          additional: { inputType: `email` },\n        },\n      ],\n      [\n        {\n          width: fieldWidth,\n          name: 'name',\n          label: 'Name',\n          type: 'input',\n          initialValue: '',\n          validators: [Validators.required],\n        },\n        {\n          name: 'select',\n          type: 'select',\n          label: 'Select',\n          initialValue: 0,\n          width: fieldWidth,\n          validators: [Validators.required],\n          additional: { options: storybookFormBase.initialOptions },\n        },\n      ],\n      [\n        {\n          name: 'age',\n          label: 'Age',\n          type: 'input',\n          initialValue: 0,\n          width: fieldWidth,\n          additional: { inputType: `number` },\n        },\n        {\n          name: 'radio',\n          type: 'radio',\n          label: 'radio',\n          initialValue: 0,\n          width: fieldWidth,\n          validators: [Validators.required],\n          additional: { options: storybookFormBase.initialOptions },\n        },\n      ],\n      [\n        {\n          width: fieldWidth,\n          name: 'birthDate',\n          type: 'datepicker',\n          label: 'Birth date',\n          initialValue: new Date(),\n        },\n        {\n          name: 'rage',\n          label: 'Rage',\n          initialValue: '',\n          width: fieldWidth,\n          type: 'datepicker',\n          additional: { isDatepickerRange: true },\n        },\n      ],\n      [\n        {\n          initialValue: '',\n          type: 'textarea',\n          name: 'description',\n          label: 'Description',\n        },\n      ],\n      [\n        {\n          name: 'isAdmin',\n          type: 'checkbox',\n          label: 'Is admin',\n          width: fieldWidth,\n          initialValue: false,\n          additional: { isToggle: true },\n        },\n      ],\n    ],\n  },\n  render: (args: AppFormGeneratorComponent) => ({ props: args }),\n}"
+                "defaultValue": "{\n  args: {\n    fields: [\n      [\n        {\n          type: 'input',\n          name: 'password',\n          initialValue: '',\n          label: 'Password',\n          width: fieldWidth,\n          validators: [Validators.required],\n          additional: { inputType: `password` },\n        },\n        {\n          name: 'email',\n          type: 'input',\n          label: 'email',\n          initialValue: '',\n          width: fieldWidth,\n          validators: [Validators.required],\n          additional: { inputType: `email` },\n        },\n      ],\n      [\n        {\n          width: fieldWidth,\n          name: 'name',\n          label: 'Name',\n          type: 'input',\n          initialValue: '',\n          validators: [Validators.required],\n        },\n        {\n          name: 'select',\n          type: 'select',\n          label: 'Select',\n          initialValue: 0,\n          width: fieldWidth,\n          validators: [Validators.required],\n          additional: { options: storybookFormBase.initialOptions },\n        },\n      ],\n      [\n        {\n          name: 'age',\n          label: 'Age',\n          type: 'input',\n          initialValue: 0,\n          width: fieldWidth,\n          additional: { inputType: `number` },\n        },\n        {\n          name: 'radio',\n          type: 'radio',\n          label: 'radio',\n          initialValue: 0,\n          width: fieldWidth,\n          validators: [Validators.required],\n          additional: { options: storybookFormBase.initialOptions },\n        },\n      ],\n      [\n        {\n          width: fieldWidth,\n          name: 'birthDate',\n          type: 'datepicker',\n          label: 'Birth date',\n          initialValue: new Date(),\n        },\n        {\n          name: 'rage',\n          label: 'Rage',\n          initialValue: '',\n          width: fieldWidth,\n          type: 'datepicker',\n          additional: { datepicker: { isDatepickerRange: true } },\n        },\n      ],\n      [\n        {\n          initialValue: '',\n          type: 'textarea',\n          name: 'description',\n          label: 'Description',\n        },\n      ],\n      [\n        {\n          name: 'isAdmin',\n          type: 'checkbox',\n          label: 'Is admin',\n          width: fieldWidth,\n          initialValue: false,\n          additional: { checkbox: { isToggle: true } },\n        },\n      ],\n    ],\n  },\n  render: (args: AppFormGeneratorComponent) => ({ props: args }),\n}"
+            },
+            {
+                "name": "component",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/form/app-image-cropper.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "StoryObj<AppImageCropperComponent>",
+                "defaultValue": "{\n  args: {\n    initialValue: [],\n    name: 'file-upload-example',\n    label: 'File Upload example',\n  },\n  render: (args: AppImageCropperComponent) => ({ props: args }),\n}"
             },
             {
                 "name": "component",
@@ -6454,7 +7660,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
-                "defaultValue": "{\n  input: AppInputComponent,\n  select: AppSelectComponent,\n  radio: AppRadioButtonComponent,\n  textarea: AppTextareaComponent,\n  checkbox: AppCheckboxComponent,\n  datepicker: AppDatepickerComponent,\n  'text-editor': AppTextEditorComponent,\n}"
+                "defaultValue": "{\n  input: AppInputComponent,\n  select: AppSelectComponent,\n  radio: AppRadioButtonComponent,\n  textarea: AppTextareaComponent,\n  checkbox: AppCheckboxComponent,\n  datepicker: AppDatepickerComponent,\n  'text-editor': AppTextEditorComponent,\n  'file-upload': AppFileUploadComponent,\n  'image-cropper': AppImageCropperComponent,\n}"
             },
             {
                 "name": "fieldWidth",
@@ -6504,7 +7710,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<AppFileUploadComponent>",
-                "defaultValue": "{\n  component: AppFileUploadComponent,\n  tags: ['autodocs'],\n  title: 'Form/File Upload',\n  parameters: {\n    layout: 'fullscreen',\n    controls: {\n      exclude: storybookFormBase.buildExcludeFormProps(['appearance']),\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [...storybookFormBase.commonImports],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: AppFileUploadComponent,\n  tags: ['autodocs'],\n  title: 'Form/File Upload',\n  parameters: {\n    layout: 'fullscreen',\n    controls: {\n      exclude: storybookFormBase.buildExcludeFormProps(['id', 'appearance']),\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [...storybookFormBase.commonImports],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -6515,6 +7721,16 @@
                 "deprecationMessage": "",
                 "type": "Meta<AppFormGeneratorComponent>",
                 "defaultValue": "{\n  component: AppFormGeneratorComponent,\n  tags: ['autodocs'],\n  title: 'Form/Form Generator',\n  parameters: {\n    layout: 'fullscreen',\n    controls: {\n      exclude: [\n        'initForm',\n        'ngOnInit',\n        'formGroup',\n        'handleSubmit',\n        'defaultFieldWidth',\n        'dynamicColumClass',\n      ],\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [\n        NgStyle,\n        NgClass,\n        JsonPipe,\n        ReactiveFormsModule,\n        FieldGeneratorDirective,\n        ...storybookFormBase.commonImports,\n      ],\n    }),\n  ],\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/form/app-image-cropper.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<AppImageCropperComponent>",
+                "defaultValue": "{\n  component: AppImageCropperComponent,\n  tags: ['autodocs'],\n  title: 'Form/Image Cropper',\n  parameters: {\n    layout: 'fullscreen',\n    controls: {\n      exclude: storybookFormBase.buildExcludeFormProps(['id', 'appearance']),\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [...storybookFormBase.commonImports],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -6660,6 +7876,16 @@
                 "name": "storybookFormBase",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "src/stories/form/app-image-cropper.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "new StorybookFormBase()"
+            },
+            {
+                "name": "storybookFormBase",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "src/stories/form/app-input.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -6741,6 +7967,17 @@
                 "kind": 187
             },
             {
+                "name": "FileUploadType",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"*/*\" | \"image/*\" | \"audio/*\" | \"video/*\" | \"application/pdf\" | \".pdf,.doc\" | \"image/png\" | \"image/jpeg\" | \"audio/mpeg\" | \"audio/wav\" | \"video/mp4\"",
+                "file": "src/app/modules/@core/types/file-upload.type.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 192
+            },
+            {
                 "name": "FormGeneratorFieldType",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
@@ -6750,6 +7987,17 @@
                 "deprecationMessage": "",
                 "description": "",
                 "kind": 198
+            },
+            {
+                "name": "HandlerCallbackPropsType",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "",
+                "file": "src/app/modules/@core/_form-generator/field-generator.directive.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 200
             },
             {
                 "name": "InputType",
@@ -6766,7 +8014,7 @@
                 "name": "ModelControlType",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "DatePickerRangeValue | boolean | string | number | object | Date | null",
+                "rawtype": "DatePickerRangeValue | boolean | string | number | object | File[] | File | Date | null",
                 "file": "src/app/modules/@core/types/model-control.type.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -6798,6 +8046,30 @@
         ],
         "enumerations": [],
         "groupedVariables": {
+            "src/app/modules/@core/components/form/app-file-upload/app-file-upload.component.ts": [
+                {
+                    "name": "APP_FILE_UPLOAD_DEFAULT_VALUES",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/modules/@core/components/form/app-file-upload/app-file-upload.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  maxFiles: 1,\n  fileTypes: ['*/*'],\n  limitErrorMessage: `File limit reached`,\n}"
+                }
+            ],
+            "src/app/modules/@core/components/form/app-image-cropper/app-image-cropper.component.ts": [
+                {
+                    "name": "APP_IMAGE_CROPPER_DEFAULT_VALUES",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/modules/@core/components/form/app-image-cropper/app-image-cropper.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  scale: 1,\n  imageURL: '',\n  height: '200px',\n  aspectRatio: 4 / 3,\n  background: 'black',\n  cropperMinWidth: 128,\n  buttonText: 'Select file',\n  rounded: false,\n  onlyScaleDown: true,\n  maintainAspectRatio: true,\n}"
+                }
+            ],
             "src/app/app.config.ts": [
                 {
                     "name": "appConfig",
@@ -6829,7 +8101,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[]",
-                    "defaultValue": "[\n  AppInputComponent,\n  AppSelectComponent,\n  AppTextareaComponent,\n  AppCheckboxComponent,\n  AppFormImageComponent,\n  AppDatepickerComponent,\n  AppTextEditorComponent,\n  AppFileUploadComponent,\n  AppRadioButtonComponent,\n]"
+                    "defaultValue": "[\n  AppInputComponent,\n  AppSelectComponent,\n  AppTextareaComponent,\n  AppCheckboxComponent,\n  AppFormImageComponent,\n  AppDatepickerComponent,\n  AppTextEditorComponent,\n  AppFileUploadComponent,\n  AppRadioButtonComponent,\n  AppImageCropperComponent,\n]"
                 }
             ],
             "src/stories/form/app-checkbok.stories.ts": [
@@ -6905,7 +8177,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "StoryObj<AppFileUploadComponent>",
-                    "defaultValue": "{\n  args: {\n    initialValue: [],\n    name: 'file-upload-example',\n    label: 'File Upload example',\n  },\n  argTypes: { initialValue: { control: { type: 'boolean' } } },\n  render: (args: AppFileUploadComponent) => ({ props: args }),\n}"
+                    "defaultValue": "{\n  args: {\n    initialValue: [],\n    name: 'file-upload-example',\n    label: 'File Upload example',\n  },\n  render: (args: AppFileUploadComponent) => ({ props: args }),\n}"
                 },
                 {
                     "name": "meta",
@@ -6915,7 +8187,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<AppFileUploadComponent>",
-                    "defaultValue": "{\n  component: AppFileUploadComponent,\n  tags: ['autodocs'],\n  title: 'Form/File Upload',\n  parameters: {\n    layout: 'fullscreen',\n    controls: {\n      exclude: storybookFormBase.buildExcludeFormProps(['appearance']),\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [...storybookFormBase.commonImports],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: AppFileUploadComponent,\n  tags: ['autodocs'],\n  title: 'Form/File Upload',\n  parameters: {\n    layout: 'fullscreen',\n    controls: {\n      exclude: storybookFormBase.buildExcludeFormProps(['id', 'appearance']),\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [...storybookFormBase.commonImports],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "storybookFormBase",
@@ -6937,7 +8209,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "StoryObj<AppFormGeneratorComponent>",
-                    "defaultValue": "{\n  args: {\n    fields: [\n      [\n        {\n          type: 'input',\n          name: 'password',\n          initialValue: '',\n          label: 'Password',\n          width: fieldWidth,\n          validators: [Validators.required],\n          additional: { inputType: `password` },\n        },\n        {\n          name: 'email',\n          type: 'input',\n          label: 'email',\n          initialValue: '',\n          width: fieldWidth,\n          validators: [Validators.required],\n          additional: { inputType: `email` },\n        },\n      ],\n      [\n        {\n          width: fieldWidth,\n          name: 'name',\n          label: 'Name',\n          type: 'input',\n          initialValue: '',\n          validators: [Validators.required],\n        },\n        {\n          name: 'select',\n          type: 'select',\n          label: 'Select',\n          initialValue: 0,\n          width: fieldWidth,\n          validators: [Validators.required],\n          additional: { options: storybookFormBase.initialOptions },\n        },\n      ],\n      [\n        {\n          name: 'age',\n          label: 'Age',\n          type: 'input',\n          initialValue: 0,\n          width: fieldWidth,\n          additional: { inputType: `number` },\n        },\n        {\n          name: 'radio',\n          type: 'radio',\n          label: 'radio',\n          initialValue: 0,\n          width: fieldWidth,\n          validators: [Validators.required],\n          additional: { options: storybookFormBase.initialOptions },\n        },\n      ],\n      [\n        {\n          width: fieldWidth,\n          name: 'birthDate',\n          type: 'datepicker',\n          label: 'Birth date',\n          initialValue: new Date(),\n        },\n        {\n          name: 'rage',\n          label: 'Rage',\n          initialValue: '',\n          width: fieldWidth,\n          type: 'datepicker',\n          additional: { isDatepickerRange: true },\n        },\n      ],\n      [\n        {\n          initialValue: '',\n          type: 'textarea',\n          name: 'description',\n          label: 'Description',\n        },\n      ],\n      [\n        {\n          name: 'isAdmin',\n          type: 'checkbox',\n          label: 'Is admin',\n          width: fieldWidth,\n          initialValue: false,\n          additional: { isToggle: true },\n        },\n      ],\n    ],\n  },\n  render: (args: AppFormGeneratorComponent) => ({ props: args }),\n}"
+                    "defaultValue": "{\n  args: {\n    fields: [\n      [\n        {\n          type: 'input',\n          name: 'password',\n          initialValue: '',\n          label: 'Password',\n          width: fieldWidth,\n          validators: [Validators.required],\n          additional: { inputType: `password` },\n        },\n        {\n          name: 'email',\n          type: 'input',\n          label: 'email',\n          initialValue: '',\n          width: fieldWidth,\n          validators: [Validators.required],\n          additional: { inputType: `email` },\n        },\n      ],\n      [\n        {\n          width: fieldWidth,\n          name: 'name',\n          label: 'Name',\n          type: 'input',\n          initialValue: '',\n          validators: [Validators.required],\n        },\n        {\n          name: 'select',\n          type: 'select',\n          label: 'Select',\n          initialValue: 0,\n          width: fieldWidth,\n          validators: [Validators.required],\n          additional: { options: storybookFormBase.initialOptions },\n        },\n      ],\n      [\n        {\n          name: 'age',\n          label: 'Age',\n          type: 'input',\n          initialValue: 0,\n          width: fieldWidth,\n          additional: { inputType: `number` },\n        },\n        {\n          name: 'radio',\n          type: 'radio',\n          label: 'radio',\n          initialValue: 0,\n          width: fieldWidth,\n          validators: [Validators.required],\n          additional: { options: storybookFormBase.initialOptions },\n        },\n      ],\n      [\n        {\n          width: fieldWidth,\n          name: 'birthDate',\n          type: 'datepicker',\n          label: 'Birth date',\n          initialValue: new Date(),\n        },\n        {\n          name: 'rage',\n          label: 'Rage',\n          initialValue: '',\n          width: fieldWidth,\n          type: 'datepicker',\n          additional: { datepicker: { isDatepickerRange: true } },\n        },\n      ],\n      [\n        {\n          initialValue: '',\n          type: 'textarea',\n          name: 'description',\n          label: 'Description',\n        },\n      ],\n      [\n        {\n          name: 'isAdmin',\n          type: 'checkbox',\n          label: 'Is admin',\n          width: fieldWidth,\n          initialValue: false,\n          additional: { checkbox: { isToggle: true } },\n        },\n      ],\n    ],\n  },\n  render: (args: AppFormGeneratorComponent) => ({ props: args }),\n}"
                 },
                 {
                     "name": "fieldWidth",
@@ -6964,6 +8236,38 @@
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "src/stories/form/app-form-generator.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "new StorybookFormBase()"
+                }
+            ],
+            "src/stories/form/app-image-cropper.stories.ts": [
+                {
+                    "name": "component",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/form/app-image-cropper.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "StoryObj<AppImageCropperComponent>",
+                    "defaultValue": "{\n  args: {\n    initialValue: [],\n    name: 'file-upload-example',\n    label: 'File Upload example',\n  },\n  render: (args: AppImageCropperComponent) => ({ props: args }),\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/form/app-image-cropper.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<AppImageCropperComponent>",
+                    "defaultValue": "{\n  component: AppImageCropperComponent,\n  tags: ['autodocs'],\n  title: 'Form/Image Cropper',\n  parameters: {\n    layout: 'fullscreen',\n    controls: {\n      exclude: storybookFormBase.buildExcludeFormProps(['id', 'appearance']),\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [...storybookFormBase.commonImports],\n    }),\n  ],\n}"
+                },
+                {
+                    "name": "storybookFormBase",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/form/app-image-cropper.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
@@ -7139,7 +8443,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "object",
-                    "defaultValue": "{\n  input: AppInputComponent,\n  select: AppSelectComponent,\n  radio: AppRadioButtonComponent,\n  textarea: AppTextareaComponent,\n  checkbox: AppCheckboxComponent,\n  datepicker: AppDatepickerComponent,\n  'text-editor': AppTextEditorComponent,\n}"
+                    "defaultValue": "{\n  input: AppInputComponent,\n  select: AppSelectComponent,\n  radio: AppRadioButtonComponent,\n  textarea: AppTextareaComponent,\n  checkbox: AppCheckboxComponent,\n  datepicker: AppDatepickerComponent,\n  'text-editor': AppTextEditorComponent,\n  'file-upload': AppFileUploadComponent,\n  'image-cropper': AppImageCropperComponent,\n}"
                 }
             ],
             ".storybook/preview.ts": [
@@ -7239,6 +8543,19 @@
                     "kind": 187
                 }
             ],
+            "src/app/modules/@core/types/file-upload.type.ts": [
+                {
+                    "name": "FileUploadType",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"*/*\" | \"image/*\" | \"audio/*\" | \"video/*\" | \"application/pdf\" | \".pdf,.doc\" | \"image/png\" | \"image/jpeg\" | \"audio/mpeg\" | \"audio/wav\" | \"video/mp4\"",
+                    "file": "src/app/modules/@core/types/file-upload.type.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 192
+                }
+            ],
             "src/app/modules/@core/_form-generator/field-generator.directive.ts": [
                 {
                     "name": "FormGeneratorFieldType",
@@ -7250,6 +8567,17 @@
                     "deprecationMessage": "",
                     "description": "",
                     "kind": 198
+                },
+                {
+                    "name": "HandlerCallbackPropsType",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "",
+                    "file": "src/app/modules/@core/_form-generator/field-generator.directive.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 200
                 }
             ],
             "src/app/modules/@core/types/input.type.ts": [
@@ -7270,7 +8598,7 @@
                     "name": "ModelControlType",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "DatePickerRangeValue | boolean | string | number | object | Date | null",
+                    "rawtype": "DatePickerRangeValue | boolean | string | number | object | File[] | File | Date | null",
                     "file": "src/app/modules/@core/types/model-control.type.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -7352,6 +8680,33 @@
                 "filePath": "src/app/modules/@core/_form-generator/app-form-generator.interface.ts",
                 "type": "interface",
                 "linktype": "interface",
+                "name": "ICheckboxAdditional",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/@core/_form-generator/app-form-generator.interface.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "IDatePickerAdditional",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/@core/_form-generator/app-form-generator.interface.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "IFileUploadAdditional",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/@core/_form-generator/app-form-generator.interface.ts",
+                "type": "interface",
+                "linktype": "interface",
                 "name": "IFormGeneratorConfig",
                 "coveragePercent": 0,
                 "coverageCount": "0/2",
@@ -7372,7 +8727,7 @@
                 "linktype": "interface",
                 "name": "IFormGeneratorFieldAdditional",
                 "coveragePercent": 0,
-                "coverageCount": "0/8",
+                "coverageCount": "0/10",
                 "status": "low"
             },
             {
@@ -7380,6 +8735,24 @@
                 "type": "interface",
                 "linktype": "interface",
                 "name": "IFormGeneratorFields",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/@core/_form-generator/app-form-generator.interface.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "IImageCropperAdditional",
+                "coveragePercent": 0,
+                "coverageCount": "0/11",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/@core/_form-generator/app-form-generator.interface.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "ITextEditorAdditional",
                 "coveragePercent": 0,
                 "coverageCount": "0/2",
                 "status": "low"
@@ -7399,7 +8772,7 @@
                 "linktype": "directive",
                 "name": "FieldGeneratorDirective",
                 "coveragePercent": 0,
-                "coverageCount": "0/6",
+                "coverageCount": "0/12",
                 "status": "low"
             },
             {
@@ -7494,7 +8867,17 @@
                 "linktype": "component",
                 "name": "AppFileUploadComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/34",
+                "coverageCount": "0/36",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/@core/components/form/app-file-upload/app-file-upload.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "APP_FILE_UPLOAD_DEFAULT_VALUES",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
@@ -7502,6 +8885,25 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "AppFormImageComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/@core/components/form/app-image-cropper/app-image-cropper.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AppImageCropperComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/57",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/@core/components/form/app-image-cropper/app-image-cropper.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "APP_IMAGE_CROPPER_DEFAULT_VALUES",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -7838,6 +9240,36 @@
             },
             {
                 "filePath": "src/stories/form/app-form-generator.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "storybookFormBase",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/form/app-image-cropper.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "component",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/form/app-image-cropper.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/form/app-image-cropper.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",

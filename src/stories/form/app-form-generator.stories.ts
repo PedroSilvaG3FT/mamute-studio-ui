@@ -117,7 +117,7 @@ export const component: StoryObj<AppFormGeneratorComponent> = {
           initialValue: '',
           width: fieldWidth,
           type: 'datepicker',
-          additional: { isDatepickerRange: true },
+          additional: { datepicker: { isDatepickerRange: true } },
         },
       ],
       [
@@ -135,7 +135,7 @@ export const component: StoryObj<AppFormGeneratorComponent> = {
           label: 'Is admin',
           width: fieldWidth,
           initialValue: false,
-          additional: { isToggle: true },
+          additional: { checkbox: { isToggle: true } },
         },
       ],
     ],
