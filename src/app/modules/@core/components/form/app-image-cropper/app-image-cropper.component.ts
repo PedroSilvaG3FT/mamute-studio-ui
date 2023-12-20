@@ -31,16 +31,21 @@ import { ModelControl } from '../model-control';
   ],
 })
 export class AppImageCropperComponent extends ModelControl {
-  @Input() scale: number = 1;
-  @Input() imageURL: string = '';
-  @Input() height: string = '300px';
-  @Input() aspectRatio: number = 4 / 3;
-  @Input() background: string = 'black';
-  @Input() cropperMinWidth: number = 128;
-  @Input() buttonText: string = 'Select file';
-  @Input({ transform: booleanAttribute }) rounded = false;
-  @Input({ transform: booleanAttribute }) onlyScaleDown = true;
-  @Input({ transform: booleanAttribute }) maintainAspectRatio = true;
+  @Input() scale: number = APP_IMAGE_CROPPER_DEFAULT_VALUES.scale;
+  @Input() height: string = APP_IMAGE_CROPPER_DEFAULT_VALUES.height;
+  @Input() imageURL: string = APP_IMAGE_CROPPER_DEFAULT_VALUES.imageURL;
+  @Input() background: string = APP_IMAGE_CROPPER_DEFAULT_VALUES.background;
+  @Input() buttonText: string = APP_IMAGE_CROPPER_DEFAULT_VALUES.buttonText;
+  @Input() aspectRatio: number = APP_IMAGE_CROPPER_DEFAULT_VALUES.aspectRatio;
+
+  @Input() cropperMinWidth: number =
+    APP_IMAGE_CROPPER_DEFAULT_VALUES.cropperMinWidth;
+  @Input({ transform: booleanAttribute }) rounded =
+    APP_IMAGE_CROPPER_DEFAULT_VALUES.rounded;
+  @Input({ transform: booleanAttribute }) onlyScaleDown =
+    APP_IMAGE_CROPPER_DEFAULT_VALUES.onlyScaleDown;
+  @Input({ transform: booleanAttribute }) maintainAspectRatio =
+    APP_IMAGE_CROPPER_DEFAULT_VALUES.maintainAspectRatio;
 
   public translateH = 0;
   public translateV = 0;
@@ -50,7 +55,7 @@ export class AppImageCropperComponent extends ModelControl {
   public showCropper = false;
   public imageChangedEvent = '';
   public containWithinAspectRatio = false;
-  public readonly inputId: string = 'image-upload-input';
+  public inputId: string = 'image-upload-input';
   public transform: ImageTransform = { translateUnit: 'px' };
 
   private sanitizer = inject(DomSanitizer);
@@ -58,6 +63,8 @@ export class AppImageCropperComponent extends ModelControl {
   ngOnInit() {
     if (this.rounded) this.aspectRatio = 4 / 4;
     if (!this.isDynamic) this.initMonitoringChanges();
+
+    this.inputId = `${this.inputId}-${this.name}`;
   }
 
   public imageCropped(event: ImageCroppedEvent) {
@@ -135,3 +142,16 @@ export class AppImageCropperComponent extends ModelControl {
     this.translateV = 0;
   }
 }
+
+export const APP_IMAGE_CROPPER_DEFAULT_VALUES = {
+  scale: 1,
+  imageURL: '',
+  height: '200px',
+  aspectRatio: 4 / 3,
+  background: 'black',
+  cropperMinWidth: 128,
+  buttonText: 'Select file',
+  rounded: false,
+  onlyScaleDown: true,
+  maintainAspectRatio: true,
+};

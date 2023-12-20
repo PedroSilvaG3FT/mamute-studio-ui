@@ -30,11 +30,14 @@ export class AppFileUploadComponent extends ModelControl {
   public files: File[] = [];
   public isMultiple?: boolean;
   public fileType: string = '';
+  public inputId: string = 'file-upload-input';
   public filesControl = new FormGroup({ model: new FormControl<File[]>([]) });
 
   ngOnInit() {
     this.isMultiple = this.maxFiles > 1;
     this.fileType = this.fileTypes.join(',');
+    this.inputId = `${this.inputId}-${this.name}`;
+
     if (!this.isDynamic) this.initMonitoringChanges();
 
     this.$modelControl = this.filesControl.valueChanges.subscribe(() => {
@@ -79,3 +82,9 @@ export class AppFileUploadComponent extends ModelControl {
     this.filesControl.setValue({ model: [] });
   }
 }
+
+export const APP_FILE_UPLOAD_DEFAULT_VALUES = {
+  maxFiles: 1,
+  fileTypes: ['*/*'],
+  limitErrorMessage: `File limit reached`,
+};

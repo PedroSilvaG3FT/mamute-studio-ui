@@ -47,7 +47,24 @@ export class ComponentsComponent {
         name: 'fileUpload',
         type: 'file-upload',
         label: 'File upload',
-        additional: { maxFiles: 3 },
+        additional: { fileUpload: { maxFiles: 3 } },
+      },
+    ],
+    [
+      {
+        name: 'imageCropper',
+        type: 'image-cropper',
+        label: 'Image Cropper',
+      },
+      {
+        name: 'imageCropperOutro',
+        type: 'image-cropper',
+        label: 'Image Cropper 2',
+        additional: {
+          imageCropper: {
+            rounded: true,
+          },
+        },
       },
     ],
     [
@@ -112,7 +129,7 @@ export class ComponentsComponent {
         label: 'Rage',
         type: 'datepicker',
         width: this.fieldWidth,
-        additional: { isDatepickerRange: true },
+        additional: { datepicker: { isDatepickerRange: true } },
       },
     ],
     [{ type: 'textarea', name: 'description', label: 'Description' }],
@@ -123,7 +140,7 @@ export class ComponentsComponent {
         type: 'checkbox',
         label: 'Is admin',
         width: this.fieldWidth,
-        additional: { isToggle: true },
+        additional: { checkbox: { isToggle: true } },
       },
     ],
   ]);

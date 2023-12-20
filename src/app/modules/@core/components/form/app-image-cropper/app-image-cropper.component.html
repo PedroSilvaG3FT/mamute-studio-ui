@@ -1,3 +1,5 @@
+<label [for]="inputId">{{ label }}</label>
+
 <article id="app-image-cropper">
   <input
     type="file"
@@ -42,7 +44,7 @@
     </button>
   </section>
 
-  <div [style.min-height]="height">
+  <div>
     <image-cropper
       format="png"
       output="blob"
@@ -67,7 +69,7 @@
     ></image-cropper>
 
     @if(!(imageURL || imageChangedEvent)) {
-    <label [for]="inputId" [style.height]="height" [style.width]="height">
+    <label [for]="inputId" [style.height]="height">
       {{ buttonText }}
     </label>
     } @if(loading) {

@@ -2,16 +2,16 @@
   <input
     type="file"
     [name]="name"
+    [id]="inputId"
     [accept]="fileType"
     [formGroup]="group"
-    id="file-upload-input"
     formControlName="model"
     (change)="handleFileChange($event)"
     [attr.multiple]="isMultiple ? true : null"
   />
 
   <label
-    for="file-upload-input"
+    [for]="inputId"
     (drop)="handleDrop($event)"
     (dragover)="handleDragOver($event)"
   >
