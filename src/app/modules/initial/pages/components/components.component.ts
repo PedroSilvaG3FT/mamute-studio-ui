@@ -11,8 +11,16 @@ import { DatePickerRangeValue } from '../../../@core/types/datepicker.type';
 import { FormExampleComponent } from '../../components/form-example/form-example.component';
 import { TerminalWindowComponent } from '../../components/terminal-window/terminal-window.component';
 
+import { Sort } from '@angular/material/sort';
+import { AppTableComponent } from '../../../@core/components/app-table/app-table.component';
 import { AppThemeSelectionComponent } from '../../../@core/components/app-theme-selection/app-theme-selection.component';
 import { AppCheckboxComponent } from '../../../@core/components/form/app-checkbox/app-checkbox.component';
+import { filterListPagination } from '../../../@core/functions/pagination.function';
+import { IPagination } from '../../../@core/interfaces/app-pagination.interface';
+import {
+  ITableCell,
+  ITableCellAction,
+} from '../../../@core/interfaces/app-table.interface';
 
 @Component({
   standalone: true,
@@ -24,6 +32,7 @@ import { AppCheckboxComponent } from '../../../@core/components/form/app-checkbo
     FormsModule,
     RouterModule,
     MatTabsModule,
+    AppTableComponent,
     AppCheckboxComponent,
     FormExampleComponent,
     TerminalWindowComponent,
@@ -145,6 +154,30 @@ export class ComponentsComponent {
     ],
   ]);
 
+  //table
+  public tableData: PeriodicElement[] = [];
+  public pagination: IPagination = {
+    pageSize: 5,
+    pageNumber: 1,
+    totalItems: 20,
+    pageSizeOptions: [5, 10, 20, 50],
+  };
+
+  public tableActions: ITableCellAction<PeriodicElement>[] = [
+    {
+      title: 'Edit',
+      icon: 'iconamoon:edit-fill',
+      callback: (element) => this.handleEdit(element),
+    },
+  ];
+  public tableColumns: ITableCell[] = [
+    { def: 'position', key: 'position', label: 'No.' },
+    { def: 'name', key: 'name', label: 'Name' },
+    { def: 'amount', key: 'amount', label: 'Amount' },
+    { def: 'weight', key: 'weight', label: 'Weight' },
+    { def: 'symbol', key: 'symbol', label: 'Symbol' },
+  ];
+
   constructor(private formGeneratorService: FormGeneratorService) {}
 
   ngOnInit() {
@@ -152,6 +185,26 @@ export class ComponentsComponent {
     this.formExample.setOptionsField('select', this.defaultOptions);
 
     this.formExample.setInitialValue('name', 'Valor inicial');
+
+    this.getItems();
+  }
+
+  public getItems() {
+    const { pageNumber, pageSize } = this.pagination;
+    this.tableData = filterListPagination(ELEMENT_DATA, pageNumber, pageSize);
+  }
+
+  public onSortChange(sort: Sort) {
+    console.log(sort);
+  }
+
+  public onPaginationChange(pagination: IPagination) {
+    this.pagination = pagination;
+    this.getItems();
+  }
+
+  public handleEdit(item: PeriodicElement) {
+    console.log(item);
   }
 
   public onSubmit(model: IFormGeneratorExample) {
@@ -174,3 +227,58 @@ interface IFormGeneratorExample {
   birthDate: string | Date;
   rage: DatePickerRangeValue;
 }
+
+export interface PeriodicElement {
+  name: string;
+  weight: number;
+  symbol: string;
+  position: number;
+  amount: number;
+}
+
+const ELEMENT_DATA: PeriodicElement[] = [
+  { amount: 123, position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
+  { amount: 123, position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
+  { amount: 123, position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
+  { amount: 123, position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
+  { amount: 123, position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
+  { amount: 123, position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
+  { amount: 123, position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
+  { amount: 123, position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
+  { amount: 123, position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
+  { amount: 123, position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
+  { amount: 123, position: 11, name: 'Sodium', weight: 22.9897, symbol: 'Na' },
+  {
+    amount: 123,
+    position: 12,
+    name: 'Magnesium',
+    weight: 24.305,
+    symbol: 'Mg',
+  },
+  {
+    amount: 123,
+    position: 13,
+    name: 'Aluminum',
+    weight: 26.9815,
+    symbol: 'Al',
+  },
+  { amount: 123, position: 14, name: 'Silicon', weight: 28.0855, symbol: 'Si' },
+  {
+    amount: 123,
+    position: 15,
+    name: 'Phosphorus',
+    weight: 30.9738,
+    symbol: 'P',
+  },
+  { amount: 123, position: 16, name: 'Sulfur', weight: 32.065, symbol: 'S' },
+  { amount: 123, position: 17, name: 'Chlorine', weight: 35.453, symbol: 'Cl' },
+  { amount: 123, position: 18, name: 'Argon', weight: 39.948, symbol: 'Ar' },
+  {
+    amount: 123,
+    position: 19,
+    name: 'Potassium',
+    weight: 39.0983,
+    symbol: 'K',
+  },
+  { amount: 123, position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca' },
+];

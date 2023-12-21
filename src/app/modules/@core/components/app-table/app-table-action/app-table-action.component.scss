@@ -1,0 +1,16 @@
+@import "variables";
+
+#app-table-action {
+  > article {
+    @apply flex items-center gap-1;
+  }
+}
+
+.mat-mdc-menu-content,
+.mat-mdc-menu-content .mat-mdc-menu-item .mat-mdc-menu-item-text {
+  @apply flex items-center gap-2;
+
+  &:hover {
+    color: $primary;
+  }
+}

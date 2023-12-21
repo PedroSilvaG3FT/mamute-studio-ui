@@ -7,6 +7,19 @@
   </nav>
 
   <mat-tab-group>
+    <mat-tab label="Table">
+      <app-table
+        actionMenuMode
+        [data]="tableData"
+        [columns]="tableColumns"
+        [actions]="tableActions"
+        [pagination]="pagination"
+        (onSortChange)="onSortChange($event)"
+        (onPaginationChange)="onPaginationChange($event)"
+      >
+      </app-table>
+    </mat-tab>
+
     <mat-tab label="Form">
       <app-form-example />
     </mat-tab>

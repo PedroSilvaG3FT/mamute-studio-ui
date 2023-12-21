@@ -1,0 +1,25 @@
+<section id="app-table-action">
+  @if(menuMode) {
+  <button mat-button [matMenuTriggerFor]="menu">
+    <i class="iconify text-lg" data-icon="pepicons-pencil:dots-y"></i>
+  </button>
+
+  <mat-menu #menu="matMenu">
+    @for (action of actions; track $index) {
+    <button mat-menu-item (click)="action.callback(element, index)">
+      <i class="iconify" [attr.data-icon]="action.icon"></i>
+      {{ action.title }}
+    </button>
+
+    }
+  </mat-menu>
+  } @else {
+  <article>
+    @for (action of actions; track $index) {
+    <button [title]="action.title" (click)="action.callback(element, index)">
+      <i class="iconify" [attr.data-icon]="action.icon"></i>
+    </button>
+    }
+  </article>
+  }
+</section>

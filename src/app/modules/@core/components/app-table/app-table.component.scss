@@ -1,0 +1,10 @@
+@import "variables";
+
+#app-table {
+  @apply p-2 rounded-xl;
+  background: $bg-secondary;
+
+  > table {
+    @apply w-full;
+  }
+}

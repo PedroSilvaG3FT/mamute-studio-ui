@@ -1,7 +1,11 @@
 @import "./form";
 @import "./snackbar";
 
-
 mat-tab-body {
   @apply pt-4;
+}
+
+.dark .mat-elevation-z8,
+.dark .mat-mdc-elevation-specific.mat-elevation-z8 {
+  box-shadow: 0px 0px 16px 0px #141313bf !important;
 }
