@@ -1,7 +1,7 @@
 @import "variables";
 
 #page-nav {
-  @apply flex gap-4 px-8 py-4 mb-8 items-center rounded-xl shadow-md;
+  @apply flex gap-4 px-8 py-4 mb-8 items-center rounded-xl shadow-md mobile:flex-wrap;
   background: $bg-secondary;
 
   > a {
@@ -15,6 +15,6 @@
   }
 
   > app-theme-selection {
-    @apply ml-auto;
+    @apply ml-auto mobile:m-auto;
   }
 }

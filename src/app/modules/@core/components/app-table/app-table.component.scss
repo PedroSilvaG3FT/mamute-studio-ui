@@ -8,7 +8,11 @@
     @apply m-4;
   }
 
-  > table {
+  > section {
+    @apply w-full overflow-x-auto;
+  }
+
+  table {
     @apply w-full;
   }
 }

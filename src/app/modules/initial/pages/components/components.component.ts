@@ -184,7 +184,7 @@ export class ComponentsComponent {
     },
   ];
   public tableColumns: ITableCell[] = [
-    { def: 'position', key: 'position', label: 'No.' },
+    { def: 'position', key: 'position', label: 'No.', sticky: true },
     { def: 'name', key: 'name', label: 'Name' },
     { def: 'amount', key: 'amount', label: 'Amount' },
     { def: 'weight', key: 'weight', label: 'Weight' },

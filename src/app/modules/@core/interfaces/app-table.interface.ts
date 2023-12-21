@@ -2,6 +2,7 @@ export interface ITableCell {
   def: string;
   key: string;
   label: string;
+  sticky?: boolean;
 }
 
 export interface ITableCellAction<Data> {
