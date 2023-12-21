@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { MatTabsModule } from '@angular/material/tabs';
-import { RouterModule } from '@angular/router';
 
 import { JsonPipe } from '@angular/common';
 import { FormsModule, Validators } from '@angular/forms';
@@ -13,7 +12,6 @@ import { TerminalWindowComponent } from '../../components/terminal-window/termin
 
 import { Sort } from '@angular/material/sort';
 import { AppTableComponent } from '../../../@core/components/app-table/app-table.component';
-import { AppThemeSelectionComponent } from '../../../@core/components/app-theme-selection/app-theme-selection.component';
 import { AppCheckboxComponent } from '../../../@core/components/form/app-checkbox/app-checkbox.component';
 import { filterListPagination } from '../../../@core/functions/pagination.function';
 import { IPagination } from '../../../@core/interfaces/app-pagination.interface';
@@ -21,6 +19,7 @@ import {
   ITableCell,
   ITableCellAction,
 } from '../../../@core/interfaces/app-table.interface';
+import { PageNavComponent } from '../../components/page-nav/page-nav.component';
 
 @Component({
   standalone: true,
@@ -30,14 +29,13 @@ import {
   imports: [
     JsonPipe,
     FormsModule,
-    RouterModule,
     MatTabsModule,
+    PageNavComponent,
     AppTableComponent,
     AppCheckboxComponent,
     FormExampleComponent,
     TerminalWindowComponent,
     AppFormGeneratorComponent,
-    AppThemeSelectionComponent,
   ],
 })
 export class ComponentsComponent {

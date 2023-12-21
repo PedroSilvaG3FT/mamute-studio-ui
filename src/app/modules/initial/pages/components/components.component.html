@@ -1,14 +1,10 @@
 <section id="components" class="app-container">
-  <nav>
-    <a [routerLink]="['/']">Voltar</a>
-    <h1>Components</h1>
-
-    <app-theme-selection />
-  </nav>
+  <page-nav backRoute="/" title="Components" />
 
   <mat-tab-group>
     <mat-tab label="Table">
       <app-table
+        title="Table Example"
         actionMenuMode
         [data]="tableData"
         [columns]="tableColumns"

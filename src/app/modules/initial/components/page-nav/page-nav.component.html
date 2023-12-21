@@ -1,1 +1,10 @@
-<p>page-nav works!</p>
+<nav id="page-nav" animate animation="animate__fadeInDown">
+  <a [routerLink]="[backRoute]">
+    <i class="iconify text-lg" data-icon="iconamoon:arrow-left-2-bold"></i>
+    Voltar
+  </a>
+
+  <h1>{{ title }}</h1>
+
+  <app-theme-selection />
+</nav>

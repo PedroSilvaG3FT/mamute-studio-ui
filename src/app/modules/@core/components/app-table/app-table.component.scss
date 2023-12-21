@@ -4,6 +4,10 @@
   @apply p-2 rounded-xl;
   background: $bg-secondary;
 
+  > h2 {
+    @apply m-4;
+  }
+
   > table {
     @apply w-full;
   }
