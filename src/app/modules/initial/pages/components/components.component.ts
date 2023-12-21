@@ -51,6 +51,21 @@ export class ComponentsComponent {
   public formExample = this.formGeneratorService.init<IFormGeneratorExample>([
     [
       {
+        name: 'slider',
+        type: 'slider',
+        label: 'Slider',
+        additional: { slider: { min: 0, max: 10, step: 0.5 } },
+      },
+
+      {
+        type: 'slider',
+        name: 'sliderRange',
+        label: 'Slider Range',
+        additional: { slider: { min: 0, max: 10, step: 0.5, range: true } },
+      },
+    ],
+    [
+      {
         name: 'fileUpload',
         type: 'file-upload',
         label: 'File upload',

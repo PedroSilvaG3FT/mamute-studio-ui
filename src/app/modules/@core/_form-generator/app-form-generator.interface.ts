@@ -21,6 +21,14 @@ export interface IDatePickerAdditional {
   isDatepickerRange: boolean;
 }
 
+export interface ISliderAdditional {
+  min: number;
+  max: number;
+  step: number;
+  range: boolean;
+  showTickMarks: boolean;
+}
+
 export interface IImageCropperAdditional {
   scale: number;
   imageURL: string;
@@ -34,6 +42,7 @@ export interface IImageCropperAdditional {
   maintainAspectRatio: boolean;
 }
 export interface IFormGeneratorFieldAdditional {
+  slider: Partial<ISliderAdditional>;
   checkbox: Partial<ICheckboxAdditional>;
   textEditor: Partial<ITextEditorAdditional>;
   fileUpload: Partial<IFileUploadAdditional>;

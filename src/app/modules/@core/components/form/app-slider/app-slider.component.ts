@@ -24,11 +24,14 @@ import { ModelControl } from '../model-control';
   ],
 })
 export class AppSliderComponent extends ModelControl {
-  @Input({ required: true }) min: number = 0;
-  @Input({ required: true }) max: number = 0;
-  @Input({ required: true }) step: number = 0;
-  @Input({ transform: booleanAttribute }) range: boolean = false;
-  @Input({ transform: booleanAttribute }) showTickMarks: boolean = false;
+  @Input({ required: true }) min: number = APP_SLIDER_UPLOAD_DEFAULT_VALUES.min;
+  @Input({ required: true }) max: number = APP_SLIDER_UPLOAD_DEFAULT_VALUES.max;
+  @Input({ required: true }) step: number =
+    APP_SLIDER_UPLOAD_DEFAULT_VALUES.step;
+  @Input({ transform: booleanAttribute }) range: boolean =
+    APP_SLIDER_UPLOAD_DEFAULT_VALUES.range;
+  @Input({ transform: booleanAttribute }) showTickMarks: boolean =
+    APP_SLIDER_UPLOAD_DEFAULT_VALUES.showTickMarks;
 
   public currentGroup: FormGroup = this.group;
 
@@ -46,7 +49,7 @@ export class AppSliderComponent extends ModelControl {
     if (this.range) {
       this.currentGroup = this.rangeControl;
       this.setRangeInitialValue();
-    }
+    } else this.currentGroup = this.group;
 
     this.$modelControl = this.rangeControl.valueChanges.subscribe((value) => {
       this.group.patchValue({ [this.formControlName]: value });
@@ -62,3 +65,11 @@ export class AppSliderComponent extends ModelControl {
     });
   }
 }
+
+export const APP_SLIDER_UPLOAD_DEFAULT_VALUES = {
+  min: 0,
+  max: 0,
+  step: 0,
+  range: false,
+  showTickMarks: false,
+};

@@ -19,6 +19,10 @@ import {
 import { AppInputComponent } from '../components/form/app-input/app-input.component';
 import { AppRadioButtonComponent } from '../components/form/app-radio-button/app-radio-button.component';
 import { AppSelectComponent } from '../components/form/app-select/app-select.component';
+import {
+  APP_SLIDER_UPLOAD_DEFAULT_VALUES,
+  AppSliderComponent,
+} from '../components/form/app-slider/app-slider.component';
 import { AppTextEditorComponent } from '../components/form/app-text-editor/app-text-editor.component';
 import { AppTextareaComponent } from '../components/form/app-textarea/app-textarea.component';
 import { IFormGeneratorField } from './app-form-generator.interface';
@@ -26,6 +30,7 @@ import { IFormGeneratorField } from './app-form-generator.interface';
 const components = {
   input: AppInputComponent,
   select: AppSelectComponent,
+  slider: AppSliderComponent,
   radio: AppRadioButtonComponent,
   textarea: AppTextareaComponent,
   checkbox: AppCheckboxComponent,
@@ -72,6 +77,7 @@ export class FieldGeneratorDirective {
         radio: () => {},
         select: () => {},
         textarea: () => {},
+        slider: () => this.setSliderProps(),
         checkbox: () => this.setCheckboxProps(),
         datepicker: () => this.setDatePickerProps(),
         'text-editor': () => this.setTextEditorProps(),
@@ -102,6 +108,20 @@ export class FieldGeneratorDirective {
 
     this.componentRef.instance.toggle =
       this.field.additional.checkbox?.isToggle || false;
+  }
+
+  private setSliderProps() {
+    if (!this.field.additional) return;
+
+    const { instance } = this.componentRef;
+    const { slider } = this.field.additional;
+    const props = APP_SLIDER_UPLOAD_DEFAULT_VALUES;
+
+    instance.min = slider?.min || props.min;
+    instance.max = slider?.max || props.max;
+    instance.step = slider?.step || props.step;
+    instance.range = slider?.range || props.range;
+    instance.showTickMarks = slider?.showTickMarks || props.showTickMarks;
   }
 
   private setTextEditorProps() {
