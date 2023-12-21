@@ -17,12 +17,11 @@
         title="Clone project"
       />
 
+      <app-terminal-window title="Initialize project" [content]="initProject" />
       <app-terminal-window
-        [content]="dependencies"
-        title="Dependencies and libraries present in the project"
+        title="Initialize storybook"
+        [content]="initProjectStorybook"
       />
-      <app-terminal-window [content]="dependenciesDev" />
-      <app-terminal-window [content]="angularMaterial" />
     </section>
   </div>
 </section>

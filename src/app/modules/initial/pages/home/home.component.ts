@@ -16,7 +16,8 @@ export class HomeComponent {
   public dependenciesDev: string = `npm i autoprefixer postcss tailwindcss -D`;
   public gitClone: string = `git clone https://github.com/PedroSilvaG3FT/angular-boilerplate.git`;
 
-  public dependenciesTextEditor: string = `npm i @kolkov/angular-editor @fortawesome/free-solid-svg-icons @fortawesome/angular-fontawesome @fortawesome/fontawesome-svg-core`;
+  public initProject: string = `npm start`;
+  public initProjectStorybook: string = `npm run storybook`;
 
   constructor() {}
 }

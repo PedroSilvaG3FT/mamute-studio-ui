@@ -1,51 +1,5 @@
 <section id="form-example">
   <form class="pt-8">
-    <app-slider
-      [min]="0"
-      [max]="10"
-      [step]="1"
-      showTickMarks
-      name="slider"
-      label="Slider"
-      [(ngModel)]="form.slider"
-      [initialValue]="form.slider"
-    />
-
-    <app-slider
-      range
-      [min]="0"
-      [max]="10"
-      [step]="1"
-      name="sliderRange"
-      label="Slider Range"
-      [(ngModel)]="form.sliderRange"
-      [initialValue]="form.sliderRange"
-    />
-
-    <app-image-cropper
-      name="imageCropper"
-      [(ngModel)]="form.imageCropper"
-      [initialValue]="form.imageCropper"
-    />
-
-    <app-file-upload
-      [maxFiles]="5"
-      name="fileUpload"
-      label="File upload"
-      [fileTypes]="['image/*']"
-      placeholder="Insert fles"
-      [(ngModel)]="form.fileUpload"
-      [initialValue]="form.fileUpload"
-    />
-
-    <app-text-editor
-      name="textEditor"
-      className="w-full"
-      label="Text editor"
-      [(ngModel)]="form.textEditor"
-      [initialValue]="form.textEditor"
-    />
-
     <app-input
       name="input"
       label="Input"
@@ -94,6 +48,52 @@
       [items]="defaultOptions"
       [(ngModel)]="form.radio"
       [initialValue]="form.radio"
+    />
+
+    <app-slider
+      [min]="0"
+      [max]="10"
+      [step]="1"
+      showTickMarks
+      name="slider"
+      label="Slider"
+      [(ngModel)]="form.slider"
+      [initialValue]="form.slider"
+    />
+
+    <app-slider
+      range
+      [min]="0"
+      [max]="10"
+      [step]="1"
+      name="sliderRange"
+      label="Slider Range"
+      [(ngModel)]="form.sliderRange"
+      [initialValue]="form.sliderRange"
+    />
+
+    <app-image-cropper
+      name="imageCropper"
+      [(ngModel)]="form.imageCropper"
+      [initialValue]="form.imageCropper"
+    />
+
+    <app-file-upload
+      [maxFiles]="5"
+      name="fileUpload"
+      label="File upload"
+      [fileTypes]="['image/*']"
+      placeholder="Insert fles"
+      [(ngModel)]="form.fileUpload"
+      [initialValue]="form.fileUpload"
+    />
+
+    <app-text-editor
+      name="textEditor"
+      className="w-full"
+      label="Text editor"
+      [(ngModel)]="form.textEditor"
+      [initialValue]="form.textEditor"
     />
 
     <app-checkbox
