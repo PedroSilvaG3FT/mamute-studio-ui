@@ -10,6 +10,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { DatePickerRangeValue } from '../../../types/datepicker.type';
 import { ModelControl } from '../model-control';
 
 @Component({
@@ -45,9 +46,19 @@ export class AppDatepickerComponent extends ModelControl {
 
   ngOnInit() {
     if (!this.isDynamic) this.initMonitoringChanges();
+    if (this.range) this.setRangeInitialValue();
 
     this.$modelControl = this.rangeControl.valueChanges.subscribe((value) => {
       this.group.patchValue({ [this.formControlName]: value });
+    });
+  }
+
+  setRangeInitialValue() {
+    if (typeof this.initialValue !== 'object' || !this.initialValue) return;
+
+    this.rangeControl.setValue({
+      start: (this.initialValue as DatePickerRangeValue).start,
+      end: (this.initialValue as DatePickerRangeValue).end,
     });
   }
 }

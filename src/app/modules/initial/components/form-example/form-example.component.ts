@@ -29,14 +29,19 @@ export class FormExampleComponent {
   public form = {
     radio: 1,
     select: 1,
+    slider: 4,
     input: 'Teste',
     checkbox: true,
     fileUpload: [],
     imageCropper: null,
     textarea: 'Textarea',
     datepicker: new Date(),
-    datepickerRange: null,
+    datepickerRange: {
+      start: new Date(2023, 10, 10),
+      end: new Date(2023, 10, 13),
+    },
     textEditor: `<b>INITIAL</b>`,
+    sliderRange: { min: 2, max: 6 },
   };
 
   public onSubmit() {

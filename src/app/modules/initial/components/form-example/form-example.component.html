@@ -1,5 +1,27 @@
 <section id="form-example">
-  <form>
+  <form class="pt-8">
+    <app-slider
+      [min]="0"
+      [max]="10"
+      [step]="1"
+      showTickMarks
+      name="slider"
+      label="Slider"
+      [(ngModel)]="form.slider"
+      [initialValue]="form.slider"
+    />
+
+    <app-slider
+      range
+      [min]="0"
+      [max]="10"
+      [step]="1"
+      name="sliderRange"
+      label="Slider Range"
+      [(ngModel)]="form.sliderRange"
+      [initialValue]="form.sliderRange"
+    />
+
     <app-image-cropper
       name="imageCropper"
       [(ngModel)]="form.imageCropper"

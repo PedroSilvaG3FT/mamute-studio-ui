@@ -6,11 +6,13 @@ import { AppImageCropperComponent } from './app-image-cropper/app-image-cropper.
 import { AppInputComponent } from './app-input/app-input.component';
 import { AppRadioButtonComponent } from './app-radio-button/app-radio-button.component';
 import { AppSelectComponent } from './app-select/app-select.component';
+import { AppSliderComponent } from './app-slider/app-slider.component';
 import { AppTextEditorComponent } from './app-text-editor/app-text-editor.component';
 import { AppTextareaComponent } from './app-textarea/app-textarea.component';
 
 export const AppFormComponents = [
   AppInputComponent,
+  AppSliderComponent,
   AppSelectComponent,
   AppTextareaComponent,
   AppCheckboxComponent,

@@ -1,0 +1,5 @@
+#app-slider {
+  > mat-slider {
+    @apply w-full;
+  }
+}
