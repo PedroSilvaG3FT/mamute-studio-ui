@@ -19,6 +19,7 @@ import {
   ITableCell,
   ITableCellAction,
 } from '../../../@core/interfaces/app-table.interface';
+import { AlertService } from '../../../@core/services/alert.service';
 import { PageNavComponent } from '../../components/page-nav/page-nav.component';
 
 @Component({
@@ -191,7 +192,10 @@ export class ComponentsComponent {
     { def: 'symbol', key: 'symbol', label: 'Symbol' },
   ];
 
-  constructor(private formGeneratorService: FormGeneratorService) {}
+  constructor(
+    private alertService: AlertService,
+    private formGeneratorService: FormGeneratorService
+  ) {}
 
   ngOnInit() {
     this.formExample.setOptionsField('radio', this.defaultOptions);
@@ -217,7 +221,7 @@ export class ComponentsComponent {
   }
 
   public handleEdit(item: PeriodicElement) {
-    console.log(item);
+    this.alertService.snackBar.open(item.name, 'close');
   }
 
   public onSubmit(model: IFormGeneratorExample) {
