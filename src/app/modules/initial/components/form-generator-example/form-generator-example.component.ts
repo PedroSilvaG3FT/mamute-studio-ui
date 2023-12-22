@@ -141,7 +141,7 @@ export class FormGeneratorExampleComponent {
 
     const initialValue: Partial<IFormGeneratorExample> = {
       age: 10,
-      radio: 3,
+      radio: 2,
       select: 2,
       slider: 5,
       isAdmin: true,
