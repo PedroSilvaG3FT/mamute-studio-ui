@@ -49,9 +49,10 @@ export class AppSliderComponent extends ModelControl {
     if (this.range) {
       this.currentGroup = this.rangeControl;
       this.setRangeInitialValue();
-    } else this.currentGroup = this.group;
-
-    this.setLabelValues(this.initialValue);
+    } else {
+      this.currentGroup = this.group;
+      this.setLabelValues(this.initialValue);
+    }
 
     this.$modelControl = this.rangeControl.valueChanges.subscribe((value) => {
       this.group.patchValue({ [this.formControlName]: value });
@@ -81,6 +82,7 @@ export class AppSliderComponent extends ModelControl {
         max: controlValue.max,
       });
 
+      this.setLabelValues(controlValue);
       return;
     }
 
