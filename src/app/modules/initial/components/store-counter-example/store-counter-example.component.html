@@ -1,0 +1,25 @@
+<section id="store-counter-example">
+  <label>Store example</label>
+
+  <article>
+    <p>
+      <span>Count (state): </span>
+      {{ store.count() }}
+    </p>
+
+    <p>
+      <span>Double Count (computed): </span>
+      {{ store.doubleCount() }}
+    </p>
+
+    <section>
+      <button mat-button (click)="store.decrement()">
+        <i class="iconify" data-icon="typcn:minus"></i>
+      </button>
+
+      <button mat-button (click)="store.increment()">
+        <i class="iconify" data-icon="typcn:plus"></i>
+      </button>
+    </section>
+  </article>
+</section>

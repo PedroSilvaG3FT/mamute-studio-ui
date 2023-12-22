@@ -1,0 +1,27 @@
+@import "variables";
+
+#store-counter-example {
+  @apply my-6;
+
+  > article {
+    @apply p-4 rounded-xl shadow-md flex gap-4 items-center;
+    background: $bg-secondary;
+
+    > p {
+      @apply pr-4;
+      border-right: 1px solid $placeholder;
+
+      &:last-of-type {
+        border-right: none;
+      }
+
+      > span {
+        color: $primary;
+      }
+    }
+
+    > section {
+      @apply ml-auto flex gap-4 items-center;
+    }
+  }
+}

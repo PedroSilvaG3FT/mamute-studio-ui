@@ -1,11 +1,7 @@
 <section id="components" class="app-container">
   <page-nav backRoute="/" title="Components" />
 
-  <p>Count: {{ store.count() }}</p>
-  <p>Double Count: {{ store.doubleCount() }}</p>
-
-  <button (click)="store.increment()">Increment</button>
-  <button (click)="store.decrement()">Decrement</button>
+  <store-counter-example />
 
   <mat-tab-group>
     <mat-tab label="Form Generator">
