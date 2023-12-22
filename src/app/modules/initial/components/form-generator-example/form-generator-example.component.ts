@@ -116,7 +116,16 @@ export class FormGeneratorExampleComponent {
         additional: { checkbox: { isToggle: true } },
       },
     ],
-    [{ name: 'fileUpload', type: 'file-upload', label: 'File upload' }],
+    [
+      {
+        name: 'fileUpload',
+        type: 'file-upload',
+        label: 'File upload',
+        additional: {
+          fileUpload: { maxFiles: 3 },
+        },
+      },
+    ],
     [{ name: 'imageCropper', type: 'image-cropper', label: 'Image Cropper' }],
   ]);
 
