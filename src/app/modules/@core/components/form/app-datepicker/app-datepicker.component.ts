@@ -54,6 +54,17 @@ export class AppDatepickerComponent extends ModelControl {
   }
 
   setRangeInitialValue() {
+    const controlValue = this.group.controls[this.formControlName].value;
+
+    if (controlValue) {
+      this.rangeControl.setValue({
+        end: controlValue.end,
+        start: controlValue.start,
+      });
+
+      return;
+    }
+
     if (typeof this.initialValue !== 'object' || !this.initialValue) return;
 
     this.rangeControl.setValue({

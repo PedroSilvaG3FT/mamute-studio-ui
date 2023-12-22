@@ -1,6 +1,6 @@
 <article id="app-text-editor" [class]="className" [formGroup]="group">
   @if (!!label) {
-  <label [for]="id">{{ label }}</label>
+  <label [for]="id" class="form-control-label">{{ label }}</label>
   }
   <angular-editor
     [id]="id"

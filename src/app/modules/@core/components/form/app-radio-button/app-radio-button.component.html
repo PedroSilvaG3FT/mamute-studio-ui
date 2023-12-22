@@ -1,5 +1,10 @@
 <article id="app-radio-button" [class]="className" [formGroup]="group">
-  <mat-label id="example-radio-group-label-{{ name }}">{{ label }}</mat-label>
+  <mat-label
+    class="form-control-label"
+    id="example-radio-group-label-{{ name }}"
+  >
+    {{ label }}
+  </mat-label>
 
   <mat-radio-group [id]="id" [name]="name" [formControlName]="formControlName">
     @for (item of items; track item) {

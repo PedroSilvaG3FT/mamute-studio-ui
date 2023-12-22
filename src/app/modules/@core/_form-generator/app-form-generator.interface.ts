@@ -55,9 +55,9 @@ export interface IFormGeneratorFieldAdditional {
   options: IFormOption[];
 }
 
-export interface IFormGeneratorField {
-  name: string;
+export interface IFormGeneratorField<FieldKeyType> {
   label: string;
+  name: FieldKeyType;
   type: FormGeneratorFieldType;
   initialValue?: ModelControlType;
   additional?: Partial<IFormGeneratorFieldAdditional>;
@@ -65,12 +65,4 @@ export interface IFormGeneratorField {
   validators?: ((
     control: AbstractControl<any, any>
   ) => ValidationErrors | null)[];
-}
-
-export interface IFormGeneratorConfig {
-  fields: IFormGeneratorField[][];
-}
-
-export interface IFormGeneratorFields {
-  fields: IFormGeneratorField[][];
 }

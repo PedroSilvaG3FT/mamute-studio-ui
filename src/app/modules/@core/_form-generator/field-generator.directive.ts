@@ -49,7 +49,7 @@ type HandlerCallbackPropsType = { [key in FormGeneratorFieldType]: Function };
 })
 export class FieldGeneratorDirective {
   @Input({ required: true }) group!: FormGroup;
-  @Input({ required: true }) field!: IFormGeneratorField;
+  @Input({ required: true }) field!: IFormGeneratorField<{}>;
 
   private componentRef!: ComponentRef<any>;
 

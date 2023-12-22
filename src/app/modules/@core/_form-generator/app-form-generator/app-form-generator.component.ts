@@ -32,46 +32,33 @@ export class AppFormGeneratorComponent {
   @Input() actionPositionY: 'top' | 'bottom' = 'top';
   @Input() actionPositionX: 'left' | 'right' = 'right';
 
-  @Input({ required: true }) fields: IFormGeneratorField[][] = [];
   @Input({ transform: booleanAttribute }) column: boolean = false;
+  @Input({ required: true }) fields: IFormGeneratorField<{}>[][] = [];
   @Input({ transform: booleanAttribute }) watchValues: boolean = false;
   @Input({ transform: booleanAttribute }) mobileColumn: boolean = false;
+  @Input({ required: true }) formGroup: FormGroup = this.formBuilder.group({});
 
   @Output() onSubmit = new EventEmitter();
   @Output() onValueChanges = new EventEmitter();
 
   public dynamicColumClass: string = '';
   public readonly defaultFieldWidth: string = '100%';
-  public formGroup: FormGroup = this.formBuilder.group({});
 
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
-    this.initForm();
+    this.initWatchValues();
   }
 
-  private initForm() {
-    const group = this.fields.flat().reduce((initial, field) => {
-      const validators = field.validators || [];
+  private initWatchValues() {
+    if (!this.watchValues) return;
 
-      return {
-        ...initial,
-        [field.name]: [field.initialValue, ...validators],
-      };
-    }, {});
-
-    this.formGroup = this.formBuilder.group(group);
-    this.formGroup.controls;
-
-    if (this.watchValues) {
-      this.formGroup.valueChanges.subscribe((value) => {
-        this.onValueChanges.emit(value);
-      });
-    }
+    this.formGroup.valueChanges.subscribe((value) => {
+      this.onValueChanges.emit(value);
+    });
   }
 
   public handleSubmit() {
-    console.log(this.formGroup)
-    // this.onSubmit.emit(this.formGroup.value);
+    this.onSubmit.emit(this.formGroup.value);
   }
 }

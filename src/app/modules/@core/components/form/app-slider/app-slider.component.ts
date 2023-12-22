@@ -73,6 +73,17 @@ export class AppSliderComponent extends ModelControl {
   }
 
   private setRangeInitialValue() {
+    const controlValue = this.group.controls[this.formControlName].value;
+
+    if (controlValue) {
+      this.rangeControl.setValue({
+        min: controlValue.min,
+        max: controlValue.max,
+      });
+
+      return;
+    }
+
     if (typeof this.initialValue !== 'object' || !this.initialValue) return;
 
     this.rangeControl.setValue({

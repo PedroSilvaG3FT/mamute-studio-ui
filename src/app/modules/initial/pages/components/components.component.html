@@ -2,6 +2,23 @@
   <page-nav backRoute="/" title="Components" />
 
   <mat-tab-group>
+    <mat-tab label="Form Generator">
+      <section class="form-generator-container">
+        <app-form-generator
+          watchValues
+          mobileColumn
+          actionPositionX="left"
+          actionPositionY="bottom"
+          [fields]="formExample.fields"
+          (onSubmit)="onSubmit($event)"
+          [formGroup]="formExample.group"
+          (onValueChanges)="onValueChange($event)"
+        />
+
+        <app-terminal-window [content]="formValue | json" />
+      </section>
+    </mat-tab>
+
     <mat-tab label="Form">
       <app-form-example />
     </mat-tab>
@@ -18,22 +35,6 @@
         (onPaginationChange)="onPaginationChange($event)"
       >
       </app-table>
-    </mat-tab>
-
-    <mat-tab label="Form Generator">
-      <section class="form-generator-container">
-        <app-form-generator
-          (onValueChanges)="onValueChange($event)"
-          [fields]="formExample.fields"
-          (onSubmit)="onSubmit($event)"
-          actionPositionY="bottom"
-          actionPositionX="left"
-          mobileColumn
-          watchValues
-        />
-
-        <app-terminal-window [content]="formValue | json" />
-      </section>
     </mat-tab>
   </mat-tab-group>
 </section>
