@@ -2,8 +2,8 @@ import { JsonPipe, NgClass, NgStyle } from '@angular/common';
 import { ReactiveFormsModule, Validators } from '@angular/forms';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { AppFormGeneratorComponent } from '../../app/modules/@core/_form-generator/app-form-generator/app-form-generator.component';
-import { FieldGeneratorDirective } from '../../app/modules/@core/_form-generator/field-generator.directive';
+import { AppFormGeneratorComponent } from '../../app/modules/@core/components/_form-generator/app-form-generator/app-form-generator.component';
+import { FieldGeneratorDirective } from '../../app/modules/@core/components/_form-generator/field-generator.directive';
 import { StorybookFormBase } from './_base.form';
 
 const storybookFormBase = new StorybookFormBase();

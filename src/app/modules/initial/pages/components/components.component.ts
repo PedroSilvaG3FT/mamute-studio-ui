@@ -3,8 +3,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 
 import { JsonPipe } from '@angular/common';
 import { FormGroup, FormsModule, Validators } from '@angular/forms';
-import { AppFormGeneratorComponent } from '../../../@core/_form-generator/app-form-generator/app-form-generator.component';
-import { FormGeneratorService } from '../../../@core/_form-generator/form-generator.service';
+import { AppFormGeneratorComponent } from '../../../@core/components/_form-generator/app-form-generator/app-form-generator.component';
+import { FormGeneratorService } from '../../../@core/components/_form-generator/form-generator.service';
 import { IFormOption } from '../../../@core/interfaces/app-form.interface';
 import { DatePickerRangeValue } from '../../../@core/types/datepicker.type';
 import { FormExampleComponent } from '../../components/form-example/form-example.component';

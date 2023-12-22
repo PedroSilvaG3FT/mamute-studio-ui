@@ -6,25 +6,25 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { AppCheckboxComponent } from '../components/form/app-checkbox/app-checkbox.component';
-import { AppDatepickerComponent } from '../components/form/app-datepicker/app-datepicker.component';
+import { AppCheckboxComponent } from '../form/app-checkbox/app-checkbox.component';
+import { AppDatepickerComponent } from '../form/app-datepicker/app-datepicker.component';
 import {
   APP_FILE_UPLOAD_DEFAULT_VALUES,
   AppFileUploadComponent,
-} from '../components/form/app-file-upload/app-file-upload.component';
+} from '../form/app-file-upload/app-file-upload.component';
 import {
   APP_IMAGE_CROPPER_DEFAULT_VALUES,
   AppImageCropperComponent,
-} from '../components/form/app-image-cropper/app-image-cropper.component';
-import { AppInputComponent } from '../components/form/app-input/app-input.component';
-import { AppRadioButtonComponent } from '../components/form/app-radio-button/app-radio-button.component';
-import { AppSelectComponent } from '../components/form/app-select/app-select.component';
+} from '../form/app-image-cropper/app-image-cropper.component';
+import { AppInputComponent } from '../form/app-input/app-input.component';
+import { AppRadioButtonComponent } from '../form/app-radio-button/app-radio-button.component';
+import { AppSelectComponent } from '../form/app-select/app-select.component';
 import {
   APP_SLIDER_UPLOAD_DEFAULT_VALUES,
   AppSliderComponent,
-} from '../components/form/app-slider/app-slider.component';
-import { AppTextEditorComponent } from '../components/form/app-text-editor/app-text-editor.component';
-import { AppTextareaComponent } from '../components/form/app-textarea/app-textarea.component';
+} from '../form/app-slider/app-slider.component';
+import { AppTextEditorComponent } from '../form/app-text-editor/app-text-editor.component';
+import { AppTextareaComponent } from '../form/app-textarea/app-textarea.component';
 import { IFormGeneratorField } from './app-form-generator.interface';
 
 const components = {

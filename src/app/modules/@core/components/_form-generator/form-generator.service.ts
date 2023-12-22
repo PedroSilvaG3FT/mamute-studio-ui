@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { IFormOption } from '../interfaces/app-form.interface';
+import { IFormOption } from '../../interfaces/app-form.interface';
 import { IFormGeneratorField } from './app-form-generator.interface';
 
 @Injectable({ providedIn: 'root' })
