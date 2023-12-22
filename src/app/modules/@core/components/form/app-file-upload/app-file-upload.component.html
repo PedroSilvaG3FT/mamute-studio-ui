@@ -31,7 +31,7 @@
     @for (item of files; track $index) {
     <li>
       <span>{{ item.name }}</span>
-      <button (click)="handleRemove($index)">
+      <button type="button" (click)="handleRemove($index)">
         <i class="iconify" data-icon="ep:close-bold"></i>
       </button>
     </li>

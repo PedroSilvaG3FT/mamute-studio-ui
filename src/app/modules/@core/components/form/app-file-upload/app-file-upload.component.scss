@@ -11,6 +11,11 @@
     @apply p-12 flex flex-col items-center justify-center rounded-xl w-full;
     border: 2px dashed $placeholder;
     color: $placeholder;
+
+    > p,
+    > span {
+      @apply text-center;
+    }
   }
 
   > ul {
@@ -23,6 +28,10 @@
 
       &:last-of-type {
         @apply mb-0;
+      }
+
+      > span {
+        @apply flex-1 truncate;
       }
 
       > button {
