@@ -10,9 +10,9 @@ import { TableExampleComponent } from '../../components/table-example/table-exam
 
 @Component({
   standalone: true,
-  selector: 'app-components',
-  styleUrl: './components.component.scss',
-  templateUrl: './components.component.html',
+  selector: 'app-features',
+  styleUrl: './features.component.scss',
+  templateUrl: './features.component.html',
   imports: [
     MatTabsModule,
     PageNavComponent,
@@ -22,4 +22,4 @@ import { TableExampleComponent } from '../../components/table-example/table-exam
     FormGeneratorExampleComponent,
   ],
 })
-export class ComponentsComponent {}
+export class FeaturesComponent {}

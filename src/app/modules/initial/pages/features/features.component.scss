@@ -1,6 +1,10 @@
 @import "variables";
 
-#components {
+#features {
+  > h4 {
+    @apply mt-4;
+  }
+
   .form-generator-container {
     @apply grid gap-4 grid-cols-2 mobile:grid-cols-1;
 

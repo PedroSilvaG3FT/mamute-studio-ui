@@ -8,11 +8,9 @@ export const INITIAL_ROUTES: Routes = [
       import('./home/home.component').then((c) => c.HomeComponent),
   },
   {
-    path: 'components',
-    data: { id: 'components', title: 'Components' },
+    path: 'features',
+    data: { id: 'features', title: 'Features' },
     loadComponent: () =>
-      import('./components/components.component').then(
-        (c) => c.ComponentsComponent
-      ),
+      import('./features/features.component').then((c) => c.FeaturesComponent),
   },
 ];

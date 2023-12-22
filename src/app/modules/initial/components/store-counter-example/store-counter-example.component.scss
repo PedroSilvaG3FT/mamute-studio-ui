@@ -1,27 +1,23 @@
 @import "variables";
 
 #store-counter-example {
-  @apply my-6;
+  @apply p-4 rounded-xl shadow-md flex gap-4 items-center mobile:flex-col mobile:items-start;
+  background: $bg-secondary;
 
-  > article {
-    @apply p-4 rounded-xl shadow-md flex gap-4 items-center;
-    background: $bg-secondary;
+  > p {
+    @apply pr-4;
+    border-right: 1px solid $placeholder;
 
-    > p {
-      @apply pr-4;
-      border-right: 1px solid $placeholder;
-
-      &:last-of-type {
-        border-right: none;
-      }
-
-      > span {
-        color: $primary;
-      }
+    &:last-of-type {
+      border-right: none;
     }
 
-    > section {
-      @apply ml-auto flex gap-4 items-center;
+    > span {
+      color: $primary;
     }
+  }
+
+  > section {
+    @apply ml-auto flex gap-4 items-center mobile:ml-0;
   }
 }
