@@ -1,0 +1,14 @@
+<section id="form-generator-example">
+  <app-terminal-window [content]="formValue | json" />
+
+  <app-form-generator
+    watchValues
+    mobileColumn
+    actionPositionX="left"
+    [fields]="form.fields"
+    [formGroup]="form.group"
+    actionPositionY="bottom"
+    (onSubmit)="onSubmit($event)"
+    (onValueChanges)="onValueChange($event)"
+  />
+</section>

@@ -1,0 +1,10 @@
+<app-table
+  title="Table Example"
+  actionMenuMode
+  [data]="tableData"
+  [columns]="tableColumns"
+  [actions]="tableActions"
+  [pagination]="pagination"
+  (onSortChange)="onSortChange($event)"
+  (onPaginationChange)="onPaginationChange($event)"
+/>

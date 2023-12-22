@@ -1,4 +1,6 @@
 <section id="form-example">
+  <app-terminal-window [content]="form | json" />
+
   <form class="pt-8">
     <app-input
       name="input"
@@ -107,6 +109,4 @@
       Submit
     </button>
   </form>
-
-  <app-terminal-window [content]="form | json" />
 </section>

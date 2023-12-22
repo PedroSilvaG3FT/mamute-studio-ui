@@ -3,38 +3,15 @@
 
   <mat-tab-group>
     <mat-tab label="Form Generator">
-      <section class="form-generator-container">
-        <app-form-generator
-          watchValues
-          mobileColumn
-          actionPositionX="left"
-          actionPositionY="bottom"
-          [fields]="formExample.fields"
-          (onSubmit)="onSubmit($event)"
-          [formGroup]="formExample.group"
-          (onValueChanges)="onValueChange($event)"
-        />
-
-        <app-terminal-window [content]="formValue | json" />
-      </section>
+      <form-generator-example />
     </mat-tab>
 
-    <mat-tab label="Form">
+    <mat-tab label="Form Fields">
       <app-form-example />
     </mat-tab>
 
     <mat-tab label="Table">
-      <app-table
-        title="Table Example"
-        actionMenuMode
-        [data]="tableData"
-        [columns]="tableColumns"
-        [actions]="tableActions"
-        [pagination]="pagination"
-        (onSortChange)="onSortChange($event)"
-        (onPaginationChange)="onPaginationChange($event)"
-      >
-      </app-table>
+      <table-example />
     </mat-tab>
   </mat-tab-group>
 </section>
