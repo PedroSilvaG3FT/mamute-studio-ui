@@ -6,6 +6,7 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { MatSliderModule } from '@angular/material/slider';
+import { ModelControlType } from '../../../types/model-control.type';
 import { SliderRangeValue } from '../../../types/slider.type';
 import { ModelControl } from '../model-control';
 
@@ -33,6 +34,8 @@ export class AppSliderComponent extends ModelControl {
   @Input({ transform: booleanAttribute }) showTickMarks: boolean =
     APP_SLIDER_UPLOAD_DEFAULT_VALUES.showTickMarks;
 
+  public minValue: number = 0;
+  public maxValue: number = 0;
   public currentGroup: FormGroup = this.group;
 
   public rangeControl = new FormGroup({
@@ -40,23 +43,36 @@ export class AppSliderComponent extends ModelControl {
     max: new FormControl<number | null>(null),
   });
 
-  public formatLabel(value: number) {
-    return String(value);
-  }
-
   ngOnInit() {
     if (!this.isDynamic) this.initMonitoringChanges();
+
     if (this.range) {
       this.currentGroup = this.rangeControl;
       this.setRangeInitialValue();
     } else this.currentGroup = this.group;
 
+    this.setLabelValues(this.initialValue);
+
     this.$modelControl = this.rangeControl.valueChanges.subscribe((value) => {
       this.group.patchValue({ [this.formControlName]: value });
     });
+
+    this.group.valueChanges.subscribe((value) => {
+      this.setLabelValues(value[this.formControlName]);
+    });
   }
 
-  setRangeInitialValue() {
+  private setLabelValues(value?: ModelControlType) {
+    if (!value) {
+      this.minValue = this.min;
+      this.maxValue = this.max;
+    } else if (typeof value === 'object') {
+      this.minValue = (value as SliderRangeValue)?.min || this.min;
+      this.maxValue = (value as SliderRangeValue)?.max || this.max;
+    } else this.maxValue = Number(value) || this.max;
+  }
+
+  private setRangeInitialValue() {
     if (typeof this.initialValue !== 'object' || !this.initialValue) return;
 
     this.rangeControl.setValue({

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { MatTabsModule } from '@angular/material/tabs';
 
 import { JsonPipe } from '@angular/common';
@@ -25,6 +25,7 @@ import { PageNavComponent } from '../../components/page-nav/page-nav.component';
 @Component({
   standalone: true,
   selector: 'app-components',
+  encapsulation: ViewEncapsulation.None,
   styleUrl: './components.component.scss',
   templateUrl: './components.component.html',
   imports: [

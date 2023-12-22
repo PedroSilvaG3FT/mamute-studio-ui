@@ -1,5 +1,12 @@
+@import "variables";
+
 #app-slider {
+  > section {
+    @apply w-full text-sm px-2 flex items-center justify-between;
+    color: $primary;
+  }
+
   > mat-slider {
-    @apply w-full;
+    width: calc(100% - 20px);
   }
 }

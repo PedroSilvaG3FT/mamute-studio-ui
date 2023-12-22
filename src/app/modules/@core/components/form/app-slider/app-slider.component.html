@@ -1,11 +1,15 @@
 <article id="app-slider" [class]="className" [formGroup]="currentGroup">
   <label>{{ label }}</label>
+
+  <section>
+    <span>{{ minValue }}</span>
+    <span>{{ maxValue }}</span>
+  </section>
+
   <mat-slider
-    discrete
     [min]="min"
     [max]="max"
     [step]="step"
-    [displayWith]="formatLabel"
     [showTickMarks]="showTickMarks"
   >
     @if(!range) {
