@@ -16,7 +16,7 @@ export class AppThemeSelectionComponent {
   constructor(private themeService: ThemeService) {}
 
   ngOnInit() {
-    this.isDarkMode = this.themeService.currentTheme === 'dark';
+    this.isDarkMode = this.themeService.uiStore.theme() === 'dark';
   }
 
   public onToggleDarkMode() {

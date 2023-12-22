@@ -1,30 +1,21 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
+import { UiStore } from '../../../store/ui.store';
 import { THEME_CONFIG } from '../config/theme.config';
-import { STORAGE_THEME_STATE_KEY } from '../constants/storage.constant';
 import { ThemeType } from '../types/theme.type';
 
 @Injectable({ providedIn: 'root' })
 export class ThemeService {
-  private readonly defaultTheme: ThemeType = 'light';
-
-  constructor() {}
-
-  public get currentTheme() {
-    return (
-      (localStorage.getItem(STORAGE_THEME_STATE_KEY) as ThemeType) ||
-      this.defaultTheme
-    );
-  }
+  public uiStore = inject(UiStore);
 
   public setTheme(theme: ThemeType) {
     this.setVariables(theme);
 
     document.body.className = theme;
-    localStorage.setItem(STORAGE_THEME_STATE_KEY, theme);
+    this.uiStore.setTheme(theme);
   }
 
   public init() {
-    this.setTheme(this.currentTheme);
+    this.setTheme(this.uiStore.theme() as ThemeType);
   }
 
   public setVariables(theme: ThemeType) {
