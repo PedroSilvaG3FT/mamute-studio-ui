@@ -1,0 +1,5 @@
+#app-checkbox {
+  > mat-slide-toggle {
+    @apply mb-8;
+  }
+}

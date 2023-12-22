@@ -28,6 +28,7 @@ import { ModelControl } from '../model-control';
   ],
 })
 export class AppCheckboxComponent extends ModelControl {
+  @Input() toggleClassName: string = '';
   @Input({ transform: booleanAttribute }) toggle: boolean = false;
 
   ngOnInit() {

@@ -41,6 +41,10 @@
 
       &.mobile-column {
         @apply mobile:flex-col;
+
+        > div {
+          width: 100% !important;
+        }
       }
     }
   }
