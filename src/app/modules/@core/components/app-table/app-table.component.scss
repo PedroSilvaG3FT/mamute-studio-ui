@@ -15,4 +15,9 @@
   table {
     @apply w-full;
   }
+
+  .mat-header-action {
+    text-align: right !important;
+    padding-right: 34px !important;
+  }
 }

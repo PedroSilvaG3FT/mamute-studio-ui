@@ -28,6 +28,7 @@
     "@ngrx/signals": "^17.0.1",
     "animate.css": "^4.1.1",
     "date-fns": "^3.0.6",
+    "firebase": "^10.7.1",
     "ngx-image-cropper": "^7.1.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

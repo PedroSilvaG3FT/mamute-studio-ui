@@ -1,0 +1,15 @@
+<section id="firebase-example">
+  <button mat-button color="primary" (click)="createDocument()">
+    Create Random
+  </button>
+
+  <app-table
+    [data]="tableData"
+    [columns]="tableColumns"
+    [actions]="tableActions"
+    [pagination]="pagination"
+    [title]="'Firebase documents'"
+    actionColTitle="Actions"
+    (onPaginationChange)="onPaginationChange($event)"
+  />
+</section>

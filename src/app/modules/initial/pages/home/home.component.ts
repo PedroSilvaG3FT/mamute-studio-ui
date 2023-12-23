@@ -18,6 +18,4 @@ export class HomeComponent {
 
   public initProject: string = `npm start`;
   public initProjectStorybook: string = `npm run storybook`;
-
-  constructor() {}
 }

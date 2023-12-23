@@ -16,8 +16,12 @@
   } @else {
   <article>
     @for (action of actions; track $index) {
-    <button [title]="action.title" (click)="action.callback(element, index)">
-      <i class="iconify" [attr.data-icon]="action.icon"></i>
+    <button
+      mat-button
+      [title]="action.title"
+      (click)="action.callback(element, index)"
+    >
+      <i class="iconify text-lg" [attr.data-icon]="action.icon"></i>
     </button>
     }
   </article>
