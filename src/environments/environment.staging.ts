@@ -1,11 +1,6 @@
+import { FIREBASE_CONFIG } from '../app/modules/@core/firebase/firebase.config';
+
 export const environment = {
   production: false,
-  firebase: {
-    projectId: `iap-base`,
-    messagingSenderId: `1066573489407`,
-    storageBucket: `iap-base.appspot.com`,
-    authDomain: `iap-base.firebaseapp.com`,
-    apiKey: `AIzaSyAk4hO9FnWZDaYXNUTQgm6ScU3fATgfRhc`,
-    appId: `1:1066573489407:web:39b9037a7b1c14aefad8ca`,
-  },
+  firebase: FIREBASE_CONFIG,
 };
