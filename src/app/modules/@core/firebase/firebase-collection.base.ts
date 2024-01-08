@@ -59,7 +59,7 @@ export class FirebaseCollectionBase {
     return doc(this.db, collection, id);
   }
 
-  //#region: Protected methods
+  // #region: Protected methods
   protected async handlerGetAll<Data>(
     querys: QueryFieldFilterConstraint[] = []
   ) {
@@ -104,7 +104,7 @@ export class FirebaseCollectionBase {
       throw error;
     }
   }
-  //#endregion: Protected methods
+  // #endregion: Protected methods
 
   #init() {
     initializeApp(environment.firebase);
