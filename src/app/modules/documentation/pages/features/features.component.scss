@@ -8,7 +8,7 @@
   }
 
   > section {
-    @apply grid gap-4 grid-cols-[20%_1fr] tablet:grid-cols-1;
+    @apply grid gap-6 grid-cols-[20%_1fr] tablet:grid-cols-1;
 
     > aside {
       @apply tablet:hidden;

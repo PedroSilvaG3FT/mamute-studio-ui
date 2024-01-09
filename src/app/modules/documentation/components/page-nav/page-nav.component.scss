@@ -1,7 +1,7 @@
 @import "variables";
 
 #page-nav {
-  @apply flex gap-4 px-8 py-4 mb-8 items-center rounded-xl shadow-md mobile:flex-wrap;
+  @apply flex gap-4 px-8 py-4 mb-8 items-center rounded-xl mobile:flex-wrap;
   background: $bg-secondary;
 
   > a {

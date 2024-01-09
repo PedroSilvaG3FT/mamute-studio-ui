@@ -98,7 +98,8 @@ export class FirebaseFirestoreComponent {
         console.log('[GET BY ID]: ', response);
         this.alertService.snackBar.open(response.description, 'close');
       })
-      .catch((error) => this.handleError(error));
+      .catch((error) => this.handleError(error))
+      .finally(() => this.loadingStore.setState(false));
   }
 
   public createDocument() {
