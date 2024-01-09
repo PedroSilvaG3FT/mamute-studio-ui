@@ -13,20 +13,27 @@ export class SEOService {
     private route: ActivatedRoute
   ) {}
 
-  public initTitleMonitoring() {
-    this.$routerTitle = this.router.events
-      .pipe(
-        filter((event) => event instanceof NavigationEnd),
-        map(() => {
-          const child: ActivatedRoute | null = this.route.firstChild;
-          const title = child && child.snapshot.data['title'];
+  public onRouteChange(callback?: Function) {
+    return this.router.events.pipe(
+      filter((event) => event instanceof NavigationEnd),
+      map(() => {
+        if (!!callback) callback();
 
-          if (title) return title;
-        })
-      )
-      .subscribe((title) => {
-        if (title) this.title.setTitle(`Boilerplate - ${title}`);
-      });
+        const child: ActivatedRoute | null = this.route.firstChild;
+        return child?.snapshot.data || {};
+      })
+    );
+  }
+
+  public initTitleMonitoring() {
+    this.$routerTitle = this.onRouteChange().subscribe((data) => {
+      if (data['title']) this.title.setTitle(`Boilerplate - ${data['title']}`);
+    });
+  }
+
+  public getRouteData(route = this.route): any {
+    if (!!route.children.length) return this.getRouteData(route.children[0]);
+    else return route.snapshot.data;
   }
 
   public destoryTitleMonitoring() {

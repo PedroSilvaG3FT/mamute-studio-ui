@@ -2,15 +2,15 @@ import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { AppFormComponents } from '../../../@core/components/form';
-import { IFormOption } from '../../../@core/interfaces/app-form.interface';
-import { TerminalWindowComponent } from '../terminal-window/terminal-window.component';
+import { AppFormComponents } from '../../../../@core/components/form';
+import { IFormOption } from '../../../../@core/interfaces/app-form.interface';
+import { TerminalWindowComponent } from '../../../components/terminal-window/terminal-window.component';
 
 @Component({
   standalone: true,
-  selector: 'app-form-example',
-  styleUrl: './form-example.component.scss',
-  templateUrl: './form-example.component.html',
+  selector: 'app-form-controls',
+  styleUrl: './form-controls.component.scss',
+  templateUrl: './form-controls.component.html',
   imports: [
     ...AppFormComponents,
     JsonPipe,
@@ -19,7 +19,7 @@ import { TerminalWindowComponent } from '../terminal-window/terminal-window.comp
     TerminalWindowComponent,
   ],
 })
-export class FormExampleComponent {
+export class FormControlsComponent {
   public defaultOptions: IFormOption[] = [
     { label: 'Option 1', value: 1 },
     { label: 'Option 2', value: 2 },

@@ -1,14 +1,10 @@
 import { Component } from '@angular/core';
-import { MatTabsModule } from '@angular/material/tabs';
 
-import { FormExampleComponent } from '../../components/form-example/form-example.component';
-
-import { FirebaseExampleComponent } from '../../components/firebase-example/firebase-example.component';
-import { FirebaseStorageExampleComponent } from '../../components/firebase-storage-example/firebase-storage-example.component';
-import { FormGeneratorExampleComponent } from '../../components/form-generator-example/form-generator-example.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { RouterOutlet } from '@angular/router';
 import { PageNavComponent } from '../../components/page-nav/page-nav.component';
-import { StoreCounterExampleComponent } from '../../components/store-counter-example/store-counter-example.component';
-import { TableExampleComponent } from '../../components/table-example/table-example.component';
+import { SideMenuComponent } from '../../components/side-menu/side-menu.component';
 
 @Component({
   standalone: true,
@@ -16,14 +12,11 @@ import { TableExampleComponent } from '../../components/table-example/table-exam
   styleUrl: './features.component.scss',
   templateUrl: './features.component.html',
   imports: [
-    MatTabsModule,
+    RouterOutlet,
+    MatMenuModule,
+    MatButtonModule,
     PageNavComponent,
-    FormExampleComponent,
-    TableExampleComponent,
-    FirebaseExampleComponent,
-    StoreCounterExampleComponent,
-    FormGeneratorExampleComponent,
-    FirebaseStorageExampleComponent,
+    SideMenuComponent,
   ],
 })
 export class FeaturesComponent {}

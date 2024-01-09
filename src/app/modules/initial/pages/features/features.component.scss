@@ -1,15 +1,24 @@
 @import "variables";
 
 #features {
+  @apply min-h-screen;
+
   > h4 {
     @apply mt-4;
   }
 
-  .form-generator-container {
-    @apply grid gap-4 grid-cols-2 mobile:grid-cols-1;
+  > section {
+    @apply grid gap-4 grid-cols-[20%_1fr] tablet:grid-cols-1;
 
-    > app-terminal-window {
-      @apply mt-4;
+    > aside {
+      @apply tablet:hidden;
+    }
+
+    > main {
+      > button {
+        @apply hidden fixed bottom-6 right-6 shadow-lg tablet:flex;
+        background: $bg-secondary;
+      }
     }
   }
 }

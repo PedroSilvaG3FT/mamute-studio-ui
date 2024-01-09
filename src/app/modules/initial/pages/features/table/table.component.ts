@@ -1,22 +1,22 @@
 import { Component } from '@angular/core';
 import { Sort } from '@angular/material/sort';
-import { AppTableComponent } from '../../../@core/components/app-table/app-table.component';
-import { filterListPagination } from '../../../@core/functions/pagination.function';
-import { IPagination } from '../../../@core/interfaces/app-pagination.interface';
+import { AppTableComponent } from '../../../../@core/components/app-table/app-table.component';
+import { filterListPagination } from '../../../../@core/functions/pagination.function';
+import { IPagination } from '../../../../@core/interfaces/app-pagination.interface';
 import {
   ITableCell,
   ITableCellAction,
-} from '../../../@core/interfaces/app-table.interface';
-import { AlertService } from '../../../@core/services/alert.service';
+} from '../../../../@core/interfaces/app-table.interface';
+import { AlertService } from '../../../../@core/services/alert.service';
 
 @Component({
   standalone: true,
-  selector: 'table-example',
+  selector: 'app-table-example',
   imports: [AppTableComponent],
-  styleUrl: './table-example.component.scss',
-  templateUrl: './table-example.component.html',
+  templateUrl: './table.component.html',
+  styleUrl: './table.component.scss',
 })
-export class TableExampleComponent {
+export class TableComponent {
   public tableData: PeriodicElement[] = [];
   public pagination: IPagination = {
     pageSize: 5,
@@ -51,7 +51,7 @@ export class TableExampleComponent {
   }
 
   public onSortChange(sort: Sort) {
-    console.log(sort);
+    console.log('[onSortChange]', sort);
   }
 
   public onPaginationChange(pagination: IPagination) {

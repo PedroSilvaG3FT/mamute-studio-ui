@@ -14,11 +14,6 @@
     border-left: 1px solid $placeholder;
   }
 
-  > small {
-    @apply text-sm;
-    color: $placeholder;
-  }
-
   > app-theme-selection {
     @apply ml-auto mobile:m-auto;
   }

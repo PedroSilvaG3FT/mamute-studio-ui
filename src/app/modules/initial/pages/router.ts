@@ -12,5 +12,55 @@ export const INITIAL_ROUTES: Routes = [
     data: { id: 'features', title: 'Features' },
     loadComponent: () =>
       import('./features/features.component').then((c) => c.FeaturesComponent),
+    children: [
+      {
+        path: 'form-generator',
+        data: { id: 'form-generator', title: 'Form generator' },
+        loadComponent: () =>
+          import('./features/form-generator/form-generator.component').then(
+            (c) => c.FormGeneratorComponent
+          ),
+      },
+      {
+        path: 'form-control',
+        data: { id: 'form-control', title: 'Form control' },
+        loadComponent: () =>
+          import('./features/form-controls/form-controls.component').then(
+            (c) => c.FormControlsComponent
+          ),
+      },
+      {
+        path: 'table',
+        data: { id: 'table', title: 'Table' },
+        loadComponent: () =>
+          import('./features/table/table.component').then(
+            (c) => c.TableComponent
+          ),
+      },
+      {
+        path: 'store',
+        data: { id: 'store', title: 'Store' },
+        loadComponent: () =>
+          import('./features/store/store.component').then(
+            (c) => c.StoreComponent
+          ),
+      },
+      {
+        path: 'firebase-firestorage',
+        data: { id: 'firebase-firestorage', title: 'Firebase Firestorage' },
+        loadComponent: () =>
+          import(
+            './features/firebase-firestorage/firebase-firestorage.component'
+          ).then((c) => c.FirebaseFirestorageComponent),
+      },
+      {
+        path: 'firebase-firestore',
+        data: { id: 'firebase-firestore', title: 'Firebase Firestore' },
+        loadComponent: () =>
+          import(
+            './features/firebase-firestore/firebase-firestore.component'
+          ).then((c) => c.FirebaseFirestoreComponent),
+      },
+    ],
   },
 ];

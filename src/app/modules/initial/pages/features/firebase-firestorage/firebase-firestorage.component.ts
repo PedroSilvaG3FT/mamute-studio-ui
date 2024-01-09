@@ -2,23 +2,23 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { StorageReference } from 'firebase/storage';
-import { LoadingStore } from '../../../../store/loading.store';
-import { AppTableComponent } from '../../../@core/components/app-table/app-table.component';
-import { AppFileUploadComponent } from '../../../@core/components/form/app-file-upload/app-file-upload.component';
-import { FirebaseStorageService } from '../../../@core/firebase/firebase-storage.service';
-import { filterListPagination } from '../../../@core/functions/pagination.function';
-import { IPagination } from '../../../@core/interfaces/app-pagination.interface';
+import { LoadingStore } from '../../../../../store/loading.store';
+import { AppTableComponent } from '../../../../@core/components/app-table/app-table.component';
+import { AppFileUploadComponent } from '../../../../@core/components/form/app-file-upload/app-file-upload.component';
+import { FirebaseStorageService } from '../../../../@core/firebase/firebase-storage.service';
+import { filterListPagination } from '../../../../@core/functions/pagination.function';
+import { IPagination } from '../../../../@core/interfaces/app-pagination.interface';
 import {
   ITableCell,
   ITableCellAction,
-} from '../../../@core/interfaces/app-table.interface';
-import { AlertService } from '../../../@core/services/alert.service';
+} from '../../../../@core/interfaces/app-table.interface';
+import { AlertService } from '../../../../@core/services/alert.service';
 
 @Component({
   standalone: true,
-  selector: 'firebase-storage-example',
-  styleUrl: './firebase-storage-example.component.scss',
-  templateUrl: './firebase-storage-example.component.html',
+  selector: 'app-firebase-firestorage',
+  styleUrl: './firebase-firestorage.component.scss',
+  templateUrl: './firebase-firestorage.component.html',
   imports: [
     FormsModule,
     MatButtonModule,
@@ -26,7 +26,7 @@ import { AlertService } from '../../../@core/services/alert.service';
     AppFileUploadComponent,
   ],
 })
-export class FirebaseStorageExampleComponent {
+export class FirebaseFirestorageComponent {
   public loadingStore = inject(LoadingStore);
 
   public fileUpload?: File[];

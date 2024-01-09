@@ -1,29 +1,24 @@
 <section id="features" class="app-container">
   <page-nav backRoute="/" title="Features" />
 
-  <h4>Simple store</h4>
-  <store-counter-example />
+  <section>
+    <aside>
+      <app-side-menu />
+    </aside>
+    <main>
+      <router-outlet />
 
-  <h4>Components</h4>
-  <mat-tab-group>
-    <mat-tab label="Form Generator">
-      <form-generator-example />
-    </mat-tab>
+      <button
+        mat-icon-button
+        [matMenuTriggerFor]="menu"
+        aria-label="Example icon-button with a menu"
+      >
+        <i class="iconify" data-icon="ph:plus-bold"></i>
+      </button>
 
-    <mat-tab label="Form Fields">
-      <app-form-example />
-    </mat-tab>
-
-    <mat-tab label="Table">
-      <table-example />
-    </mat-tab>
-
-    <mat-tab label="Firebase">
-      <firebase-example />
-    </mat-tab>
-
-    <mat-tab label="Firebase Storage">
-      <firebase-storage-example />
-    </mat-tab>
-  </mat-tab-group>
+      <mat-menu #menu="matMenu" class="tablet:w-[340px]">
+        <app-side-menu />
+      </mat-menu>
+    </main>
+  </section>
 </section>

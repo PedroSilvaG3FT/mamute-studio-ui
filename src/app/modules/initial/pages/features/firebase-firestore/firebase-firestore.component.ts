@@ -1,24 +1,24 @@
 import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { LoadingStore } from '../../../../store/loading.store';
-import { AppTableComponent } from '../../../@core/components/app-table/app-table.component';
-import { filterListPagination } from '../../../@core/functions/pagination.function';
-import { IPagination } from '../../../@core/interfaces/app-pagination.interface';
+import { LoadingStore } from '../../../../../store/loading.store';
+import { AppTableComponent } from '../../../../@core/components/app-table/app-table.component';
+import { filterListPagination } from '../../../../@core/functions/pagination.function';
+import { IPagination } from '../../../../@core/interfaces/app-pagination.interface';
 import {
   ITableCell,
   ITableCellAction,
-} from '../../../@core/interfaces/app-table.interface';
-import { AlertService } from '../../../@core/services/alert.service';
-import { FirebaseExampleService } from '../../services/firebase-example.service';
+} from '../../../../@core/interfaces/app-table.interface';
+import { AlertService } from '../../../../@core/services/alert.service';
+import { FirebaseExampleService } from '../../../services/firebase-example.service';
 
 @Component({
   standalone: true,
-  selector: 'firebase-example',
+  selector: 'app-firebase-firestore',
   imports: [AppTableComponent, MatButtonModule],
-  styleUrl: './firebase-example.component.scss',
-  templateUrl: './firebase-example.component.html',
+  styleUrl: './firebase-firestore.component.scss',
+  templateUrl: './firebase-firestore.component.html',
 })
-export class FirebaseExampleComponent {
+export class FirebaseFirestoreComponent {
   public loadingStore = inject(LoadingStore);
   public documentsData: IExampleFirebaseDocument[] = [];
   private readonly errorMessage = `An error occurred while processing the request`;

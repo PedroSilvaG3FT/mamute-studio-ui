@@ -77,7 +77,6 @@ export class AppTableComponent {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes);
     this.dataSource.data = changes['data'].currentValue;
     this.pagination =
       changes['pagination']?.currentValue || this.defaultPagination;

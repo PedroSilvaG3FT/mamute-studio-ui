@@ -1,0 +1,30 @@
+@import "variables";
+
+#side-menu {
+  @apply flex flex-col gap-2 py-8 rounded-xl;
+  background: $bg-secondary;
+
+  > article {
+    > h5 {
+      @apply px-5;
+      color: $apple-gray;
+    }
+
+    > section {
+      @apply flex flex-col;
+
+      > a {
+        @apply w-[80%] px-5 py-2 flex gap-2 items-center rounded-r-full text-[0.9rem];
+
+        > span {
+          @apply h-7 w-7 rounded-full flex items-center justify-center;
+          background: $bg-primary;
+        }
+
+        &.active {
+          color: $primary;
+        }
+      }
+    }
+  }
+}

@@ -1,21 +1,21 @@
 import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { AppFormGeneratorComponent } from '../../../@core/components/_form-generator/app-form-generator/app-form-generator.component';
-import { FormGeneratorService } from '../../../@core/components/_form-generator/form-generator.service';
-import { IFormOption } from '../../../@core/interfaces/app-form.interface';
-import { DatePickerRangeValue } from '../../../@core/types/datepicker.type';
-import { SliderRangeValue } from '../../../@core/types/slider.type';
-import { TerminalWindowComponent } from '../terminal-window/terminal-window.component';
+import { AppFormGeneratorComponent } from '../../../../@core/components/_form-generator/app-form-generator/app-form-generator.component';
+import { FormGeneratorService } from '../../../../@core/components/_form-generator/form-generator.service';
+import { IFormOption } from '../../../../@core/interfaces/app-form.interface';
+import { DatePickerRangeValue } from '../../../../@core/types/datepicker.type';
+import { SliderRangeValue } from '../../../../@core/types/slider.type';
+import { TerminalWindowComponent } from '../../../components/terminal-window/terminal-window.component';
 
 @Component({
   standalone: true,
-  selector: 'form-generator-example',
-  styleUrl: './form-generator-example.component.scss',
-  templateUrl: './form-generator-example.component.html',
+  selector: 'app-form-generator-example',
+  styleUrl: './form-generator.component.scss',
+  templateUrl: './form-generator.component.html',
   imports: [JsonPipe, AppFormGeneratorComponent, TerminalWindowComponent],
 })
-export class FormGeneratorExampleComponent {
+export class FormGeneratorComponent {
   public defaultOptions: IFormOption[] = [
     { label: 'Option 1', value: 1 },
     { label: 'Option 2', value: 2 },
