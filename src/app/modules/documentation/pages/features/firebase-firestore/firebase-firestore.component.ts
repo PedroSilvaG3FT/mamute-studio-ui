@@ -41,7 +41,7 @@ export class FirebaseFirestoreComponent {
     {
       title: 'Update',
       icon: 'radix-icons:update',
-      callback: (element) => this.updateDocument(String(element.id)),
+      callback: (element) => this.updateDocument(element),
     },
     {
       title: 'Delete',
@@ -51,8 +51,9 @@ export class FirebaseFirestoreComponent {
   ];
 
   public tableColumns: ITableCell[] = [
-    { def: 'authorName', key: 'authorName', label: 'Author name' },
-    { def: 'active', key: 'active', label: 'Status' },
+    { def: 'name', key: 'name', label: 'Name' },
+    { def: 'email', key: 'email', label: 'email' },
+    { def: 'age', key: 'age', label: 'email' },
   ];
 
   constructor(
@@ -96,7 +97,7 @@ export class FirebaseFirestoreComponent {
       .getById<IExampleFirebaseDocument>(id)
       .then((response) => {
         console.log('[GET BY ID]: ', response);
-        this.alertService.snackBar.open(response.description, 'close');
+        this.alertService.snackBar.open(response.email, 'close');
       })
       .catch((error) => this.handleError(error))
       .finally(() => this.loadingStore.setState(false));
@@ -105,19 +106,16 @@ export class FirebaseFirestoreComponent {
   public createDocument() {
     this.loadingStore.setState(true);
 
-    const categoryRef = this.firebaseExampleService.getDocumentReference(
-      'DocumentId',
-      'CollectionName'
-    );
+    const names = ['Alice', 'Bob', 'Charlie', 'Diana', 'Eva', 'Frank', 'Grace'];
+    const randomName = names[Math.floor(Math.random() * names.length)];
+    const randomEmail = `${randomName.toLowerCase()}@example.com`;
+    const randomAge = Math.floor(Math.random() * 100);
 
     this.firebaseExampleService
       .create<IExampleFirebaseDocument>({
-        active: false,
-        userApprover: null,
-        description: 'Test',
-        category: categoryRef,
-        creationDate: new Date(),
-        authorName: `Create ${Math.random()}`,
+        age: randomAge,
+        name: randomName,
+        email: randomEmail,
       })
       .then((response) => {
         console.log('[Create]: ', response);
@@ -127,13 +125,15 @@ export class FirebaseFirestoreComponent {
       .finally(() => this.loadingStore.setState(false));
   }
 
-  public updateDocument(id: string) {
+  public updateDocument(item: IExampleFirebaseDocument) {
     this.loadingStore.setState(true);
+    const editRandom = Math.floor(Math.random() * 100);
+    const currentName = item.name.split('-')[1] || item.name;
+
+    const name = `(Edit ${editRandom}) - ${currentName}`;
 
     this.firebaseExampleService
-      .update<Partial<IExampleFirebaseDocument>>(id, {
-        authorName: `Edit ${Math.random()}`,
-      })
+      .update<Partial<IExampleFirebaseDocument>>(String(item.id), { name })
       .then((response) => {
         console.log('[UPDATE]: ', response);
         this.getDocuments();
@@ -168,11 +168,7 @@ export class FirebaseFirestoreComponent {
 
 interface IExampleFirebaseDocument {
   id?: string;
-  active: boolean;
-  authorName: string;
-  description: string;
-
-  category: any;
-  userApprover: any;
-  creationDate: any;
+  age: number;
+  name: string;
+  email: string;
 }

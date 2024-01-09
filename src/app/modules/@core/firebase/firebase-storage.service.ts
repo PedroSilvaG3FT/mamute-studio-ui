@@ -16,7 +16,7 @@ import { FIREBASE_STORAGE_ERROR_LIST } from './@constans/firebase-error.constant
 
 @Injectable({ providedIn: 'root' })
 export class FirebaseStorageService {
-  public storage: FirebaseStorage = getStorage();
+  public storage!: FirebaseStorage;
 
   constructor() {
     this.#init();

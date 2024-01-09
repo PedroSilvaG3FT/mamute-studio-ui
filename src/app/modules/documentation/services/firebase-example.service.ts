@@ -5,13 +5,12 @@ import { FirebaseCollectionBase } from '../../@core/firebase/firebase-collection
 @Injectable({ providedIn: 'root' })
 export class FirebaseExampleService extends FirebaseCollectionBase {
   constructor() {
-    super('PrayerWall');
+    super('CollectionExample');
   }
 
   public override getAll<Data>(): Promise<Data> {
     const filter: QueryFieldFilterConstraint[] = [
-      // where('active', '==', true),
-      // where('authorName', '==', 'Junior Silva'),
+      // where('example_key', '==', 'example_value'),
     ];
 
     return this.handlerGetAll(filter);
