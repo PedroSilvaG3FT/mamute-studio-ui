@@ -13,7 +13,7 @@ import { FirebaseExampleService } from '../../../services/firebase-example.servi
 
 @Component({
   standalone: true,
-  selector: 'app-firebase-firestore',
+  selector: 'doc-firebase-firestore',
   imports: [AppTableComponent, MatButtonModule],
   styleUrl: './firebase-firestore.component.scss',
   templateUrl: './firebase-firestore.component.html',

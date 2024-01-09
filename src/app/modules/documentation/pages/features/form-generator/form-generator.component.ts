@@ -10,7 +10,7 @@ import { TerminalWindowComponent } from '../../../components/terminal-window/ter
 
 @Component({
   standalone: true,
-  selector: 'app-form-generator-example',
+  selector: 'doc-form-generator',
   styleUrl: './form-generator.component.scss',
   templateUrl: './form-generator.component.html',
   imports: [JsonPipe, AppFormGeneratorComponent, TerminalWindowComponent],

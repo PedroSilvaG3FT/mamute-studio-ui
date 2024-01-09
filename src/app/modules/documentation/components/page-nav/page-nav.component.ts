@@ -5,7 +5,7 @@ import { AnimateDirective } from '../../../@core/directives/animate.directive';
 
 @Component({
   standalone: true,
-  selector: 'page-nav',
+  selector: 'doc-page-nav',
   styleUrl: './page-nav.component.scss',
   templateUrl: './page-nav.component.html',
   imports: [RouterModule, AnimateDirective, AppThemeSelectionComponent],

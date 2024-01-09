@@ -4,7 +4,7 @@ import { CounterStore } from '../../../../../store/counter.store';
 
 @Component({
   standalone: true,
-  selector: 'app-store',
+  selector: 'doc-store',
   imports: [MatButtonModule],
   styleUrl: './store.component.scss',
   templateUrl: './store.component.html',

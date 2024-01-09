@@ -16,7 +16,7 @@ import { AlertService } from '../../../../@core/services/alert.service';
 
 @Component({
   standalone: true,
-  selector: 'app-firebase-firestorage',
+  selector: 'doc-firebase-firestorage',
   styleUrl: './firebase-firestorage.component.scss',
   templateUrl: './firebase-firestorage.component.html',
   imports: [

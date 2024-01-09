@@ -8,7 +8,7 @@ import { TerminalWindowComponent } from '../../../components/terminal-window/ter
 
 @Component({
   standalone: true,
-  selector: 'app-form-controls',
+  selector: 'doc-form-controls',
   styleUrl: './form-controls.component.scss',
   templateUrl: './form-controls.component.html',
   imports: [

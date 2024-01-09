@@ -5,7 +5,7 @@ import { ClipboardService } from '../../../@core/services/clipboard.service';
 
 @Component({
   standalone: true,
-  selector: 'app-terminal-window',
+  selector: 'doc-terminal-window',
   imports: [NgIf, MatSnackBarModule],
   styleUrl: './terminal-window.component.scss',
   templateUrl: './terminal-window.component.html',

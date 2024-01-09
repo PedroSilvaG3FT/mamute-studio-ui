@@ -11,7 +11,7 @@ import { AlertService } from '../../../../@core/services/alert.service';
 
 @Component({
   standalone: true,
-  selector: 'app-table-example',
+  selector: 'doc-table',
   imports: [AppTableComponent],
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss',

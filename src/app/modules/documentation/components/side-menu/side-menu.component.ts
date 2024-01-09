@@ -5,7 +5,7 @@ import { SEOService } from '../../../@core/services/seo.service';
 @Component({
   standalone: true,
   imports: [RouterLink],
-  selector: 'app-side-menu',
+  selector: 'doc-side-menu',
   styleUrl: './side-menu.component.scss',
   templateUrl: './side-menu.component.html',
 })
