@@ -8,9 +8,9 @@
 ) {
   @return (
     warn: $warn,
-    is-dark: $isDark,
     accent: $accent,
     primary: $primary,
+    is-dark: $isDark,
     background: $background,
     foreground: $foreground
   );

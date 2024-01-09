@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { LoadingStore } from '../../../../store/loading.store';
 import { AppTableComponent } from '../../../@core/components/app-table/app-table.component';
 import { filterListPagination } from '../../../@core/functions/pagination.function';
 import { IPagination } from '../../../@core/interfaces/app-pagination.interface';
@@ -18,6 +19,7 @@ import { FirebaseExampleService } from '../../services/firebase-example.service'
   templateUrl: './firebase-example.component.html',
 })
 export class FirebaseExampleComponent {
+  public loadingStore = inject(LoadingStore);
   public documentsData: IExampleFirebaseDocument[] = [];
   private readonly errorMessage = `An error occurred while processing the request`;
 
@@ -68,6 +70,8 @@ export class FirebaseExampleComponent {
   }
 
   public getDocuments() {
+    this.loadingStore.setState(true);
+
     this.firebaseExampleService
       .getAll<IExampleFirebaseDocument[]>()
       .then((response) => {
@@ -81,10 +85,13 @@ export class FirebaseExampleComponent {
         this.documents = response;
         this.handlePaginate(response);
       })
-      .catch((error) => this.handleError(error));
+      .catch((error) => this.handleError(error))
+      .finally(() => this.loadingStore.setState(false));
   }
 
   public getDocument(id: string) {
+    this.loadingStore.setState(true);
+
     this.firebaseExampleService
       .getById<IExampleFirebaseDocument>(id)
       .then((response) => {
@@ -95,6 +102,8 @@ export class FirebaseExampleComponent {
   }
 
   public createDocument() {
+    this.loadingStore.setState(true);
+
     const categoryRef = this.firebaseExampleService.getDocumentReference(
       'DocumentId',
       'CollectionName'
@@ -113,10 +122,13 @@ export class FirebaseExampleComponent {
         console.log('[Create]: ', response);
         this.getDocuments();
       })
-      .catch((error) => this.handleError(error));
+      .catch((error) => this.handleError(error))
+      .finally(() => this.loadingStore.setState(false));
   }
 
   public updateDocument(id: string) {
+    this.loadingStore.setState(true);
+
     this.firebaseExampleService
       .update<Partial<IExampleFirebaseDocument>>(id, {
         authorName: `Edit ${Math.random()}`,
@@ -125,17 +137,21 @@ export class FirebaseExampleComponent {
         console.log('[UPDATE]: ', response);
         this.getDocuments();
       })
-      .catch((error) => this.handleError(error));
+      .catch((error) => this.handleError(error))
+      .finally(() => this.loadingStore.setState(false));
   }
 
   public deleteDocument(id: string) {
+    this.loadingStore.setState(true);
+
     this.firebaseExampleService
       .delete(id)
       .then((response) => {
         console.log('[DELETE]: ', response);
         this.getDocuments();
       })
-      .catch((error) => this.handleError(error));
+      .catch((error) => this.handleError(error))
+      .finally(() => this.loadingStore.setState(false));
   }
 
   public handlePaginate(items = this.documents) {

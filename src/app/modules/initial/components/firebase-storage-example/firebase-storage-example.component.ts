@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { StorageReference } from 'firebase/storage';
+import { LoadingStore } from '../../../../store/loading.store';
 import { AppTableComponent } from '../../../@core/components/app-table/app-table.component';
 import { AppFileUploadComponent } from '../../../@core/components/form/app-file-upload/app-file-upload.component';
 import { FirebaseStorageService } from '../../../@core/firebase/firebase-storage.service';
@@ -26,6 +27,8 @@ import { AlertService } from '../../../@core/services/alert.service';
   ],
 })
 export class FirebaseStorageExampleComponent {
+  public loadingStore = inject(LoadingStore);
+
   public fileUpload?: File[];
   public filesData: StorageReference[] = [];
   public readonly path = 'test';
@@ -43,7 +46,7 @@ export class FirebaseStorageExampleComponent {
   public tableActions: ITableCellAction<StorageReference>[] = [
     {
       title: 'View',
-      icon: 'material-symbols-light:download',
+      icon: 'material-symbols:download',
       callback: (element) => this.downloadFile(element),
     },
     {
@@ -78,6 +81,8 @@ export class FirebaseStorageExampleComponent {
       return;
     }
 
+    this.loadingStore.setState(true);
+
     this.firebaseStorageService
       .upload(this.fileUpload[0], this.path)
       .then((response) => {
@@ -87,29 +92,38 @@ export class FirebaseStorageExampleComponent {
         this.getFiles();
         this.fileUpload = undefined;
       })
-      .catch((error) => this.handleError(error));
+      .catch((error) => this.handleError(error))
+      .finally(() => this.loadingStore.setState(false));
   }
 
   public removeFile(file: StorageReference) {
+    this.loadingStore.setState(true);
+
     this.firebaseStorageService
       .delete(file.fullPath)
       .then(() => {
         console.log('[REMOVE FILE]');
         this.getFiles();
       })
-      .catch((error) => this.handleError(error));
+      .catch((error) => this.handleError(error))
+      .finally(() => this.loadingStore.setState(false));
   }
 
   public downloadFile(file: StorageReference) {
+    this.loadingStore.setState(true);
+
     this.firebaseStorageService
       .download(file.fullPath)
       .then((response) => {
         console.log('[DOWNLOAD FILE]: ', response);
       })
-      .catch((error) => this.handleError(error));
+      .catch((error) => this.handleError(error))
+      .finally(() => this.loadingStore.setState(false));
   }
 
   public getFiles() {
+    this.loadingStore.setState(true);
+
     this.firebaseStorageService
       .getAll(this.path)
       .then((response) => {
@@ -123,7 +137,8 @@ export class FirebaseStorageExampleComponent {
         this.files = response.items;
         this.handlePaginate(response.items);
       })
-      .catch((error) => this.handleError(error));
+      .catch((error) => this.handleError(error))
+      .finally(() => this.loadingStore.setState(false));
   }
 
   public handlePaginate(items = this.files) {

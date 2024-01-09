@@ -1,0 +1,10 @@
+#app-loading {
+  @apply fixed top-0 left-0 w-full h-screen flex flex-col items-center justify-center gap-4 z-[200];
+  backdrop-filter: blur(2px);
+  background: #151515cc;
+
+  > h4 {
+    @apply font-semibold;
+    color: #fff;
+  }
+}

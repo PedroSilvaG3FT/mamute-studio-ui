@@ -1,3 +1,4 @@
+@import "palette/index";
 @import "functions/index";
 
 :root {
@@ -7,14 +8,14 @@
 }
 
 // GLOBAL
-$danger: #f44336;
-$primary: #fc27b6;
-$secondary: #db46dd;
 $apple-red: #ff5f57;
 $apple-gray: #d9d8d9;
 $apple-green: #00d945;
 $apple-yellow: #fdbd2c;
 $placeholder: #9fa3a7b0;
+$danger: map-get($danger-palette, 500);
+$primary: map-get($primary-palette, 500);
+$secondary: map-get($secondary-palette, 500);
 
 $bg-primary: var(--bg-primary);
 $bg-secondary: var(--bg-secondary);
@@ -28,10 +29,6 @@ $light-text-primary: #313131;
 $dark-bg-primary: #111418;
 $dark-bg-secondary: #0f1924;
 $dark-text-primary: #fff;
-
-$danger-palette: generate-color-palette($danger);
-$primary-palette: generate-color-palette($primary);
-$secondary-palette: generate-color-palette($secondary);
 
 // GRADIENT
 $circular-gradient: radial-gradient(circle, $primary 0%, $secondary 100%);
