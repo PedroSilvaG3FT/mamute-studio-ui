@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { MatTabsModule } from '@angular/material/tabs';
+import { AuthStore } from '../../../../../store/auth.store';
 import { LoadingStore } from '../../../../../store/loading.store';
 import { AlertService } from '../../../../@core/services/alert.service';
 import { SupabaseAuthenticationService } from '../../../../@core/supabase/supabase-authentication.service';
@@ -24,6 +25,7 @@ import {
   ],
 })
 export class SupabaseAuthenticationComponent {
+  public authStore = inject(AuthStore);
   public loadingStore = inject(LoadingStore);
   private readonly errorMessage = `An error occurred while processing the request`;
 
@@ -46,7 +48,12 @@ export class SupabaseAuthenticationComponent {
 
     this.supabaseAuthenticationService
       .signIn(data)
-      .then((data) => (this.jsonResponse = JSON.stringify(data)))
+      .then((response) => {
+        const { session } = response.data;
+        this.jsonResponse = JSON.stringify(response);
+        this.authStore.setSupabaseToken(session?.access_token || '');
+        this.authStore.setSupabaseRefreshToken(session?.refresh_token || '');
+      })
       .catch((error) => this.handleError(error))
       .finally(() => this.loadingStore.setState(false));
   }

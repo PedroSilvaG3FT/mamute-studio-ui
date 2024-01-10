@@ -5,17 +5,10 @@ import {
 } from '@supabase/supabase-js';
 import { SupabaseClientBase } from './supabase-client.base';
 
-export interface Profile {
-  id?: string;
-  username: string;
-  website: string;
-  avatar_url: string;
-}
-
 @Injectable({ providedIn: 'root' })
 export class SupabaseAuthenticationService extends SupabaseClientBase {
   constructor() {
-    super('profiles');
+    super('User');
   }
 
   public signUp(data: SignUpWithPasswordCredentials) {

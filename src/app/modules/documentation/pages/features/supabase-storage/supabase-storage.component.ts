@@ -1,11 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { StorageReference } from 'firebase/storage';
 import { LoadingStore } from '../../../../../store/loading.store';
 import { AppTableComponent } from '../../../../@core/components/app-table/app-table.component';
 import { AppFileUploadComponent } from '../../../../@core/components/form/app-file-upload/app-file-upload.component';
-import { FirebaseStorageService } from '../../../../@core/firebase/firebase-storage.service';
 import { filterListPagination } from '../../../../@core/functions/pagination.function';
 import { IPagination } from '../../../../@core/interfaces/app-pagination.interface';
 import {
@@ -13,12 +11,15 @@ import {
   ITableCellAction,
 } from '../../../../@core/interfaces/app-table.interface';
 import { AlertService } from '../../../../@core/services/alert.service';
+import { SUPABASE_BUCKETS } from '../../../../@core/supabase/@constants/bucket.constant';
+import { ISupabaseStorageFile } from '../../../../@core/supabase/@interfaces/supabase-storage.interface';
+import { SupabaseStorageService } from '../../../../@core/supabase/supabase-storage.service';
 
 @Component({
   standalone: true,
-  selector: 'doc-firebase-firestorage',
-  styleUrl: './firebase-firestorage.component.scss',
-  templateUrl: './firebase-firestorage.component.html',
+  selector: 'doc-supabase-storage',
+  styleUrl: './supabase-storage.component.scss',
+  templateUrl: './supabase-storage.component.html',
   imports: [
     FormsModule,
     MatButtonModule,
@@ -26,16 +27,16 @@ import { AlertService } from '../../../../@core/services/alert.service';
     AppFileUploadComponent,
   ],
 })
-export class FirebaseFirestorageComponent {
+export class SupabaseStorageComponent {
   public loadingStore = inject(LoadingStore);
-
   public fileUpload?: File[];
-  public filesData: StorageReference[] = [];
-  public readonly path = 'test';
+
+  public readonly path = 'example';
+  public readonly bucket = SUPABASE_BUCKETS.default;
   private readonly errorMessage = `An error occurred while processing the request`;
 
-  public files: StorageReference[] = [];
-  public tableData: StorageReference[] = [];
+  public files: ISupabaseStorageFile[] = [];
+  public tableData: ISupabaseStorageFile[] = [];
   public pagination: IPagination = {
     pageSize: 5,
     pageNumber: 1,
@@ -43,7 +44,7 @@ export class FirebaseFirestorageComponent {
     pageSizeOptions: [5, 10, 20, 50],
   };
 
-  public tableActions: ITableCellAction<StorageReference>[] = [
+  public tableActions: ITableCellAction<ISupabaseStorageFile>[] = [
     {
       title: 'View',
       icon: 'material-symbols:download',
@@ -54,20 +55,28 @@ export class FirebaseFirestorageComponent {
       icon: 'iwwa:delete',
       callback: (element) => this.removeFile(element),
     },
+    {
+      title: 'URL',
+      icon: 'ion:link-sharp',
+      callback: (element) => this.getUrl(element),
+    },
   ];
 
   public tableColumns: ITableCell[] = [
     { def: 'name', key: 'name', label: 'Name' },
-    { def: 'bucket', key: 'bucket', label: 'Bucket' },
   ];
 
   constructor(
     private alertService: AlertService,
-    private firebaseStorageService: FirebaseStorageService
+    private supabaseStorageService: SupabaseStorageService
   ) {}
 
   ngOnInit() {
     this.getFiles();
+  }
+
+  private getFullPathFile(file: ISupabaseStorageFile) {
+    return `${this.path}/${file.name}`;
   }
 
   private handleError(error: any) {
@@ -83,8 +92,8 @@ export class FirebaseFirestorageComponent {
 
     this.loadingStore.setState(true);
 
-    this.firebaseStorageService
-      .upload(this.fileUpload[0], this.path)
+    this.supabaseStorageService
+      .upload(this.bucket, this.path, this.fileUpload[0])
       .then(() => {
         this.getFiles();
         this.fileUpload = undefined;
@@ -93,39 +102,49 @@ export class FirebaseFirestorageComponent {
       .finally(() => this.loadingStore.setState(false));
   }
 
-  public removeFile(file: StorageReference) {
+  public removeFile(file: ISupabaseStorageFile) {
     this.loadingStore.setState(true);
+    const fullPaths = [this.getFullPathFile(file)];
 
-    this.firebaseStorageService
-      .delete(file.fullPath)
+    this.supabaseStorageService
+      .delete(this.bucket, fullPaths)
       .then(() => this.getFiles())
       .catch((error) => this.handleError(error))
       .finally(() => this.loadingStore.setState(false));
   }
 
-  public downloadFile(file: StorageReference) {
+  public downloadFile(file: ISupabaseStorageFile) {
     this.loadingStore.setState(true);
 
-    this.firebaseStorageService
-      .download(file.fullPath)
+    this.supabaseStorageService
+      .download(this.bucket, this.getFullPathFile(file))
       .then(() => {})
       .catch((error) => this.handleError(error))
       .finally(() => this.loadingStore.setState(false));
   }
 
+  public getUrl(file: ISupabaseStorageFile) {
+    const { data } = this.supabaseStorageService.getPublicURL(
+      this.bucket,
+      this.getFullPathFile(file)
+    );
+
+    this.alertService.snackBar.open(data.publicUrl, 'close');
+  }
+
   public getFiles() {
     this.loadingStore.setState(true);
 
-    this.firebaseStorageService
-      .getAll(this.path)
+    this.supabaseStorageService
+      .getAll(this.bucket, this.path)
       .then((response) => {
         this.pagination = {
           ...this.pagination,
-          totalItems: response.items.length,
+          totalItems: response.data.length,
         };
 
-        this.files = response.items;
-        this.handlePaginate(response.items);
+        this.files = response.data;
+        this.handlePaginate(response.data);
       })
       .catch((error) => this.handleError(error))
       .finally(() => this.loadingStore.setState(false));

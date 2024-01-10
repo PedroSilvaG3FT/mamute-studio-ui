@@ -1,0 +1,29 @@
+<section id="supabase-storage">
+  <app-file-upload
+    name="fileUpload"
+    label="File upload"
+    [(ngModel)]="fileUpload"
+    [fileTypes]="['image/*']"
+    placeholder="Insert fles"
+  />
+
+  <button
+    mat-button
+    type="button"
+    color="primary"
+    [disabled]="!fileUpload"
+    (click)="createFile()"
+  >
+    Create File
+  </button>
+
+  <app-table
+    [data]="tableData"
+    [columns]="tableColumns"
+    [actions]="tableActions"
+    [pagination]="pagination"
+    [title]="'Supabase Storage'"
+    actionColTitle="Actions"
+    (onPaginationChange)="onPaginationChange($event)"
+  />
+</section>

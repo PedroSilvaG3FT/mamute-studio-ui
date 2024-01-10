@@ -1,14 +1,30 @@
-import { createClient, SupabaseClient } from '@supabase/supabase-js';
-import { environment } from '../../../../environments/environment';
+import { inject } from '@angular/core';
+import { SupabaseClient } from '@supabase/supabase-js';
+import { AuthStore } from '../../../store/auth.store';
+import { SupabaseConnectorService } from './supabase-connector.service';
 
 export class SupabaseClientBase {
   public supabase: SupabaseClient;
+  private authStore = inject(AuthStore);
+  private _connector = inject(SupabaseConnectorService);
 
   constructor(public tableName: string) {
-    this.supabase = createClient(
-      environment.supabase.url,
-      environment.supabase.key
-    );
+    this.supabase = this._connector.supabase;
+    this.checkSignInUserSession();
+  }
+
+  private checkSignInUserSession() {
+    if (!!this.authStore.supabaseToken()) return;
+
+    const credentials = {
+      access_token: this.authStore.supabaseToken(),
+      refresh_token: this.authStore.supabaseRefreshToken(),
+    };
+
+    this.supabase.auth
+      .setSession(credentials)
+      .then(() => {})
+      .catch((error) => {});
   }
 
   public async getByColumn<Data>(column: string, value: any) {

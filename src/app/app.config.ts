@@ -6,8 +6,9 @@ import {
   withInMemoryScrolling,
 } from '@angular/router';
 
-import { routes } from './app.routes';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { routes } from './app.routes';
+import { SupabaseConnectorService } from './modules/@core/supabase/supabase-connector.service';
 
 const inMemoryScrollingFeature: InMemoryScrollingFeature =
   withInMemoryScrolling({
@@ -17,8 +18,9 @@ const inMemoryScrollingFeature: InMemoryScrollingFeature =
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideAnimations(),
     provideAnimationsAsync(),
+    SupabaseConnectorService,
     provideRouter(routes, inMemoryScrollingFeature),
-    provideAnimations()
-],
+  ],
 };

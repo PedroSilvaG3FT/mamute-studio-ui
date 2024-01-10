@@ -61,10 +61,16 @@ export class SideMenuComponent {
           link: '/features/supabase-authentication',
         },
         {
-          name: 'Table',
+          name: 'Database',
           id: 'supabase-table',
           link: '/features/supabase-table',
           icon: 'material-symbols:database-outline',
+        },
+        {
+          name: 'Storage',
+          id: 'supabase-storage',
+          icon: 'ic:outline-sd-storage',
+          link: '/features/supabase-storage',
         },
       ],
     },

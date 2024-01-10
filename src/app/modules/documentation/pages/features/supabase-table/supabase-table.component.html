@@ -1,4 +1,4 @@
-<section id="firebase-firestore">
+<section id="supabase-table">
   <button mat-button color="primary" (click)="createDocument()">
     Create Random
   </button>
@@ -8,7 +8,7 @@
     [columns]="tableColumns"
     [actions]="tableActions"
     [pagination]="pagination"
-    [title]="'Firebase documents'"
+    [title]="'Supabase Table'"
     actionColTitle="Actions"
     (onPaginationChange)="onPaginationChange($event)"
   />

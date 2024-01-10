@@ -62,14 +62,6 @@ export const INITIAL_ROUTES: Routes = [
           ).then((c) => c.FirebaseFirestoreComponent),
       },
       {
-        path: 'supabase-table',
-        data: { id: 'supabase-table', title: 'Supabase Table' },
-        loadComponent: () =>
-          import('./features/supabase-table/supabase-table.component').then(
-            (c) => c.SupabaseTableComponent
-          ),
-      },
-      {
         path: 'supabase-authentication',
         data: {
           id: 'supabase-authentication',
@@ -79,6 +71,25 @@ export const INITIAL_ROUTES: Routes = [
           import(
             './features/supabase-authentication/supabase-authentication.component'
           ).then((c) => c.SupabaseAuthenticationComponent),
+      },
+      {
+        path: 'supabase-table',
+        data: { id: 'supabase-table', title: 'Supabase Table' },
+        loadComponent: () =>
+          import('./features/supabase-table/supabase-table.component').then(
+            (c) => c.SupabaseTableComponent
+          ),
+      },
+      {
+        path: 'supabase-storage',
+        data: {
+          id: 'supabase-storage',
+          title: 'Supabase storage',
+        },
+        loadComponent: () =>
+          import('./features/supabase-storage/supabase-storage.component').then(
+            (c) => c.SupabaseStorageComponent
+          ),
       },
     ],
   },

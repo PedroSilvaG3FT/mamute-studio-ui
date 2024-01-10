@@ -1,22 +1,20 @@
 import { Injectable } from '@angular/core';
 import { SupabaseClient } from '@supabase/supabase-js';
+import { SUPABASE_BUCKETS } from './@constants/bucket.constant';
 import { ISupabaseBucketCreateOptions } from './@interfaces/supabase-bucket.interface';
 import { SupabaseClientBase } from './supabase-client.base';
 
 @Injectable({ providedIn: 'root' })
 export class SupabaseBucketService {
   #supabaseClientBase = new SupabaseClientBase('');
-
   public supabase: SupabaseClient;
-  public bucketName: string = 'unrestricted';
 
   constructor() {
     this.supabase = this.#supabaseClientBase.supabase;
-    this.#supabaseClientBase.supabase.storage.from(this.bucketName);
   }
 
-  get bucket() {
-    return this.supabase.storage.from(this.bucketName);
+  public getBucket(name: string = SUPABASE_BUCKETS.default) {
+    return this.supabase.storage.from(name);
   }
 
   public async getAll() {
