@@ -1,3 +1,11 @@
 #supabase-authentication {
-  @apply grid gap-6 grid-cols-2 tablet:grid-cols-1;
+  @apply flex flex-col items-center justify-center;
+
+  > mat-tab-group {
+    @apply w-96 mobile:w-full;
+  }
+
+  > doc-terminal-window {
+    @apply mt-4 w-[700px] mobile:w-full;
+  }
 }

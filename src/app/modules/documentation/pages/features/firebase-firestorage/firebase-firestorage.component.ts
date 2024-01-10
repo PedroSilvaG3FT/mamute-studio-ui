@@ -101,10 +101,7 @@ export class FirebaseFirestorageComponent {
 
     this.firebaseStorageService
       .delete(file.fullPath)
-      .then(() => {
-        console.log('[REMOVE FILE]');
-        this.getFiles();
-      })
+      .then(() => this.getFiles())
       .catch((error) => this.handleError(error))
       .finally(() => this.loadingStore.setState(false));
   }
@@ -114,9 +111,7 @@ export class FirebaseFirestorageComponent {
 
     this.firebaseStorageService
       .download(file.fullPath)
-      .then((response) => {
-        console.log('[DOWNLOAD FILE]: ', response);
-      })
+      .then(() => {})
       .catch((error) => this.handleError(error))
       .finally(() => this.loadingStore.setState(false));
   }
@@ -127,8 +122,6 @@ export class FirebaseFirestorageComponent {
     this.firebaseStorageService
       .getAll(this.path)
       .then((response) => {
-        console.log('[GET FILES]: ', response);
-
         this.pagination = {
           ...this.pagination,
           totalItems: response.items.length,

@@ -1,9 +1,11 @@
 import { Component, inject } from '@angular/core';
+import { MatTabsModule } from '@angular/material/tabs';
 import { LoadingStore } from '../../../../../store/loading.store';
 import { AlertService } from '../../../../@core/services/alert.service';
 import { SupabaseAuthenticationService } from '../../../../@core/supabase/supabase-authentication.service';
 import { SignInComponent } from '../../../components/sign-in/sign-in.component';
 import { SignUpComponent } from '../../../components/sign-up/sign-up.component';
+import { TerminalWindowComponent } from '../../../components/terminal-window/terminal-window.component';
 import {
   IDocAuthenticationCredentials,
   IDocAuthenticationSignUp,
@@ -12,14 +14,20 @@ import {
 @Component({
   standalone: true,
   selector: 'app-supabase-authentication',
-  imports: [SignInComponent, SignUpComponent],
   styleUrl: './supabase-authentication.component.scss',
   templateUrl: './supabase-authentication.component.html',
+  imports: [
+    MatTabsModule,
+    SignInComponent,
+    SignUpComponent,
+    TerminalWindowComponent,
+  ],
 })
 export class SupabaseAuthenticationComponent {
   public loadingStore = inject(LoadingStore);
   private readonly errorMessage = `An error occurred while processing the request`;
 
+  public jsonResponse: string = '';
   public credentials: IDocAuthenticationCredentials =
     {} as IDocAuthenticationCredentials;
 
@@ -35,25 +43,24 @@ export class SupabaseAuthenticationComponent {
 
   public handleSubmitSignIn(data: IDocAuthenticationCredentials) {
     this.loadingStore.setState(true);
+
     this.supabaseAuthenticationService
       .signIn(data)
-      .then((response) => {
-        console.log('Sign in response', response);
-      })
+      .then((data) => (this.jsonResponse = JSON.stringify(data)))
       .catch((error) => this.handleError(error))
       .finally(() => this.loadingStore.setState(false));
   }
 
   public handleSubmitSignUp(data: IDocAuthenticationSignUp) {
+    this.loadingStore.setState(true);
+
     this.supabaseAuthenticationService
       .signUp({
         email: data.email,
         password: data.password,
       })
-      .then((response) => {
-        console.log('Sign up response', response);
-      })
+      .then((data) => (this.jsonResponse = JSON.stringify(data)))
       .catch((error) => this.handleError(error))
-      .finally(() => this.loadingStore.setState(true));
+      .finally(() => this.loadingStore.setState(false));
   }
 }

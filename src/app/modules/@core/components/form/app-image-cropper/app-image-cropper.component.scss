@@ -31,10 +31,10 @@
     > label {
       @extend .button-action;
       background: $primary;
-      color: #fff;
+      color: $white;
 
       &:hover {
-        color: #fff;
+        color: $white;
       }
     }
 

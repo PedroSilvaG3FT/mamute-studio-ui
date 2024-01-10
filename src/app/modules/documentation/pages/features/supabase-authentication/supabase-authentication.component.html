@@ -1,4 +1,13 @@
 <section id="supabase-authentication">
-  <doc-sign-in (onSubmit)="handleSubmitSignIn($event)" />
-  <doc-sign-up (onSubmit)="handleSubmitSignUp($event)" />
+  <mat-tab-group mat-align-tabs="center">
+    <mat-tab label="Sign in">
+      <doc-sign-in (onSubmit)="handleSubmitSignIn($event)" />
+    </mat-tab>
+
+    <mat-tab label="Sign up">
+      <doc-sign-up (onSubmit)="handleSubmitSignUp($event)" />
+    </mat-tab>
+  </mat-tab-group>
+
+  <doc-terminal-window title="output:" [content]="jsonResponse" />
 </section>

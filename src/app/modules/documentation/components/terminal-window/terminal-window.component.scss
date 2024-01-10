@@ -44,7 +44,7 @@
 
       > p {
         @apply w-full break-words;
-        color: #fff;
+        color: $white;
 
         > span {
           @apply text-sm;

@@ -14,6 +14,9 @@
     &.left {
       @apply justify-end;
     }
+    &.center {
+      @apply justify-center;
+    }
     &.right {
       @apply justify-start;
     }

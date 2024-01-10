@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { SupabaseTableBase } from '../../@core/supabase/supabase-table.base';
+import { SupabaseClientBase } from '../../@core/supabase/supabase-client.base';
 
 @Injectable({ providedIn: 'root' })
-export class SupabaseExampleService extends SupabaseTableBase {
+export class SupabaseExampleService extends SupabaseClientBase {
   constructor() {
     super('TableExample');
   }

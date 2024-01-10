@@ -31,7 +31,7 @@ export class AppFormGeneratorComponent {
   @Input() submitText: string = 'Submit';
 
   @Input() actionPositionY: 'top' | 'bottom' = 'top';
-  @Input() actionPositionX: 'left' | 'right' = 'right';
+  @Input() actionPositionX: 'left' | 'right' | 'center' = 'right';
 
   @Input({ transform: booleanAttribute }) column: boolean = false;
   @Input({ required: true }) fields: IFormGeneratorField<{}>[][] = [];

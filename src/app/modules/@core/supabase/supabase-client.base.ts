@@ -1,7 +1,7 @@
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import { environment } from '../../../../environments/environment';
 
-export class SupabaseTableBase {
+export class SupabaseClientBase {
   public supabase: SupabaseClient;
 
   constructor(public tableName: string) {

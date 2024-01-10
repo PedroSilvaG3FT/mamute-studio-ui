@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import {
-  AuthSession,
   SignInWithPasswordCredentials,
   SignUpWithPasswordCredentials,
 } from '@supabase/supabase-js';
-import { SupabaseTableBase } from './supabase-table.base';
+import { SupabaseClientBase } from './supabase-client.base';
 
 export interface Profile {
   id?: string;
@@ -14,19 +13,9 @@ export interface Profile {
 }
 
 @Injectable({ providedIn: 'root' })
-export class SupabaseAuthenticationService extends SupabaseTableBase {
-  public _session: AuthSession | null = null;
-
+export class SupabaseAuthenticationService extends SupabaseClientBase {
   constructor() {
     super('profiles');
-  }
-
-  get session() {
-    this.supabase.auth
-      .getSession()
-      .then(({ data }) => (this._session = data.session));
-
-    return this._session;
   }
 
   public signUp(data: SignUpWithPasswordCredentials) {
