@@ -123,6 +123,7 @@ export class FirebaseFirestorageComponent {
 
   public getFiles() {
     this.loadingStore.setState(true);
+
     this.firebaseStorageService
       .getAll(this.path)
       .then((response) => {

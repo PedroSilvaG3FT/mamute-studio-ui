@@ -1,0 +1,10 @@
+@import "variables";
+
+#sign-up {
+  @apply p-4 flex flex-col items-center justify-center rounded-xl;
+  background: $bg-secondary;
+
+  > section {
+    @apply w-full;
+  }
+}

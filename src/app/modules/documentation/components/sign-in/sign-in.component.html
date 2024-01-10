@@ -1,0 +1,14 @@
+<section id="sign-in">
+  <h4>Sign in</h4>
+
+  <section>
+    <app-form-generator
+      id="sign-in"
+      actionPositionX="right"
+      actionPositionY="bottom"
+      [fields]="form.fields"
+      [formGroup]="form.group"
+      (onSubmit)="handleSubmit($event)"
+    />
+  </section>
+</section>

@@ -1,11 +1,14 @@
 <form
   novalidate
-  id="app-form-generator"
+  [id]="uniqueId"
   [formGroup]="formGroup"
   (ngSubmit)="handleSubmit()"
+  class="app-form-generator"
 >
   <nav class="{{ actionPositionY }} {{ actionPositionX }}">
-    <button class="btn-primary" [disabled]="formGroup.invalid" type="submit">{{ submitText }}</button>
+    <button class="btn-primary" [disabled]="formGroup.invalid" type="submit">
+      {{ submitText }}
+    </button>
   </nav>
 
   <section>

@@ -26,6 +26,7 @@ import { FieldGeneratorDirective } from '../field-generator.directive';
   ],
 })
 export class AppFormGeneratorComponent {
+  @Input() id: string = '';
   @Input() fieldGap: string = '16px';
   @Input() submitText: string = 'Submit';
 
@@ -41,6 +42,7 @@ export class AppFormGeneratorComponent {
   @Output() onSubmit = new EventEmitter();
   @Output() onValueChanges = new EventEmitter();
 
+  public uniqueId: string = '';
   public dynamicColumClass: string = '';
   public readonly defaultFieldWidth: string = '100%';
 
@@ -48,6 +50,7 @@ export class AppFormGeneratorComponent {
 
   ngOnInit() {
     this.initWatchValues();
+    this.uniqueId = `app-form-generator-${this.id}`;
   }
 
   private initWatchValues() {

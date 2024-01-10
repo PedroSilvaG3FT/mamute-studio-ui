@@ -52,6 +52,23 @@ export class SideMenuComponent {
       ],
     },
     {
+      name: 'Supabase',
+      children: [
+        {
+          icon: 'lucide:user',
+          name: 'Authentication',
+          id: 'supabase-authentication',
+          link: '/features/supabase-authentication',
+        },
+        {
+          name: 'Table',
+          id: 'supabase-table',
+          link: '/features/supabase-table',
+          icon: 'material-symbols:database-outline',
+        },
+      ],
+    },
+    {
       name: 'Store',
       children: [
         {

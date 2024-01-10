@@ -10,16 +10,16 @@ import {
 } from '../../../../@core/interfaces/app-table.interface';
 import { AlertService } from '../../../../@core/services/alert.service';
 import { IDocDocumentDatabase } from '../../../interfaces/doc-document-database.interface';
-import { FirebaseExampleService } from '../../../services/firebase-example.service';
+import { SupabaseExampleService } from '../../../services/supabase-example.service';
 
 @Component({
   standalone: true,
-  selector: 'doc-firebase-firestore',
+  selector: 'doc-supabase-table',
+  styleUrl: './supabase-table.component.scss',
   imports: [AppTableComponent, MatButtonModule],
-  styleUrl: './firebase-firestore.component.scss',
-  templateUrl: './firebase-firestore.component.html',
+  templateUrl: './supabase-table.component.html',
 })
-export class FirebaseFirestoreComponent {
+export class SupabaseTableComponent {
   public loadingStore = inject(LoadingStore);
   public documentsData: IDocDocumentDatabase[] = [];
   private readonly errorMessage = `An error occurred while processing the request`;
@@ -37,7 +37,7 @@ export class FirebaseFirestoreComponent {
     {
       title: 'View',
       icon: 'solar:eye-broken',
-      callback: (element) => this.getDocument(String(element.id)),
+      callback: (element) => this.getDocument(Number(element.id)),
     },
     {
       title: 'Update',
@@ -47,7 +47,7 @@ export class FirebaseFirestoreComponent {
     {
       title: 'Delete',
       icon: 'iwwa:delete',
-      callback: (element) => this.deleteDocument(String(element.id)),
+      callback: (element) => this.deleteDocument(Number(element.id)),
     },
   ];
 
@@ -59,7 +59,7 @@ export class FirebaseFirestoreComponent {
 
   constructor(
     private alertService: AlertService,
-    private firebaseExampleService: FirebaseExampleService
+    private supabaseExampleService: SupabaseExampleService
   ) {}
 
   ngOnInit() {
@@ -74,47 +74,49 @@ export class FirebaseFirestoreComponent {
   public getDocuments() {
     this.loadingStore.setState(true);
 
-    this.firebaseExampleService
+    this.supabaseExampleService
       .getAll<IDocDocumentDatabase[]>()
       .then((response) => {
         this.pagination = {
           ...this.pagination,
-          totalItems: response.length,
+          totalItems: response.data.length || 0,
         };
 
-        this.documents = response;
-        this.handlePaginate(response);
+        this.documentsData = response.data || [];
+        this.handlePaginate(this.documentsData);
       })
       .catch((error) => this.handleError(error))
       .finally(() => this.loadingStore.setState(false));
   }
 
-  public getDocument(id: string) {
+  public getDocument(id: number) {
     this.loadingStore.setState(true);
 
-    this.firebaseExampleService
+    this.supabaseExampleService
       .getById<IDocDocumentDatabase>(id)
       .then((response) => {
-        this.alertService.snackBar.open(response.email, 'close');
+        this.alertService.snackBar.open(response.data.email, 'close');
       })
       .catch((error) => this.handleError(error))
       .finally(() => this.loadingStore.setState(false));
   }
 
   public createDocument() {
-    this.loadingStore.setState(true);
-
     const names = ['Alice', 'Bob', 'Charlie', 'Diana', 'Eva', 'Frank', 'Grace'];
     const randomName = names[Math.floor(Math.random() * names.length)];
     const randomEmail = `${randomName.toLowerCase()}@example.com`;
     const randomAge = Math.floor(Math.random() * 100);
 
-    this.firebaseExampleService
-      .create<IDocDocumentDatabase>({
-        age: randomAge,
-        name: randomName,
-        email: randomEmail,
-      })
+    const data = {
+      age: randomAge,
+      name: randomName,
+      email: randomEmail,
+    };
+
+    this.loadingStore.setState(true);
+
+    this.supabaseExampleService
+      .create(data)
       .then(() => this.getDocuments())
       .catch((error) => this.handleError(error))
       .finally(() => this.loadingStore.setState(false));
@@ -122,22 +124,22 @@ export class FirebaseFirestoreComponent {
 
   public updateDocument(item: IDocDocumentDatabase) {
     this.loadingStore.setState(true);
+
     const editRandom = Math.floor(Math.random() * 100);
     const currentName = item.name.split('-')[1] || item.name;
-
     const name = `(Edit ${editRandom}) - ${currentName}`;
 
-    this.firebaseExampleService
-      .update<Partial<IDocDocumentDatabase>>(String(item.id), { name })
+    this.supabaseExampleService
+      .update({ name }, Number(item.id))
       .then(() => this.getDocuments())
       .catch((error) => this.handleError(error))
       .finally(() => this.loadingStore.setState(false));
   }
 
-  public deleteDocument(id: string) {
+  public deleteDocument(id: number) {
     this.loadingStore.setState(true);
 
-    this.firebaseExampleService
+    this.supabaseExampleService
       .delete(id)
       .then(() => this.getDocuments())
       .catch((error) => this.handleError(error))
