@@ -14,8 +14,8 @@ export class StripeService {
     return this._connector.stripe.checkout.sessions.create({
       mode: 'subscription',
       line_items: products,
-      cancel_url: `${domain}/features/stripe`,
-      success_url: `${domain}/features/stripe`,
+      cancel_url: `${domain}/features/stripe?canceled=true`,
+      success_url: `${domain}/features/stripe?success=true`,
     });
   }
 }

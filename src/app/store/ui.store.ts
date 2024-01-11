@@ -3,7 +3,7 @@ import { ThemeType } from '../modules/@core/types/theme.type';
 import { PersistService } from './@persist/persist.service';
 
 const persistService = new PersistService('ui');
-const state = persistService.initState({ theme: 'light' });
+const state = persistService.initState({ theme: 'dark' });
 
 export const UiStore = signalStore(
   { providedIn: 'root' },
