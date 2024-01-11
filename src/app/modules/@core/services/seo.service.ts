@@ -40,16 +40,7 @@ export class SEOService {
     this.$routerTitle.unsubscribe();
   }
 
-  public getCurrentDomain(showHttpLocalhost = true) {
-    const domain = window.location.host;
-
-    const hasHttp = domain.includes('http');
-    const isLocalhost = domain.includes('localhost');
-    const replacedDomain =
-      showHttpLocalhost && isLocalhost && !hasHttp
-        ? `http://${domain}`
-        : domain;
-
-    return replacedDomain;
+  public getCurrentDomain() {
+    return window.location.origin;
   }
 }
