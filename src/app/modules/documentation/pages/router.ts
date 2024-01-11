@@ -102,6 +102,17 @@ export const INITIAL_ROUTES: Routes = [
             (c) => c.SupabaseStorageComponent
           ),
       },
+      {
+        path: 'stripe',
+        data: {
+          id: 'stripe',
+          title: 'Stripe',
+        },
+        loadComponent: () =>
+          import('./features/stripe/stripe.component').then(
+            (c) => c.StripeComponent
+          ),
+      },
     ],
   },
 ];

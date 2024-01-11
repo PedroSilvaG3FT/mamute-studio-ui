@@ -81,6 +81,17 @@ export class SideMenuComponent {
       ],
     },
     {
+      name: 'Stripe',
+      children: [
+        {
+          id: 'stripe',
+          name: 'Checkout',
+          icon: 'bi:stripe',
+          link: '/features/stripe',
+        },
+      ],
+    },
+    {
       name: 'Store',
       children: [
         {
