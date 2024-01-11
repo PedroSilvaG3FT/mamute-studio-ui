@@ -38,6 +38,12 @@ export class SideMenuComponent {
       name: 'Firebase',
       children: [
         {
+          icon: 'lucide:user',
+          name: 'Authentication',
+          id: 'firebase-authentication',
+          link: '/features/firebase-authentication',
+        },
+        {
           name: 'Firestore',
           id: 'firebase-firestore',
           link: '/features/firebase-firestore',

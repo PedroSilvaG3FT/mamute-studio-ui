@@ -7,6 +7,7 @@ const state = persistService.initState({
   supabaseRefreshToken: '',
 
   firebaseToken: '',
+  firebaseRefreshToken: '',
 });
 
 export const AuthStore = signalStore(
@@ -19,6 +20,14 @@ export const AuthStore = signalStore(
     },
     setSupabaseRefreshToken(supabaseRefreshToken: string) {
       patchState(store, { supabaseRefreshToken });
+      persistService.commit(store, state);
+    },
+    setFirebaseToken(firebaseToken: string) {
+      patchState(store, { firebaseToken });
+      persistService.commit(store, state);
+    },
+    setFirebaseRefreshToken(firebaseRefreshToken: string) {
+      patchState(store, { firebaseRefreshToken });
       persistService.commit(store, state);
     },
   }))

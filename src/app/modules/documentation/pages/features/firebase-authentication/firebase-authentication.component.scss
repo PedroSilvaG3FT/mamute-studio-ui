@@ -1,0 +1,11 @@
+#firebase-authentication {
+  @apply flex flex-col items-center justify-center;
+
+  > mat-tab-group {
+    @apply w-96 mobile:w-full;
+  }
+
+  > doc-terminal-window {
+    @apply mt-4 w-[700px] mobile:w-full;
+  }
+}

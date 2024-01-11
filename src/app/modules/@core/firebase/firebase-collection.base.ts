@@ -1,4 +1,5 @@
-import { initializeApp } from 'firebase/app';
+import { inject } from '@angular/core';
+import { FirebaseApp } from 'firebase/app';
 import {
   CollectionReference,
   DocumentData,
@@ -14,16 +15,19 @@ import {
   onSnapshot,
   query,
   updateDoc,
+  where,
 } from 'firebase/firestore';
 import { Subject } from 'rxjs';
-import { environment } from '../../../../environments/environment';
 import { ListDocumentSnapshot } from './@types/firebase.type';
 import { FirebaseCollectionHelper } from './firebase-collection.helper';
+import { FirebaseConnectorService } from './firebase-connector.service';
 
 export class FirebaseCollectionBase {
+  private _connector = inject(FirebaseConnectorService);
   private snapshot = new Subject<ListDocumentSnapshot>();
 
   public db!: Firestore;
+  public app: FirebaseApp;
   public _helper = new FirebaseCollectionHelper();
   public $snapshot = this.snapshot.asObservable();
   public collection!: CollectionReference<DocumentData>;
@@ -32,7 +36,12 @@ export class FirebaseCollectionBase {
     private collectionName: string,
     private snapshotChangeEnable: boolean = false
   ) {
-    this.#init();
+    this.app = this._connector.app;
+
+    this.db = getFirestore();
+    this.collection = collection(this.db, this.collectionName);
+
+    this.handleMonitoringSnapshot();
   }
 
   public getAll<Data>(querys: QueryFieldFilterConstraint[] = []) {
@@ -57,6 +66,21 @@ export class FirebaseCollectionBase {
 
   public getDocumentReference(id: string, collection = this.collectionName) {
     return doc(this.db, collection, id);
+  }
+
+  public async getByColumn<Data>(column: string, value: any) {
+    try {
+      const snapshot = await getDocs(
+        query(this.collection, where(column, '==', value))
+      );
+
+      const response = await this._helper.getCollectionData<Data>(snapshot);
+      const [result] = response as Data[];
+
+      return result || {};
+    } catch (error) {
+      throw error;
+    }
   }
 
   // #region: Protected methods
@@ -106,12 +130,7 @@ export class FirebaseCollectionBase {
   }
   // #endregion: Protected methods
 
-  #init() {
-    initializeApp(environment.firebase);
-
-    this.db = getFirestore();
-    this.collection = collection(this.db, this.collectionName);
-
+  private handleMonitoringSnapshot() {
     if (this.snapshotChangeEnable) {
       onSnapshot(
         this.collection,

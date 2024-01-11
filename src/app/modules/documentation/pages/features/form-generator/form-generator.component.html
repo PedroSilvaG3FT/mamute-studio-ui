@@ -1,5 +1,9 @@
 <section id="form-generator">
-  <doc-terminal-window [content]="formValue | json" />
+  <doc-terminal-window
+    title="output:"
+    class="mb-4"
+    [content]="formValue | json"
+  />
 
   <app-form-generator
     watchValues

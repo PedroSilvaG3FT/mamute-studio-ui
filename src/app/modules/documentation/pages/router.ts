@@ -46,6 +46,17 @@ export const INITIAL_ROUTES: Routes = [
           ),
       },
       {
+        path: 'firebase-authentication',
+        data: {
+          id: 'firebase-authentication',
+          title: 'Firebase Authentication',
+        },
+        loadComponent: () =>
+          import(
+            './features/firebase-authentication/firebase-authentication.component'
+          ).then((c) => c.FirebaseAuthenticationComponent),
+      },
+      {
         path: 'firebase-firestorage',
         data: { id: 'firebase-firestorage', title: 'Firebase Firestorage' },
         loadComponent: () =>

@@ -23,14 +23,14 @@
   }
 
   .angular-editor-toolbar {
-    @apply rounded-t-md;
+    @apply rounded-t-xl;
     padding-top: 6px !important;
     background-color: $darken-bg !important;
     border-bottom-color: transparent !important;
   }
 
   .angular-editor-textarea {
-    @apply rounded-b-md;
+    @apply rounded-b-xl;
     margin-top: 0px !important;
     border-top: none !important;
     background-color: $background !important;

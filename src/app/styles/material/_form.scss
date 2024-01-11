@@ -1,4 +1,22 @@
-@import 'variables';
+@import "variables";
+
+.mat-mdc-text-field-wrapper {
+  border-radius: 12px !important;
+}
+
+.mdc-line-ripple::before {
+  display: none !important;
+}
+
+.mdc-notched-outline__leading {
+  border-top-left-radius: 12px !important;
+  border-bottom-left-radius: 12px !important;
+}
+
+.mdc-notched-outline__trailing {
+  border-top-right-radius: 12px !important;
+  border-bottom-right-radius: 12px !important;
+}
 
 .mdc-notched-outline__notch {
   border-right: 0px !important;
@@ -7,5 +25,6 @@
 .mdc-notched-outline {
   z-index: 0 !important;
   background: $bg-secondary;
+  border-radius: 12px !important;
   border-radius: var(--mdc-outlined-text-field-container-shape);
 }

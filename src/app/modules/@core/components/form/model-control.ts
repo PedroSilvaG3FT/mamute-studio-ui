@@ -14,7 +14,7 @@ export class ModelControl implements ControlValueAccessor {
   @Input() isDynamic: boolean = false;
   @Input() formControlName: string = '';
   @Input() initialValue?: ModelControlType;
-  @Input() appearance: 'outline' | 'fill' = 'outline';
+  @Input() appearance: 'outline' | 'fill' = 'fill';
 
   @Input() group: FormGroup = this.formBuilder.group({
     [this.name]: [''],

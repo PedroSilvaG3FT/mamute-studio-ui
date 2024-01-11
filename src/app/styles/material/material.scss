@@ -1,9 +1,6 @@
+@import "./tab";
 @import "./form";
 @import "./snackbar";
-
-mat-tab-body {
-  @apply pt-4;
-}
 
 .dark .mat-elevation-z8,
 .dark .mat-mdc-elevation-specific.mat-elevation-z8 {

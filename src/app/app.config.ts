@@ -8,6 +8,7 @@ import {
 
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { routes } from './app.routes';
+import { FirebaseConnectorService } from './modules/@core/firebase/firebase-connector.service';
 import { SupabaseConnectorService } from './modules/@core/supabase/supabase-connector.service';
 
 const inMemoryScrollingFeature: InMemoryScrollingFeature =
@@ -21,6 +22,7 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     provideAnimationsAsync(),
     SupabaseConnectorService,
+    FirebaseConnectorService,
     provideRouter(routes, inMemoryScrollingFeature),
   ],
 };

@@ -1,0 +1,8 @@
+mat-tab-body {
+  @apply pt-4;
+}
+
+.mat-mdc-tab-ripple,
+.mat-mdc-tab .mdc-tab__ripple::before {
+  @apply rounded-t-xl;
+}
