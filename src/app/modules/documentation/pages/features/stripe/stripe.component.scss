@@ -1,0 +1,9 @@
+#stripe {
+  > nav {
+    @apply mb-4 flex gap-2 items-center;
+  }
+
+  > section {
+    @apply flex flex-col gap-4;
+  }
+}

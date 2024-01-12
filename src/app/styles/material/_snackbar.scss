@@ -2,23 +2,23 @@
 
 .mdc-snackbar {
   position: fixed !important;
-}
 
-.mdc-button__label {
-  color: $primary !important;
-}
+  .mdc-button__label {
+    color: $primary !important;
+  }
 
-.mdc-snackbar__surface {
-  border-radius: 8px !important;
-  background: $bg-secondary !important;
-}
-
-.mat-mdc-snack-bar-label {
-  color: $text-primary !important;
-}
-
-.mat-mdc-snack-bar-action {
-  * {
+  .mdc-snackbar__surface {
+    border-radius: 8px !important;
     background: $bg-secondary !important;
+  }
+
+  .mat-mdc-snack-bar-label {
+    color: $text-primary !important;
+  }
+
+  .mat-mdc-snack-bar-action {
+    * {
+      background: $bg-secondary !important;
+    }
   }
 }

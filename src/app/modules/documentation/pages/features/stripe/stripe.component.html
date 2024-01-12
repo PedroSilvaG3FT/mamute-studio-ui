@@ -1,3 +1,41 @@
 <section id="stripe">
-  <button class="btn-primary" (click)="goToCheckout()">Checkout</button>
+  <nav>
+    <button
+      mat-mini-fab
+      color="primary"
+      (click)="createCostumer()"
+      [disabled]="hasCustomer()"
+      matTooltip="Create customer"
+    >
+      <i class="iconify" data-icon="ri:user-add-line"></i>
+    </button>
+
+    <button
+      mat-mini-fab
+      color="primary"
+      (click)="goToCheckout()"
+      [disabled]="hasCustomer()"
+      matTooltip="Open checkout"
+    >
+      <i class="iconify" data-icon="carbon:wireless-checkout"></i>
+    </button>
+
+    <button
+      mat-mini-fab
+      color="primary"
+      [disabled]="!hasCustomer()"
+      (click)="openCostumerPortal()"
+      matTooltip="Open customer portal"
+    >
+      <i class="iconify" data-icon="solar:user-id-bold"></i>
+    </button>
+  </nav>
+
+  <section>
+    <doc-terminal-window title="customer output:" [content]="customer | json" />
+    <doc-terminal-window
+      title="customer subscriptions output:"
+      [content]="customerSubscriptions | json"
+    />
+  </section>
 </section>

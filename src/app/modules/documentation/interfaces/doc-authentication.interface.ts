@@ -10,4 +10,5 @@ export interface IDocAuthenticationSignUp {
   name: string;
   email: string;
   password: string;
+  stripeCustomerId: string;
 }
