@@ -36,6 +36,7 @@ export class StripeComponent {
 
   public customerId = computed(() => this.authStore.stripeCustomerId());
   public hasCustomer = computed(() => !!this.authStore.stripeCustomerId());
+  public hasSubscriptions = !!this.customerSubscriptions?.data?.length;
 
   constructor(
     private stripeService: StripeService,
@@ -71,14 +72,15 @@ export class StripeComponent {
   }
 
   public createCostumer() {
+    const names = ['Alice', 'Bob', 'Charlie', 'Diana', 'Eva', 'Frank', 'Grace'];
+    const name = names[Math.floor(Math.random() * names.length)];
+    const email = `${name.toLowerCase()}@example.com`;
+
     this.stripeService._customer
-      .create(
-        { name: 'Pedro Silva', email: 'pedro.silva-dev@hotmail.com' },
-        generateUUID()
-      )
+      .create({ name, email }, generateUUID())
       .then((response) => {
-        this.getCustomer();
         this.authStore.setStripeCustomerId(response.id);
+        this.getCustomer();
       })
       .catch((error) => console.log(error))
       .finally(() => {});
@@ -88,7 +90,7 @@ export class StripeComponent {
     this.stripeService._customer
       .openPortal(this.customerId())
       .then((response) => {
-        if (response.url) window.open(response.url);
+        if (response.url) this.stripeService.redirect(response.url);
       })
       .catch((error) => console.log(error))
       .finally(() => {});
@@ -100,7 +102,7 @@ export class StripeComponent {
     this.stripeService
       .createSession([STRIPE_PRODUCTS.MONTH], customerId)
       .then((response) => {
-        if (response.url) window.open(response.url);
+        if (response.url) this.stripeService.redirect(response.url);
         console.log(response);
       })
       .catch((error) => console.log(error))

@@ -12,6 +12,10 @@ export class StripeService {
 
   constructor(private seoService: SEOService) {}
 
+  public redirect(url: string) {
+    window.open(url, '_self');
+  }
+
   public createSession(products: IStripeProductLineItem[], customerId: string) {
     return this._connector.stripe.checkout.sessions.create({
       mode: 'subscription',

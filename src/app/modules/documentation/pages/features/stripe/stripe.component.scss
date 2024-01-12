@@ -1,6 +1,25 @@
+@import "variables";
+
 #stripe {
-  > nav {
-    @apply mb-4 flex gap-2 items-center;
+  > ul {
+    @apply p-4 rounded-2xl;
+    background: $bg-secondary;
+
+    > li {
+      @apply mb-4 flex items-center;
+
+      &:last-of-type {
+        @apply mb-0;
+      }
+
+      > button {
+        @apply mr-4;
+      }
+    }
+  }
+
+  > hr {
+    @apply my-6;
   }
 
   > section {
