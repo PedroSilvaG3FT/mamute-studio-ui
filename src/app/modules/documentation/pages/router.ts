@@ -1,12 +1,6 @@
 import { Routes } from '@angular/router';
 
-export const INITIAL_ROUTES: Routes = [
-  {
-    path: '',
-    data: { id: 'home', title: 'Hello world' },
-    loadComponent: () =>
-      import('./home/home.component').then((c) => c.HomeComponent),
-  },
+export const DOCUMENTATION_ROUTES: Routes = [
   {
     path: 'features',
     data: { id: 'features', title: 'Features' },

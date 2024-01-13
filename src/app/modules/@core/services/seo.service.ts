@@ -27,7 +27,8 @@ export class SEOService {
 
   public initTitleMonitoring() {
     this.$routerTitle = this.onRouteChange().subscribe((data) => {
-      if (data['title']) this.title.setTitle(`Boilerplate - ${data['title']}`);
+      if (data['title'])
+        this.title.setTitle(`Instituto Apocalipse - ${data['title']}`);
     });
   }
 
