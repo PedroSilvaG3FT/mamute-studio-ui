@@ -6,3 +6,6 @@ export const FIREBASE_CONFIG = {
   storageBucket: `angular-boilerplate-3ed98.appspot.com`,
   authDomain: `angular-boilerplate-3ed98.firebaseapp.com`,
 };
+
+export const FIREBASE_CONFIG_STAGING = FIREBASE_CONFIG;
+export const FIREBASE_CONFIG_DEVELOPMENT = FIREBASE_CONFIG;
