@@ -10,10 +10,11 @@ import {
   signOut,
   updateProfile,
 } from 'firebase/auth';
+import { UserRole } from '../../authentication/enums/user-role.enum';
 import {
-  IDocAuthenticationCredentials,
-  IDocAuthenticationSignUp,
-} from '../../documentation/interfaces/doc-authentication.interface';
+  IAuthCredential,
+  IAuthRegister,
+} from '../../authentication/interfaces/authentication.interface';
 import { FirebaseCollectionBase } from './firebase-collection.base';
 
 @Injectable({ providedIn: 'root' })
@@ -25,18 +26,25 @@ export class FirebaseAuthenticationService extends FirebaseCollectionBase {
     this.auth = getAuth();
   }
 
-  public async signUp(data: IDocAuthenticationSignUp) {
+  public async signUp(data: IAuthRegister, role = UserRole.member) {
     try {
       const response = await createUserWithEmailAndPassword(
         this.auth,
         data.email,
-        data.password
+        data.password as string
       );
 
-      await this.create<IDocAuthenticationSignUp>({
+      const userData = {
         ...data,
+        active: true,
         uid: response.user.uid,
-      });
+        creationDate: new Date(),
+        role: `UserRole/${role}`,
+      };
+
+      delete userData.password;
+
+      await this.create<IAuthRegister>(userData);
 
       if (this.auth.currentUser) {
         await updateProfile(this.auth.currentUser, {
@@ -50,7 +58,7 @@ export class FirebaseAuthenticationService extends FirebaseCollectionBase {
     }
   }
 
-  public async signIn({ email, password }: IDocAuthenticationCredentials) {
+  public async signIn({ email, password }: IAuthCredential) {
     try {
       await setPersistence(this.auth, browserSessionPersistence);
 
@@ -63,7 +71,7 @@ export class FirebaseAuthenticationService extends FirebaseCollectionBase {
       const refreshToken = response.user.refreshToken;
       const { token: accessToken } = await response.user.getIdTokenResult();
 
-      const data = await this.getByColumn<IDocAuthenticationSignUp>(
+      const data = await this.getByColumn<IAuthRegister>(
         'uid',
         response.user.uid
       );

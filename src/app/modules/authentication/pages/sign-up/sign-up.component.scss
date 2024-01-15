@@ -1,0 +1,7 @@
+@import "variables";
+
+#sign-up {
+  > article {
+    @apply flex flex-col items-center justify-center;
+  }
+}

@@ -1,0 +1,20 @@
+<section id="admin-side-menu">
+  @for(item of links; track $index) {
+  <article>
+    <h5>{{ item.name }}</h5>
+
+    <section>
+      @for (child of item.children; track $index) {
+
+      <a [routerLink]="[child.link]" [class.active]="child.id === currentId">
+        <span>
+          <i class="iconify" [attr.data-icon]="child.icon"></i>
+        </span>
+
+        {{ child.name }}
+      </a>
+      }
+    </section>
+  </article>
+  }
+</section>

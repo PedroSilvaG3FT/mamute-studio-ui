@@ -77,7 +77,7 @@ export class FirebaseCollectionBase {
       const response = await this._helper.getCollectionData<Data>(snapshot);
       const [result] = response as Data[];
 
-      return result || {};
+      return result || ({} as Data);
     } catch (error) {
       throw error;
     }

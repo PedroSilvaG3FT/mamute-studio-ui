@@ -1,0 +1,18 @@
+<section id="sign-up">
+  <app-form-generator
+    id="sign-up"
+    submitButtonFull
+    submitText="Salvar"
+    actionPositionX="center"
+    actionPositionY="bottom"
+    [fields]="form.fields"
+    [formGroup]="form.group"
+    (onSubmit)="handleSubmit($event)"
+  />
+
+  <article>
+    <a [routerLink]="['/auth/login']" class="link--active underline">
+      voltar
+    </a>
+  </article>
+</section>

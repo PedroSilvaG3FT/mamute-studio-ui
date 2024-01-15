@@ -1,0 +1,21 @@
+<section id="login">
+  <app-form-generator
+    id="login"
+    submitButtonFull
+    submitText="Entrar"
+    actionPositionX="center"
+    actionPositionY="bottom"
+    [fields]="form.fields"
+    [formGroup]="form.group"
+    (onSubmit)="handleSubmit($event)"
+  />
+
+  <article>
+    <a [routerLink]="['/auth/forgot-password']" class="link">
+      Esqueci minha senha
+    </a>
+    <a [routerLink]="['/auth/sign-up']" class="link--active underline">
+      Criar conta
+    </a>
+  </article>
+</section>

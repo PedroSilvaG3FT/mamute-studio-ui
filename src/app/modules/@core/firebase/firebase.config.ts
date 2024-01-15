@@ -1,10 +1,11 @@
 export const FIREBASE_CONFIG = {
-  messagingSenderId: `335970945542`,
-  projectId: `angular-boilerplate-3ed98`,
-  apiKey: `AIzaSyA4B0hgx9-YXrsEonDXi_sk6NzKgibQ3NM`,
-  appId: `1:335970945542:web:6e319af6f596c1d4299187`,
-  storageBucket: `angular-boilerplate-3ed98.appspot.com`,
-  authDomain: `angular-boilerplate-3ed98.firebaseapp.com`,
+  projectId: 'iap-base',
+  measurementId: 'G-3CQHW6R2F0',
+  messagingSenderId: '1066573489407',
+  storageBucket: 'iap-base.appspot.com',
+  authDomain: 'iap-base.firebaseapp.com',
+  apiKey: 'AIzaSyAk4hO9FnWZDaYXNUTQgm6ScU3fATgfRhc',
+  appId: '1:1066573489407:web:39b9037a7b1c14aefad8ca',
 };
 
 export const FIREBASE_CONFIG_STAGING = FIREBASE_CONFIG;

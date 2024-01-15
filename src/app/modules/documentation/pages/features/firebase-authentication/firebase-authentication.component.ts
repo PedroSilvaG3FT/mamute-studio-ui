@@ -64,7 +64,7 @@ export class FirebaseAuthenticationComponent {
     this.loadingStore.setState(true);
 
     this.firebaseAuthenticationService
-      .signUp(data)
+      .signUp(data as any)
       .then((response) => (this.jsonResponse = JSON.stringify(response)))
       .catch((error) => this.handleError(error))
       .finally(() => this.loadingStore.setState(false));

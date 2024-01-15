@@ -29,6 +29,7 @@ export class AppFormGeneratorComponent {
   @Input() id: string = '';
   @Input() fieldGap: string = '16px';
   @Input() submitText: string = 'Submit';
+  @Input({ transform: booleanAttribute }) submitButtonFull: boolean = false;
 
   @Input() actionPositionY: 'top' | 'bottom' = 'top';
   @Input() actionPositionX: 'left' | 'right' | 'center' = 'right';

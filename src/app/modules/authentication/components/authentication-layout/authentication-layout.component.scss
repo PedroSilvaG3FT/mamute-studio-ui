@@ -1,0 +1,7 @@
+#authentication-layout {
+  @apply min-h-screen flex flex-col items-center justify-center;
+
+  > section {
+    @apply w-full max-w-lg;
+  }
+}

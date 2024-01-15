@@ -4,6 +4,10 @@
   border-radius: 12px !important;
 }
 
+.light .mat-mdc-text-field-wrapper {
+  background-color: #e0e0e0 !important;
+}
+
 .mdc-line-ripple::before {
   display: none !important;
 }
