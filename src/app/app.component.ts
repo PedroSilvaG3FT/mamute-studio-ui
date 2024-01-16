@@ -7,6 +7,7 @@ import { ROUTER_STACK_ANIMATION } from './modules/@core/animations/router-stack.
 import { AppLoadingComponent } from './modules/@core/components/app-loading/app-loading.component';
 import { SEOService } from './modules/@core/services/seo.service';
 import { ThemeService } from './modules/@core/services/theme.service';
+import { SeedService } from './modules/@shared/services/seed.service';
 import { LoadingStore } from './store/loading.store';
 
 @Component({
@@ -22,10 +23,12 @@ export class AppComponent {
 
   constructor(
     private seoService: SEOService,
+    private seedService: SeedService,
     private themeService: ThemeService
   ) {
     Iconify.listIcons();
     this.checkLoading();
+    this.seedService.init();
     this.themeService.init();
     this.seoService.initTitleMonitoring();
   }

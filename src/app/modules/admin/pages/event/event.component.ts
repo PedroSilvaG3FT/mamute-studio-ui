@@ -10,7 +10,10 @@ import {
 } from '../../../@core/interfaces/app-table.interface';
 import { AlertService } from '../../../@core/services/alert.service';
 import { AppPageNavComponent } from '../../../@shared/components/app-page-nav/app-page-nav.component';
-import { IEventItem } from '../../../@shared/interface/event.interface';
+import {
+  IEventDB,
+  IEventItem,
+} from '../../../@shared/interface/event.interface';
 import { DatabaseService } from '../../../@shared/services/database.service';
 
 @Component({
@@ -61,13 +64,11 @@ export class EventComponent {
     this.loadingStore.setState(true);
 
     this.databaseService.event
-      .getAll<any[]>()
+      .getAll<IEventDB[]>()
       .then((response) => {
         this.items = this.databaseService._model.event.buildList(response);
         this.pagination = { ...this.pagination, totalItems: this.items.length };
 
-        console.log(response);
-        console.log(this.items);
         this.handlePaginate(this.items);
       })
       .catch((error) => this.alertService.snackDefaultResponseError(error))

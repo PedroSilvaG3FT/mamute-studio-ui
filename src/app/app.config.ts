@@ -13,6 +13,7 @@ import { routes } from './app.routes';
 import { FirebaseConnectorService } from './modules/@core/firebase/firebase-connector.service';
 import { StripeConnectorService } from './modules/@core/stripe/stripe.connector';
 import { SupabaseConnectorService } from './modules/@core/supabase/supabase-connector.service';
+import { SeedService } from './modules/@shared/services/seed.service';
 
 const inMemoryScrollingFeature: InMemoryScrollingFeature =
   withInMemoryScrolling({
@@ -22,6 +23,7 @@ const inMemoryScrollingFeature: InMemoryScrollingFeature =
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    SeedService,
     provideAnimations(),
     provideAnimationsAsync(),
     StripeConnectorService,
