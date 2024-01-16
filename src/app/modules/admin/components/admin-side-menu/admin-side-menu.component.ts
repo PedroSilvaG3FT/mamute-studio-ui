@@ -17,31 +17,31 @@ export class AdminSideMenuComponent {
       children: [
         {
           link: '/admin/event',
-          icon: 'ant-design:build-outlined',
+          icon: 'ic:round-event',
           id: ADMIN_ROUTES_CONFIG.event.id,
           name: ADMIN_ROUTES_CONFIG.event.title,
         },
         {
           link: '/admin/news',
-          icon: 'ant-design:build-outlined',
+          icon: 'tabler:news',
           id: ADMIN_ROUTES_CONFIG.news.id,
           name: ADMIN_ROUTES_CONFIG.news.title,
         },
         {
           link: '/admin/partner',
-          icon: 'ant-design:build-outlined',
+          icon: 'mdi:partnership-outline',
           id: ADMIN_ROUTES_CONFIG.partner.id,
           name: ADMIN_ROUTES_CONFIG.partner.title,
         },
         {
           link: '/admin/user',
-          icon: 'ant-design:build-outlined',
+          icon: 'lucide:user',
           id: ADMIN_ROUTES_CONFIG.user.id,
           name: ADMIN_ROUTES_CONFIG.user.title,
         },
         {
           link: '/admin/prayer-wall',
-          icon: 'ant-design:build-outlined',
+          icon: 'mingcute:pray-line',
           id: ADMIN_ROUTES_CONFIG.prayerWall.id,
           name: ADMIN_ROUTES_CONFIG.prayerWall.title,
         },
@@ -53,7 +53,7 @@ export class AdminSideMenuComponent {
       children: [
         {
           link: '/admin/marketplace',
-          icon: 'ant-design:build-outlined',
+          icon: 'mdi:marketplace-outline',
           id: ADMIN_ROUTES_CONFIG.marketplace.id,
           name: ADMIN_ROUTES_CONFIG.marketplace.title,
         },

@@ -1,1 +1,18 @@
-<p>partner works!</p>
+<section id="partner">
+  <app-page-nav [title]="'Parceiros'" [routerLink]="'register'">
+    <a class="btn-primary">
+      <i class="iconify" data-icon="gravity-ui:plus"></i>
+      Novo
+    </a>
+  </app-page-nav>
+
+  <app-table
+    [data]="tableData"
+    [columns]="tableColumns"
+    [actions]="tableActions"
+    [pagination]="pagination"
+    emptyRedirectURL="register"
+    emptyRedirectText="Cadastrar novo parceiro"
+    (onPaginationChange)="onPaginationChange($event)"
+  />
+</section>

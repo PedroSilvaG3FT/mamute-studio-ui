@@ -5,20 +5,20 @@
     @apply flex items-center;
 
     &.top {
-      @apply order-1;
+      @apply order-1 mb-4;
     }
     &.bottom {
-      @apply order-3;
+      @apply order-3 mt-4;
     }
 
     &.left {
-      @apply justify-end;
+      @apply justify-start;
     }
     &.center {
       @apply justify-center;
     }
     &.right {
-      @apply justify-start;
+      @apply justify-end;
     }
   }
 

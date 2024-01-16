@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { AppPageNavComponent } from '../../../@shared/components/app-page-nav/app-page-nav.component';
 
 @Component({
-  selector: 'app-prayer-wall',
   standalone: true,
-  imports: [],
+  selector: 'app-prayer-wall',
+  styleUrl: './prayer-wall.component.scss',
+  imports: [AppPageNavComponent, RouterLink],
   templateUrl: './prayer-wall.component.html',
-  styleUrl: './prayer-wall.component.scss'
 })
 export class PrayerWallComponent {
-
+  constructor() {}
 }

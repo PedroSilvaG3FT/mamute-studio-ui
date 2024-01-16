@@ -1,1 +1,20 @@
-<p>news-register works!</p>
+<section id="news-register">
+  <app-page-nav backRoute="/admin/news" [title]="'Cadastro notícia'" />
+
+  <mat-tab-group mat-align-tabs="center">
+    <mat-tab label="Notícia">
+      <app-form-generator
+        mobileColumn
+        id="event-register"
+        submitText="Salvar"
+        actionPositionX="right"
+        [fields]="form.fields"
+        [formGroup]="form.group"
+        (onSubmit)="handleSubmit($event)"
+      />
+    </mat-tab>
+    <mat-tab label="Patrocinadores">
+      <app-news-partner />
+    </mat-tab>
+  </mat-tab-group>
+</section>

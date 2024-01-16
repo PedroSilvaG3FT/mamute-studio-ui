@@ -1,8 +1,7 @@
 <article id="app-table">
   @if(!!title) {
   <h2>{{ title }}</h2>
-  }
-
+  } @if(!!dataSource.data.length) {
   <section>
     <table
       matSort
@@ -15,7 +14,18 @@
         <th mat-header-cell mat-sort-header *matHeaderCellDef>
           {{ item.label }}
         </th>
+
+        @if(item.date) {
+        <td mat-cell *matCellDef="let element">
+          {{ element[item.key] | date : "dd/MM/yyyy" }}
+        </td>
+        } @else if(item.boolean) {
+        <td mat-cell *matCellDef="let element">
+          {{ element[item.key] ? "Sim" : "Não" }}
+        </td>
+        } @else {
         <td mat-cell *matCellDef="let element">{{ element[item.key] }}</td>
+        }
       </ng-container>
       }
 
@@ -50,4 +60,11 @@
     [pageIndex]="pagination.pageNumber - 1"
     [pageSizeOptions]="pagination.pageSizeOptions || []"
   />
+  } @else {
+  <app-empty-list
+    [description]="emptyDescription"
+    [redirectURL]="emptyRedirectURL"
+    [redirectText]="emptyRedirectText"
+  />
+  }
 </article>

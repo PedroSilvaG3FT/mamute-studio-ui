@@ -1,7 +1,7 @@
 @import "../variables";
 
 .btn-primary {
-  @apply h-14 px-4 flex items-center justify-center gap-8 rounded-xl;
+  @apply h-14 px-4 flex items-center justify-center gap-2 rounded-xl;
   color: $white;
   background: $primary;
 

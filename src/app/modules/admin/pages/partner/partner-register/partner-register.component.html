@@ -1,1 +1,20 @@
-<p>partner-register works!</p>
+<section id="partner-register">
+  <app-page-nav backRoute="/admin/partner" [title]="'Cadastro parceiro'" />
+
+  <mat-tab-group mat-align-tabs="center">
+    <mat-tab label="Parceiro">
+      <app-form-generator
+        mobileColumn
+        submitText="Salvar"
+        id="partner-register"
+        actionPositionX="right"
+        [fields]="form.fields"
+        [formGroup]="form.group"
+        (onSubmit)="handleSubmit($event)"
+      />
+    </mat-tab>
+    <mat-tab label="Anúncios">
+      <app-partner-adverting />
+    </mat-tab>
+  </mat-tab-group>
+</section>

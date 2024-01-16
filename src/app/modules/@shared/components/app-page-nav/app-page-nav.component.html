@@ -1,0 +1,15 @@
+<nav id="page-nav" animate animation="animate__fadeInDown">
+  @if(!!backRoute) {
+
+  <a [routerLink]="[backRoute]">
+    <i class="iconify text-lg" data-icon="iconamoon:arrow-left-2-bold"></i>
+    Voltar
+  </a>
+  }
+
+  <h1>{{ title }}</h1>
+
+  <section>
+    <ng-content />
+  </section>
+</nav>

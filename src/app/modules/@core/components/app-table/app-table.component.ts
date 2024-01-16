@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import {
   Component,
   EventEmitter,
@@ -19,6 +20,7 @@ import {
   ITableCell,
   ITableCellAction,
 } from '../../interfaces/app-table.interface';
+import { AppEmptyListComponent } from '../app-empty-list/app-empty-list.component';
 import { AppTableActionComponent } from './app-table-action/app-table-action.component';
 
 @Component({
@@ -27,9 +29,11 @@ import { AppTableActionComponent } from './app-table-action/app-table-action.com
   styleUrl: './app-table.component.scss',
   templateUrl: './app-table.component.html',
   imports: [
+    DatePipe,
     MatSortModule,
     MatTableModule,
     MatPaginatorModule,
+    AppEmptyListComponent,
     AppTableActionComponent,
   ],
 })
@@ -51,6 +55,10 @@ export class AppTableComponent {
   @Input({ required: true }) data: object[] = [];
   @Input({ required: true }) columns: ITableCell[] = [];
   @Input() pagination: IPagination = this.defaultPagination;
+
+  @Input() emptyDescription: string = ``;
+  @Input() emptyRedirectURL: string = ``;
+  @Input() emptyRedirectText: string = ``;
 
   @Output() onSortChange = new EventEmitter<Sort>();
   @Output() onPaginationChange = new EventEmitter<IPagination>();

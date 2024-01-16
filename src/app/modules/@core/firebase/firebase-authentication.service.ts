@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {
   Auth,
   browserSessionPersistence,
@@ -10,19 +10,22 @@ import {
   signOut,
   updateProfile,
 } from 'firebase/auth';
+import { AuthStore } from '../../../store/auth.store';
 import { UserRole } from '../../authentication/enums/user-role.enum';
 import {
   IAuthCredential,
   IAuthRegister,
 } from '../../authentication/interfaces/authentication.interface';
+import { FIREBASE_COLLECTION } from './@constans/firebase-collection.contant';
 import { FirebaseCollectionBase } from './firebase-collection.base';
 
 @Injectable({ providedIn: 'root' })
 export class FirebaseAuthenticationService extends FirebaseCollectionBase {
   private auth: Auth;
+  private authStore = inject(AuthStore);
 
   constructor() {
-    super('User');
+    super(FIREBASE_COLLECTION.user);
     this.auth = getAuth();
   }
 
@@ -94,6 +97,10 @@ export class FirebaseAuthenticationService extends FirebaseCollectionBase {
 
   public async recoveryPassword(email: string) {
     return sendPasswordResetEmail(this.auth, email);
+  }
+
+  public getUserReference() {
+    return this.getDocumentReference(this.authStore.userData().uid);
   }
 
   public signOut() {

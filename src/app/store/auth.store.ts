@@ -11,7 +11,7 @@ const state = persistService.initState({
   supabaseRefreshToken: '',
 
   userRole: 0 as UserRole,
-  userData: {},
+  userData: {} as IAuthRegister,
   firebaseToken: '',
   firebaseRefreshToken: '',
 });

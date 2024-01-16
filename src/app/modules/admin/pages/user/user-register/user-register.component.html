@@ -1,1 +1,13 @@
-<p>user-register works!</p>
+<section id="user-register">
+  <app-page-nav backRoute="/admin/user" [title]="'Cadastro usuário'" />
+
+  <app-form-generator
+    mobileColumn
+    submitText="Salvar"
+    id="partner-register"
+    actionPositionX="right"
+    [fields]="form.fields"
+    [formGroup]="form.group"
+    (onSubmit)="handleSubmit($event)"
+  />
+</section>

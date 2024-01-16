@@ -5,7 +5,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class AlertService {
   constructor(public snackBar: MatSnackBar) {}
 
-  public snackDefaultResponseError() {
-    this.snackBar.open('Ocorreu um erro ao processar a solicitação', 'fechar');
+  public snackDefaultResponseError(error?: any) {
+    const message =
+      error?.message || `Ocorreu um erro ao processar a solicitação`;
+
+    this.snackBar.open(message, 'fechar');
   }
 }

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { getApp, initializeApp } from 'firebase/app';
 import {
   FirebaseStorage,
@@ -10,6 +10,7 @@ import {
   uploadBytesResumable,
 } from 'firebase/storage';
 import { environment } from '../../../../environments/environment';
+import { AuthStore } from '../../../store/auth.store';
 import { generateUUID } from '../functions/uuid.function';
 import { DownloadUtil } from '../util/download.util';
 import { FIREBASE_STORAGE_ERROR_LIST } from './@constans/firebase-error.constant';
@@ -17,6 +18,7 @@ import { FIREBASE_STORAGE_ERROR_LIST } from './@constans/firebase-error.constant
 @Injectable({ providedIn: 'root' })
 export class FirebaseStorageService {
   public storage!: FirebaseStorage;
+  private authStore = inject(AuthStore);
 
   constructor() {
     this.#init();
@@ -25,6 +27,10 @@ export class FirebaseStorageService {
   #init() {
     initializeApp(environment.firebase);
     this.storage = getStorage(getApp());
+  }
+
+  public getUserPath() {
+    return `${this.authStore.userData().uid}`;
   }
 
   public getAll(

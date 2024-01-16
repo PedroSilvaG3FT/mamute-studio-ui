@@ -1,1 +1,27 @@
-<p>event-register works!</p>
+<section id="event-register">
+  <app-page-nav backRoute="/admin/event" [title]="pageTitle()" />
+
+  <mat-tab-group mat-align-tabs="center">
+    <mat-tab label="Evento">
+      <app-form-generator
+        mobileColumn
+        id="event-register"
+        submitText="Salvar"
+        actionPositionX="right"
+        [fields]="form.fields"
+        [formGroup]="form.group"
+        (onSubmit)="handleSubmit($event)"
+      />
+    </mat-tab>
+
+    <mat-tab label="Patrocinadores" [disabled]="isNew()">
+      <admin-event-partner />
+    </mat-tab>
+    <mat-tab label="Galeria" [disabled]="isNew()">
+      <admin-event-gallery />
+    </mat-tab>
+    <mat-tab label="Depoimentos" [disabled]="isNew()">
+      <admin-event-testimonial />
+    </mat-tab>
+  </mat-tab-group>
+</section>

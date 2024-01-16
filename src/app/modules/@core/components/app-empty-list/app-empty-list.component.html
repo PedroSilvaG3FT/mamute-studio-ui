@@ -1,0 +1,10 @@
+<section id="app-empty-list">
+  <img src="/assets/illustrations/work.png" alt="Nada por aqui" />
+  <p>{{ description || defaultDescription }}</p>
+
+  @if (!!redirectURL) {
+  <button class="btn-primary" [routerLink]="[redirectURL]">
+    {{ redirectText || deafultRedirectText }}
+  </button>
+  }
+</section>

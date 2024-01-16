@@ -1,1 +1,18 @@
-<p>news works!</p>
+<section id="news">
+  <app-page-nav [title]="'Notícias'">
+    <a class="btn-primary" [routerLink]="'register'">
+      <i class="iconify" data-icon="gravity-ui:plus"></i>
+      Novo
+    </a>
+  </app-page-nav>
+
+  <app-table
+    [data]="tableData"
+    [columns]="tableColumns"
+    [actions]="tableActions"
+    [pagination]="pagination"
+    emptyRedirectURL="register"
+    emptyRedirectText="Cadastrar nova notícia"
+    (onPaginationChange)="onPaginationChange($event)"
+  />
+</section>
