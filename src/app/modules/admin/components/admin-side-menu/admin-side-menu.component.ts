@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SEOService } from '../../../@core/services/seo.service';
-import { ADMIN_ROUTES_CONFIG } from '../../constants/admin-routes.contant';
+import { ADMIN_ROUTES_CONFIG } from '../../constants/admin-routes.constant';
 
 @Component({
   standalone: true,

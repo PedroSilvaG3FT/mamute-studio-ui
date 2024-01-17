@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { LoadingStore } from '../../../../store/loading.store';
 import { AppTableComponent } from '../../../@core/components/app-table/app-table.component';
 import { filterListPagination } from '../../../@core/functions/pagination.function';
@@ -38,7 +38,9 @@ export class PartnerComponent {
     {
       title: 'Edit',
       icon: 'iconamoon:edit-fill',
-      callback: (element) => console.log(element),
+      callback: (element) => {
+        this.router.navigate(['/admin/partner/register', element.id]);
+      },
     },
   ];
   public tableColumns: ITableCell[] = [
@@ -49,6 +51,7 @@ export class PartnerComponent {
   ];
 
   constructor(
+    private router: Router,
     private alertService: AlertService,
     private databaseService: DatabaseService
   ) {}
@@ -63,7 +66,6 @@ export class PartnerComponent {
     this.databaseService.partner
       .getAll<IPartnerDB[]>()
       .then((response) => {
-        console.log(response);
         this.items = this.databaseService._model.partner.buildList(response);
         this.pagination = { ...this.pagination, totalItems: this.items.length };
 

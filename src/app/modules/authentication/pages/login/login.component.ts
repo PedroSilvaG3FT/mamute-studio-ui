@@ -1,13 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { Timestamp } from 'firebase/firestore';
 import { AuthStore } from '../../../../store/auth.store';
 import { LoadingStore } from '../../../../store/loading.store';
 import { AppFormGeneratorComponent } from '../../../@core/components/_form-generator/app-form-generator/app-form-generator.component';
 import { FormGeneratorService } from '../../../@core/components/_form-generator/form-generator.service';
 import { FirebaseAuthenticationService } from '../../../@core/firebase/firebase-authentication.service';
 import { AlertService } from '../../../@core/services/alert.service';
+import { DatabaseService } from '../../../@shared/services/database.service';
 import { UserRole } from '../../enums/user-role.enum';
 import { IAuthCredential } from '../../interfaces/authentication.interface';
 
@@ -45,6 +45,7 @@ export class LoginComponent {
   constructor(
     private router: Router,
     private alertService: AlertService,
+    private databaseService: DatabaseService,
     private formGeneratorService: FormGeneratorService,
     private firebaseAuthenticationService: FirebaseAuthenticationService
   ) {}
@@ -66,14 +67,12 @@ export class LoginComponent {
       .then((response) => {
         const { refreshToken, accessToken, data } = response.user;
 
-        this.authStore.setUserData({
-          ...data,
-          creationDate: (data.creationDate as Timestamp).toDate(),
-        });
+        const userData = this.databaseService._model.user.buildItem(data);
+        this.authStore.setUserData(userData);
 
         this.authStore.setFirebaseToken(accessToken);
         this.authStore.setFirebaseRefreshToken(refreshToken);
-        this.authStore.setUserRole(this.getUserRole(data.role));
+        this.authStore.setUserRole(this.getUserRole(userData.role));
 
         this.handleLogin();
       })
@@ -90,7 +89,6 @@ export class LoginComponent {
       [UserRole.member]: '/',
     };
 
-    console.log('trertert :::', this.authStore.userRole());
     const role = this.authStore.userRole();
     console.log(role);
     this.router.navigate([redirectURLs[role]]);

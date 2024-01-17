@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { AdminLayoutComponent } from '../components/admin-layout/admin-layout.component';
-import { ADMIN_ROUTES_CONFIG } from '../constants/admin-routes.contant';
+import { ADMIN_ROUTES_CONFIG } from '../constants/admin-routes.constant';
 
 const EVENT_ROUTES: Routes = [
   {

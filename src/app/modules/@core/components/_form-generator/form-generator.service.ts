@@ -15,6 +15,12 @@ export class FormGeneratorService {
       group: this.initGroup<Data>(fields),
       setOptionsField: (fieldName: FieldKeyType, options: IFormOption[]) =>
         this.setOptionsField<Data, FieldKeyType>(fields, fieldName, options),
+      setImageURLToCropper: (fieldName: FieldKeyType, imageURL: string) =>
+        this.setImageURLToCropper<Data, FieldKeyType>(
+          fields,
+          fieldName,
+          imageURL
+        ),
     };
   }
 
@@ -48,6 +54,19 @@ export class FormGeneratorService {
   ) {
     this.looperHandler<Data, FieldKeyType>(fields, fieldName, (field) => {
       field.additional = { ...field.additional, options };
+    });
+  }
+
+  private setImageURLToCropper<Data, FieldKeyType>(
+    fields: IFormGeneratorField<keyof Data>[][],
+    fieldName: FieldKeyType,
+    imageURL: string
+  ) {
+    this.looperHandler<Data, FieldKeyType>(fields, fieldName, (field) => {
+      field.additional = {
+        ...field.additional,
+        imageCropper: { ...field.additional?.imageCropper, imageURL },
+      };
     });
   }
 }

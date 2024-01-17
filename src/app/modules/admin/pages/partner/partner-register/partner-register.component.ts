@@ -116,6 +116,8 @@ export class PartnerRegisterComponent {
           portfolioURL: this.partner.portfolioURL,
           occupationDescription: this.partner.occupationDescription,
         });
+
+        this.form.setImageURLToCropper('imageURL', this.partner.imageURL);
       })
       .catch((error) => this.alertService.snackDefaultResponseError(error))
       .finally(() => this.loadingStore.setState(false));

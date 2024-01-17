@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { LoadingStore } from '../../../../store/loading.store';
 import { AppTableComponent } from '../../../@core/components/app-table/app-table.component';
 import { filterListPagination } from '../../../@core/functions/pagination.function';
@@ -10,6 +10,7 @@ import {
 } from '../../../@core/interfaces/app-table.interface';
 import { AlertService } from '../../../@core/services/alert.service';
 import { AppPageNavComponent } from '../../../@shared/components/app-page-nav/app-page-nav.component';
+import { IUserDB, IUserItem } from '../../../@shared/interface/user.interface';
 import { DatabaseService } from '../../../@shared/services/database.service';
 @Component({
   standalone: true,
@@ -20,8 +21,8 @@ import { DatabaseService } from '../../../@shared/services/database.service';
 })
 export class UserComponent {
   public loadingStore = inject(LoadingStore);
-  public items: any[] = [];
-  public tableData: any[] = [];
+  public items: IUserItem[] = [];
+  public tableData: IUserItem[] = [];
   public pagination: IPagination = {
     pageSize: 5,
     pageNumber: 1,
@@ -29,21 +30,23 @@ export class UserComponent {
     pageSizeOptions: [5, 10, 20, 50],
   };
 
-  public tableActions: ITableCellAction<any>[] = [
+  public tableActions: ITableCellAction<IUserItem>[] = [
     {
       title: 'Edit',
       icon: 'iconamoon:edit-fill',
-      callback: (element) => console.log(element),
+      callback: (element) => {
+        this.router.navigate(['/admin/user/register', element.id]);
+      },
     },
   ];
   public tableColumns: ITableCell[] = [
-    { def: 'position', key: 'position', label: 'No.', sticky: true },
     { def: 'name', key: 'name', label: 'Name' },
-    { def: 'weight', key: 'weight', label: 'Weight' },
-    { def: 'symbol', key: 'symbol', label: 'Symbol' },
+    { def: 'email', key: 'email', label: 'Email' },
+    { def: 'active', key: 'active', label: 'Ativo', boolean: true },
   ];
 
   constructor(
+    private router: Router,
     private alertService: AlertService,
     private databaseService: DatabaseService
   ) {}
@@ -56,16 +59,14 @@ export class UserComponent {
     this.loadingStore.setState(true);
 
     this.databaseService.user
-      .getAll<any[]>()
+      .getAll<IUserDB[]>()
       .then((response) => {
         console.log(response);
-        this.pagination = {
-          ...this.pagination,
-          totalItems: response.length,
-        };
 
-        this.items = response;
-        this.handlePaginate(response);
+        this.items = this.databaseService._model.user.buildList(response);
+        this.pagination = { ...this.pagination, totalItems: this.items.length };
+
+        this.handlePaginate(this.items);
       })
       .catch((error) => this.alertService.snackDefaultResponseError(error))
       .finally(() => this.loadingStore.setState(false));

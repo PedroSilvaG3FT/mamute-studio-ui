@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { FIREBASE_COLLECTION } from '../../@core/firebase/@constans/firebase-collection.contant';
-import { FirebaseCollectionBase } from '../../@core/firebase/firebase-collection.base';
+import { FirebaseAuthenticationService } from '../../@core/firebase/firebase-authentication.service';
 
 @Injectable({ providedIn: 'root' })
-export class UserService extends FirebaseCollectionBase {
+export class UserService extends FirebaseAuthenticationService {
   constructor() {
-    super(FIREBASE_COLLECTION.user);
+    super();
   }
 }

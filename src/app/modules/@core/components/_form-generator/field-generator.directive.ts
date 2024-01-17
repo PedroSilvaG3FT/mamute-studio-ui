@@ -3,6 +3,7 @@ import {
   ComponentRef,
   Directive,
   Input,
+  SimpleChanges,
   ViewContainerRef,
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
@@ -90,6 +91,10 @@ export class FieldGeneratorDirective {
     }
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    this.monitoringImageCropperChanges(changes);
+  }
+
   private setCommonProps() {
     if (!this.field.additional) return;
 
@@ -170,5 +175,18 @@ export class FieldGeneratorDirective {
       imageCropper?.cropperMinWidth || props.cropperMinWidth;
     instance.maintainAspectRatio =
       imageCropper?.maintainAspectRatio || props.maintainAspectRatio;
+  }
+
+  private monitoringImageCropperChanges(changes: SimpleChanges): void {
+    if (changes['field'].currentValue.type !== 'image-cropper') return;
+
+    const handler = () => {
+      const isImageURLCropperChange =
+        !!changes['field']?.currentValue?.additional?.imageCropper?.imageURL;
+
+      if (isImageURLCropperChange) this.setImageCropperProps();
+    };
+
+    setTimeout(handler, 500);
   }
 }

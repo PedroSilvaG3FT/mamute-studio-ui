@@ -10,6 +10,7 @@ import {
   signOut,
   updateProfile,
 } from 'firebase/auth';
+import { Timestamp } from 'firebase/firestore';
 import { AuthStore } from '../../../store/auth.store';
 import { UserRole } from '../../authentication/enums/user-role.enum';
 import {
@@ -41,21 +42,25 @@ export class FirebaseAuthenticationService extends FirebaseCollectionBase {
         ...data,
         active: true,
         uid: response.user.uid,
-        creationDate: new Date(),
-        role: `UserRole/${role}`,
+        creationDate: Timestamp.now(),
+        role: this.getDocumentReference(
+          String(role),
+          FIREBASE_COLLECTION.userRole
+        ),
       };
 
       delete userData.password;
 
-      await this.create<IAuthRegister>(userData);
+      const userResponse = await this.create<IAuthRegister>(userData);
 
       if (this.auth.currentUser) {
         await updateProfile(this.auth.currentUser, {
           displayName: data.name,
+          photoURL: data.profileImageURL,
         });
       }
 
-      return response;
+      return { ...response, user: { ...response.user, id: userResponse.id } };
     } catch (error) {
       throw error;
     }

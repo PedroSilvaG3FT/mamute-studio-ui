@@ -1,4 +1,4 @@
-import { Timestamp } from 'firebase/firestore';
+import { IUserDB } from '../../@shared/interface/user.interface';
 
 export interface IAuthCredential {
   email: string;
@@ -9,12 +9,6 @@ export interface IAuthForgotPassword {
   email: string;
 }
 
-export interface IAuthRegister {
-  uid: string;
-  role: string;
-  name: string;
-  email: string;
-  active: boolean;
+export interface IAuthRegister extends IUserDB {
   password?: string;
-  creationDate: Timestamp | Date;
 }
