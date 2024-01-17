@@ -12,6 +12,7 @@ export interface IEventDB {
   contentHTML: string;
   addressMapHTML: string;
   creationDate: Timestamp;
+  shortDescription: string;
   dateReleaseStream: Timestamp;
   userCreator: DocumentReference;
 }

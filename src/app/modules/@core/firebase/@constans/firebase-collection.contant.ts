@@ -7,6 +7,7 @@ export const FIREBASE_COLLECTION = {
 
   news: `News`,
   newsPartner: `NewsPartner`,
+  newsCategory: `NewsCategory`,
 
   partner: `Partner`,
   partnerCategory: `PartnerCategory`,

@@ -53,6 +53,7 @@ export class LoginComponent {
   ngOnInit() {}
 
   private getUserRole(roleReference: string): UserRole {
+    console.log(roleReference);
     if (roleReference.includes(String(UserRole.admin))) return UserRole.admin;
     else if (roleReference.includes(String(UserRole.member)))
       return UserRole.member;
@@ -70,6 +71,7 @@ export class LoginComponent {
         const userData = this.databaseService._model.user.buildItem(data);
         this.authStore.setUserData(userData);
 
+        console.log(data);
         this.authStore.setFirebaseToken(accessToken);
         this.authStore.setFirebaseRefreshToken(refreshToken);
         this.authStore.setUserRole(this.getUserRole(userData.role));

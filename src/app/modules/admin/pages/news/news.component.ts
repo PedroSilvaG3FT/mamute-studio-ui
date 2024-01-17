@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { LoadingStore } from '../../../../store/loading.store';
 import { AppTableComponent } from '../../../@core/components/app-table/app-table.component';
 import { filterListPagination } from '../../../@core/functions/pagination.function';
@@ -10,6 +10,7 @@ import {
 } from '../../../@core/interfaces/app-table.interface';
 import { AlertService } from '../../../@core/services/alert.service';
 import { AppPageNavComponent } from '../../../@shared/components/app-page-nav/app-page-nav.component';
+import { INewsDB, INewsItem } from '../../../@shared/interface/news.interface';
 import { DatabaseService } from '../../../@shared/services/database.service';
 
 @Component({
@@ -21,8 +22,8 @@ import { DatabaseService } from '../../../@shared/services/database.service';
 })
 export class NewsComponent {
   public loadingStore = inject(LoadingStore);
-  public items: any[] = [];
-  public tableData: any[] = [];
+  public items: INewsItem[] = [];
+  public tableData: INewsItem[] = [];
   public pagination: IPagination = {
     pageSize: 5,
     pageNumber: 1,
@@ -34,17 +35,20 @@ export class NewsComponent {
     {
       title: 'Edit',
       icon: 'iconamoon:edit-fill',
-      callback: (element) => console.log(element),
+      callback: (element) => {
+        this.router.navigate(['/admin/news/register', element.id]);
+      },
     },
   ];
   public tableColumns: ITableCell[] = [
-    { def: 'position', key: 'position', label: 'No.', sticky: true },
-    { def: 'name', key: 'name', label: 'Name' },
-    { def: 'weight', key: 'weight', label: 'Weight' },
-    { def: 'symbol', key: 'symbol', label: 'Symbol' },
+    { def: 'name', key: 'title', label: 'Titulo' },
+    { def: 'authorName', key: 'authorName', label: 'Autor' },
+    { def: 'creationDate', key: 'creationDate', label: 'Data', date: true },
+    { def: 'active', key: 'active', label: 'Ativo', boolean: true },
   ];
 
   constructor(
+    private router: Router,
     private alertService: AlertService,
     private databaseService: DatabaseService
   ) {}
@@ -57,16 +61,12 @@ export class NewsComponent {
     this.loadingStore.setState(true);
 
     this.databaseService.news
-      .getAll<any[]>()
+      .getAll<INewsDB[]>()
       .then((response) => {
-        console.log(response);
-        this.pagination = {
-          ...this.pagination,
-          totalItems: response.length,
-        };
+        this.items = this.databaseService._model.news.buildList(response);
+        this.pagination = { ...this.pagination, totalItems: this.items.length };
 
-        this.items = response;
-        this.handlePaginate(response);
+        this.handlePaginate(this.items);
       })
       .catch((error) => this.alertService.snackDefaultResponseError(error))
       .finally(() => this.loadingStore.setState(false));

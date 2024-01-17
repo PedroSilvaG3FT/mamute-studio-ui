@@ -15,6 +15,7 @@ export class EventModel {
       id: String(model.id),
       date: model.date?.toDate(),
       userCreator: model.userCreator?.id,
+      shortDescription: model.shortDescription,
       creationDate: model.creationDate?.toDate(),
       dateReleaseStream: model.dateReleaseStream?.toDate(),
     };
@@ -35,6 +36,7 @@ export class EventModel {
       contentHTML: model.contentHTML || '',
       date: Timestamp.fromDate(model.date),
       addressMapHTML: model.addressMapHTML || '',
+      shortDescription: model.shortDescription || '',
       dateReleaseStream: Timestamp.fromDate(model.dateReleaseStream),
 
       creationDate: Timestamp.now(),

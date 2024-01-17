@@ -1,11 +1,15 @@
 import { DocumentReference, Timestamp } from 'firebase/firestore';
 
 export interface INewsDB {
+  id?: string;
   title: string;
   active: boolean;
   bannerURL: string;
+  authorName: string;
   contentHTML: string;
   creationDate: Timestamp;
+  shortDescription: string;
+  category: DocumentReference;
   userCreator: DocumentReference;
 }
 
@@ -14,4 +18,11 @@ export interface INewsPartnerDB {
   news: DocumentReference;
   partner: DocumentReference;
   userCreator: DocumentReference;
+}
+
+export interface INewsItem
+  extends Omit<INewsDB, 'category' | 'creationDate' | 'userCreator'> {
+  category: string;
+  userCreator: string;
+  creationDate: Date;
 }

@@ -105,6 +105,7 @@ export class EventRegisterComponent {
         label: 'Código do mapa (Google Maps)',
       },
     ],
+    [{ name: 'shortDescription', type: 'textarea', label: 'Descrição curta' }],
     [
       {
         label: 'Descrição',
@@ -155,6 +156,7 @@ export class EventRegisterComponent {
           addressName: this.event.addressName,
           contentHTML: this.event.contentHTML,
           addressMapHTML: this.event.addressMapHTML,
+          shortDescription: this.event.shortDescription,
           dateReleaseStream: this.event.dateReleaseStream,
         });
 
@@ -227,8 +229,10 @@ export class EventRegisterComponent {
 
       delete model.bannerFile;
 
-      const eventDTO =
-        this.databaseService._model.event.buildRegisterDTO(model);
+      const eventDTO = this.databaseService._model.event.buildRegisterDTO({
+        ...this.event,
+        ...model,
+      });
 
       await this.databaseService.event.update(this.eventId(), eventDTO);
       this.loadingStore.setState(false);

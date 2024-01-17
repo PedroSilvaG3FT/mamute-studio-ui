@@ -31,6 +31,9 @@ export class UserRegisterComponent {
     !!this.isNew() ? `Cadastro de usuário` : `Edição de usuário`
   );
 
+  public countImageChange = signal(0);
+  public isImageUpdated = computed(() => this.countImageChange() > 2);
+
   public loadingStore = inject(LoadingStore);
   public form = this.formGeneratorService.init<IUserForm>([
     [
@@ -69,6 +72,10 @@ export class UserRegisterComponent {
     if (!this.isNew()) this.getUser();
 
     this.form.setOptionsField('role', USER_ROLE_OPTIONS);
+
+    this.form.group.controls.profileImageURL.valueChanges.subscribe(() => {
+      this.countImageChange.update((value) => value + 1);
+    });
   }
 
   public getUser() {
@@ -144,12 +151,15 @@ export class UserRegisterComponent {
     try {
       this.loadingStore.setState(true);
 
-      if (!!model.profileImageURL) {
+      if (!!model.profileImageURL && this.isImageUpdated()) {
         const imageURL = await this.handleCreateImageUrl(model.profileImageURL);
         model.profileImageURL = imageURL;
       } else model.profileImageURL = this.user.profileImageURL;
 
-      const userDTO = this.databaseService._model.user.buildRegisterDTO(model);
+      const userDTO = this.databaseService._model.user.buildRegisterDTO({
+        ...this.user,
+        ...model,
+      });
 
       await this.databaseService.user.update(this.userId(), userDTO);
       this.loadingStore.setState(false);

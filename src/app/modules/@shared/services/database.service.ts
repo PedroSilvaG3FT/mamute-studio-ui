@@ -5,6 +5,7 @@ import { EventPartnerService } from './event-partner.service';
 import { EventPhotoGalleryService } from './event-photo-gallery.service';
 import { EventTestimonialService } from './event-testimonial.service';
 import { EventService } from './event.service';
+import { NewsCategoryService } from './news-category.service';
 import { NewsPartnerService } from './news-partner.service';
 import { NewsService } from './news.service';
 import { PartnerAdvertinngService } from './partner-advertinng.service';
@@ -30,6 +31,7 @@ export class DatabaseService {
     public prayerWall: PrayerWallService,
     public newsPartner: NewsPartnerService,
     public productSale: ProductSaleService,
+    public newsCategory: NewsCategoryService,
     public eventPartner: EventPartnerService,
     public prayerCategory: PrayerCategoryService,
     public partnerCategory: PartnerCategoryService,

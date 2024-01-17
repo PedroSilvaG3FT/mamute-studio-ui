@@ -4,10 +4,8 @@ import {
   ViewEncapsulation,
   booleanAttribute,
   forwardRef,
-  inject,
 } from '@angular/core';
 import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { DomSanitizer } from '@angular/platform-browser';
 import {
   ImageCroppedEvent,
   ImageCropperModule,
@@ -58,8 +56,6 @@ export class AppImageCropperComponent extends ModelControl {
   public inputId: string = 'image-upload-input';
   public transform: ImageTransform = { translateUnit: 'px' };
 
-  private sanitizer = inject(DomSanitizer);
-
   ngOnInit() {
     if (this.rounded) this.aspectRatio = 4 / 4;
     if (!this.isDynamic) this.initMonitoringChanges();
@@ -67,12 +63,8 @@ export class AppImageCropperComponent extends ModelControl {
     this.inputId = `${this.inputId}-${this.name}`;
   }
 
-  public imageCropped(event: ImageCroppedEvent) {
-    const preview = this.sanitizer.bypassSecurityTrustUrl(
-      event.objectUrl || event.base64 || ''
-    );
-
-    this.group.patchValue({ [this.formControlName]: event.objectUrl });
+  public imageCropped(eventHandler: ImageCroppedEvent) {
+    this.group.patchValue({ [this.formControlName]: eventHandler.objectUrl });
   }
 
   public imageLoaded() {

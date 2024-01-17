@@ -13,11 +13,14 @@ export class SeedService {
     try {
       if (!this.seedStore.isEnableUpdate()) return;
 
-      const { partnerCategory, prayerCategory } = this.databaseService;
+      const { partnerCategory, prayerCategory, newsCategory } =
+        this.databaseService;
 
+      const resNewsCategory = await newsCategory.getAll<ICategoryDB[]>();
       const resPrayerCategory = await prayerCategory.getAll<ICategoryDB[]>();
       const resPartnerCategory = await partnerCategory.getAll<ICategoryDB[]>();
 
+      this.seedStore.setNewsCategories(resNewsCategory);
       this.seedStore.setPrayerCategories(resPrayerCategory);
       this.seedStore.setPartnerCategories(resPartnerCategory);
 

@@ -39,6 +39,9 @@ export class PartnerRegisterComponent {
     !!this.isNew() ? `Cadastro de parceiro` : `Edição de parceiro`
   );
 
+  public countImageChange = signal(0);
+  public isImageUpdated = computed(() => this.countImageChange() > 2);
+
   public seedStore = inject(SeedStore);
   public loadingStore = inject(LoadingStore);
   public form = this.formGeneratorService.init<IPartnerForm>([
@@ -97,6 +100,10 @@ export class PartnerRegisterComponent {
       'category',
       this.seedStore.partnerCategoriesOptions()
     );
+
+    this.form.group.controls.imageURL.valueChanges.subscribe(() => {
+      this.countImageChange.update((value) => value + 1);
+    });
   }
 
   public getPartner() {
@@ -181,13 +188,15 @@ export class PartnerRegisterComponent {
     try {
       this.loadingStore.setState(true);
 
-      if (!!model.imageURL) {
+      if (!!model.imageURL && this.isImageUpdated()) {
         const imageURL = await this.handleCreateImageUrl(model.imageURL);
         model.imageURL = imageURL;
       } else model.imageURL = this.partner.imageURL;
 
-      const partnerDTO =
-        this.databaseService._model.partner.buildRegisterDTO(model);
+      const partnerDTO = this.databaseService._model.partner.buildRegisterDTO({
+        ...this.partner,
+        ...model,
+      });
       await this.databaseService.partner.update(this.partnerId(), partnerDTO);
       this.loadingStore.setState(false);
     } catch (error) {

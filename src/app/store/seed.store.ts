@@ -14,6 +14,7 @@ import { PersistService } from './@persist/persist.service';
 const persistService = new PersistService('seed');
 const state = persistService.initState({
   lastUpdated: null as Date | null,
+  newsCategories: [] as ICategoryDB[],
   prayerCategories: [] as ICategoryDB[],
   partnerCategories: [] as ICategoryDB[],
 });
@@ -33,6 +34,7 @@ export const SeedStore = signalStore(
       if (!state.lastUpdated()) return true;
       return differenceInMinutes(new Date(), state.lastUpdated() as Date) >= 3;
     }),
+    newsCategoriesOptions: computed(() => buildOptions(state.newsCategories())),
     prayerCategoriesOptions: computed(() =>
       buildOptions(state.prayerCategories())
     ),
@@ -43,6 +45,10 @@ export const SeedStore = signalStore(
   withMethods((store) => ({
     setLastUpdate(lastUpdated: Date) {
       patchState(store, { lastUpdated });
+      persistService.commit(store, state);
+    },
+    setNewsCategories(newsCategories: ICategoryDB[]) {
+      patchState(store, { newsCategories });
       persistService.commit(store, state);
     },
     setPrayerCategories(prayerCategories: ICategoryDB[]) {
