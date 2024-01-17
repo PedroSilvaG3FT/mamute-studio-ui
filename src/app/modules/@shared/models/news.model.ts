@@ -19,6 +19,7 @@ export class NewsModel {
       category: model.category?.id,
       userCreator: model.userCreator?.id,
       creationDate: model.creationDate?.toDate(),
+      partners: model.partners.map((item) => item.id),
     };
   }
 
@@ -27,7 +28,15 @@ export class NewsModel {
   }
 
   public buildRegisterDTO(model: INewsItem): INewsDB {
+    const partners =
+      model.partners
+        ?.filter((item) => !!item)
+        ?.map((item) =>
+          this.base.getDocumentReference(item, FIREBASE_COLLECTION.partner)
+        ) || [];
+
     return {
+      partners,
       active: !!model.active,
       title: model.title || '',
       creationDate: Timestamp.now(),

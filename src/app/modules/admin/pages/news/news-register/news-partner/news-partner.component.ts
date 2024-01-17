@@ -1,30 +1,43 @@
-import { Component, inject } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { LoadingStore } from '../../../../../../store/loading.store';
 import { AppTableComponent } from '../../../../../@core/components/app-table/app-table.component';
 import { AppSelectComponent } from '../../../../../@core/components/form/app-select/app-select.component';
 import { filterListPagination } from '../../../../../@core/functions/pagination.function';
+import { IFormOption } from '../../../../../@core/interfaces/app-form.interface';
 import { IPagination } from '../../../../../@core/interfaces/app-pagination.interface';
 import {
   ITableCell,
   ITableCellAction,
 } from '../../../../../@core/interfaces/app-table.interface';
 import { AlertService } from '../../../../../@core/services/alert.service';
+import { INewsItem } from '../../../../../@shared/interface/news.interface';
+import {
+  IPartnerDB,
+  IPartnerItem,
+} from '../../../../../@shared/interface/partner.interface';
 import { DatabaseService } from '../../../../../@shared/services/database.service';
+import { AdminPartnerSelectionComponent } from '../../../../components/admin-partner-selection/admin-partner-selection.component';
 
 @Component({
   standalone: true,
   selector: 'app-news-partner',
   styleUrl: './news-partner.component.scss',
   templateUrl: './news-partner.component.html',
-  imports: [AppTableComponent, AppSelectComponent, FormsModule],
+  imports: [
+    AppTableComponent,
+    AppSelectComponent,
+    FormsModule,
+    AdminPartnerSelectionComponent,
+  ],
 })
 export class NewsPartnerComponent {
+  @Input({ required: true }) news: INewsItem = {} as INewsItem;
   public loadingStore = inject(LoadingStore);
 
-  public partner: any = null;
-  public partiners: any[] = [];
-  public partinersOptions: any[] = [];
+  public partnerId: string = '';
+  public partners: IPartnerItem[] = [];
+  public partnersOptions: IFormOption[] = [];
 
   public events: any[] = [];
   public tableData: any[] = [];
@@ -60,10 +73,14 @@ export class NewsPartnerComponent {
     this.loadingStore.setState(true);
 
     this.databaseService.partner
-      .getAll<any[]>()
+      .getAll<IPartnerDB[]>()
       .then((response) => {
         console.log(response);
-        this.partiners = response;
+        this.partners = this.databaseService._model.partner.buildList(response);
+        this.partnersOptions = this.partners.map((item) => ({
+          label: item.name,
+          value: String(item.id),
+        }));
       })
       .catch((error) => this.alertService.snackDefaultResponseError(error))
       .finally(() => this.loadingStore.setState(false));
@@ -87,6 +104,8 @@ export class NewsPartnerComponent {
       .catch((error) => this.alertService.snackDefaultResponseError(error))
       .finally(() => this.loadingStore.setState(false));
   }
+
+  public addPartner() {}
 
   public handlePaginate(items = this.events) {
     const { pageNumber, pageSize } = this.pagination;

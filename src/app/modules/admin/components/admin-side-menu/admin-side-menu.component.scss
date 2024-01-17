@@ -14,7 +14,7 @@
       @apply flex flex-col;
 
       > a {
-        @apply w-[80%] px-5 py-2 flex gap-2 items-center rounded-r-full text-[0.9rem];
+        @apply w-full px-5 py-2 flex gap-2 items-center rounded-r-full text-[0.9rem];
 
         > span {
           @apply h-7 w-7 rounded-full flex items-center justify-center;

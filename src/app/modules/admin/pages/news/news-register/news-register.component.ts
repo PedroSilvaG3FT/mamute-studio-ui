@@ -16,6 +16,7 @@ import {
   INewsItem,
 } from '../../../../@shared/interface/news.interface';
 import { DatabaseService } from '../../../../@shared/services/database.service';
+import { AdminPartnerSelectionComponent } from '../../../components/admin-partner-selection/admin-partner-selection.component';
 import { NewsPartnerComponent } from './news-partner/news-partner.component';
 
 interface INewsForm extends INewsItem {}
@@ -31,11 +32,12 @@ interface INewsForm extends INewsItem {}
     AppPageNavComponent,
     NewsPartnerComponent,
     AppFormGeneratorComponent,
+    AdminPartnerSelectionComponent,
   ],
 })
 export class NewsRegisterComponent {
   public newsId = signal('');
-  private news: INewsItem = {} as INewsItem;
+  public news: INewsItem = {} as INewsItem;
   public isNew = computed(() => !this.newsId());
   public pageTitle = computed(() =>
     !!this.isNew() ? `Cadastro de notícia` : `Edição de notícia`
@@ -162,7 +164,7 @@ export class NewsRegisterComponent {
     }
   }
 
-  public async handleUpdate(model: INewsForm) {
+  public async handleUpdate(model: INewsForm, isPartnerUpdate = false) {
     try {
       this.loadingStore.setState(true);
 
@@ -177,10 +179,17 @@ export class NewsRegisterComponent {
       });
 
       await this.databaseService.news.update(this.newsId(), newsDTO);
+
+      if (isPartnerUpdate) this.news.partners = model.partners;
+
       this.loadingStore.setState(false);
     } catch (error) {
       this.loadingStore.setState(false);
       this.alertService.snackDefaultResponseError(error);
     }
+  }
+
+  public handlePartnerChange(partners: string[]) {
+    this.handleUpdate({ ...this.news, partners }, true);
   }
 }

@@ -1,0 +1,45 @@
+@import "variables";
+
+#admin-partner-selection {
+  > h1 {
+    @apply text-lg mb-4;
+  }
+
+  > section {
+    @apply grid gap-6 grid-cols-4;
+
+    > article {
+      @apply rounded-2xl;
+      background: $bg-secondary;
+      border: 1px solid transparent;
+
+      &.active {
+        border-color: $primary;
+
+        button {
+          color: $primary !important;
+        }
+      }
+
+      > img {
+        @apply aspect-square rounded-t-2xl object-cover;
+      }
+
+      > section {
+        @apply p-3 flex flex-col;
+
+        > h4 {
+          @apply truncate;
+        }
+
+        > small {
+          color: $primary;
+        }
+
+        > button {
+          @apply mt-4 mb-2 underline;
+        }
+      }
+    }
+  }
+}

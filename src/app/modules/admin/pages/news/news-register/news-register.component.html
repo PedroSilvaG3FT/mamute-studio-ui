@@ -14,7 +14,14 @@
       />
     </mat-tab>
     <mat-tab label="Patrocinadores" [disabled]="isNew()">
-      <app-news-partner />
+      @defer (on viewport; prefetch on idle) {
+      <admin-partner-selection
+        [selectedIds]="news.partners"
+        (onChange)="handlePartnerChange($event)"
+      />
+      } @placeholder {
+      <div></div>
+      }
     </mat-tab>
   </mat-tab-group>
 </section>

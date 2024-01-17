@@ -1,0 +1,22 @@
+<section id="admin-partner-selection">
+  <h1>{{ title }}</h1>
+
+  <section>
+    @for (item of partners; track $index) {
+    <article [class.active]="isSelected(item.id)">
+      <img
+        [alt]="item.name"
+        [src]="item.imageURL"
+        onerror="this.src = '/assets/images/default.jpg'"
+      />
+      <section>
+        <h4>{{ item.name }}</h4>
+        <small>{{ getCategory(item.category) }}</small>
+        <button (click)="handleTogglePartner(item)">
+          {{ isSelected(item.id) ? "Remover" : "Tornar patrocinador" }}
+        </button>
+      </section>
+    </article>
+    }
+  </section>
+</section>

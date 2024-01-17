@@ -44,4 +44,10 @@ export class PartnerModel {
       ),
     };
   }
+
+  public buildPartnerListReference(partners: string[]) {
+    return partners.map((item) =>
+      this.base.getDocumentReference(item, FIREBASE_COLLECTION.partner)
+    );
+  }
 }

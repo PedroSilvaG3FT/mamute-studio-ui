@@ -13,3 +13,8 @@
   color: $white;
   background: $primary;
 }
+
+.btn-basic {
+  @extend .btn;
+  background-color: rgba($bg-secondary, 0.4);
+}

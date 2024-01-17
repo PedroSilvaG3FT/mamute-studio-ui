@@ -10,6 +10,7 @@ export interface INewsDB {
   creationDate: Timestamp;
   shortDescription: string;
   category: DocumentReference;
+  partners: DocumentReference[];
   userCreator: DocumentReference;
 }
 
@@ -21,8 +22,12 @@ export interface INewsPartnerDB {
 }
 
 export interface INewsItem
-  extends Omit<INewsDB, 'category' | 'creationDate' | 'userCreator'> {
+  extends Omit<
+    INewsDB,
+    'category' | 'creationDate' | 'userCreator' | 'partners'
+  > {
   category: string;
+  partners: string[];
   userCreator: string;
   creationDate: Date;
 }
