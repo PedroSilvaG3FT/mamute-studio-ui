@@ -1,6 +1,7 @@
 import { DocumentReference, Timestamp } from 'firebase/firestore';
 
 export interface IPartnerDB {
+  id?: string;
   name: string;
   email: string;
   active: boolean;
@@ -23,4 +24,11 @@ export interface IPartnerAdvertingDB {
   creationDate: Timestamp;
   partner: DocumentReference;
   userCreator: DocumentReference;
+}
+
+export interface IPartnerItem
+  extends Omit<IPartnerDB, 'category' | 'userCreator' | 'creationDate'> {
+  category: string;
+  creationDate: Date;
+  userCreator: string;
 }

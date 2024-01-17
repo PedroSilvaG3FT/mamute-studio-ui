@@ -10,6 +10,10 @@ import {
 } from '../../../@core/interfaces/app-table.interface';
 import { AlertService } from '../../../@core/services/alert.service';
 import { AppPageNavComponent } from '../../../@shared/components/app-page-nav/app-page-nav.component';
+import {
+  IPartnerDB,
+  IPartnerItem,
+} from '../../../@shared/interface/partner.interface';
 import { DatabaseService } from '../../../@shared/services/database.service';
 
 @Component({
@@ -21,8 +25,8 @@ import { DatabaseService } from '../../../@shared/services/database.service';
 })
 export class PartnerComponent {
   public loadingStore = inject(LoadingStore);
-  public items: any[] = [];
-  public tableData: any[] = [];
+  public items: IPartnerItem[] = [];
+  public tableData: IPartnerItem[] = [];
   public pagination: IPagination = {
     pageSize: 5,
     pageNumber: 1,
@@ -30,7 +34,7 @@ export class PartnerComponent {
     pageSizeOptions: [5, 10, 20, 50],
   };
 
-  public tableActions: ITableCellAction<any>[] = [
+  public tableActions: ITableCellAction<IPartnerItem>[] = [
     {
       title: 'Edit',
       icon: 'iconamoon:edit-fill',
@@ -38,10 +42,10 @@ export class PartnerComponent {
     },
   ];
   public tableColumns: ITableCell[] = [
-    { def: 'position', key: 'position', label: 'No.', sticky: true },
-    { def: 'name', key: 'name', label: 'Name' },
-    { def: 'weight', key: 'weight', label: 'Weight' },
-    { def: 'symbol', key: 'symbol', label: 'Symbol' },
+    { def: 'name', key: 'name', label: 'Nome' },
+    { def: 'email', key: 'email', label: 'Email' },
+    { def: 'telephone', key: 'telephone', label: 'Telefone' },
+    { def: 'active', key: 'active', label: 'Ativo', boolean: true },
   ];
 
   constructor(
@@ -57,16 +61,13 @@ export class PartnerComponent {
     this.loadingStore.setState(true);
 
     this.databaseService.partner
-      .getAll<any[]>()
+      .getAll<IPartnerDB[]>()
       .then((response) => {
         console.log(response);
-        this.pagination = {
-          ...this.pagination,
-          totalItems: response.length,
-        };
+        this.items = this.databaseService._model.partner.buildList(response);
+        this.pagination = { ...this.pagination, totalItems: this.items.length };
 
-        this.items = response;
-        this.handlePaginate(response);
+        this.handlePaginate(this.items);
       })
       .catch((error) => this.alertService.snackDefaultResponseError(error))
       .finally(() => this.loadingStore.setState(false));

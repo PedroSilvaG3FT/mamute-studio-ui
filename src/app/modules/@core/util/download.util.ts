@@ -1,3 +1,5 @@
+import { generateUUID } from '../functions/uuid.function';
+
 export class DownloadUtil {
   private static handlerElement(
     content: string | Blob,
@@ -16,6 +18,13 @@ export class DownloadUtil {
   static blob(blob: Blob, fileName: string) {
     const blobUrl = URL.createObjectURL(blob);
     this.handlerElement(blobUrl, fileName);
+  }
+
+  static async stringBlobToFile(blobUrl: string) {
+    const response = await fetch(blobUrl);
+    const blob = await response.blob();
+
+    return new File([blob], generateUUID(), { type: blob.type });
   }
 
   static processBlobByUrl(url: string, fileName: string) {
