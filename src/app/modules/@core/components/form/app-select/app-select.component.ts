@@ -1,3 +1,4 @@
+import { JsonPipe } from '@angular/common';
 import { Component, Input, forwardRef } from '@angular/core';
 import {
   FormsModule,
@@ -13,7 +14,7 @@ import { ModelControl } from '../model-control';
   selector: 'app-select',
   styleUrl: './app-select.component.scss',
   templateUrl: './app-select.component.html',
-  imports: [MatSelectModule, FormsModule, ReactiveFormsModule],
+  imports: [MatSelectModule, FormsModule, ReactiveFormsModule, JsonPipe],
   providers: [
     {
       multi: true,

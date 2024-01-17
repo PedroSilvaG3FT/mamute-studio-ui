@@ -1,11 +1,15 @@
 @import "../variables";
 
-.btn-primary {
+.btn {
   @apply h-14 px-4 flex items-center justify-center gap-2 rounded-xl;
-  color: $white;
-  background: $primary;
 
   &:disabled {
     @apply opacity-60 cursor-not-allowed;
   }
+}
+
+.btn-primary {
+  @extend .btn;
+  color: $white;
+  background: $primary;
 }

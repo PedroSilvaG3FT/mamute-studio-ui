@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { ControlValueAccessor, FormBuilder, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { AlertService } from '../../services/alert.service';
@@ -27,6 +27,14 @@ export class ModelControl implements ControlValueAccessor {
     private formBuilder: FormBuilder,
     public alertService: AlertService
   ) {}
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['initialValue']) {
+      this.group.patchValue({
+        [this.formControlName]: changes['initialValue'].currentValue,
+      });
+    }
+  }
 
   onTouched = () => {};
   onChange = (_: ModelControlType) => {};

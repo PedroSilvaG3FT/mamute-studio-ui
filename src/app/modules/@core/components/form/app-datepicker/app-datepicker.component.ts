@@ -35,8 +35,8 @@ import { ModelControl } from '../model-control';
   ],
 })
 export class AppDatepickerComponent extends ModelControl {
-  @Input() placeholderEnd: string = 'End date';
-  @Input() placeholderStart: string = 'Start date';
+  @Input() placeholderEnd: string = 'Fim';
+  @Input() placeholderStart: string = 'Inicio';
   @Input({ transform: booleanAttribute }) range: boolean = false;
 
   public rangeControl = new FormGroup({

@@ -1,3 +1,67 @@
 <section id="prayer-wall">
   <app-page-nav [title]="'Mural de oração'" />
+
+  <form>
+    <app-select
+      label="Motivo"
+      name="category"
+      [items]="categoryOptions"
+      [(ngModel)]="filter.category"
+      [initialValue]="filter.category"
+    />
+
+    <app-datepicker
+      range
+      name="date"
+      label="Período"
+      [(ngModel)]="filter.date"
+      [initialValue]="filter.date"
+    />
+
+    <button class="btn-primary" (click)="handleFilter()">Filtrar</button>
+    <button class="btn" (click)="handleClearFilter()">limpar</button>
+  </form>
+
+  <hr />
+
+  @if (!items.length) {
+  <app-empty-list />
+  }
+
+  <section>
+    @for (item of items; track $index) {
+    <article>
+      <nav>
+        <p>{{ item.authorName }}</p>
+        <p>
+          {{ item.creationDate | date : "dd/MM/yyyy" }}
+          <span> ({{ categoryName(item.category) }})</span>
+        </p>
+      </nav>
+
+      <p>{{ item.description }}</p>
+
+      <footer>
+        <button
+          (click)="toggleStatus(item)"
+          [ngClass]="{ active: item.active }"
+        >
+          <i
+            class="iconify"
+            [attr.data-icon]="
+              item.active ? 'ic:round-block' : 'mingcute:check-fill'
+            "
+          ></i>
+
+          {{ item.active ? "Reprovar" : "Aprovar" }}
+        </button>
+        <button (click)="remove(item)">
+          <i class="iconify" data-icon="typcn:delete-outline"></i>
+          Remover
+        </button>
+      </footer>
+    </article>
+
+    }
+  </section>
 </section>

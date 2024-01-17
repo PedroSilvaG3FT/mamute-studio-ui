@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { AppThemeSelectionComponent } from '../../../@core/components/app-theme-selection/app-theme-selection.component';
 import { SEOService } from '../../../@core/services/seo.service';
 import { ADMIN_ROUTES_CONFIG } from '../../constants/admin-routes.constant';
 
 @Component({
   standalone: true,
-  imports: [RouterLink],
   selector: 'admin-side-menu',
   styleUrl: './admin-side-menu.component.scss',
   templateUrl: './admin-side-menu.component.html',
+  imports: [RouterLink, AppThemeSelectionComponent],
 })
 export class AdminSideMenuComponent {
   public links = [
