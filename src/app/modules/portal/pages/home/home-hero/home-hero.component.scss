@@ -1,11 +1,29 @@
 @import "variables";
 
 #home-hero {
-  @apply h-[800px] w-full;
+  @apply h-[600px] w-full tablet:h-auto;
   background-image: url("/assets/images/portal/hero-bg.jpg");
   background-size: cover;
-  background-position: center;
+  background-position: bottom;
   background-repeat: no-repeat;
   padding-top: $portal-header-page-padding;
   box-shadow: inset 200vw 200vw 200vw 200vw rgba(0, 0, 0, 0.75);
+
+  > section {
+    @apply h-full grid grid-cols-2 gap-4 items-center tablet:justify-items-center tablet:grid-cols-1;
+
+    > article {
+      > h1 {
+        @apply text-xl mb-6 font-semibold;
+      }
+
+      > p {
+        @apply mb-4;
+      }
+    }
+
+    > img {
+      @apply tablet:w-3/5;
+    }
+  }
 }

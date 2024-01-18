@@ -1,0 +1,7 @@
+<article id="portal-social-media">
+  @for (item of items; track item) {
+  <a [href]="item.link" target="_blank" [matTooltip]="item.title">
+    <i class="iconify" [attr.data-icon]="item.icon"></i>
+  </a>
+  }
+</article>
