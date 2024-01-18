@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { AdminGuard } from '../../@shared/guards/admin.guard';
 import { AdminLayoutComponent } from '../components/admin-layout/admin-layout.component';
 import { ADMIN_ROUTES_CONFIG } from '../constants/admin-routes.constant';
 
@@ -105,6 +106,7 @@ const USER_ROUTES: Routes = [
 export const ADMIN_ROUTES: Routes = [
   {
     path: 'admin',
+    canActivateChild: [AdminGuard],
     component: AdminLayoutComponent,
     children: [
       ...USER_ROUTES,

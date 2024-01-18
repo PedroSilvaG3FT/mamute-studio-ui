@@ -1,4 +1,11 @@
-import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
+import { computed } from '@angular/core';
+import {
+  patchState,
+  signalStore,
+  withComputed,
+  withMethods,
+  withState,
+} from '@ngrx/signals';
 import { IUserItem } from '../modules/@shared/interface/user.interface';
 import { UserRole } from '../modules/authentication/enums/user-role.enum';
 import { PersistService } from './@persist/persist.service';
@@ -19,6 +26,10 @@ const state = persistService.initState({
 export const AuthStore = signalStore(
   { providedIn: 'root' },
   withState(state),
+  withComputed((state) => ({
+    isLogged: computed(() => !!state.firebaseToken()),
+    isAdmin: computed(() => state.userRole() === UserRole.admin),
+  })),
   withMethods((store) => ({
     setStripeCustomerId(stripeCustomerId: string) {
       patchState(store, { stripeCustomerId });
