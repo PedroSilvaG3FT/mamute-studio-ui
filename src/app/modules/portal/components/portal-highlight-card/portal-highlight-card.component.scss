@@ -1,0 +1,44 @@
+@import "variables";
+
+#portal-highlight-card {
+  @apply h-72 rounded-2xl flex items-end transition-all duration-700;
+
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @apply mobile:bg-cover;
+
+  &:hover {
+    background-size: 105%;
+    @apply mobile:bg-cover;
+
+    button {
+      transform: scale(1.2);
+    }
+  }
+
+  > section {
+    @apply w-full flex gap-4 items-center justify-between px-8 py-6 rounded-b-2xl;
+    background: $backdrop;
+    backdrop-filter: blur(3px);
+
+    > div {
+      @apply w-[90%];
+
+      > p,
+      > h5 {
+        @apply truncate;
+      }
+
+      > h5 {
+        @apply mb-2 font-semibold;
+      }
+    }
+
+    > button {
+      color: $primary;
+      @apply w-16 ml-auto text-lg transition-all duration-500;
+    }
+  }
+}
