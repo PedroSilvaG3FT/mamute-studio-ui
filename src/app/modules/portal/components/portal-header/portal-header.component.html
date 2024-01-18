@@ -1,0 +1,25 @@
+<header id="portal-header" [class.active]="isScrolled">
+  <section class="app-container">
+    <img
+      src="/assets/images/logo-horizontal-white.png"
+      alt="Instituto Apocalipse"
+      [routerLink]="['/']"
+    />
+
+    <article>
+      @for (item of items; track $index) {
+      <a [routerLink]="[item.route]">{{ item.title }}</a>
+      }
+
+      <button id="side-menu-button" (click)="toggleSideMenu()">
+        <i class="iconify text-lg" data-icon="ep:menu"></i>
+      </button>
+    </article>
+  </section>
+</header>
+
+<portal-side-menu
+  [items]="items"
+  [isOpen]="isShowSideMenu"
+  (onClose)="toggleSideMenu()"
+/>

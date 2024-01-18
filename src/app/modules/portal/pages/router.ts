@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { PortalLayoutComponent } from '../components/portal-layout/portal-layout.component';
 
 const EVENT_ROUTES: Routes = [
   {
@@ -48,11 +49,34 @@ const PARTNER_ROUTES: Routes = [
 export const PORTAL_ROUTES: Routes = [
   {
     path: '',
-    loadComponent: () =>
-      import('./home/home.component').then((c) => c.HomeComponent),
+    component: PortalLayoutComponent,
+    children: [
+      {
+        path: '',
+        loadComponent: () =>
+          import('./home/home.component').then((c) => c.HomeComponent),
+      },
+    ],
   },
   {
     path: 'portal',
-    children: [...EVENT_ROUTES, ...NEWS_ROUTES, ...PARTNER_ROUTES],
+    component: PortalLayoutComponent,
+    children: [
+      ...EVENT_ROUTES,
+      ...NEWS_ROUTES,
+      ...PARTNER_ROUTES,
+      {
+        path: 'oracao',
+        loadComponent: () =>
+          import('./prayer-wall/prayer-wall.component').then(
+            (c) => c.PrayerWallComponent
+          ),
+      },
+      {
+        path: 'contato',
+        loadComponent: () =>
+          import('./contact/contact.component').then((c) => c.ContactComponent),
+      },
+    ],
   },
 ];

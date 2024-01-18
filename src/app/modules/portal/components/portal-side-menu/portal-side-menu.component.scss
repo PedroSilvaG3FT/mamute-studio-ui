@@ -1,0 +1,24 @@
+@import "variables";
+
+#portal-side-menu {
+  @apply fixed top-0 left-0 h-screen w-full z-10 flex flex-col items-center;
+  backdrop-filter: blur(5px);
+  background: $backdrop;
+
+  > button {
+    @apply absolute top-8 right-8 text-lg;
+    color: $primary;
+  }
+
+  > img {
+    @apply w-44 mb-16;
+  }
+
+  > article {
+    @apply flex gap-4 flex-col items-center justify-center;
+
+    > a {
+      @apply text-lg;
+    }
+  }
+}

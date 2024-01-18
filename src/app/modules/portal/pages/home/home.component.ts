@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { HomeEventComponent } from './home-event/home-event.component';
 import { HomeFaqComponent } from './home-faq/home-faq.component';
-import { HomeHeaderComponent } from './home-header/home-header.component';
 import { HomeHeroComponent } from './home-hero/home-hero.component';
 import { HomeNewsComponent } from './home-news/home-news.component';
 import { HomePartnerComponent } from './home-partner/home-partner.component';
@@ -15,13 +14,11 @@ import { HomePrayerWallComponent } from './home-prayer-wall/home-prayer-wall.com
     HomeHeroComponent,
     HomeNewsComponent,
     HomeEventComponent,
-    HomeHeaderComponent,
     HomePartnerComponent,
     HomePrayerWallComponent,
   ],
 
   template: `
-    <portal-home-header />
     <portal-home-hero />
     <portal-home-event />
     <portal-home-prayer-wall />

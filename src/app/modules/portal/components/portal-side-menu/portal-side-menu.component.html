@@ -1,0 +1,29 @@
+@if(isOpen) {
+<section
+  animate
+  id="portal-side-menu"
+  class="app-container"
+  animation="animate__fadeIn"
+>
+  <button (click)="handleClose()">
+    <i class="iconify" data-icon="mingcute:close-fill"></i>
+  </button>
+
+  <img
+    src="/assets/images/logo-horizontal-white.png"
+    alt="Instituto Apocalipse"
+    (click)="handleClose()"
+    [routerLink]="['/']"
+  />
+
+  <article>
+    @for (item of items; track $index) {
+    <a [routerLink]="[item.route]" (click)="handleClose()">{{ item.title }}</a>
+    }
+
+    <button class="btn-primary w-full mt-14" [routerLink]="['/auth/login']">
+      Entrar
+    </button>
+  </article>
+</section>
+}

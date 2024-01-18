@@ -1,0 +1,38 @@
+@import "variables";
+
+#portal-header {
+  @apply w-full fixed top-0 left-0 z-10 flex items-center transition-all duration-500;
+  height: $portal-header-height;
+  background: $backdrop;
+  opacity: 0.5;
+
+  &:hover,
+  &.active {
+    opacity: 1;
+    backdrop-filter: blur(6px);
+  }
+
+  > section {
+    @apply py-0 h-full flex items-center justify-between;
+
+    > img {
+      @apply cursor-pointer h-12;
+    }
+
+    > article {
+      @apply flex gap-4 items-center;
+
+      > a {
+        @apply tablet:hidden;
+
+        &:hover {
+          color: $primary;
+        }
+      }
+
+      #side-menu-button {
+        @apply hidden tablet:flex;
+      }
+    }
+  }
+}

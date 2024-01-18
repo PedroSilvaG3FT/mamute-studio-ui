@@ -1,2 +1,11 @@
+@import "variables";
+
 #home-hero {
+  @apply h-[800px] w-full;
+  background-image: url("/assets/images/portal/hero-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding-top: $portal-header-page-padding;
+  box-shadow: inset 200vw 200vw 200vw 200vw rgba(0, 0, 0, 0.75);
 }
