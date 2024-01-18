@@ -1,11 +1,14 @@
 import { Injectable, inject } from '@angular/core';
 import { Timestamp } from 'firebase/firestore';
+import { FIREBASE_COLLECTION } from '../../@core/firebase/@constans/firebase-collection.contant';
 import { FirebaseAuthenticationService } from '../../@core/firebase/firebase-authentication.service';
+import { FirebaseCollectionBase } from '../../@core/firebase/firebase-collection.base';
 import { IEventDB, IEventItem } from '../interface/event.interface';
 
 @Injectable({ providedIn: 'root' })
 export class EventModel {
   public auth = inject(FirebaseAuthenticationService);
+  private base = new FirebaseCollectionBase(FIREBASE_COLLECTION.event);
 
   constructor() {}
 
@@ -18,6 +21,7 @@ export class EventModel {
       shortDescription: model.shortDescription,
       creationDate: model.creationDate?.toDate(),
       dateReleaseStream: model.dateReleaseStream?.toDate(),
+      partners: model.partners?.map((item) => item.id) || [],
     };
   }
 
@@ -26,7 +30,15 @@ export class EventModel {
   }
 
   public buildRegisterDTO(model: IEventItem): IEventDB {
+    const partners =
+      model.partners
+        ?.filter((item) => !!item)
+        ?.map((item) =>
+          this.base.getDocumentReference(item, FIREBASE_COLLECTION.partner)
+        ) || [];
+
     return {
+      partners,
       active: !!model.active,
       title: model.title || '',
       streamURL: model.streamURL || '',

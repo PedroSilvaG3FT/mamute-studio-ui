@@ -6,14 +6,18 @@
   }
 
   > section {
-    @apply grid gap-6 grid-cols-4;
+    // @apply grid gap-6 grid-cols-4;
+    @apply grid gap-6 grid-cols-4 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-2;
 
     > article {
-      @apply rounded-2xl;
+      @apply rounded-2xl transition-all duration-500;
+      transform: scale(0.95);
       background: $bg-secondary;
       border: 1px solid transparent;
 
+      &:hover,
       &.active {
+        transform: scale(1);
         border-color: $primary;
 
         button {
@@ -22,7 +26,7 @@
       }
 
       > img {
-        @apply aspect-square rounded-t-2xl object-cover;
+        @apply w-full aspect-square rounded-t-2xl object-cover;
       }
 
       > section {

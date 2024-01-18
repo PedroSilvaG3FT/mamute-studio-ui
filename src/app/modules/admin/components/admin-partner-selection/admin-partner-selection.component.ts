@@ -1,11 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-  SimpleChange,
-  inject,
-} from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { SeedStore } from '../../../../store/seed.store';
 import { AlertService } from '../../../@core/services/alert.service';
 import { ObjectUtil } from '../../../@core/util/object.util';
@@ -54,22 +47,13 @@ export class AdminPartnerSelectionComponent {
     this.getPartners();
   }
 
-  ngOnChanges(changes: SimpleChange) {
-    console.log(changes);
-  }
-
-  public setLoading(value: boolean) {}
-
   public getPartners() {
-    this.setLoading(true);
-
     this.databaseService.partner
       .getAll<IPartnerDB[]>()
       .then((response) => {
         this.partners = this.databaseService._model.partner.buildList(response);
       })
-      .catch((error) => this.alertService.snackDefaultResponseError(error))
-      .finally(() => this.setLoading(false));
+      .catch((error) => this.alertService.snackDefaultResponseError(error));
   }
 
   public handleTogglePartner({ id }: IPartnerItem) {

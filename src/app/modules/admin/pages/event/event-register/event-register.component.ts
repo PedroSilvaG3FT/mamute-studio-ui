@@ -14,8 +14,8 @@ import {
   IEventItem,
 } from '../../../../@shared/interface/event.interface';
 import { DatabaseService } from '../../../../@shared/services/database.service';
+import { AdminPartnerSelectionComponent } from '../../../components/admin-partner-selection/admin-partner-selection.component';
 import { EventGalleryComponent } from './event-gallery/event-gallery.component';
-import { EventPartnerComponent } from './event-partner/event-partner.component';
 import { EventTestimonialComponent } from './event-testimonial/event-testimonial.component';
 
 interface IEventForm extends IEventItem {
@@ -31,14 +31,14 @@ interface IEventForm extends IEventItem {
     MatTabsModule,
     AppPageNavComponent,
     EventGalleryComponent,
-    EventPartnerComponent,
     EventTestimonialComponent,
     AppFormGeneratorComponent,
+    AdminPartnerSelectionComponent,
   ],
 })
 export class EventRegisterComponent {
   public eventId = signal('');
-  private event: IEventItem = {} as IEventItem;
+  public event: IEventItem = {} as IEventItem;
   public isNew = computed(() => !this.eventId());
   public pageTitle = computed(() =>
     !!this.isNew() ? `Cadastro de evento` : `Edição de evento`
@@ -218,7 +218,7 @@ export class EventRegisterComponent {
     }
   }
 
-  public async handleUpdate(model: IEventForm) {
+  public async handleUpdate(model: IEventForm, isPartnerUpdate = false) {
     try {
       this.loadingStore.setState(true);
 
@@ -235,10 +235,17 @@ export class EventRegisterComponent {
       });
 
       await this.databaseService.event.update(this.eventId(), eventDTO);
+
+      if (isPartnerUpdate) this.event.partners = model.partners;
+
       this.loadingStore.setState(false);
     } catch (error) {
       this.loadingStore.setState(false);
       this.alertService.snackDefaultResponseError(error);
     }
+  }
+
+  public handlePartnerChange(partners: string[]) {
+    this.handleUpdate({ ...this.event, partners }, true);
   }
 }

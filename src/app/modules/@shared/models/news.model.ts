@@ -19,7 +19,7 @@ export class NewsModel {
       category: model.category?.id,
       userCreator: model.userCreator?.id,
       creationDate: model.creationDate?.toDate(),
-      partners: model.partners.map((item) => item.id),
+      partners: model.partners?.map((item) => item.id) || [],
     };
   }
 

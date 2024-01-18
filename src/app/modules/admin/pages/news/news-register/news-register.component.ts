@@ -17,7 +17,6 @@ import {
 } from '../../../../@shared/interface/news.interface';
 import { DatabaseService } from '../../../../@shared/services/database.service';
 import { AdminPartnerSelectionComponent } from '../../../components/admin-partner-selection/admin-partner-selection.component';
-import { NewsPartnerComponent } from './news-partner/news-partner.component';
 
 interface INewsForm extends INewsItem {}
 
@@ -30,7 +29,6 @@ interface INewsForm extends INewsItem {}
     RouterLink,
     MatTabsModule,
     AppPageNavComponent,
-    NewsPartnerComponent,
     AppFormGeneratorComponent,
     AdminPartnerSelectionComponent,
   ],

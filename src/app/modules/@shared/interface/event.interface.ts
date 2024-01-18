@@ -14,6 +14,7 @@ export interface IEventDB {
   creationDate: Timestamp;
   shortDescription: string;
   dateReleaseStream: Timestamp;
+  partners: DocumentReference[];
   userCreator: DocumentReference;
 }
 
@@ -44,10 +45,11 @@ export interface IEventTestimonialDB {
 export interface IEventItem
   extends Omit<
     IEventDB,
-    'date' | 'creationDate' | 'dateReleaseStream' | 'userCreator'
+    'date' | 'partners' | 'creationDate' | 'dateReleaseStream' | 'userCreator'
   > {
   id: string;
   date: Date;
+  partners: string[];
   creationDate: Date;
   userCreator: string;
   dateReleaseStream: Date;
