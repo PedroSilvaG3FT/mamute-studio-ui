@@ -25,7 +25,11 @@
       }
     </mat-tab>
     <mat-tab label="Galeria" [disabled]="isNew()">
-      <admin-event-gallery />
+      <admin-gallery-register
+        [path]="galleryPath"
+        [images]="event.images"
+        (onChange)="handleGalleryChange($event)"
+      />
     </mat-tab>
     <mat-tab label="Depoimentos" [disabled]="isNew()">
       <admin-event-testimonial />

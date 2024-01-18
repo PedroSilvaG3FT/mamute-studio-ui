@@ -14,8 +14,8 @@ import {
   IEventItem,
 } from '../../../../@shared/interface/event.interface';
 import { DatabaseService } from '../../../../@shared/services/database.service';
+import { AdminGalleryRegisterComponent } from '../../../components/admin-gallery-register/admin-gallery-register.component';
 import { AdminPartnerSelectionComponent } from '../../../components/admin-partner-selection/admin-partner-selection.component';
-import { EventGalleryComponent } from './event-gallery/event-gallery.component';
 import { EventTestimonialComponent } from './event-testimonial/event-testimonial.component';
 
 interface IEventForm extends IEventItem {
@@ -30,13 +30,15 @@ interface IEventForm extends IEventItem {
     RouterLink,
     MatTabsModule,
     AppPageNavComponent,
-    EventGalleryComponent,
     EventTestimonialComponent,
     AppFormGeneratorComponent,
+    AdminGalleryRegisterComponent,
     AdminPartnerSelectionComponent,
   ],
 })
 export class EventRegisterComponent {
+  public readonly galleryPath = FIREBASE_STORAGE_PATH.event;
+
   public eventId = signal('');
   public event: IEventItem = {} as IEventItem;
   public isNew = computed(() => !this.eventId());
@@ -218,7 +220,7 @@ export class EventRegisterComponent {
     }
   }
 
-  public async handleUpdate(model: IEventForm, isPartnerUpdate = false) {
+  public async handleUpdate(model: IEventForm) {
     try {
       this.loadingStore.setState(true);
 
@@ -236,7 +238,12 @@ export class EventRegisterComponent {
 
       await this.databaseService.event.update(this.eventId(), eventDTO);
 
-      if (isPartnerUpdate) this.event.partners = model.partners;
+      this.event = {
+        ...this.event,
+        ...model,
+        images: model.images || this.event.images,
+        partners: model.partners || this.event.partners,
+      };
 
       this.loadingStore.setState(false);
     } catch (error) {
@@ -246,6 +253,10 @@ export class EventRegisterComponent {
   }
 
   public handlePartnerChange(partners: string[]) {
-    this.handleUpdate({ ...this.event, partners }, true);
+    this.handleUpdate({ ...this.event, partners });
+  }
+
+  public handleGalleryChange(images: string[]) {
+    this.handleUpdate({ ...this.event, images });
   }
 }

@@ -1,0 +1,26 @@
+@import "variables";
+
+#admin-gallery-register {
+  > section {
+    @apply mt-6 grid grid-cols-3 gap-4;
+
+    > figure {
+      @apply relative rounded-2xl flex items-center justify-center;
+      background: $bg-secondary;
+
+      > button {
+        @apply hidden absolute z-[1] top-2 right-2;
+      }
+
+      > img {
+        @apply rounded-lg object-contain;
+      }
+
+      &:hover {
+        > button {
+          @apply flex;
+        }
+      }
+    }
+  }
+}

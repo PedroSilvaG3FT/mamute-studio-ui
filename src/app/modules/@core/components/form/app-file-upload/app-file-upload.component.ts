@@ -81,6 +81,11 @@ export class AppFileUploadComponent extends ModelControl {
     this.files = filesControl;
     this.filesControl.setValue({ model: [] });
   }
+
+  public clearFileSelection() {
+    this.files = [];
+    this.filesControl.reset();
+  }
 }
 
 export const APP_FILE_UPLOAD_DEFAULT_VALUES = {

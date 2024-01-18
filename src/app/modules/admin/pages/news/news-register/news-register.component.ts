@@ -162,7 +162,7 @@ export class NewsRegisterComponent {
     }
   }
 
-  public async handleUpdate(model: INewsForm, isPartnerUpdate = false) {
+  public async handleUpdate(model: INewsForm) {
     try {
       this.loadingStore.setState(true);
 
@@ -178,7 +178,11 @@ export class NewsRegisterComponent {
 
       await this.databaseService.news.update(this.newsId(), newsDTO);
 
-      if (isPartnerUpdate) this.news.partners = model.partners;
+      this.news = {
+        ...this.news,
+        ...model,
+        partners: model.partners || this.news.partners,
+      };
 
       this.loadingStore.setState(false);
     } catch (error) {
@@ -188,6 +192,6 @@ export class NewsRegisterComponent {
   }
 
   public handlePartnerChange(partners: string[]) {
-    this.handleUpdate({ ...this.news, partners }, true);
+    this.handleUpdate({ ...this.news, partners });
   }
 }

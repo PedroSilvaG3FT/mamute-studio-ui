@@ -1,0 +1,36 @@
+<section id="admin-gallery-register">
+  <app-file-upload
+    [maxFiles]="5"
+    #appFileUploadRef
+    [(ngModel)]="files"
+    [initialValue]="files"
+    [fileTypes]="['image/*']"
+    label="Adicionar imagens a galeria"
+  />
+
+  <button class="btn-primary" (click)="handleAdd()" [disabled]="!files.length">
+    Adicionar Arquivos
+  </button>
+
+  @if(!imagesControl || !imagesControl.length) {
+  <app-empty-list />
+  } @else {
+  <section>
+    @for(image of imagesControl; track $index) {
+    <figure>
+      <img [src]="image.url" [alt]="image.path" />
+
+      <button
+        animate
+        color="warn"
+        mat-flat-button
+        animation="animate__fadeIn"
+        (click)="handleRemove(image)"
+      >
+        Remover
+      </button>
+    </figure>
+    }
+  </section>
+  }
+</section>

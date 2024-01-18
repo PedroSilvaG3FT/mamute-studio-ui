@@ -5,6 +5,7 @@ export interface IEventDB {
   title: string;
   date: Timestamp;
   active: boolean;
+  images: string[];
   streamURL: string;
   bannerURL: string;
   addressURL: string;
