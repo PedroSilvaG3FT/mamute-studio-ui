@@ -16,6 +16,7 @@ import {
   INewsItem,
 } from '../../../../@shared/interface/news.interface';
 import { DatabaseService } from '../../../../@shared/services/database.service';
+import { AdminGalleryRegisterComponent } from '../../../components/admin-gallery-register/admin-gallery-register.component';
 import { AdminPartnerSelectionComponent } from '../../../components/admin-partner-selection/admin-partner-selection.component';
 
 interface INewsForm extends INewsItem {}
@@ -30,10 +31,13 @@ interface INewsForm extends INewsItem {}
     MatTabsModule,
     AppPageNavComponent,
     AppFormGeneratorComponent,
+    AdminGalleryRegisterComponent,
     AdminPartnerSelectionComponent,
   ],
 })
 export class NewsRegisterComponent {
+  public readonly galleryPath = FIREBASE_STORAGE_PATH.news;
+
   public newsId = signal('');
   public news: INewsItem = {} as INewsItem;
   public isNew = computed(() => !this.newsId());
@@ -181,6 +185,7 @@ export class NewsRegisterComponent {
       this.news = {
         ...this.news,
         ...model,
+        images: model.images || this.news.images,
         partners: model.partners || this.news.partners,
       };
 
@@ -193,5 +198,9 @@ export class NewsRegisterComponent {
 
   public handlePartnerChange(partners: string[]) {
     this.handleUpdate({ ...this.news, partners });
+  }
+
+  public handleGalleryChange(images: string[]) {
+    this.handleUpdate({ ...this.news, images });
   }
 }

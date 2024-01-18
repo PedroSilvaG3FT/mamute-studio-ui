@@ -4,6 +4,7 @@ export interface INewsDB {
   id?: string;
   title: string;
   active: boolean;
+  images: string[];
   bannerURL: string;
   authorName: string;
   contentHTML: string;

@@ -39,6 +39,7 @@ export class NewsModel {
       partners,
       active: !!model.active,
       title: model.title || '',
+      images: model.images || [],
       creationDate: Timestamp.now(),
       bannerURL: model.bannerURL || '',
       authorName: model.authorName || '',
