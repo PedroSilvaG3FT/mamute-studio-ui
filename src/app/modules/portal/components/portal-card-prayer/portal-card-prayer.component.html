@@ -1,0 +1,19 @@
+<article id="portal-card-prayer">
+  <nav>
+    <p>{{ data.authorName }}</p>
+    <p>
+      {{ data.creationDate | date : "dd/MM/yyyy" }}
+      <span> ({{ categoryName(data.category) }})</span>
+    </p>
+  </nav>
+
+  <p>{{ data.description }}</p>
+
+  <footer>
+    <button>
+      <!-- <i class="iconify" [attr.data-icon]="'mdi:heart'"></i> -->
+      <i class="iconify" [attr.data-icon]="'mdi:heart-outline'"></i>
+      Orando
+    </button>
+  </footer>
+</article>

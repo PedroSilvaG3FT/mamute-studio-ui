@@ -1,16 +1,22 @@
 @import "variables";
 
 #home-hero {
-  @apply h-[600px] w-full tablet:h-auto;
-  background-image: url("/assets/images/portal/hero-bg.jpg");
-  background-size: cover;
-  background-position: bottom;
-  background-repeat: no-repeat;
+  @apply h-[600px] w-full relative tablet:h-auto;
   padding-top: $portal-header-page-padding;
-  box-shadow: inset 200vw 200vw 200vw 200vw rgba(0, 0, 0, 0.75);
+
+  > video,
+  > article {
+    @apply absolute top-0 left-0 h-full w-screen object-cover z-[-2];
+  }
+
+  > article {
+    @apply z-[-1];
+    box-shadow: inset 0px -68px 40px -20px rgb(17, 20, 24),
+      inset 200vw 200vw 200vw 200vw rgba(254, 99, 3, 0.5803921569);
+  }
 
   > section {
-    @apply h-full grid grid-cols-2 gap-4 items-center tablet:justify-items-center tablet:grid-cols-1;
+    @apply h-full pb-20 grid grid-cols-2 gap-4 items-center tablet:justify-items-center tablet:grid-cols-1;
 
     > article {
       > h1 {

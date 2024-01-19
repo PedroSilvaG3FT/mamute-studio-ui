@@ -19,7 +19,7 @@
   }
 
   &.height-full {
-    @apply h-full bg-cover;
+    @apply h-full bg-cover mobile:h-72;
 
     &:hover {
       @apply bg-cover;

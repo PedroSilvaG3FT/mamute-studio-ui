@@ -9,5 +9,6 @@ import { RouterModule } from '@angular/router';
   templateUrl: './portal-card-redirect-detail.component.html',
 })
 export class PortalCardRedirectDetailComponent {
+  @Input() text: string = 'ver mais';
   @Input({ required: true }) route: string = '';
 }

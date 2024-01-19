@@ -3,6 +3,6 @@
 
 #home-event {
   > section {
-    @apply mt-14 gap-8 grid grid-cols-4 md:grid-cols-2 sm:grid-cols-1 items-stretch;
+    @apply mt-14 gap-8 grid grid-cols-4 tablet:grid-cols-2  items-stretch;
   }
 }

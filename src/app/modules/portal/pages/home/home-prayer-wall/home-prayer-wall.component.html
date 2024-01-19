@@ -1,6 +1,26 @@
-<section id="home-prayer-wall" class="app-container">
-  <h1 class="portal__title">Mural de orações</h1>
-  <p>
-    Aqui você deposita as suas orações e ajuda também em oração os seus irmãos.
-  </p>
+<section id="home-prayer-wall">
+  <section class="app-container">
+    <nav>
+      <div>
+        <h1 class="portal__title">Mural de orações</h1>
+        <p>
+          Aqui você deposita as suas orações e ajuda também em oração os seus
+          irmãos.
+        </p>
+      </div>
+
+      <button class="btn-primary">
+        Fazer um pedido
+        <i class="iconify" data-icon="ph:hands-praying-light"></i>
+      </button>
+    </nav>
+
+    <section>
+      @for (item of prayers; track $index) {
+      <portal-card-prayer [data]="item" />
+      }
+
+      <portal-card-redirect-detail route="/portal/oracao" />
+    </section>
+  </section>
 </section>
