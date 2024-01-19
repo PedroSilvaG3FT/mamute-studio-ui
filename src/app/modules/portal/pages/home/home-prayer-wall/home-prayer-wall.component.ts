@@ -30,7 +30,6 @@ export class HomePrayerWallComponent {
         where('active', '==', true),
       ])
       .then((response) => {
-        console.log(response);
         this.prayers = this.databaseService._model.prayerWall
           .buildList(response)
           .filter(({ active }) => !!active);
