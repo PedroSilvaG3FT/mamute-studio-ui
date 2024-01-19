@@ -11,6 +11,8 @@
       <a [routerLink]="[item.route]">{{ item.title }}</a>
       }
 
+      <app-theme-selection />
+
       <button id="side-menu-button" (click)="toggleSideMenu()">
         <i class="iconify text-lg" data-icon="ep:menu"></i>
       </button>

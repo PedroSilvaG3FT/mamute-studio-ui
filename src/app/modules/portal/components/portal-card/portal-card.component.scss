@@ -4,6 +4,7 @@
 #portal-card {
   @apply h-52 rounded-2xl flex items-end bg-cover cursor-pointer;
 
+  color: $white;
   background-position: center;
   background-repeat: no-repeat;
 

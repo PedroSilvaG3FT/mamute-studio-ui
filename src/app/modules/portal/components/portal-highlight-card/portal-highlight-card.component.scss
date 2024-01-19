@@ -3,6 +3,7 @@
 #portal-highlight-card {
   @apply h-72 rounded-2xl flex items-end transition-all duration-700;
 
+  color: $white;
   background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;

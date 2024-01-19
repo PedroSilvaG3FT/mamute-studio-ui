@@ -4,6 +4,7 @@
   @apply fixed top-0 left-0 h-screen w-full z-10 flex flex-col items-center;
   backdrop-filter: blur(10px);
   background: $backdrop;
+  color: $white;
 
   > button {
     @apply absolute top-8 right-8 text-lg;

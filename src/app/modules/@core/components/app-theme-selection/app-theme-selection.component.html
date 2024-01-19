@@ -1,9 +1,9 @@
 <app-checkbox
   toggle
-  label="Dark Mode"
   name="theme-selection"
   toggleClassName="!mb-0"
   [(ngModel)]="isDarkMode"
   [initialValue]="isDarkMode"
   (ngModelChange)="onToggleDarkMode()"
+  [matTooltip]="isDarkMode ? 'Tema escuro' : 'Tema claro'"
 />

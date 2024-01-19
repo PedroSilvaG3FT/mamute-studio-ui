@@ -1,5 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { AppThemeSelectionComponent } from '../../../@core/components/app-theme-selection/app-theme-selection.component';
 import { IMenuItem } from '../../interfaces/menu.interface';
 import { PortalSideMenuComponent } from '../portal-side-menu/portal-side-menu.component';
 
@@ -8,7 +9,7 @@ import { PortalSideMenuComponent } from '../portal-side-menu/portal-side-menu.co
   selector: 'portal-header',
   styleUrl: './portal-header.component.scss',
   templateUrl: './portal-header.component.html',
-  imports: [RouterModule, PortalSideMenuComponent],
+  imports: [RouterModule, PortalSideMenuComponent, AppThemeSelectionComponent],
 })
 export class PortalHeaderComponent {
   public isScrolled: boolean = false;

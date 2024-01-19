@@ -3,6 +3,7 @@
 #home-hero {
   @apply h-[600px] w-full relative tablet:h-auto;
   padding-top: $portal-header-page-padding;
+  color: $white;
 
   > video,
   > article {
@@ -11,7 +12,7 @@
 
   > article {
     @apply z-[-1];
-    box-shadow: inset 0px -68px 40px -20px rgb(17, 20, 24),
+    box-shadow: inset 0px -68px 40px -20px $bg-primary,
       inset 200vw 200vw 200vw 200vw rgba(254, 99, 3, 0.5803921569);
   }
 
