@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  booleanAttribute,
+} from '@angular/core';
 
 @Component({
   imports: [],
@@ -11,6 +17,7 @@ export class PortalHighlightCardComponent {
   @Input({ required: true }) title: string = '';
   @Input({ required: true }) background: string = '';
   @Input({ required: true }) description: string = '';
+  @Input({ transform: booleanAttribute }) heightFull: boolean = false;
 
   @Output() onClick = new EventEmitter();
 }

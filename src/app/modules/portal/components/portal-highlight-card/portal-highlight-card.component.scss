@@ -18,6 +18,14 @@
     }
   }
 
+  &.height-full {
+    @apply h-full bg-cover;
+
+    &:hover {
+      @apply bg-cover;
+    }
+  }
+
   > section {
     @apply w-full flex gap-4 items-center justify-between px-8 py-6 rounded-b-2xl;
     background: $backdrop;

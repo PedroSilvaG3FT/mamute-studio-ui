@@ -1,2 +1,12 @@
+@import "variables";
+@import "mixins/grid";
+
 #home-news {
+  > section {
+    @apply mt-14 grid gap-8 grid-cols-2;
+
+    > article {
+      @apply gap-8 grid grid-cols-2 md:grid-cols-2 sm:grid-cols-1 items-stretch;
+    }
+  }
 }

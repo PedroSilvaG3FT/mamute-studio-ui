@@ -1,0 +1,51 @@
+@import "variables";
+@import "mixins/text";
+
+#portal-card {
+  @apply h-52 rounded-2xl flex items-end bg-cover cursor-pointer;
+
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &,
+  * {
+    @apply transition-all duration-500;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+
+    > section {
+      @apply h-52 rounded-2xl;
+      backdrop-filter: blur(10px);
+
+      > p {
+        @apply my-auto;
+        @include limit-text-lines(3);
+      }
+
+      > a {
+        @apply flex;
+      }
+    }
+  }
+
+  > section {
+    @apply w-full h-14 flex flex-col gap-4 items-center justify-center p-4 rounded-b-2xl;
+    background: $backdrop;
+    backdrop-filter: blur(3px);
+
+    > h5 {
+      @apply text-center w-full truncate font-semibold;
+    }
+
+    > p {
+      @apply hidden;
+    }
+
+    > a {
+      @apply hidden underline;
+      color: $primary;
+    }
+  }
+}

@@ -1,0 +1,30 @@
+@import "variables";
+
+.portal-card-redirect-detail {
+  @apply h-full rounded-2xl flex flex-col items-center justify-center gap-4 mobile:flex-row mobile:p-4;
+  background: $bg-secondary;
+
+  > i,
+  > span {
+    @apply transition-all duration-300;
+  }
+
+  &:hover {
+    color: $primary;
+
+    > i,
+    > span {
+      @apply transition-all duration-300;
+      transform: scale(1.1);
+    }
+  }
+
+  @media screen and (max-width: $breakpoint-sm) {
+    color: $white;
+    background: $primary;
+
+    &:hover {
+      color: $white;
+    }
+  }
+}
