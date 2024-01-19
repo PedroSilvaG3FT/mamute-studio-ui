@@ -1,1 +1,15 @@
-<p>news works!</p>
+<section id="news" class="app-container">
+  <h1 class="portal__title">Notícias</h1>
+  <p class="mb-8">Fique por dentro das principais noticias da região</p>
+
+  <section>
+    @for (item of news; track $index) {
+    <portal-card
+      [title]="item.title"
+      [background]="item.bannerURL || ''"
+      [description]="item.shortDescription || ''"
+      [badge]="item.creationDate | date : 'dd/MM/yyyy'"
+    />
+    }
+  </section>
+</section>

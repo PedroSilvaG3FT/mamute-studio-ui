@@ -1,0 +1,9 @@
+@import "variables";
+
+#news {
+  padding-top: $portal-header-page-padding;
+
+  > section {
+    @apply gap-8 grid grid-cols-5 tablet:grid-cols-2 items-stretch;
+  }
+}

@@ -1,0 +1,17 @@
+@import "variables";
+
+#prayer-wall {
+  padding-top: $portal-header-page-padding;
+
+  > nav {
+    @apply w-full flex gap-4 items-center justify-between mobile:flex-col mobile:items-start;
+  }
+
+  > form {
+    @apply mt-8 flex gap-4 items-start;
+  }
+
+  > section {
+    @apply mt-8 gap-8 grid grid-cols-4 md:grid-cols-2 mobile:grid-cols-1  items-stretch;
+  }
+}

@@ -1,1 +1,15 @@
-<p>event works!</p>
+<section id="event" class="app-container">
+  <h1 class="portal__title">Eventos</h1>
+  <p class="mb-8">Saiba sobre tudo que está por vir aqui!</p>
+
+  <section>
+    @for (item of events; track $index) {
+    <portal-card
+      [title]="item.title"
+      [background]="item.bannerURL || ''"
+      [description]="item.shortDescription || ''"
+      [badge]="item.dateReleaseStream | date : 'dd/MM/yyyy'"
+    />
+    }
+  </section>
+</section>

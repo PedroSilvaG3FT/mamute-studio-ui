@@ -16,11 +16,11 @@ export class PortalHeaderComponent {
   public isShowSideMenu: boolean = false;
 
   public items: IMenuItem[] = [
+    { title: `Home`, route: `/` },
     { title: `Eventos`, route: `/portal/eventos` },
-    { title: `Mural de oração`, route: `/portal/oracao` },
     { title: `Notícias`, route: `/portal/noticias` },
-    { title: `Parceiros`, route: `/portal/parceiros` },
-    { title: `contato`, route: `/portal/contato` },
+    { title: `Mural de oração`, route: `/portal/oracao` },
+    { title: `Contato`, route: `/portal/contato` },
   ];
 
   constructor() {}
