@@ -7,6 +7,7 @@
     <portal-card
       [title]="item.title"
       [background]="item.bannerURL || ''"
+      [route]="'/portal/noticias/' + item.id"
       [description]="item.shortDescription || ''"
       [badge]="item.creationDate | date : 'dd/MM/yyyy'"
     />

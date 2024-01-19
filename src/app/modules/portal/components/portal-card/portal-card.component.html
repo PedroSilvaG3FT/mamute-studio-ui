@@ -6,6 +6,11 @@
   <section>
     <h5>{{ title }}</h5>
     <p animate animation="animate__fadeIn">{{ description }}</p>
-    <a animate animation="animate__fadeIn">Ver detalhes</a>
+
+    @if(!!route) {
+    <a animate animation="animate__fadeIn" [routerLink]="[route]">
+      Ver detalhes
+    </a>
+    }
   </section>
 </article>

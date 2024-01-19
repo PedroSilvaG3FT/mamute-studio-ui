@@ -1,0 +1,95 @@
+@import "variables";
+
+#event-detail {
+  padding-top: $portal-header-page-padding;
+
+  .subtitle {
+    @apply mb-4 text-[1.4rem] font-semibold;
+    color: $primary;
+  }
+
+  > nav {
+    @apply mb-4 flex items-center;
+
+    > button {
+      color: $primary;
+    }
+  }
+
+  > figure {
+    @apply mb-8 h-96 w-full rounded-2xl shadow-md transition-all duration-700;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: $bg-secondary;
+
+    &:hover {
+      background-size: 105%;
+      @apply mobile:bg-cover;
+    }
+  }
+
+  > section {
+    @apply grid gap-8 grid-cols-[30%_1fr] items-start;
+
+    > article {
+      @apply p-6 rounded-2xl shadow-md;
+      background-color: $bg-secondary;
+
+      > h2 {
+        @apply mb-8 text-lg;
+      }
+
+      > div {
+        @apply mb-6 flex items-center gap-4;
+
+        &:hover {
+          color: $primary;
+
+          > i,
+          > svg {
+            transform: scale(0.9);
+          }
+        }
+
+        > i,
+        > svg {
+          @apply text-lg transition-all duration-500;
+        }
+
+        > span {
+          > a {
+            @apply ml-1;
+
+            &:hover {
+              @apply underline;
+            }
+          }
+        }
+      }
+    }
+
+    > div {
+      > p {
+        @apply mb-4;
+      }
+
+      > h4 {
+        @apply mb-4;
+        color: $primary;
+      }
+
+      > article {
+        @apply w-full h-64;
+
+        iframe {
+          @apply h-full rounded-2xl;
+        }
+      }
+    }
+  }
+
+  > hr {
+    @apply my-8;
+  }
+}

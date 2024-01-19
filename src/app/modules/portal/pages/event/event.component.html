@@ -7,6 +7,7 @@
     <portal-card
       [title]="item.title"
       [background]="item.bannerURL || ''"
+      [route]="'/portal/eventos/' + item.id"
       [description]="item.shortDescription || ''"
       [badge]="item.dateReleaseStream | date : 'dd/MM/yyyy'"
     />

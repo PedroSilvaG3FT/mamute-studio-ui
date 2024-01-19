@@ -1,1 +1,59 @@
-<p>event-detail works!</p>
+<section id="event-detail" class="app-container">
+  <nav>
+    <button class="btn">
+      <i class="iconify" data-icon="mingcute:left-line"></i>
+      Voltar
+    </button>
+
+    <article></article>
+  </nav>
+
+  <figure [style.background-image]="'url(' + event.bannerURL + ')'"></figure>
+
+  <section>
+    <article>
+      <h2>Informações</h2>
+
+      <div>
+        <i class="iconify" data-icon="ion:calendar-outline"></i>
+        <span>
+          <b>Data:</b>
+          {{ event.date | date : "dd/MM/yyyy" }}
+        </span>
+      </div>
+
+      <div>
+        <i class="iconify" data-icon="teenyicons:pin-outline"></i>
+        <span>
+          <b>Endereço:</b>
+          <a [href]="event.addressURL" target="_blank">
+            {{ event.addressName }}
+          </a>
+        </span>
+      </div>
+
+      @if(event.streamURL) {
+      <div>
+        <i class="iconify" data-icon="ic:sharp-link"></i>
+        <span>
+          <a [href]="event.streamURL" target="_blank"> Assistir ao vivo </a>
+        </span>
+      </div>
+      }
+    </article>
+
+    <div>
+      <h2 class="subtitle">{{ event.title }}</h2>
+      <p [innerHTML]="event.contentHTML"></p>
+
+      <h4>Endereço</h4>
+      <article #mapContainer></article>
+    </div>
+  </section>
+
+  <hr />
+
+  <article>
+    <h2 class="subtitle">Galeria</h2>
+  </article>
+</section>
