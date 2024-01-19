@@ -3,6 +3,10 @@
   [class.height-full]="heightFull"
   [style.background-image]="'url(' + background + ')'"
 >
+  @if (!!badge) {
+  <span>{{ badge }}</span>
+  }
+
   <section>
     <div>
       <h5>{{ title }}</h5>

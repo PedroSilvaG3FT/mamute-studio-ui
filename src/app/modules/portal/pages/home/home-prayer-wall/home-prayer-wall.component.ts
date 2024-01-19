@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { IPrayerWallItem } from '../../../../@shared/interface/prayer-wall.interface';
+import { where } from 'firebase/firestore';
+import {
+  IPrayerWallDB,
+  IPrayerWallItem,
+} from '../../../../@shared/interface/prayer-wall.interface';
+import { DatabaseService } from '../../../../@shared/services/database.service';
 import { PortalCardPrayerComponent } from '../../../components/portal-card-prayer/portal-card-prayer.component';
 import { PortalCardRedirectDetailComponent } from '../../../components/portal-card-redirect-detail/portal-card-redirect-detail.component';
 
@@ -11,16 +16,25 @@ import { PortalCardRedirectDetailComponent } from '../../../components/portal-ca
   imports: [PortalCardPrayerComponent, PortalCardRedirectDetailComponent],
 })
 export class HomePrayerWallComponent {
-  public prayer: IPrayerWallItem = {
-    id: '',
-    active: true,
-    category: '1',
-    userCreator: '',
-    userApprover: '',
-    creationDate: new Date(),
-    authorName: 'Pedro Silva',
-    description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
-  };
+  public prayers: IPrayerWallItem[] = [];
 
-  public prayers = [this.prayer, this.prayer, this.prayer];
+  constructor(private databaseService: DatabaseService) {}
+
+  ngOnInit() {
+    this.getItems();
+  }
+
+  public getItems() {
+    this.databaseService.prayerWall
+      .getAllSortLimit<IPrayerWallDB[]>('creationDate', 'desc', 4, [
+        where('active', '==', true),
+      ])
+      .then((response) => {
+        console.log(response);
+        this.prayers = this.databaseService._model.prayerWall
+          .buildList(response)
+          .filter(({ active }) => !!active);
+      })
+      .catch(() => {});
+  }
 }

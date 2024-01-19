@@ -2,7 +2,7 @@
   <section class="app-container">
     <nav>
       <div>
-        <h1 class="portal__title">Mural de orações</h1>
+        <h1 class="portal__title">Mural de oração</h1>
         <p>
           Aqui você deposita as suas orações e ajuda também em oração os seus
           irmãos.
@@ -15,12 +15,16 @@
       </button>
     </nav>
 
+    @if (!prayers.length) {
+    <p>Sem registros para exibição</p>
+    }@else {
     <section>
       @for (item of prayers; track $index) {
       <portal-card-prayer [data]="item" />
-      }
-
+      } @if (prayers.length>3) {
       <portal-card-redirect-detail route="/portal/oracao" />
+      }
     </section>
+    }
   </section>
 </section>

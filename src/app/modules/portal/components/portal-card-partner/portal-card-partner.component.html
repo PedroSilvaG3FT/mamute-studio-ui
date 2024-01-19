@@ -1,6 +1,10 @@
 <section id="portal-card-partner">
   <figure>
-    <img [src]="data.imageURL" [alt]="data.name" />
+    <img
+      [alt]="data.name"
+      [src]="data.imageURL"
+      onerror="this.src = '/assets/images/default.jpg'"
+    />
     <small>{{ categoryName(data.category) }}</small>
   </figure>
 

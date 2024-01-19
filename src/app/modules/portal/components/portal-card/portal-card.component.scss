@@ -2,11 +2,12 @@
 @import "mixins/text";
 
 #portal-card {
-  @apply h-52 rounded-2xl flex items-end bg-cover cursor-pointer;
+  @apply h-52 rounded-2xl relative flex items-end bg-cover cursor-pointer;
 
   color: $white;
   background-position: center;
   background-repeat: no-repeat;
+  background-color: $bg-secondary;
 
   &,
   * {
@@ -29,6 +30,12 @@
         @apply flex;
       }
     }
+  }
+
+  > span {
+    @apply absolute top-4 left-4 p-1 px-2 rounded-md shadow-sm text-sm;
+    background: $primary;
+    color: $white;
   }
 
   > section {

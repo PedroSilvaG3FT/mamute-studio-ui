@@ -1,7 +1,7 @@
 @import "variables";
 
 #portal-highlight-card {
-  @apply h-72 rounded-2xl flex items-end transition-all duration-700;
+  @apply h-72 rounded-2xl relative flex items-end transition-all duration-700;
 
   color: $white;
   background-size: 100%;
@@ -25,6 +25,12 @@
     &:hover {
       @apply bg-cover;
     }
+  }
+
+  > span {
+    @apply absolute top-4 left-4 p-1 px-2 rounded-md shadow-sm;
+    background: $primary;
+    color: $white;
   }
 
   > section {

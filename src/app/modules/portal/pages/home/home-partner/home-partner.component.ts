@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { IPartnerItem } from '../../../../@shared/interface/partner.interface';
+import { where } from 'firebase/firestore';
+import {
+  IPartnerDB,
+  IPartnerItem,
+} from '../../../../@shared/interface/partner.interface';
+import { DatabaseService } from '../../../../@shared/services/database.service';
 import { PortalCardPartnerComponent } from '../../../components/portal-card-partner/portal-card-partner.component';
 
 @Component({
@@ -10,21 +15,24 @@ import { PortalCardPartnerComponent } from '../../../components/portal-card-part
   templateUrl: './home-partner.component.html',
 })
 export class HomePartnerComponent {
-  public item: IPartnerItem = {
-    id: '',
-    name: 'Teste',
-    email: 'teste@teste.com',
-    active: true,
-    imageURL:
-      'https://file-inpeace-prod.inpeaceapp.com/6414b7c17889a213335109.jpeg',
-    telephone: '',
-    portfolioURL:
-      'https://file-inpeace-prod.inpeaceapp.com/6414b7c17889a213335109.jpeg',
-    creationDate: new Date(),
-    category: '1',
-    occupationDescription: 'Ocupação',
-    userCreator: '',
-  };
+  public parters: IPartnerItem[] = [];
 
-  public parters = [this.item, this.item, this.item];
+  constructor(private databaseService: DatabaseService) {}
+
+  ngOnInit() {
+    this.getItems();
+  }
+
+  public getItems() {
+    this.databaseService.partner
+      .getAllSortLimit<IPartnerDB[]>('creationDate', 'desc', 4, [
+        where('active', '==', 'true'),
+      ])
+      .then((response) => {
+        this.parters = this.databaseService._model.partner
+          .buildList(response)
+          .filter(({ active }) => !!active);
+      })
+      .catch(() => {});
+  }
 }

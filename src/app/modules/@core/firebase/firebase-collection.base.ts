@@ -12,7 +12,9 @@ import {
   getDoc,
   getDocs,
   getFirestore,
+  limit,
   onSnapshot,
+  orderBy,
   query,
   updateDoc,
   where,
@@ -46,6 +48,15 @@ export class FirebaseCollectionBase {
 
   public getAll<Data>(querys: QueryFieldFilterConstraint[] = []) {
     return this.handlerGetAll<Data>(querys);
+  }
+
+  public getAllSortLimit<Data>(
+    column: string,
+    order: 'desc' | 'asc',
+    limit: number,
+    querys: QueryFieldFilterConstraint[] = []
+  ) {
+    return this.handlerGetAllOrderLimit<Data>(column, order, limit);
   }
 
   public getById<Data>(id: string) {
@@ -107,6 +118,27 @@ export class FirebaseCollectionBase {
     }
   }
 
+  protected async handlerGetAllOrderLimit<Data>(
+    column: string,
+    order: 'desc' | 'asc',
+    maxItems: number,
+    querys: QueryFieldFilterConstraint[] = []
+  ) {
+    try {
+      const q = query(
+        this.collection,
+        orderBy(column, order),
+        limit(maxItems),
+        ...querys
+      );
+      const snapshot = await getDocs(q);
+
+      return this._helper.getCollectionData<Data>(snapshot);
+    } catch (error) {
+      throw error;
+    }
+  }
+
   protected async handlerCreate<Data>(payload: Data) {
     try {
       const response = await addDoc(this.collection, Object(payload));
@@ -128,6 +160,7 @@ export class FirebaseCollectionBase {
       throw error;
     }
   }
+
   // #endregion: Protected methods
 
   private handleMonitoringSnapshot() {

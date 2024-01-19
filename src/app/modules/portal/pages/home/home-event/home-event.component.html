@@ -2,31 +2,28 @@
   <h1 class="portal__title">Eventos</h1>
   <p class="mb-8">Saiba sobre tudo que está por vir nos nossos eventos aqui!</p>
 
+  @if(!highlight.id || !events.length) {
+  <p>Sem eventos futuros</p>
+  } @else {
+
   <portal-highlight-card
-    title="Lorem Ipsum is simply"
-    background="https://file-inpeace-prod.inpeaceapp.com/6414b7c17889a213335109.jpeg"
-    description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+    [title]="highlight.title"
+    [background]="highlight.bannerURL"
+    [description]="highlight.shortDescription"
+    [badge]="highlight.dateReleaseStream | date : 'dd/MM/yyyy'"
   />
 
   <section>
+    @for (item of events; track $index) {
     <portal-card
-      title="Lorem Ipsum is simply"
-      background="https://file-inpeace-prod.inpeaceapp.com/6414b7c17889a213335109.jpeg"
-      description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+      [title]="item.title"
+      [background]="item.bannerURL || ''"
+      [description]="item.shortDescription || ''"
+      [badge]="item.dateReleaseStream | date : 'dd/MM/yyyy'"
     />
-
-    <portal-card
-      title="Lorem Ipsum is simply"
-      background="https://file-inpeace-prod.inpeaceapp.com/6414b7c17889a213335109.jpeg"
-      description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-    />
-
-    <portal-card
-      title="Lorem Ipsum is simply"
-      background="https://file-inpeace-prod.inpeaceapp.com/6414b7c17889a213335109.jpeg"
-      description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-    />
-
+    } @if(events.length>3) {
     <portal-card-redirect-detail route="/portal/eventos" />
+    }
   </section>
+  }
 </section>

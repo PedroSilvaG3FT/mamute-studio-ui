@@ -1,4 +1,8 @@
 <article id="portal-card" [style.background-image]="'url(' + background + ')'">
+  @if (!!badge) {
+  <span>{{ badge }}</span>
+  }
+
   <section>
     <h5>{{ title }}</h5>
     <p animate animation="animate__fadeIn">{{ description }}</p>

@@ -9,6 +9,7 @@ import { AnimateDirective } from '../../../@core/directives/animate.directive';
   templateUrl: './portal-card.component.html',
 })
 export class PortalCardComponent {
+  @Input() badge: string | null = '';
   @Input({ required: true }) title: string = '';
   @Input({ required: true }) background: string = '';
   @Input({ required: true }) description: string = '';

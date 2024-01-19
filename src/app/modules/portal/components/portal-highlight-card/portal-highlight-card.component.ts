@@ -14,6 +14,7 @@ import {
   templateUrl: './portal-highlight-card.component.html',
 })
 export class PortalHighlightCardComponent {
+  @Input() badge: string | null = '';
   @Input({ required: true }) title: string = '';
   @Input({ required: true }) background: string = '';
   @Input({ required: true }) description: string = '';
