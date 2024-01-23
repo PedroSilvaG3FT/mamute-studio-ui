@@ -21,9 +21,25 @@
     <a [routerLink]="[item.route]" (click)="handleClose()">{{ item.title }}</a>
     }
 
-    <button class="btn-primary w-full mt-14" [routerLink]="['/auth/login']">
-      Entrar
+    <!-- user -->
+    @if(!authStore.isLogged()) {
+    <button mat-button color="primary">Entrar</button>
+    } @else {
+    <button mat-button color="primary" [matMenuTriggerFor]="menu">
+      {{ authStore.userFirstName() }}
+      <mat-icon>expand_more</mat-icon>
     </button>
+    <mat-menu #menu="matMenu">
+      @if(authStore.isAdmin()) {
+      <button mat-menu-item routerLink="/admin/event">
+        Portal do administrador
+      </button>
+      }
+      <button mat-menu-item>Meu perfil</button>
+    </mat-menu>
+    }
+
+    <app-theme-selection />
   </article>
 </section>
 }

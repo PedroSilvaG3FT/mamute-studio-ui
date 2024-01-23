@@ -11,11 +11,29 @@
       <a [routerLink]="[item.route]">{{ item.title }}</a>
       }
 
-      <app-theme-selection />
+      <!-- user -->
+      @if(!authStore.isLogged()) {
+      <button mat-button color="primary">Entrar</button>
+      } @else {
+      <button mat-button color="primary" [matMenuTriggerFor]="menu">
+        {{ authStore.userFirstName() }}
+        <mat-icon>expand_more</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        @if(authStore.isAdmin()) {
+        <button mat-menu-item routerLink="/admin/event">
+          Portal do administrador
+        </button>
+        }
+        <button mat-menu-item>Meu perfil</button>
+      </mat-menu>
+      }
 
       <button id="side-menu-button" (click)="toggleSideMenu()">
         <i class="iconify text-lg" data-icon="ep:menu"></i>
       </button>
+
+      <app-theme-selection />
     </article>
   </section>
 </header>

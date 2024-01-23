@@ -32,6 +32,11 @@
         }
       }
 
+      > button,
+      > app-theme-selection {
+        @apply tablet:hidden;
+      }
+
       #side-menu-button {
         @apply hidden tablet:flex;
       }

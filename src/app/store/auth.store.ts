@@ -29,6 +29,7 @@ export const AuthStore = signalStore(
   withComputed((state) => ({
     isLogged: computed(() => !!state.firebaseToken()),
     isAdmin: computed(() => state.userRole() === UserRole.admin),
+    userFirstName: computed(() => state.userData().name.split(' ')[0]),
   })),
   withMethods((store) => ({
     setStripeCustomerId(stripeCustomerId: string) {
