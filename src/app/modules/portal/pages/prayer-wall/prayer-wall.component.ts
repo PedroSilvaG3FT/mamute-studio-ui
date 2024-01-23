@@ -1,6 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { where } from 'firebase/firestore';
+import { AuthStore } from '../../../../store/auth.store';
 import { SeedStore } from '../../../../store/seed.store';
 import { AppEmptyListComponent } from '../../../@core/components/app-empty-list/app-empty-list.component';
 import { AppDatepickerComponent } from '../../../@core/components/form/app-datepicker/app-datepicker.component';
@@ -8,6 +10,7 @@ import { AppSelectComponent } from '../../../@core/components/form/app-select/ap
 import { IFormOption } from '../../../@core/interfaces/app-form.interface';
 import { DatePickerRangeValue } from '../../../@core/types/datepicker.type';
 import { ObjectUtil } from '../../../@core/util/object.util';
+import { ModalRequestLoginComponent } from '../../../@shared/components/modal-request-login/modal-request-login.component';
 import {
   IPrayerWallDB,
   IPrayerWallItem,
@@ -29,6 +32,7 @@ import { PortalCardPrayerComponent } from '../../components/portal-card-prayer/p
   templateUrl: './prayer-wall.component.html',
 })
 export class PrayerWallComponent {
+  public authStore = inject(AuthStore);
   public seedStore = inject(SeedStore);
 
   public categoryOptions: IFormOption[] = [];
@@ -37,7 +41,10 @@ export class PrayerWallComponent {
   public prayers: IPrayerWallItem[] = [];
   public originalItems: IPrayerWallItem[] = [];
 
-  constructor(private databaseService: DatabaseService) {}
+  constructor(
+    public dialog: MatDialog,
+    private databaseService: DatabaseService
+  ) {}
 
   ngOnInit() {
     this.categoryOptions = [
@@ -96,6 +103,13 @@ export class PrayerWallComponent {
   public handleClearFilter() {
     this.filter = {} as IPrayerWallFilter;
     this.prayers = ObjectUtil.clone(this.originalItems);
+  }
+
+  public handleRequestPray() {
+    console.log('OPA');
+    if (!this.authStore.isLogged()) {
+      this.dialog.open(ModalRequestLoginComponent);
+    }
   }
 }
 

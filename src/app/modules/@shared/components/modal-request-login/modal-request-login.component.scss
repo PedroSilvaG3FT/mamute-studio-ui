@@ -1,0 +1,12 @@
+#modal-request-login {
+  @apply p-8 w-96 flex flex-col items-center justify-center gap-8 mobile:w-auto;
+
+  > img {
+    @apply w-28 object-contain;
+  }
+
+  > p,
+  > h2 {
+    @apply text-center;
+  }
+}
