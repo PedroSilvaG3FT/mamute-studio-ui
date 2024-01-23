@@ -1,1 +1,48 @@
-<p>contact works!</p>
+<section id="contact" class="app-container">
+  <h1>Contato</h1>
+
+  <section>
+    <article>
+      <h2>Perguntas frequentes</h2>
+
+      <mat-accordion>
+        @for (item of faqItems; track $index) {
+        <mat-expansion-panel hideToggle (click)="setCurrentIndexOpen($index)">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{ item.title }}
+            </mat-panel-title>
+
+            <mat-icon
+              >{{ currentIndexOpen === $index ? "expand_more" : "expand_less" }}
+            </mat-icon>
+          </mat-expansion-panel-header>
+
+          <p>{{ item.description }}</p>
+        </mat-expansion-panel>
+        }
+      </mat-accordion>
+    </article>
+
+    <section>
+      <h2>Canais de contato</h2>
+
+      <div>
+        <article (click)="sendPartnerMessage()">
+          <i class="iconify" data-icon="mdi:partnership-outline"></i>
+          <h5>Quero ser um patrocinador</h5>
+        </article>
+
+        <article (click)="sendVoluntaryMessage()">
+          <i class="iconify" data-icon="fluent:people-team-24-regular"></i>
+          <h5>Quero ser um voluntatio</h5>
+        </article>
+
+        <article (click)="sendMessage()">
+          <i class="iconify" data-icon="ion:logo-whatsapp"></i>
+          <h5>Whatsapp</h5>
+        </article>
+      </div>
+    </section>
+  </section>
+</section>
