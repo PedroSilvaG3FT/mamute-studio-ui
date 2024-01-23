@@ -10,7 +10,7 @@ import {
   signal,
 } from '@angular/core';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { LoadingStore } from '../../../../../store/loading.store';
 import { FirebaseStorageService } from '../../../../@core/firebase/firebase-storage.service';
 import { AlertService } from '../../../../@core/services/alert.service';
@@ -34,6 +34,7 @@ import { PortalPartnerListComponent } from '../../../components/portal-partner-l
   templateUrl: './event-detail.component.html',
   imports: [
     DatePipe,
+    RouterModule,
     HttpClientModule,
     MatTooltipModule,
     PortalGalleryComponent,

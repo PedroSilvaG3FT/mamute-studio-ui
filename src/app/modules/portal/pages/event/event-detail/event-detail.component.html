@@ -1,6 +1,6 @@
 <section id="event-detail" class="app-container">
   <nav>
-    <button class="btn">
+    <button class="btn" routerLink="/portal/eventos">
       <i class="iconify" data-icon="mingcute:left-line"></i>
       Voltar
     </button>
@@ -54,10 +54,12 @@
     </div>
   </section>
 
+  @if (!!galleryImages.length) {
   <hr />
 
   <article>
     <h2 class="subtitle">Galeria</h2>
     <portal-gallery [data]="galleryImages" />
   </article>
+  }
 </section>

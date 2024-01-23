@@ -124,6 +124,9 @@ export class PartnerRegisterComponent {
           occupationDescription: this.partner.occupationDescription,
         });
 
+        if (!this.partner.imageURL)
+          this.countImageChange.update((value) => value + 1);
+
         this.form.setImageURLToCropper('imageURL', this.partner.imageURL);
       })
       .catch((error) => this.alertService.snackDefaultResponseError(error))

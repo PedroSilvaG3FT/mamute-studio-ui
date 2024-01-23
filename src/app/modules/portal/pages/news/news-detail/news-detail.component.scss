@@ -2,4 +2,50 @@
 
 #news-detail {
   padding-top: $portal-header-page-padding;
+
+  .subtitle {
+    @apply mb-4 text-[1.4rem] font-semibold;
+    color: $primary;
+  }
+
+  > nav {
+    @apply mb-4 flex items-center;
+
+    > button {
+      color: $primary;
+    }
+  }
+
+  > section {
+    @apply grid gap-8 grid-cols-[35%_1fr] items-start tablet:grid-cols-1;
+
+    > article {
+      > img {
+        @apply mb-2 rounded-2xl;
+      }
+
+      > p {
+        @apply italic;
+
+        > a {
+          &:hover {
+            @apply underline;
+            color: $primary;
+          }
+        }
+      }
+    }
+
+    > div {
+      > h2 {
+        @apply mb-4 text-lg;
+        color: $primary;
+      }
+
+      > h4 {
+        @apply my-4;
+        color: $primary;
+      }
+    }
+  }
 }

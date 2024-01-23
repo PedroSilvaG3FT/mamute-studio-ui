@@ -92,6 +92,9 @@ export class UserRegisterComponent {
           profileImageURL: this.user.profileImageURL,
         });
 
+        if (!this.user.profileImageURL)
+          this.countImageChange.update((value) => value + 1);
+
         this.form.setImageURLToCropper(
           'profileImageURL',
           this.user.profileImageURL
