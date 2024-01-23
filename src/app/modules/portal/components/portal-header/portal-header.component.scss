@@ -33,6 +33,7 @@
       }
 
       > button,
+      > portal-user-menu,
       > app-theme-selection {
         @apply tablet:hidden;
       }

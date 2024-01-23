@@ -31,21 +31,6 @@ const NEWS_ROUTES: Routes = [
   },
 ];
 
-const PARTNER_ROUTES: Routes = [
-  {
-    path: 'parceiros',
-    loadComponent: () =>
-      import('./partner/partner.component').then((c) => c.PartnerComponent),
-  },
-  {
-    path: 'parceiros/:id',
-    loadComponent: () =>
-      import('./partner/partner-detail/partner-detail.component').then(
-        (c) => c.PartnerDetailComponent
-      ),
-  },
-];
-
 export const PORTAL_ROUTES: Routes = [
   {
     path: '',
@@ -62,9 +47,13 @@ export const PORTAL_ROUTES: Routes = [
     path: 'portal',
     component: PortalLayoutComponent,
     children: [
-      ...EVENT_ROUTES,
       ...NEWS_ROUTES,
-      ...PARTNER_ROUTES,
+      ...EVENT_ROUTES,
+      {
+        path: 'perfil',
+        loadComponent: () =>
+          import('./profile/profile.component').then((c) => c.ProfileComponent),
+      },
       {
         path: 'oracao',
         loadComponent: () =>

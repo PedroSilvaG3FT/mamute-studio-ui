@@ -1,0 +1,12 @@
+<section id="modal-register">
+  <app-form-generator
+    id="sign-up"
+    submitButtonFull
+    submitText="Salvar"
+    actionPositionX="center"
+    actionPositionY="bottom"
+    [fields]="form.fields"
+    [formGroup]="form.group"
+    (onSubmit)="handleSubmit($event)"
+  />
+</section>

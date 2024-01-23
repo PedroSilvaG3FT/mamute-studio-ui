@@ -13,20 +13,11 @@
 
       <!-- user -->
       @if(!authStore.isLogged()) {
-      <button mat-button color="primary">Entrar</button>
-      } @else {
-      <button mat-button color="primary" [matMenuTriggerFor]="menu">
-        {{ authStore.userFirstName() }}
-        <mat-icon>expand_more</mat-icon>
+      <button mat-button color="primary" (click)="openModalLogin()">
+        Entrar
       </button>
-      <mat-menu #menu="matMenu">
-        @if(authStore.isAdmin()) {
-        <button mat-menu-item routerLink="/admin/event">
-          Portal do administrador
-        </button>
-        }
-        <button mat-menu-item>Meu perfil</button>
-      </mat-menu>
+      } @else {
+      <portal-user-menu />
       }
 
       <button id="side-menu-button" (click)="toggleSideMenu()">

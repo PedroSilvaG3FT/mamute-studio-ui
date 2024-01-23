@@ -1,24 +1,26 @@
 import { Component, inject } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { RouterLink } from '@angular/router';
 import { AuthStore } from '../../../../store/auth.store';
 import { LoadingStore } from '../../../../store/loading.store';
 import { AppFormGeneratorComponent } from '../../../@core/components/_form-generator/app-form-generator/app-form-generator.component';
 import { FormGeneratorService } from '../../../@core/components/_form-generator/form-generator.service';
 import { FirebaseAuthenticationService } from '../../../@core/firebase/firebase-authentication.service';
 import { AlertService } from '../../../@core/services/alert.service';
-import { DatabaseService } from '../../../@shared/services/database.service';
-import { UserRole } from '../../enums/user-role.enum';
-import { IAuthCredential } from '../../interfaces/authentication.interface';
+import { UserRole } from '../../../authentication/enums/user-role.enum';
+import { IAuthCredential } from '../../../authentication/interfaces/authentication.interface';
+import { DatabaseService } from '../../services/database.service';
+import { ModalRegisterComponent } from '../modal-register/modal-register.component';
 
 @Component({
   standalone: true,
-  selector: 'app-login',
-  styleUrl: './login.component.scss',
-  templateUrl: './login.component.html',
+  selector: 'app-modal-login',
+  styleUrl: './modal-login.component.scss',
+  templateUrl: './modal-login.component.html',
   imports: [AppFormGeneratorComponent, RouterLink],
 })
-export class LoginComponent {
+export class ModalLoginComponent {
   public authStore = inject(AuthStore);
   public loadingStore = inject(LoadingStore);
   public form = this.formGeneratorService.init<IAuthCredential>([
@@ -43,10 +45,11 @@ export class LoginComponent {
   ]);
 
   constructor(
-    private router: Router,
+    public dialog: MatDialog,
     private alertService: AlertService,
     private databaseService: DatabaseService,
     private formGeneratorService: FormGeneratorService,
+    public dialogRef: MatDialogRef<ModalLoginComponent>,
     private firebaseAuthenticationService: FirebaseAuthenticationService
   ) {}
 
@@ -57,6 +60,15 @@ export class LoginComponent {
     else if (roleReference.includes(String(UserRole.member)))
       return UserRole.member;
     else return UserRole.member;
+  }
+
+  public handleClose() {
+    this.dialogRef.close();
+  }
+
+  public handleOpenSignUp() {
+    this.handleClose();
+    this.dialog.open(ModalRegisterComponent);
   }
 
   public handleSubmit(model: IAuthCredential) {
@@ -70,28 +82,16 @@ export class LoginComponent {
         const userData = this.databaseService._model.user.buildItem(data);
         this.authStore.setUserData(userData);
 
-        console.log(data);
         this.authStore.setFirebaseToken(accessToken);
         this.authStore.setFirebaseRefreshToken(refreshToken);
         this.authStore.setUserRole(this.getUserRole(userData.role));
 
-        this.handleLogin();
+        this.handleClose();
       })
       .catch((error) => {
         console.log(error);
         this.alertService.snackDefaultResponseError();
       })
       .finally(() => this.loadingStore.setState(false));
-  }
-
-  public handleLogin() {
-    const redirectURLs = {
-      [UserRole.admin]: '/admin/event',
-      [UserRole.member]: '/',
-    };
-
-    const role = this.authStore.userRole();
-    console.log(role);
-    this.router.navigate([redirectURLs[role]]);
   }
 }

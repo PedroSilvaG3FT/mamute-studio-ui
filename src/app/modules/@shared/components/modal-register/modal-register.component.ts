@@ -1,27 +1,30 @@
 import { Component, inject } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { MatDialogRef } from '@angular/material/dialog';
 import { AuthStore } from '../../../../store/auth.store';
 import { LoadingStore } from '../../../../store/loading.store';
 import { AppFormGeneratorComponent } from '../../../@core/components/_form-generator/app-form-generator/app-form-generator.component';
 import { FormGeneratorService } from '../../../@core/components/_form-generator/form-generator.service';
 import { FirebaseAuthenticationService } from '../../../@core/firebase/firebase-authentication.service';
 import { AlertService } from '../../../@core/services/alert.service';
-import { DatabaseService } from '../../../@shared/services/database.service';
-import { UserRole } from '../../enums/user-role.enum';
-import { IAuthCredential } from '../../interfaces/authentication.interface';
+import { UserRole } from '../../../authentication/enums/user-role.enum';
+import {
+  IAuthCredential,
+  IAuthRegister,
+} from '../../../authentication/interfaces/authentication.interface';
+import { DatabaseService } from '../../services/database.service';
 
 @Component({
   standalone: true,
-  selector: 'app-login',
-  styleUrl: './login.component.scss',
-  templateUrl: './login.component.html',
-  imports: [AppFormGeneratorComponent, RouterLink],
+  selector: 'app-modal-register',
+  imports: [AppFormGeneratorComponent],
+  styleUrl: './modal-register.component.scss',
+  templateUrl: './modal-register.component.html',
 })
-export class LoginComponent {
+export class ModalRegisterComponent {
   public authStore = inject(AuthStore);
   public loadingStore = inject(LoadingStore);
-  public form = this.formGeneratorService.init<IAuthCredential>([
+  public form = this.formGeneratorService.init<IAuthRegister>([
     [
       {
         name: 'email',
@@ -34,23 +37,46 @@ export class LoginComponent {
     [
       {
         type: 'input',
+        label: 'Senha',
         name: 'password',
-        label: 'Password',
         validators: [Validators.required],
         additional: { inputType: `password` },
+      },
+    ],
+    [
+      {
+        name: 'name',
+        type: 'input',
+        label: 'Nome',
+        validators: [Validators.required],
       },
     ],
   ]);
 
   constructor(
-    private router: Router,
     private alertService: AlertService,
     private databaseService: DatabaseService,
     private formGeneratorService: FormGeneratorService,
+    public dialogRef: MatDialogRef<ModalRegisterComponent>,
     private firebaseAuthenticationService: FirebaseAuthenticationService
   ) {}
 
   ngOnInit() {}
+
+  public handleSubmit(model: IAuthRegister) {
+    this.loadingStore.setState(true);
+
+    this.firebaseAuthenticationService
+      .signUp(model, UserRole.member)
+      .then(() => {
+        this.handleLogin({
+          email: model.email,
+          password: String(model.password),
+        });
+      })
+      .catch((error) => this.alertService.snackDefaultResponseError(error))
+      .finally(() => this.loadingStore.setState(false));
+  }
 
   private getUserRole(roleReference: string): UserRole {
     if (roleReference.includes(String(UserRole.admin))) return UserRole.admin;
@@ -59,7 +85,11 @@ export class LoginComponent {
     else return UserRole.member;
   }
 
-  public handleSubmit(model: IAuthCredential) {
+  public handleClose() {
+    this.dialogRef.close();
+  }
+
+  public handleLogin(model: IAuthCredential) {
     this.loadingStore.setState(true);
 
     this.firebaseAuthenticationService
@@ -70,28 +100,15 @@ export class LoginComponent {
         const userData = this.databaseService._model.user.buildItem(data);
         this.authStore.setUserData(userData);
 
-        console.log(data);
         this.authStore.setFirebaseToken(accessToken);
         this.authStore.setFirebaseRefreshToken(refreshToken);
         this.authStore.setUserRole(this.getUserRole(userData.role));
 
-        this.handleLogin();
+        this.handleClose();
       })
       .catch((error) => {
-        console.log(error);
         this.alertService.snackDefaultResponseError();
       })
       .finally(() => this.loadingStore.setState(false));
-  }
-
-  public handleLogin() {
-    const redirectURLs = {
-      [UserRole.admin]: '/admin/event',
-      [UserRole.member]: '/',
-    };
-
-    const role = this.authStore.userRole();
-    console.log(role);
-    this.router.navigate([redirectURLs[role]]);
   }
 }

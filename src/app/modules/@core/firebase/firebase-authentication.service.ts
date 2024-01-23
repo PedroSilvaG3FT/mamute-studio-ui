@@ -108,7 +108,13 @@ export class FirebaseAuthenticationService extends FirebaseCollectionBase {
     return this.getDocumentReference(this.authStore.userData().uid);
   }
 
-  public signOut() {
-    return signOut(this.auth);
+  public async signOut() {
+    try {
+      await signOut(this.auth);
+      this.authStore.reset();
+      return true;
+    } catch (error) {
+      throw error;
+    }
   }
 }

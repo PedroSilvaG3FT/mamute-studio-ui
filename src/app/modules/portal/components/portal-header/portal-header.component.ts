@@ -1,12 +1,13 @@
 import { Component, HostListener, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
+import { MatDialog } from '@angular/material/dialog';
 import { RouterModule } from '@angular/router';
 import { AuthStore } from '../../../../store/auth.store';
 import { AppThemeSelectionComponent } from '../../../@core/components/app-theme-selection/app-theme-selection.component';
+import { ModalLoginComponent } from '../../../@shared/components/modal-login/modal-login.component';
 import { IMenuItem } from '../../interfaces/menu.interface';
 import { PortalSideMenuComponent } from '../portal-side-menu/portal-side-menu.component';
+import { PortalUserMenuComponent } from '../portal-user-menu/portal-user-menu.component';
 
 @Component({
   standalone: true,
@@ -15,9 +16,8 @@ import { PortalSideMenuComponent } from '../portal-side-menu/portal-side-menu.co
   templateUrl: './portal-header.component.html',
   imports: [
     RouterModule,
-    MatIconModule,
-    MatMenuModule,
     MatButtonModule,
+    PortalUserMenuComponent,
     PortalSideMenuComponent,
     AppThemeSelectionComponent,
   ],
@@ -36,7 +36,7 @@ export class PortalHeaderComponent {
     { title: `Contato`, route: `/portal/contato` },
   ];
 
-  constructor() {}
+  constructor(public dialog: MatDialog) {}
 
   @HostListener('window:scroll', [])
   public onWindowScroll() {
@@ -45,5 +45,9 @@ export class PortalHeaderComponent {
 
   public toggleSideMenu() {
     this.isShowSideMenu = !this.isShowSideMenu;
+  }
+
+  public openModalLogin(): void {
+    this.dialog.open(ModalLoginComponent);
   }
 }

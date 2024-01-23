@@ -1,0 +1,26 @@
+@if (fixedPosition && authStore.isLogged()) {
+<button
+  mat-fab
+  color="primary"
+  [matMenuTriggerFor]="menu"
+  class="portal-user-menu--fixed"
+>
+  <mat-icon>add</mat-icon>
+</button>
+
+} @else {
+<button mat-button color="primary" [matMenuTriggerFor]="menu">
+  Olá {{ authStore.userFirstName() }}
+  <mat-icon>expand_more</mat-icon>
+</button>
+
+}
+<mat-menu #menu="matMenu">
+  @if(authStore.isAdmin()) {
+  <button mat-menu-item routerLink="/admin/event">
+    Portal do administrador
+  </button>
+  }
+  <button mat-menu-item>Meu perfil</button>
+  <button mat-menu-item (click)="handleSignOut()">Sair</button>
+</mat-menu>

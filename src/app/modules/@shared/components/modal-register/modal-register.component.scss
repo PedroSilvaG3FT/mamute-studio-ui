@@ -1,0 +1,9 @@
+@import "variables";
+
+#modal-register {
+  @apply p-8 w-96 mobile:w-auto;
+
+  > article {
+    @apply flex flex-col items-center justify-center;
+  }
+}

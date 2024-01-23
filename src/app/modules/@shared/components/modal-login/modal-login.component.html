@@ -1,0 +1,25 @@
+<section id="modal-login">
+  <app-form-generator
+    id="login"
+    submitButtonFull
+    submitText="Entrar"
+    actionPositionX="center"
+    actionPositionY="bottom"
+    [fields]="form.fields"
+    [formGroup]="form.group"
+    (onSubmit)="handleSubmit($event)"
+  />
+
+  <article>
+    <a
+      class="link"
+      (click)="handleClose()"
+      [routerLink]="['/auth/forgot-password']"
+    >
+      Esqueci minha senha
+    </a>
+    <a (click)="handleOpenSignUp()" class="link--active underline">
+      Criar conta
+    </a>
+  </article>
+</section>
