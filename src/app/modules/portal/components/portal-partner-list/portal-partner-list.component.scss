@@ -1,0 +1,11 @@
+#portal-partner-list {
+  @apply grid grid-cols-8 gap-6 items-stretch;
+
+  > img {
+    @apply rounded-md object-cover transition-all duration-500;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}

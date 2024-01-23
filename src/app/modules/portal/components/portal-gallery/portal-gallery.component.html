@@ -1,0 +1,20 @@
+<section id="portal-gallery">
+  @for (item of data; track $index) {
+  <img [src]="item" [alt]="'foto' + $index" (click)="handleSelectImage(item)" />
+  }
+
+  <!-- preview -->
+  @if(!!selectedImageURL) {
+  <article id="backdrop" (click)="closePreview()"></article>
+
+  <section animate animation="animate__zoomIn" (click)="closePreview()">
+    <figure>
+      <button mat-mini-fab color="warn" (click)="closePreview()">
+        <i class="iconify" data-icon="mingcute:close-fill"></i>
+      </button>
+
+      <img [src]="selectedImageURL" alt="Apocalipse Evento" />
+    </figure>
+  </section>
+  }
+</section>

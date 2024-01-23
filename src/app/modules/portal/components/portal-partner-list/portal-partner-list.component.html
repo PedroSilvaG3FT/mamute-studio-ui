@@ -1,0 +1,10 @@
+<section id="portal-partner-list">
+  @for (item of data; track $index) {
+  <img
+    [alt]="item.name"
+    [src]="item.imageURL"
+    [matTooltip]="item.name"
+    onerror="this.src = '/assets/images/default.jpg'"
+  />
+  }
+</section>
