@@ -1,0 +1,12 @@
+<section id="portal-request-pray-modal">
+  <app-form-generator
+    id="pray"
+    submitButtonFull
+    submitText="Enviar"
+    actionPositionX="center"
+    actionPositionY="bottom"
+    [fields]="form.fields"
+    [formGroup]="form.group"
+    (onSubmit)="handleSubmit($event)"
+  />
+</section>

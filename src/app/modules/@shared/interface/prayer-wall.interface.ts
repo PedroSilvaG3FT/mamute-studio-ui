@@ -7,6 +7,7 @@ export interface IPrayerWallDB {
   description: string;
   creationDate: Timestamp;
   category: DocumentReference;
+  peoplePraying: DocumentReference[];
   userCreator: DocumentReference | null;
   userApprover: DocumentReference | null;
 }
@@ -14,10 +15,15 @@ export interface IPrayerWallDB {
 export interface IPrayerWallItem
   extends Omit<
     IPrayerWallDB,
-    'category' | 'creationDate' | 'userApprover' | 'userCreator'
+    | 'category'
+    | 'userCreator'
+    | 'creationDate'
+    | 'userApprover'
+    | 'peoplePraying'
   > {
   category: string;
   creationDate: Date;
+  peoplePraying: string[];
   userCreator: string | null;
   userApprover: string | null;
 }

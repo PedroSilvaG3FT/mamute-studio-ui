@@ -1,5 +1,5 @@
 #modal-register {
-  @apply p-8 w-96 mobile:w-auto;
+  @apply p-8 w-96 mobile:w-[90vw];
 
   > article {
     @apply flex flex-col items-center justify-center;

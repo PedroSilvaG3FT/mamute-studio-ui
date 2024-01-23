@@ -17,7 +17,7 @@
 }
 <mat-menu #menu="matMenu">
   @if(authStore.isAdmin()) {
-  <button mat-menu-item routerLink="/admin/event">
+  <button mat-menu-item [routerLink]="['/admin/event']">
     Portal do administrador
   </button>
   }

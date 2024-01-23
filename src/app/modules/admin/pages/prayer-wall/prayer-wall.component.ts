@@ -1,12 +1,13 @@
 import { DatePipe, NgClass } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { FormBuilder, FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { LoadingStore } from '../../../../store/loading.store';
 import { SeedStore } from '../../../../store/seed.store';
 import { AppEmptyListComponent } from '../../../@core/components/app-empty-list/app-empty-list.component';
 import { AppDatepickerComponent } from '../../../@core/components/form/app-datepicker/app-datepicker.component';
 import { AppSelectComponent } from '../../../@core/components/form/app-select/app-select.component';
+import { FirebaseAuthenticationService } from '../../../@core/firebase/firebase-authentication.service';
 import { IFormOption } from '../../../@core/interfaces/app-form.interface';
 import { AlertService } from '../../../@core/services/alert.service';
 import { DatePickerRangeValue } from '../../../@core/types/datepicker.type';
@@ -45,9 +46,9 @@ export class PrayerWallComponent {
   public originalItems: IPrayerWallItem[] = [];
 
   constructor(
-    private formBuilder: FormBuilder,
     private alertService: AlertService,
-    private databaseService: DatabaseService
+    private databaseService: DatabaseService,
+    private firebaseAuthenticationService: FirebaseAuthenticationService
   ) {}
 
   ngOnInit() {
@@ -92,8 +93,13 @@ export class PrayerWallComponent {
   public toggleStatus(item: IPrayerWallItem) {
     this.loadingStore.setState(true);
 
+    const userApprover = this.firebaseAuthenticationService.getUserReference();
+
     this.databaseService.prayerWall
-      .update<Partial<IPrayerWallDB>>(String(item.id), { active: !item.active })
+      .update<Partial<IPrayerWallDB>>(String(item.id), {
+        userApprover,
+        active: !item.active,
+      })
       .then(() => (item.active = !item.active))
       .catch((error) => this.alertService.snackDefaultResponseError(error))
       .finally(() => this.loadingStore.setState(false));

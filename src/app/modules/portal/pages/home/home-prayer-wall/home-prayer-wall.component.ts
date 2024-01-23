@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { where } from 'firebase/firestore';
+import { AuthStore } from '../../../../../store/auth.store';
+import { ModalRequestLoginComponent } from '../../../../@shared/components/modal-request-login/modal-request-login.component';
 import {
   IPrayerWallDB,
   IPrayerWallItem,
@@ -7,6 +10,7 @@ import {
 import { DatabaseService } from '../../../../@shared/services/database.service';
 import { PortalCardPrayerComponent } from '../../../components/portal-card-prayer/portal-card-prayer.component';
 import { PortalCardRedirectDetailComponent } from '../../../components/portal-card-redirect-detail/portal-card-redirect-detail.component';
+import { PortalRequestPrayModalComponent } from '../../../components/portal-request-pray-modal/portal-request-pray-modal.component';
 
 @Component({
   standalone: true,
@@ -16,9 +20,13 @@ import { PortalCardRedirectDetailComponent } from '../../../components/portal-ca
   imports: [PortalCardPrayerComponent, PortalCardRedirectDetailComponent],
 })
 export class HomePrayerWallComponent {
+  public authStore = inject(AuthStore);
   public prayers: IPrayerWallItem[] = [];
 
-  constructor(private databaseService: DatabaseService) {}
+  constructor(
+    public dialog: MatDialog,
+    private databaseService: DatabaseService
+  ) {}
 
   ngOnInit() {
     this.getItems();
@@ -35,5 +43,13 @@ export class HomePrayerWallComponent {
           .filter(({ active }) => !!active);
       })
       .catch(() => {});
+  }
+
+  public handleRequestPray() {
+    const component: any = !this.authStore.isLogged()
+      ? ModalRequestLoginComponent
+      : PortalRequestPrayModalComponent;
+
+    this.dialog.open(component);
   }
 }

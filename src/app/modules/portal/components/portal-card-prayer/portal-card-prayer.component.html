@@ -10,9 +10,8 @@
   <p>{{ data.description }}</p>
 
   <footer>
-    <button>
-      <!-- <i class="iconify" [attr.data-icon]="'mdi:heart'"></i> -->
-      <i class="iconify" [attr.data-icon]="'mdi:heart-outline'"></i>
+    <button (click)="handleTogglePray()">
+      <mat-icon>{{ isPraying ? "favorite" : "favorite_border" }}</mat-icon>
       Orando
     </button>
   </footer>

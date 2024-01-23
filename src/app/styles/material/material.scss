@@ -1,13 +1,10 @@
 @import "./tab";
 @import "./form";
+@import "./modal";
 @import "./tooltip";
 @import "./snackbar";
 
 .dark .mat-elevation-z8,
 .dark .mat-mdc-elevation-specific.mat-elevation-z8 {
   box-shadow: 0px 0px 16px 0px #141313bf !important;
-}
-
-.mat-mdc-dialog-container .mdc-dialog__surface {
-  border-radius: 1rem !important;
 }

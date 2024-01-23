@@ -1,6 +1,9 @@
+@import "variables";
+
 .portal-user-menu--fixed {
   @apply hidden tablet:flex;
 
+  color: $white;
   right: 12px !important;
   bottom: 12px !important;
   position: fixed !important;
