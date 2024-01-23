@@ -1,9 +1,3 @@
-<app-checkbox
-  toggle
-  name="theme-selection"
-  toggleClassName="!mb-0"
-  [(ngModel)]="isDarkMode"
-  [initialValue]="isDarkMode"
-  (ngModelChange)="onToggleDarkMode()"
-  [matTooltip]="isDarkMode ? 'Tema escuro' : 'Tema claro'"
-/>
+<button mat-mini-fab id="app-theme-selection" (click)="onToggleDarkMode()">
+  <mat-icon>{{ !isDarkMode ? "sunny" : "dark_mode" }}</mat-icon>
+</button>
