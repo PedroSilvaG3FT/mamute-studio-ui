@@ -2,6 +2,12 @@
   <h1 class="portal__title">Eventos</h1>
   <p class="mb-8">Saiba sobre tudo que está por vir aqui!</p>
 
+  @if(!events.length) {
+  <span class="w-full text-center">
+    - Sem eventos no momento, continue por dentro -
+  </span>
+  }
+
   <section>
     @for (item of events; track $index) {
     <portal-card

@@ -2,12 +2,16 @@
   <h1 class="portal__title">Notícias</h1>
   <p>Fique por dentro das principais noticias da região</p>
 
+  @if(!highlight?.id || !news.length) {
+  <p>- Sem notícias no momento, continue por dentro -</p>
+  } @else{
   <section>
     <portal-highlight-card
       heightFull
       [title]="highlight.title"
       [background]="highlight.bannerURL"
       [description]="highlight.shortDescription"
+      [route]="'portal/noticias/' + highlight.id"
       [badge]="highlight.creationDate | date : 'dd/MM/yyyy'"
     />
 
@@ -25,4 +29,5 @@
       }
     </article>
   </section>
+  }
 </section>
