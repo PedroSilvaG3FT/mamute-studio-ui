@@ -7,8 +7,7 @@
     @apply cursor-pointer text-lg transition-all duration-300;
 
     &:hover {
-      color: $primary;
-      transform: scale(0.96);
+      transform: scale(1.05);
     }
   }
 }

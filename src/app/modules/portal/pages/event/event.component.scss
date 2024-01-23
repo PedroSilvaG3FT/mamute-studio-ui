@@ -1,6 +1,7 @@
 @import "variables";
 
 #event {
+  @apply min-h-screen;
   padding-top: $portal-header-page-padding;
 
   > section {

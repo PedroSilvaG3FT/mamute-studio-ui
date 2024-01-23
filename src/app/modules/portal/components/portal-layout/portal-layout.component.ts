@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { PortalFooterComponent } from '../portal-footer/portal-footer.component';
 import { PortalHeaderComponent } from '../portal-header/portal-header.component';
 
 @Component({
@@ -7,6 +8,6 @@ import { PortalHeaderComponent } from '../portal-header/portal-header.component'
   selector: 'portal-layout',
   styleUrl: './portal-layout.component.scss',
   templateUrl: './portal-layout.component.html',
-  imports: [PortalHeaderComponent, RouterOutlet],
+  imports: [PortalHeaderComponent, PortalFooterComponent, RouterOutlet],
 })
 export class PortalLayoutComponent {}

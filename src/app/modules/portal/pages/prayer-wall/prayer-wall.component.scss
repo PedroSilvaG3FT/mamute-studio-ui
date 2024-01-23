@@ -1,6 +1,7 @@
 @import "variables";
 
 #prayer-wall {
+  @apply min-h-screen;
   padding-top: $portal-header-page-padding;
 
   > nav {
