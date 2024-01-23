@@ -34,7 +34,7 @@ export class HomePrayerWallComponent {
 
   public getItems() {
     this.databaseService.prayerWall
-      .getAllSortLimit<IPrayerWallDB[]>('creationDate', 'desc', 4, [
+      .getAllSortLimit<IPrayerWallDB[]>('creationDate', 'desc', 3, [
         where('active', '==', true),
       ])
       .then((response) => {

@@ -21,7 +21,7 @@
     <section>
       @for (item of prayers; track $index) {
       <portal-card-prayer [data]="item" />
-      } @if (prayers.length>3) {
+      } @if (prayers.length>2) {
       <portal-card-redirect-detail route="/portal/oracao" />
       }
     </section>

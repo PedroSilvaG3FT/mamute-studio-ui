@@ -1,4 +1,4 @@
-@if (fixedPosition && authStore.isLogged()) {
+@if(authStore.isLogged()) { @if (fixedPosition) {
 <button
   mat-fab
   color="primary"
@@ -24,3 +24,4 @@
   <button mat-menu-item>Meu perfil</button>
   <button mat-menu-item (click)="handleSignOut()">Sair</button>
 </mat-menu>
+}

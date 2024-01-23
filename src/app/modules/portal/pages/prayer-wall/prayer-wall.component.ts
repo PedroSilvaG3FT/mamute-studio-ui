@@ -106,11 +106,14 @@ export class PrayerWallComponent {
     const categoryFiltered = applyDateRange(dateFiltered);
 
     this.prayers = categoryFiltered;
+    this.buildPrayingItems();
   }
 
   public handleClearFilter() {
     this.filter = {} as IPrayerWallFilter;
     this.prayers = ObjectUtil.clone(this.originalItems);
+
+    this.buildPrayingItems();
   }
 
   public handleRequestPray() {
@@ -122,7 +125,7 @@ export class PrayerWallComponent {
   }
 
   public buildPrayingItems() {
-    this.userLoggedPrayingItems = this.originalItems
+    this.userLoggedPrayingItems = this.prayers
       .filter((item) =>
         item.peoplePraying.includes(this.authStore.idUserLogged())
       )
@@ -147,7 +150,7 @@ export class PrayerWallComponent {
     this.databaseService.prayerWall
       .update<IPrayerWallDB>(String(item.id), prayDTO)
       .then(() => {
-        this.originalItems.forEach((pray) => {
+        this.prayers.forEach((pray) => {
           if (cloneItem.id === pray.id)
             pray.peoplePraying = cloneItem.peoplePraying;
         });

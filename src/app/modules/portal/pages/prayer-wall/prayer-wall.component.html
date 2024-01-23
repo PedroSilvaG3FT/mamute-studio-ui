@@ -43,8 +43,8 @@
     @for (item of prayers; track $index) {
     <portal-card-prayer
       [data]="item"
-      [isPraying]="userLoggedPrayingItems.includes(item.id || '')"
       (onPrayingToggle)="handleTogglePray(item, $event)"
+      [isPraying]="userLoggedPrayingItems.includes(item.id || '')"
     />
     }
   </section>

@@ -12,6 +12,7 @@
   <footer>
     <button (click)="handleTogglePray()">
       <mat-icon>{{ isPraying ? "favorite" : "favorite_border" }}</mat-icon>
+      <span>{{ data.peoplePraying.length }}</span>
       Orando
     </button>
   </footer>
