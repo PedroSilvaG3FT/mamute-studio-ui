@@ -9,11 +9,16 @@ import {
   inject,
   signal,
 } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialog } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ActivatedRoute, RouterModule } from '@angular/router';
+import { AuthStore } from '../../../../../store/auth.store';
 import { LoadingStore } from '../../../../../store/loading.store';
 import { FirebaseStorageService } from '../../../../@core/firebase/firebase-storage.service';
 import { AlertService } from '../../../../@core/services/alert.service';
+import { StringUtil } from '../../../../@core/util/string.util';
+import { ModalRequestLoginComponent } from '../../../../@shared/components/modal-request-login/modal-request-login.component';
 import {
   IEventDB,
   IEventItem,
@@ -35,6 +40,7 @@ import { PortalPartnerListComponent } from '../../../components/portal-partner-l
   imports: [
     DatePipe,
     RouterModule,
+    MatButtonModule,
     HttpClientModule,
     MatTooltipModule,
     PortalGalleryComponent,
@@ -51,9 +57,11 @@ export class EventDetailComponent {
   public partners: IPartnerItem[] = [];
   public event: IEventItem = {} as IEventItem;
 
+  public authStore = inject(AuthStore);
   public loadingStore = inject(LoadingStore);
 
   constructor(
+    public dialog: MatDialog,
     private renderer: Renderer2,
     private alertService: AlertService,
     private activatedRoute: ActivatedRoute,
@@ -112,5 +120,14 @@ export class EventDetailComponent {
     } catch (error) {
       throw error;
     }
+  }
+
+  public handleConfirmPresence() {
+    if (!this.authStore.isLogged()) {
+      this.dialog.open(ModalRequestLoginComponent);
+      return;
+    }
+
+    console.log('CRIA TICKET : ', StringUtil.generateTicketNumber());
   }
 }

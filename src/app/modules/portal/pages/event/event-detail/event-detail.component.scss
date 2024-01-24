@@ -68,6 +68,10 @@
           }
         }
       }
+
+      > button {
+        @apply w-full;
+      }
     }
 
     > div {
