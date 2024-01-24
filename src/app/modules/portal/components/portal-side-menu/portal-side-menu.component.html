@@ -19,11 +19,11 @@
   <article>
     @for (item of items; track $index) {
     <a [routerLink]="[item.route]" (click)="handleClose()">{{ item.title }}</a>
-    }
-
-    <button class="btn-primary w-full mt-14" [routerLink]="['/auth/login']">
+    } @if(!authStore.isLogged()) {
+    <button class="btn-primary w-full" (click)="openModalLogin()">
       Entrar
     </button>
+    }
 
     <app-theme-selection />
   </article>

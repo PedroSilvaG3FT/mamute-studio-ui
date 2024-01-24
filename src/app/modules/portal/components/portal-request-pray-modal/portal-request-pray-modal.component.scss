@@ -1,6 +1,10 @@
 #portal-request-pray-modal {
   @apply p-8 w-96 mobile:w-[90vw];
 
+  > h1 {
+    @apply mb-2 text-lg text-center;
+  }
+
   > article {
     @apply flex flex-col items-center justify-center;
   }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { where } from 'firebase/firestore';
 import {
   IPartnerDB,
@@ -10,9 +11,9 @@ import { PortalCardPartnerComponent } from '../../../components/portal-card-part
 @Component({
   standalone: true,
   selector: 'portal-home-partner',
-  imports: [PortalCardPartnerComponent],
   styleUrl: './home-partner.component.scss',
   templateUrl: './home-partner.component.html',
+  imports: [PortalCardPartnerComponent, RouterModule],
 })
 export class HomePartnerComponent {
   public parters: IPartnerItem[] = [];
