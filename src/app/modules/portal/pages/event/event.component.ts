@@ -30,8 +30,6 @@ export class EventComponent {
         this.events = this.databaseService._model.event
           .buildList(response)
           .filter(({ active }) => !!active);
-
-        console.log(this.events);
       })
       .catch(() => {});
   }

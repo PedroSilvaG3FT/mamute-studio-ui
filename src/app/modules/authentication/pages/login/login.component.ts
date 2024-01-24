@@ -70,17 +70,13 @@ export class LoginComponent {
         const userData = this.databaseService._model.user.buildItem(data);
         this.authStore.setUserData(userData);
 
-        console.log(data);
         this.authStore.setFirebaseToken(accessToken);
         this.authStore.setFirebaseRefreshToken(refreshToken);
         this.authStore.setUserRole(this.getUserRole(userData.role));
 
         this.handleLogin();
       })
-      .catch((error) => {
-        console.log(error);
-        this.alertService.snackDefaultResponseError();
-      })
+      .catch(() => this.alertService.snackDefaultResponseError())
       .finally(() => this.loadingStore.setState(false));
   }
 
@@ -91,7 +87,6 @@ export class LoginComponent {
     };
 
     const role = this.authStore.userRole();
-    console.log(role);
     this.router.navigate([redirectURLs[role]]);
   }
 }

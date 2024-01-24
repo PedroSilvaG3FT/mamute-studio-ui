@@ -46,10 +46,7 @@ export class NewsRegisterComponent {
   );
 
   public countImageChange = signal(0);
-  public isImageUpdated = computed(() => {
-    console.log(this.countImageChange());
-    return this.countImageChange() > 2;
-  });
+  public isImageUpdated = computed(() => this.countImageChange() > 2);
 
   public seedStore = inject(SeedStore);
   public authStore = inject(AuthStore);
@@ -91,7 +88,6 @@ export class NewsRegisterComponent {
     );
 
     this.form.group.controls.bannerURL.valueChanges.subscribe(() => {
-      console.log('mudou');
       this.countImageChange.update((value) => value + 1);
     });
   }
@@ -167,7 +163,6 @@ export class NewsRegisterComponent {
       this.router.navigate(['/admin/news/register', response.id]);
       this.loadingStore.setState(false);
     } catch (error) {
-      console.log(error);
       this.loadingStore.setState(false);
       this.alertService.snackDefaultResponseError(error);
     }
@@ -177,7 +172,6 @@ export class NewsRegisterComponent {
     try {
       this.loadingStore.setState(true);
 
-      console.log(model);
       if (!!model.bannerURL && this.isImageUpdated()) {
         const imageURL = await this.handleCreateImageUrl(model.bannerURL);
         model.bannerURL = imageURL;

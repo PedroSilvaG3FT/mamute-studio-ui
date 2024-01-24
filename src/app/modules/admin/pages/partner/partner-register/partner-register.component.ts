@@ -111,7 +111,6 @@ export class PartnerRegisterComponent {
     this.databaseService.partner
       .getById<IPartnerDB>(this.partnerId())
       .then((response) => {
-        console.log('GET BY ID', response);
         this.partner = this.databaseService._model.partner.buildItem(response);
         this.form.group.patchValue({
           name: this.partner.name,
@@ -134,8 +133,6 @@ export class PartnerRegisterComponent {
   }
 
   public handleSubmit(model: IPartnerForm) {
-    console.log(model);
-
     if (this.isNew()) this.handleCreate(model);
     else this.handleUpdate(model);
   }
@@ -181,7 +178,6 @@ export class PartnerRegisterComponent {
 
       this.loadingStore.setState(false);
     } catch (error) {
-      console.log(error);
       this.loadingStore.setState(false);
       this.alertService.snackDefaultResponseError(error);
     }

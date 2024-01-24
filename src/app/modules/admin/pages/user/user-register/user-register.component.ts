@@ -144,7 +144,6 @@ export class UserRegisterComponent {
       this.router.navigate(['/admin/user/register', response.user.id]);
       this.loadingStore.setState(false);
     } catch (error) {
-      console.log(error);
       this.loadingStore.setState(false);
       this.alertService.snackDefaultResponseError(error);
     }

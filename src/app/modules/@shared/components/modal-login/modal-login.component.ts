@@ -88,10 +88,7 @@ export class ModalLoginComponent {
 
         this.handleClose();
       })
-      .catch((error) => {
-        console.log(error);
-        this.alertService.snackDefaultResponseError();
-      })
+      .catch(() => this.alertService.snackDefaultResponseError())
       .finally(() => this.loadingStore.setState(false));
   }
 }

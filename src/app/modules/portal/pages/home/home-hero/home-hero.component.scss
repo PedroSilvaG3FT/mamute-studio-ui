@@ -30,7 +30,7 @@
     }
 
     > img {
-      @apply tablet:w-3/5;
+      @apply tablet:w-3/5 max-h-[575px] justify-self-center object-contain;
     }
   }
 }

@@ -161,8 +161,6 @@ export class EventRegisterComponent {
           shortDescription: this.event.shortDescription,
           dateReleaseStream: this.event.dateReleaseStream,
         });
-
-        console.log('GET EVENT', response);
       })
       .catch((error) => this.alertService.snackDefaultResponseError(error))
       .finally(() => this.loadingStore.setState(false));

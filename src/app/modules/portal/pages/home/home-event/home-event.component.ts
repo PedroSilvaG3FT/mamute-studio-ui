@@ -39,8 +39,6 @@ export class HomeEventComponent {
 
         this.highlight = items[0];
         this.events = items.filter(({ id }) => id !== this.highlight.id);
-        console.log(this.highlight);
-        console.log(this.events);
       })
       .catch(() => {});
   }

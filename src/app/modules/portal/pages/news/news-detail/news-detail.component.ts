@@ -68,7 +68,6 @@ export class NewsDetailComponent {
       .then((response) => {
         this.news = this.databaseService._model.news.buildItem(response);
 
-        console.log('DETAIL : ', this.news);
         this.getPartners();
         this.initGallery();
       })

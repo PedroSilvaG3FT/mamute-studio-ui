@@ -61,8 +61,6 @@ export class UserComponent {
     this.databaseService.user
       .getAll<IUserDB[]>()
       .then((response) => {
-        console.log(response);
-
         this.items = this.databaseService._model.user.buildList(response);
         this.pagination = { ...this.pagination, totalItems: this.items.length };
 
