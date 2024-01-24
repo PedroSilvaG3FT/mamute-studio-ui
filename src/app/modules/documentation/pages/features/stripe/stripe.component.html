@@ -21,7 +21,7 @@
         color="primary"
         (click)="goToCheckout()"
         matTooltip="Open checkout"
-        [disabled]="hasCustomer() && !!this.customerSubscriptions?.data?.length"
+        [disabled]="hasCustomer() && !!this.customerSubscriptions.data.length"
       >
         <i class="iconify" data-icon="carbon:wireless-checkout"></i>
       </button>
