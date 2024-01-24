@@ -4,6 +4,23 @@
   @apply flex flex-col gap-2 py-8 rounded-xl;
   background: $bg-secondary;
 
+  > div {
+    @apply px-5 flex items-center justify-between;
+
+    > h2 {
+      color: $primary;
+      @apply truncate;
+    }
+  }
+
+  > hr {
+    @apply mx-5 my-2;
+    border-color: $bg-primary;
+  }
+
+  > button {
+  }
+
   > article {
     > h5 {
       @apply px-5;

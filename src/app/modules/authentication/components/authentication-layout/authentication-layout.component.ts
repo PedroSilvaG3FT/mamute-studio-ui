@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { UiStore } from '../../../../store/ui.store';
 
 @Component({
   standalone: true,
@@ -8,4 +9,6 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './authentication-layout.component.scss',
   templateUrl: './authentication-layout.component.html',
 })
-export class AuthenticationLayoutComponent {}
+export class AuthenticationLayoutComponent {
+  public uiStore = inject(UiStore);
+}

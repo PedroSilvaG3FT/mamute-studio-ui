@@ -1,6 +1,10 @@
 #authentication-layout {
   @apply min-h-screen flex flex-col items-center justify-center;
 
+  > img {
+    @apply h-28 mb-4 object-contain;
+  }
+
   > section {
     @apply w-full max-w-lg;
   }

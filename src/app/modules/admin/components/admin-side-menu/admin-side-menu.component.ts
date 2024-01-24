@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { Router, RouterLink } from '@angular/router';
+import { AuthStore } from '../../../../store/auth.store';
 import { AppThemeSelectionComponent } from '../../../@core/components/app-theme-selection/app-theme-selection.component';
+import { FirebaseAuthenticationService } from '../../../@core/firebase/firebase-authentication.service';
 import { SEOService } from '../../../@core/services/seo.service';
 import { ADMIN_ROUTES_CONFIG } from '../../constants/admin-routes.constant';
 
@@ -9,9 +12,10 @@ import { ADMIN_ROUTES_CONFIG } from '../../constants/admin-routes.constant';
   selector: 'admin-side-menu',
   styleUrl: './admin-side-menu.component.scss',
   templateUrl: './admin-side-menu.component.html',
-  imports: [RouterLink, AppThemeSelectionComponent],
+  imports: [RouterLink, MatButtonModule, AppThemeSelectionComponent],
 })
 export class AdminSideMenuComponent {
+  public authStore = inject(AuthStore);
   public links = [
     {
       name: 'Sistema',
@@ -49,25 +53,35 @@ export class AdminSideMenuComponent {
       ],
     },
 
-    {
-      name: 'Produtos',
-      children: [
-        {
-          link: '/admin/marketplace',
-          icon: 'mdi:marketplace-outline',
-          id: ADMIN_ROUTES_CONFIG.marketplace.id,
-          name: ADMIN_ROUTES_CONFIG.marketplace.title,
-        },
-      ],
-    },
+    // {
+    //   name: 'Produtos',
+    //   children: [
+    //     {
+    //       link: '/admin/marketplace',
+    //       icon: 'mdi:marketplace-outline',
+    //       id: ADMIN_ROUTES_CONFIG.marketplace.id,
+    //       name: ADMIN_ROUTES_CONFIG.marketplace.title,
+    //     },
+    //   ],
+    // },
   ];
 
   public currentId: string = '';
 
-  constructor(private seoService: SEOService) {
+  constructor(
+    private router: Router,
+    private seoService: SEOService,
+    private firebaseAuthenticationService: FirebaseAuthenticationService
+  ) {
     this.seoService.onRouteChange().subscribe(() => {
       const data = this.seoService.getRouteData();
       this.currentId = data.id || '';
+    });
+  }
+
+  public handleSignOut() {
+    this.firebaseAuthenticationService.signOut().then(() => {
+      this.router.navigate(['/']);
     });
   }
 }
