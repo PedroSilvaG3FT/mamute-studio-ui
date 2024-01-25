@@ -6,6 +6,7 @@ import {
   Renderer2,
   ViewChild,
   ViewEncapsulation,
+  computed,
   inject,
   signal,
 } from '@angular/core';
@@ -19,9 +20,11 @@ import { FirebaseStorageService } from '../../../../@core/firebase/firebase-stor
 import { AlertService } from '../../../../@core/services/alert.service';
 import { StringUtil } from '../../../../@core/util/string.util';
 import { ModalRequestLoginComponent } from '../../../../@shared/components/modal-request-login/modal-request-login.component';
+import { EventTicketFacade } from '../../../../@shared/facade/event-ticket.facade';
 import {
   IEventDB,
   IEventItem,
+  IEventTicketDB,
 } from '../../../../@shared/interface/event.interface';
 import {
   IPartnerDB,
@@ -60,12 +63,19 @@ export class EventDetailComponent {
   public authStore = inject(AuthStore);
   public loadingStore = inject(LoadingStore);
 
+  public isPresenceConfirmed = computed(() => {
+    return this.eventTicketFacade._store
+      .userTickets()
+      .some((item) => item.event === this.eventId());
+  });
+
   constructor(
     public dialog: MatDialog,
     private renderer: Renderer2,
     private alertService: AlertService,
     private activatedRoute: ActivatedRoute,
     private databaseService: DatabaseService,
+    private eventTicketFacade: EventTicketFacade,
     private firebaseStorageService: FirebaseStorageService
   ) {}
 
@@ -128,6 +138,23 @@ export class EventDetailComponent {
       return;
     }
 
-    console.log('CRIA TICKET : ', StringUtil.generateTicketNumber());
+    this.loadingStore.setState(true);
+
+    const ticketDTO = this.databaseService._model.eventTicket.buildRegisterDTO({
+      active: true,
+      event: this.eventId(),
+      creationDate: new Date(),
+      eventDate: this.event.date,
+      eventName: this.event.title,
+      userName: this.authStore.userData().name,
+      number: StringUtil.generateTicketNumber(),
+      user: String(this.authStore.userData().id),
+    });
+
+    this.databaseService.eventTicket
+      .create<IEventTicketDB>(ticketDTO)
+      .then(() => this.eventTicketFacade.setUserLoggedTickets())
+      .catch((error) => this.alertService.snackDefaultResponseError(error))
+      .finally(() => this.loadingStore.setState(false));
   }
 }

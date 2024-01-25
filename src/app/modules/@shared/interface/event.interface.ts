@@ -19,30 +19,6 @@ export interface IEventDB {
   userCreator: DocumentReference;
 }
 
-export interface IEventPartnerDB {
-  creationDate: Timestamp;
-  event: DocumentReference;
-  partner: DocumentReference;
-  userCreator: DocumentReference;
-}
-
-export interface IEventPhotoGalleryDB {
-  url: string;
-  active: boolean;
-  creationDate: Timestamp;
-  event: DocumentReference;
-  userCreator: DocumentReference;
-}
-
-export interface IEventTestimonialDB {
-  active: boolean;
-  comment: string;
-  authorName: string;
-  creationDate: Timestamp;
-  event: DocumentReference;
-  userCreator: DocumentReference;
-}
-
 export interface IEventItem
   extends Omit<
     IEventDB,
@@ -54,4 +30,36 @@ export interface IEventItem
   creationDate: Date;
   userCreator: string;
   dateReleaseStream: Date;
+}
+
+export interface IEventTestimonialDB {
+  active: boolean;
+  comment: string;
+  authorName: string;
+  creationDate: Timestamp;
+  event: DocumentReference;
+  userCreator: DocumentReference;
+}
+
+export interface IEventTicketDB {
+  id?: string;
+  number: string;
+  active: boolean;
+  userName: string;
+  eventName: string;
+  eventDate: Timestamp;
+  creationDate: Timestamp;
+  user: DocumentReference;
+  event: DocumentReference;
+}
+
+export interface IEventTicketItem
+  extends Omit<
+    IEventTicketDB,
+    'creationDate' | 'eventDate' | 'user' | 'event'
+  > {
+  user: string;
+  event: string;
+  eventDate: Date;
+  creationDate: Date;
 }

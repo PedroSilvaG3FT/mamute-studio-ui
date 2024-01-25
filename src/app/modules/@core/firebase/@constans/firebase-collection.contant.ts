@@ -1,5 +1,6 @@
 export const FIREBASE_COLLECTION = {
   event: `Event`,
+  eventTicket: `EventTicket`,
   eventPartner: `EventPartner`,
   eventTestimonial: `EventTestimonial`,
   eventPhotoGallery: `EventPhotoGallery`,

@@ -3,6 +3,7 @@ import { EventAttendanceListModel } from './event-attendance-list.model';
 import { EventPartnerModel } from './event-partner.model';
 import { EventPhotoGalleryModel } from './event-photo-gallery.model';
 import { EventTestimonialModel } from './event-testimonial.model';
+import { EventTicketModel } from './event-ticket.model';
 import { EventModel } from './event.model';
 import { NewsPartnerModel } from './news-partner.model';
 import { NewsModel } from './news.model';
@@ -25,6 +26,7 @@ export class DatabaseModel {
     public partner: PartnerModel,
     public product: ProductModel,
     public prayerWall: PrayerWallModel,
+    public eventTicket: EventTicketModel,
     public newsPartner: NewsPartnerModel,
     public productSale: ProductSaleModel,
     public eventPartner: EventPartnerModel,

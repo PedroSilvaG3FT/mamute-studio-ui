@@ -41,8 +41,14 @@
       </div>
       }
 
-      <button class="btn-primary" (click)="handleConfirmPresence()">
-        Confirmar presença
+      <button
+        class="btn-primary"
+        (click)="handleConfirmPresence()"
+        [disabled]="isPresenceConfirmed()"
+      >
+        {{
+          isPresenceConfirmed() ? "Presença confirmada" : "Confirmar presença"
+        }}
       </button>
     </article>
 
