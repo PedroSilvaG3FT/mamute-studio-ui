@@ -12,6 +12,7 @@ import {
 } from 'firebase/auth';
 import { Timestamp } from 'firebase/firestore';
 import { AuthStore } from '../../../store/auth.store';
+import { EventTicketStore } from '../../../store/event-ticket.store';
 import { UserRole } from '../../authentication/enums/user-role.enum';
 import {
   IAuthCredential,
@@ -24,6 +25,7 @@ import { FirebaseCollectionBase } from './firebase-collection.base';
 export class FirebaseAuthenticationService extends FirebaseCollectionBase {
   private auth: Auth;
   private authStore = inject(AuthStore);
+  private eventTicketStore = inject(EventTicketStore);
 
   constructor() {
     super(FIREBASE_COLLECTION.user);
@@ -111,7 +113,9 @@ export class FirebaseAuthenticationService extends FirebaseCollectionBase {
   public async signOut() {
     try {
       await signOut(this.auth);
+
       this.authStore.reset();
+      this.eventTicketStore.reset();
       return true;
     } catch (error) {
       throw error;

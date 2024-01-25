@@ -63,6 +63,8 @@ export class EventDetailComponent {
   public authStore = inject(AuthStore);
   public loadingStore = inject(LoadingStore);
 
+  public countPresence: number = 0;
+
   public isPresenceConfirmed = computed(() => {
     return this.eventTicketFacade._store
       .userTickets()
@@ -101,6 +103,7 @@ export class EventDetailComponent {
 
         this.getPartners();
         this.initGallery();
+        this.getCountPresence();
       })
       .catch((error) => this.alertService.snackDefaultResponseError(error))
       .finally(() => this.loadingStore.setState(false));
@@ -132,6 +135,12 @@ export class EventDetailComponent {
     }
   }
 
+  public getCountPresence() {
+    this.databaseService.eventTicket
+      .getCountByEventId(this.eventId())
+      .then((response) => (this.countPresence = response));
+  }
+
   public handleConfirmPresence() {
     if (!this.authStore.isLogged()) {
       this.dialog.open(ModalRequestLoginComponent);
@@ -154,7 +163,10 @@ export class EventDetailComponent {
 
     this.databaseService.eventTicket
       .create<IEventTicketDB>(ticketDTO)
-      .then(() => this.eventTicketFacade.setUserLoggedTickets())
+      .then(() => {
+        this.countPresence = this.countPresence + 1;
+        this.eventTicketFacade.setUserLoggedTickets();
+      })
       .catch((error) => this.alertService.snackDefaultResponseError(error))
       .finally(() => this.loadingStore.setState(false));
   }

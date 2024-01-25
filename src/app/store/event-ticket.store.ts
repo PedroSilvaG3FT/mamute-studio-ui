@@ -16,5 +16,9 @@ export const EventTicketStore = signalStore(
       patchState(store, { userTickets });
       persistService.commit(store, state);
     },
+    reset() {
+      patchState(store, { userTickets: [] });
+      persistService.commit(store, state);
+    },
   }))
 );

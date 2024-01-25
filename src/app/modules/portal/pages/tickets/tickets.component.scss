@@ -37,6 +37,7 @@
         > small {
           @apply rounded-md px-2 py-1.5 absolute top-3 left-3;
           background: $primary;
+          color: $white;
         }
       }
 

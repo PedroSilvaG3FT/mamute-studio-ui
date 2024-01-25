@@ -10,6 +10,7 @@ import { FirebaseAuthenticationService } from '../../../@core/firebase/firebase-
 import { AlertService } from '../../../@core/services/alert.service';
 import { UserRole } from '../../../authentication/enums/user-role.enum';
 import { IAuthCredential } from '../../../authentication/interfaces/authentication.interface';
+import { EventTicketFacade } from '../../facade/event-ticket.facade';
 import { DatabaseService } from '../../services/database.service';
 import { ModalRegisterComponent } from '../modal-register/modal-register.component';
 
@@ -48,6 +49,7 @@ export class ModalLoginComponent {
     public dialog: MatDialog,
     private alertService: AlertService,
     private databaseService: DatabaseService,
+    private eventTicketFacade: EventTicketFacade,
     private formGeneratorService: FormGeneratorService,
     public dialogRef: MatDialogRef<ModalLoginComponent>,
     private firebaseAuthenticationService: FirebaseAuthenticationService
@@ -85,6 +87,8 @@ export class ModalLoginComponent {
         this.authStore.setFirebaseToken(accessToken);
         this.authStore.setFirebaseRefreshToken(refreshToken);
         this.authStore.setUserRole(this.getUserRole(userData.role));
+
+        this.eventTicketFacade.setUserLoggedTickets();
 
         this.handleClose();
       })

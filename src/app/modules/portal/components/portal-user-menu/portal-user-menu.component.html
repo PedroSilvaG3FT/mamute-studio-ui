@@ -18,13 +18,14 @@
 <mat-menu #menu="matMenu">
   @if(authStore.isAdmin()) {
   <button mat-menu-item [routerLink]="['/admin/event']">
+    <mat-icon>stress_management</mat-icon>
     Portal do administrador
   </button>
   }
   <button mat-menu-item [routerLink]="['/portal/bilhetes']">
+    <mat-icon>local_activity</mat-icon>
     Meus Tickets
   </button>
-  <!-- <button mat-menu-item>Meu perfil</button> -->
   <button mat-menu-item (click)="handleSignOut()">Sair</button>
 </mat-menu>
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { getDocs, query, where } from 'firebase/firestore';
+import { getCountFromServer, getDocs, query, where } from 'firebase/firestore';
 import { FIREBASE_COLLECTION } from '../../@core/firebase/@constans/firebase-collection.contant';
 import { FirebaseCollectionBase } from '../../@core/firebase/firebase-collection.base';
 
@@ -40,6 +40,23 @@ export class EventTicketService extends FirebaseCollectionBase {
 
       const response = await this._helper.getCollectionData<Data>(snapshot);
       return response as Data[];
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  public async getCountByEventId(eventId: string) {
+    try {
+      const eventRef = this.getDocumentReference(
+        eventId,
+        FIREBASE_COLLECTION.event
+      );
+
+      const snapshot = await getCountFromServer(
+        query(this.collection, where('event', '==', eventRef))
+      );
+
+      return snapshot.data().count;
     } catch (error) {
       throw error;
     }

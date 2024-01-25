@@ -41,6 +41,18 @@
       </div>
       }
 
+      <hr />
+
+      <!-- count presence -->
+      @if(countPresence) {
+      <div>
+        <b>{{ countPresence }}</b>
+        Pessoa{{ countPresence > 1 ? "s" : "" }} confirmada{{
+          countPresence > 1 ? "s" : ""
+        }}
+      </div>
+      }
+
       <button
         class="btn-primary"
         (click)="handleConfirmPresence()"

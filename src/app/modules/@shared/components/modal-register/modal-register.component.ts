@@ -12,6 +12,7 @@ import {
   IAuthCredential,
   IAuthRegister,
 } from '../../../authentication/interfaces/authentication.interface';
+import { EventTicketFacade } from '../../facade/event-ticket.facade';
 import { DatabaseService } from '../../services/database.service';
 
 @Component({
@@ -56,6 +57,7 @@ export class ModalRegisterComponent {
   constructor(
     private alertService: AlertService,
     private databaseService: DatabaseService,
+    private eventTicketFacade: EventTicketFacade,
     private formGeneratorService: FormGeneratorService,
     public dialogRef: MatDialogRef<ModalRegisterComponent>,
     private firebaseAuthenticationService: FirebaseAuthenticationService
@@ -103,6 +105,8 @@ export class ModalRegisterComponent {
         this.authStore.setFirebaseToken(accessToken);
         this.authStore.setFirebaseRefreshToken(refreshToken);
         this.authStore.setUserRole(this.getUserRole(userData.role));
+
+        this.eventTicketFacade.setUserLoggedTickets();
 
         this.handleClose();
       })

@@ -41,8 +41,13 @@
         @apply mb-8 text-lg;
       }
 
+      > hr {
+        @apply mb-4;
+        border-color: $bg-primary;
+      }
+
       > div {
-        @apply mb-6 flex items-center gap-4;
+        @apply mb-6 grid grid-cols-[10%_1fr] items-center gap-2;
 
         &:hover {
           color: $primary;
@@ -60,12 +65,16 @@
 
         > span {
           > a {
-            @apply ml-1;
-
             &:hover {
               @apply underline;
             }
           }
+        }
+
+        > b {
+          @apply rounded-full flex items-center justify-center w-8 h-8;
+          background: $primary;
+          color: $white;
         }
       }
 
