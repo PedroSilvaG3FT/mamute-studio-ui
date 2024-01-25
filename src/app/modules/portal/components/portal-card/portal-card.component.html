@@ -1,4 +1,8 @@
-<article id="portal-card" [style.background-image]="'url(' + background + ')'">
+<article
+  id="portal-card"
+  [routerLink]="[route]"
+  [style.background-image]="'url(' + background + ')'"
+>
   @if (!!badge) {
   <span>{{ badge }}</span>
   }

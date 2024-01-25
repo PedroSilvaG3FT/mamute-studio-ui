@@ -5,6 +5,6 @@
   padding-top: $portal-header-page-padding;
 
   > section {
-    @apply gap-8 grid grid-cols-5 tablet:grid-cols-2 items-stretch;
+    @apply gap-8 grid grid-cols-4 md:grid-cols-2 mobile:grid-cols-1 items-stretch;
   }
 }
