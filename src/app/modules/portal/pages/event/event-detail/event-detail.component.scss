@@ -28,6 +28,8 @@
       background-size: 105%;
       @apply mobile:bg-cover;
     }
+
+    @apply mobile:bg-cover;
   }
 
   > section {
