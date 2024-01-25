@@ -1,0 +1,18 @@
+<section id="tickets" class="app-container">
+  <h1 class="portal__title">Meus bilhetes</h1>
+
+  <section>
+    @for (item of eventTicketStore.userTickets(); track $index) {
+    <article>
+      <figure [style.background-image]="'url(' + item.eventBanner + ')'">
+        <small>{{ item.eventDate | date : "dd/MM/yyyy" }}</small>
+      </figure>
+
+      <footer>
+        <h5>{{ item.eventName }}</h5>
+        <h3>{{ item.number }}</h3>
+      </footer>
+    </article>
+    }
+  </section>
+</section>

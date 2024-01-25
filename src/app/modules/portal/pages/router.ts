@@ -8,6 +8,11 @@ const EVENT_ROUTES: Routes = [
       import('./event/event.component').then((c) => c.EventComponent),
   },
   {
+    path: 'bilhetes',
+    loadComponent: () =>
+      import('./tickets/tickets.component').then((c) => c.TicketsComponent),
+  },
+  {
     path: 'eventos/:id',
     loadComponent: () =>
       import('./event/event-detail/event-detail.component').then(

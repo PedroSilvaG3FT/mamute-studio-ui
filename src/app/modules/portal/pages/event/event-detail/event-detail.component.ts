@@ -146,6 +146,7 @@ export class EventDetailComponent {
       creationDate: new Date(),
       eventDate: this.event.date,
       eventName: this.event.title,
+      eventBanner: this.event.bannerURL,
       userName: this.authStore.userData().name,
       number: StringUtil.generateTicketNumber(),
       user: String(this.authStore.userData().id),

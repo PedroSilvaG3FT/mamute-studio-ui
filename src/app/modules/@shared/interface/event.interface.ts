@@ -47,6 +47,7 @@ export interface IEventTicketDB {
   active: boolean;
   userName: string;
   eventName: string;
+  eventBanner: string;
   eventDate: Timestamp;
   creationDate: Timestamp;
   user: DocumentReference;

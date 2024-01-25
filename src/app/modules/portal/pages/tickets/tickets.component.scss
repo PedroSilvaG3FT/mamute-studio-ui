@@ -1,0 +1,57 @@
+@import "variables";
+
+#tickets {
+  @apply min-h-screen;
+  padding-top: $portal-header-page-padding;
+
+  > section {
+    @apply mt-8 gap-8 grid grid-cols-4 md:grid-cols-2 mobile:grid-cols-1 items-stretch;
+
+    > article {
+      @apply rounded-2xl transition-all duration-500;
+      background-color: $bg-secondary;
+
+      &:hover {
+        transform: scale(1.05);
+
+        > footer {
+          > h3 {
+            @apply tracking-[0.6rem];
+          }
+        }
+      }
+
+      > figure {
+        @apply rounded-t-2xl relative h-56 w-full;
+
+        &:after {
+          @apply content-[''] absolute bottom-0 w-full h-full;
+          box-shadow: inset 0px -74px 28px -42px $bg-secondary;
+        }
+
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: $bg-secondary;
+
+        > small {
+          @apply rounded-md px-2 py-1.5 absolute top-3 left-3;
+          background: $primary;
+        }
+      }
+
+      > footer {
+        @apply p-4;
+
+        > h5 {
+          @apply text-center truncate;
+        }
+
+        > h3 {
+          color: $primary;
+          @apply mt-4 text-lg tracking-[0.3rem] text-center transition-all duration-500;
+        }
+      }
+    }
+  }
+}

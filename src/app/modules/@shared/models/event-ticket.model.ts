@@ -18,7 +18,7 @@ export class EventTicketModel {
       id: String(model.id),
       user: model.user?.id,
       event: model.event?.id,
-      eventDate: model.creationDate?.toDate(),
+      eventDate: model.eventDate?.toDate(),
       creationDate: model.creationDate?.toDate(),
     };
   }
@@ -35,6 +35,7 @@ export class EventTicketModel {
       userName: model.userName || '',
       eventName: model.eventName || '',
       user: this.auth.getUserReference(),
+      eventBanner: model.eventBanner || '',
       eventDate: Timestamp.fromDate(model.eventDate),
       event: this.base.getDocumentReference(
         model.event,
