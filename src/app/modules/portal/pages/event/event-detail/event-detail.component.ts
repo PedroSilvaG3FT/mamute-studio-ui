@@ -33,6 +33,7 @@ import {
 import { DatabaseService } from '../../../../@shared/services/database.service';
 import { PortalGalleryComponent } from '../../../components/portal-gallery/portal-gallery.component';
 import { PortalPartnerListComponent } from '../../../components/portal-partner-list/portal-partner-list.component';
+import { PortalTicketSucessModalComponent } from '../../../components/portal-ticket-sucess-modal/portal-ticket-sucess-modal.component';
 
 @Component({
   standalone: true,
@@ -166,6 +167,7 @@ export class EventDetailComponent {
       .then(() => {
         this.countPresence = this.countPresence + 1;
         this.eventTicketFacade.setUserLoggedTickets();
+        this.dialog.open(PortalTicketSucessModalComponent);
       })
       .catch((error) => this.alertService.snackDefaultResponseError(error))
       .finally(() => this.loadingStore.setState(false));
