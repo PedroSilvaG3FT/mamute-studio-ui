@@ -24,12 +24,12 @@
     background-repeat: no-repeat;
     background-color: $bg-secondary;
 
+    @apply mobile:bg-cover;
+
     &:hover {
       background-size: 105%;
       @apply mobile:bg-cover;
     }
-
-    @apply mobile:bg-cover;
   }
 
   > section {
