@@ -1,4 +1,10 @@
-import { Component, Input, booleanAttribute, inject } from '@angular/core';
+import {
+  Component,
+  Input,
+  booleanAttribute,
+  computed,
+  inject,
+} from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
@@ -17,6 +23,7 @@ export class PortalUserMenuComponent {
   @Input({ transform: booleanAttribute }) fixedPosition: boolean = false;
 
   public authStore = inject(AuthStore);
+  public showFabButton = computed(() => this.authStore.isLogged());
 
   constructor(
     private firebaseAuthenticationService: FirebaseAuthenticationService

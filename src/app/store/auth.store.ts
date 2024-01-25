@@ -6,6 +6,7 @@ import {
   withMethods,
   withState,
 } from '@ngrx/signals';
+import { BehaviorSubject } from 'rxjs';
 import { IUserItem } from '../modules/@shared/interface/user.interface';
 import { UserRole } from '../modules/authentication/enums/user-role.enum';
 import { PersistService } from './@persist/persist.service';
@@ -23,11 +24,17 @@ const state = persistService.initState({
   firebaseRefreshToken: '',
 });
 
+export const onLoginStateChange = new BehaviorSubject(false);
+
 export const AuthStore = signalStore(
   { providedIn: 'root' },
   withState(state),
   withComputed((state) => ({
-    isLogged: computed(() => !!state.firebaseToken()),
+    isLogged: computed(() => {
+      const value = !!state.firebaseToken();
+      onLoginStateChange.next(value);
+      return value;
+    }),
     idUserLogged: computed(() => state.userData()?.id || ''),
     isAdmin: computed(() => state.userRole() === UserRole.admin),
     userFirstName: computed(() => state.userData()?.name?.split(' ')[0]),
