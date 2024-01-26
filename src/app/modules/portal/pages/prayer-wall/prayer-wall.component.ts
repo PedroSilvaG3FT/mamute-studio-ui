@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, ViewEncapsulation, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { where } from 'firebase/firestore';
@@ -24,6 +24,9 @@ import { PortalRequestPrayModalComponent } from '../../components/portal-request
 @Component({
   standalone: true,
   selector: 'portal-prayer-wall',
+  encapsulation: ViewEncapsulation.None,
+  styleUrl: './prayer-wall.component.scss',
+  templateUrl: './prayer-wall.component.html',
   imports: [
     FormsModule,
     AppSelectComponent,
@@ -31,8 +34,6 @@ import { PortalRequestPrayModalComponent } from '../../components/portal-request
     AppDatepickerComponent,
     PortalCardPrayerComponent,
   ],
-  styleUrl: './prayer-wall.component.scss',
-  templateUrl: './prayer-wall.component.html',
 })
 export class PrayerWallComponent {
   public authStore = inject(AuthStore);

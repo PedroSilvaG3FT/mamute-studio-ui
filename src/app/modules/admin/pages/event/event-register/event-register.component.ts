@@ -2,12 +2,14 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { format, setHours, setMinutes } from 'date-fns';
 import { LoadingStore } from '../../../../../store/loading.store';
 import { AppFormGeneratorComponent } from '../../../../@core/components/_form-generator/app-form-generator/app-form-generator.component';
 import { FormGeneratorService } from '../../../../@core/components/_form-generator/form-generator.service';
 import { FIREBASE_STORAGE_PATH } from '../../../../@core/firebase/@constans/firebase-storage.contant';
 import { FirebaseStorageService } from '../../../../@core/firebase/firebase-storage.service';
 import { AlertService } from '../../../../@core/services/alert.service';
+import { ObjectUtil } from '../../../../@core/util/object.util';
 import { AppPageNavComponent } from '../../../../@shared/components/app-page-nav/app-page-nav.component';
 import {
   IEventDB,
@@ -19,6 +21,7 @@ import { AdminPartnerSelectionComponent } from '../../../components/admin-partne
 import { EventTestimonialComponent } from './event-testimonial/event-testimonial.component';
 
 interface IEventForm extends IEventItem {
+  eventTime?: string;
   bannerFile?: File[];
 }
 @Component({
@@ -64,10 +67,19 @@ export class EventRegisterComponent {
         label: 'Nome',
         validators: [Validators.required],
       },
+    ],
+    [
       {
         name: 'date',
         type: 'datepicker',
         label: 'Data do evento',
+        validators: [Validators.required],
+      },
+      {
+        type: 'input',
+        name: 'eventTime',
+        label: 'Horário do evento',
+        additional: { inputType: 'time' },
         validators: [Validators.required],
       },
     ],
@@ -148,6 +160,10 @@ export class EventRegisterComponent {
       .then((response) => {
         this.event = this.databaseService._model.event.buildItem(response);
 
+        const eventTime = `${this.event.date.getHours()}:${this.event.date.getMinutes()}`;
+
+        console.log(eventTime);
+
         this.form.group.patchValue({
           date: this.event.date,
           title: this.event.title,
@@ -158,6 +174,7 @@ export class EventRegisterComponent {
           addressName: this.event.addressName,
           contentHTML: this.event.contentHTML,
           addressMapHTML: this.event.addressMapHTML,
+          eventTime: format(this.event.date, 'HH:mm'),
           shortDescription: this.event.shortDescription,
           dateReleaseStream: this.event.dateReleaseStream,
         });
@@ -167,6 +184,11 @@ export class EventRegisterComponent {
   }
 
   public handleSubmit(model: IEventForm) {
+    const [hour, minute] = String(model.eventTime).split(':');
+
+    model.date = setHours(model.date, Number(hour));
+    model.date = setMinutes(model.date, Number(minute));
+
     if (this.isNew()) this.handleCreate(model);
     else this.handleUpdate(model);
   }
@@ -203,6 +225,7 @@ export class EventRegisterComponent {
         model.bannerURL = bannerURL;
       }
 
+      delete model.eventTime;
       delete model.bannerFile;
 
       const eventDTO =
@@ -227,6 +250,7 @@ export class EventRegisterComponent {
         model.bannerURL = bannerURL;
       } else model.bannerURL = this.event.bannerURL;
 
+      delete model.eventTime;
       delete model.bannerFile;
 
       const eventDTO = this.databaseService._model.event.buildRegisterDTO({
@@ -255,6 +279,8 @@ export class EventRegisterComponent {
   }
 
   public handleGalleryChange(images: string[]) {
+    const cloneEvennt = ObjectUtil.clone(this.event);
+
     this.handleUpdate({ ...this.event, images });
   }
 }

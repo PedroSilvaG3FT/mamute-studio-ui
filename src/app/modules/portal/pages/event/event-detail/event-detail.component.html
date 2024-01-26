@@ -18,7 +18,7 @@
         <i class="iconify" data-icon="ion:calendar-outline"></i>
         <span>
           <b>Data:</b>
-          {{ event.date | date : "dd/MM/yyyy" }}
+          {{ event.date | date : "dd/MM/yyyy - HH:mm" }}hrs
         </span>
       </div>
 
@@ -34,7 +34,7 @@
 
       @if(event.streamURL) {
       <div>
-        <i class="iconify" data-icon="ic:sharp-link"></i>
+        <i class="iconify" data-icon="basil:video-outline"></i>
         <span>
           <a [href]="event.streamURL" target="_blank"> Assistir evento </a>
         </span>

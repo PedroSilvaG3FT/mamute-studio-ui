@@ -9,7 +9,15 @@
   }
 
   > form {
-    @apply mt-8 flex gap-4 items-start;
+    @apply mt-8 flex gap-4 items-start tablet:flex-col;
+
+    > * {
+      @apply tablet:w-full;
+
+      > * {
+        @apply tablet:w-full;
+      }
+    }
   }
 
   > section {

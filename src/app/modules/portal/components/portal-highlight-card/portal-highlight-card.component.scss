@@ -1,7 +1,7 @@
 @import "variables";
 
 #portal-highlight-card {
-  @apply h-72 rounded-2xl relative flex items-end transition-all duration-700;
+  @apply h-72 rounded-2xl relative flex items-end cursor-pointer transition-all duration-700;
 
   color: $white;
   background-size: 100%;
@@ -48,6 +48,10 @@
 
       > h5 {
         @apply mb-2 font-semibold;
+      }
+
+      > a {
+        color: $primary;
       }
     }
 

@@ -6,6 +6,7 @@ import {
   withInMemoryScrolling,
 } from '@angular/router';
 
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideNgxStripe } from 'ngx-stripe';
 import { environment } from '../environments/environment';
@@ -31,5 +32,6 @@ export const appConfig: ApplicationConfig = {
     FirebaseConnectorService,
     provideRouter(routes, inMemoryScrollingFeature),
     provideNgxStripe(environment.stripe.public_key),
+    { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
   ],
 };

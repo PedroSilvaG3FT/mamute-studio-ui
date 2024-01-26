@@ -2,7 +2,8 @@
 
 #prayer-wall {
   > form {
-    @apply flex gap-4 items-start;
+    @apply flex gap-4 items-start tablet:flex-col;
+    border: 1px solid red;
   }
 
   > hr {
