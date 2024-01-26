@@ -12,4 +12,8 @@ import { PortalSocialMediaComponent } from '../portal-social-media/portal-social
 })
 export class PortalFooterComponent {
   public socialMediaItems = SOCIAL_MEDIA;
+
+  public openUxnocodeLink() {
+    window.open(`https://uxnocode.com/`, '_blank');
+  }
 }
