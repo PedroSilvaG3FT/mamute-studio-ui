@@ -11,6 +11,7 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideNgxStripe } from 'ngx-stripe';
 import { environment } from '../environments/environment';
 import { routes } from './app.routes';
+import { AnalyticsService } from './modules/@core/analytics/analytics.service';
 import { FirebaseConnectorService } from './modules/@core/firebase/firebase-connector.service';
 import { StripeConnectorService } from './modules/@core/stripe/stripe.connector';
 import { SupabaseConnectorService } from './modules/@core/supabase/supabase-connector.service';
@@ -25,6 +26,7 @@ const inMemoryScrollingFeature: InMemoryScrollingFeature =
 export const appConfig: ApplicationConfig = {
   providers: [
     SeedService,
+    AnalyticsService,
     provideAnimations(),
     provideAnimationsAsync(),
     StripeConnectorService,

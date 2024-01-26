@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import Iconify from '@iconify/iconify';
+import { AnalyticsService } from './modules/@core/analytics/analytics.service';
 import { ROUTER_STACK_ANIMATION } from './modules/@core/animations/router-stack.animation';
 import { AppLoadingComponent } from './modules/@core/components/app-loading/app-loading.component';
 import { SEOService } from './modules/@core/services/seo.service';
@@ -24,12 +25,14 @@ export class AppComponent {
   constructor(
     private seoService: SEOService,
     private seedService: SeedService,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private analyticsService: AnalyticsService
   ) {
     Iconify.listIcons();
     this.checkLoading();
     this.seedService.init();
     this.themeService.init();
+    this.analyticsService.init();
     this.seoService.initTitleMonitoring();
   }
 

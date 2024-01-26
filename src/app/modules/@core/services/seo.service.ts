@@ -26,9 +26,12 @@ export class SEOService {
   }
 
   public initTitleMonitoring() {
-    this.$routerTitle = this.onRouteChange().subscribe((data) => {
-      if (data['title'])
-        this.title.setTitle(`Instituto Apocalipse - ${data['title']}`);
+    this.$routerTitle = this.onRouteChange().subscribe(() => {
+      const data = this.getRouteData();
+
+      this.title.setTitle(
+        `Instituto Apocalipse ${data['title'] ? `- ${data['title']}` : ''}`
+      );
     });
   }
 

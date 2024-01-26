@@ -16,6 +16,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { AuthStore } from '../../../../../store/auth.store';
 import { LoadingStore } from '../../../../../store/loading.store';
+import { AnalyticsService } from '../../../../@core/analytics/analytics.service';
 import { FirebaseStorageService } from '../../../../@core/firebase/firebase-storage.service';
 import { AlertService } from '../../../../@core/services/alert.service';
 import { StringUtil } from '../../../../@core/util/string.util';
@@ -78,6 +79,7 @@ export class EventDetailComponent {
     private alertService: AlertService,
     private activatedRoute: ActivatedRoute,
     private databaseService: DatabaseService,
+    private analyticsService: AnalyticsService,
     private eventTicketFacade: EventTicketFacade,
     private firebaseStorageService: FirebaseStorageService
   ) {}
@@ -168,6 +170,13 @@ export class EventDetailComponent {
         this.countPresence = this.countPresence + 1;
         this.eventTicketFacade.setUserLoggedTickets();
         this.dialog.open(PortalTicketSucessModalComponent);
+
+        this.analyticsService.emit('confirm-presence-event', {
+          date: new Date(),
+          event_id: this.eventId(),
+          ticket_number: ticketDTO.number,
+          user_id: String(this.authStore.userData().id),
+        });
       })
       .catch((error) => this.alertService.snackDefaultResponseError(error))
       .finally(() => this.loadingStore.setState(false));
