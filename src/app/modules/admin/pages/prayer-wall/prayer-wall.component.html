@@ -41,6 +41,11 @@
 
       <p>{{ item.description }}</p>
 
+      <span>
+        {{ item.peoplePraying.length }}
+        Orando
+      </span>
+
       <footer>
         <button
           (click)="toggleStatus(item)"
