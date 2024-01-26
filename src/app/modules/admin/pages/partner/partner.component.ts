@@ -28,7 +28,7 @@ export class PartnerComponent {
   public items: IPartnerItem[] = [];
   public tableData: IPartnerItem[] = [];
   public pagination: IPagination = {
-    pageSize: 5,
+    pageSize: 10,
     pageNumber: 1,
     totalItems: 20,
     pageSizeOptions: [5, 10, 20, 50],
