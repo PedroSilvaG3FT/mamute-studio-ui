@@ -1,5 +1,5 @@
 import { DatePipe, NgClass } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, ViewEncapsulation, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { LoadingStore } from '../../../../store/loading.store';
@@ -22,6 +22,7 @@ import { DatabaseService } from '../../../@shared/services/database.service';
 @Component({
   standalone: true,
   selector: 'app-prayer-wall',
+  encapsulation: ViewEncapsulation.None,
   styleUrl: './prayer-wall.component.scss',
   templateUrl: './prayer-wall.component.html',
   imports: [
