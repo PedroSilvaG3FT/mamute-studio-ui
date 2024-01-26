@@ -5,4 +5,4 @@ User-agent: *
 User-agent: *
 Allow: /
 
-Sitemap: https://www.institutoapocalipse.com/sitemap.xml
+Sitemap: https://www.institutoapocalipse.com/assets/sitemap.xml
