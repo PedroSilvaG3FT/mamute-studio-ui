@@ -47,8 +47,13 @@
         @apply text-sm;
       }
 
-      > img {
-        @apply h-12 cursor-pointer;
+      > section {
+        @apply text-sm;
+        > a {
+          &:hover {
+            @apply underline;
+          }
+        }
       }
     }
   }
