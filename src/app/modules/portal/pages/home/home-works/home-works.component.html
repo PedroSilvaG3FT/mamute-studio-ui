@@ -1,0 +1,17 @@
+<section id="home-works" class="app-container">
+  <h1 class="portal__title">Nossos trabalhos</h1>
+  <portal-social-media />
+
+  <div>
+    @for (item of youtubeLinks; track $index) {
+    <iframe
+      [src]="item"
+      frameborder="0"
+      allowfullscreen
+      title="YouTube video player"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    ></iframe>
+
+    }
+  </div>
+</section>

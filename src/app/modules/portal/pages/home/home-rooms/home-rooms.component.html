@@ -1,0 +1,19 @@
+<section id="home-rooms" class="app-container">
+  <h1 class="portal__title">Salas</h1>
+  <p class="mb-8">Saiba sobre tudo que está por vir aqui!</p>
+
+  <section>
+    @for (item of rooms; track $index) {
+    <article>
+      <img [src]="item.bannerURL" [alt]="item.name" />
+
+      <div>
+        <h4>{{ item.name }}</h4>
+        <p>{{ item.description }}</p>
+      </div>
+
+      <a (click)="handleOpenWhatsapp()">Saiba mais</a>
+    </article>
+    }
+  </section>
+</section>

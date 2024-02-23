@@ -1,0 +1,13 @@
+@import "variables";
+
+#home-works {
+  > div {
+    @apply mt-8 gap-6 grid grid-cols-3 md:grid-cols-1 mobile:flex mobile:overflow-x-auto items-stretch;
+    scroll-snap-type: x mandatory;
+
+    > iframe {
+      @apply h-60 w-full rounded-2xl mobile:w-[80vw];
+      scroll-snap-align: center;
+    }
+  }
+}

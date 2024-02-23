@@ -1,0 +1,18 @@
+<section id="home-services" class="app-container">
+  <h1 class="portal__title">Nossos serviços</h1>
+  <p class="mb-8">Saiba sobre tudo que está por vir aqui!</p>
+
+  <section>
+    @for (item of services; track $index) {
+    <article>
+      <h3>{{ item.title }}</h3>
+      <i class="iconify" [attr.data-icon]="item.icon"></i>
+      <p>{{ item.description }}</p>
+    </article>
+    }
+  </section>
+
+  <button class="btn-primary" (click)="handleOpenWhatsapp()">
+    Ver mais serviços
+  </button>
+</section>

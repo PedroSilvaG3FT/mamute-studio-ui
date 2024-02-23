@@ -8,14 +8,15 @@
 
     <article>
       @for (item of items; track $index) {
-      <a [routerLink]="[item.route]">{{ item.title }}</a>
+      <a (click)="scrollToElement(item.route)">{{ item.title }}</a>
       }
+      <a (click)="handleOpenWhatsapp()">Contato</a>
 
       <!-- user -->
       @if(!authStore.isLogged()) {
-      <button mat-button color="primary" (click)="openModalLogin()">
+      <!-- <button mat-button color="primary" (click)="openModalLogin()">
         Entrar
-      </button>
+      </button> -->
       } @else {
       <portal-user-menu />
       }
@@ -24,7 +25,7 @@
         <i class="iconify text-lg" data-icon="ep:menu"></i>
       </button>
 
-      <app-theme-selection />
+      <!-- <app-theme-selection /> -->
     </article>
   </section>
 </header>

@@ -1,29 +1,27 @@
 import { Component } from '@angular/core';
-import { HomeEventComponent } from './home-event/home-event.component';
-import { HomeFaqComponent } from './home-faq/home-faq.component';
+import { HomeAddressComponent } from './home-address/home-address.component';
 import { HomeHeroComponent } from './home-hero/home-hero.component';
-import { HomeNewsComponent } from './home-news/home-news.component';
-import { HomePartnerComponent } from './home-partner/home-partner.component';
-import { HomePrayerWallComponent } from './home-prayer-wall/home-prayer-wall.component';
+import { HomeRoomsComponent } from './home-rooms/home-rooms.component';
+import { HomeServicesComponent } from './home-services/home-services.component';
+import { HomeWorksComponent } from './home-works/home-works.component';
 
 @Component({
   standalone: true,
   selector: 'portal-home',
   imports: [
-    HomeFaqComponent,
     HomeHeroComponent,
-    HomeNewsComponent,
-    HomeEventComponent,
-    HomePartnerComponent,
-    HomePrayerWallComponent,
+    HomeWorksComponent,
+    HomeRoomsComponent,
+    HomeAddressComponent,
+    HomeServicesComponent,
   ],
 
   template: `
     <portal-home-hero />
-    <portal-home-event />
-    <portal-home-prayer-wall />
-    <portal-home-news />
-    <portal-home-partner />
+    <portal-home-services />
+    <portal-home-rooms />
+    <portal-home-works />
+    <portal-home-address />
   `,
 })
 export class HomeComponent {}

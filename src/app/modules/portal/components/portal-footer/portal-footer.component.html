@@ -8,7 +8,9 @@
           [routerLink]="['/']"
         />
 
-        <p>Mãos que abençoam, corações que cuidam; Nosso chamado é do reino!</p>
+        <p>
+          Arte que inspira, talentos que florescem; Nosso propósito é a música!
+        </p>
 
         <portal-social-media />
       </article>
@@ -16,9 +18,10 @@
       <div>
         <h5>Mapa do site</h5>
         <a routerLink="/">Home</a>
-        <a routerLink="/portal/eventos">Eventos</a>
-        <a routerLink="/portal/noticias">Notícias</a>
-        <a routerLink="/portal/oracao">Orações</a>
+        <a (click)="scrollToElement('home-services')">Serviços</a>
+        <a (click)="scrollToElement('home-rooms')">Salas</a>
+        <a (click)="scrollToElement('home-works')">Trabalhos</a>
+        <a (click)="scrollToElement('home-address')">Endereço</a>
       </div>
 
       <div>
@@ -28,7 +31,7 @@
 
       <div>
         <h5>Atendimento</h5>
-        <a routerLink="/portal/contato">Contato</a>
+        <a (click)="handleOpenWhatsapp()">Contato</a>
       </div>
 
       <div>

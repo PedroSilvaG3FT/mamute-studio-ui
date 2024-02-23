@@ -1,0 +1,41 @@
+@import "variables";
+
+#home-services {
+  @apply flex flex-col;
+
+  > section {
+    @apply mt-8 gap-6 grid grid-cols-4 md:grid-cols-2 mobile:grid-cols-1 items-stretch;
+
+    > article {
+      @apply p-4 flex flex-col gap-4 items-center rounded-2xl shadow-lg transition-all duration-500;
+      background: $bg-secondary;
+      border: 4px solid transparent;
+
+      > h3 {
+        @apply mb-4 text-lg font-semibold;
+      }
+
+      > i,
+      > svg {
+        @apply text-[4rem] transition-all duration-500;
+      }
+
+      > p {
+        @apply mt-8 text-center;
+      }
+
+      &:hover {
+        border: 4px solid $primary;
+
+        > i,
+        > svg {
+          transform: scale(1.2);
+        }
+      }
+    }
+  }
+
+  > button {
+    @apply mt-8 self-center;
+  }
+}

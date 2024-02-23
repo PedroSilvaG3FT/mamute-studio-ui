@@ -1,0 +1,28 @@
+@import "variables";
+
+#home-rooms {
+  > section {
+    @apply mt-8 gap-6 grid grid-cols-4 mobile:grid-cols-1 items-stretch;
+
+    > article {
+      @apply rounded-xl flex flex-col;
+      background: $bg-secondary;
+
+      > img {
+        @apply rounded-t-xl h-60 w-full object-cover;
+      }
+
+      > div {
+        @apply p-4;
+
+        > h4 {
+          @apply mb-4 text-lg font-semibold;
+        }
+      }
+
+      > a {
+        @apply px-4 mb-4 mt-auto underline font-semibold;
+      }
+    }
+  }
+}

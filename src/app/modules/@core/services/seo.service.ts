@@ -30,7 +30,7 @@ export class SEOService {
       const data = this.getRouteData();
 
       this.title.setTitle(
-        `Instituto Apocalipse ${data['title'] ? `- ${data['title']}` : ''}`
+        `Mamute Studio ${data['title'] ? `- ${data['title']}` : ''}`
       );
     });
   }

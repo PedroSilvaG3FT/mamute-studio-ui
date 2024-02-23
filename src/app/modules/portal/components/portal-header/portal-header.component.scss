@@ -28,7 +28,8 @@
         @apply tablet:hidden;
 
         &:hover {
-          color: $primary;
+          @apply underline transition-all duration-300;
+          transform: scale(0.94);
         }
       }
 

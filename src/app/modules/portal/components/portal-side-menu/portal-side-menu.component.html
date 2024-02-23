@@ -18,16 +18,14 @@
 
   <article>
     @for (item of items; track $index) {
-    <a [routerLink]="[item.route]" (click)="handleClose()">{{ item.title }}</a>
-    } @if(authStore.isLogged()) {
-    <a routerLink="/portal/bilhetes" (click)="handleClose()">Meus bilhetes</a>
+    <a (click)="scrollToElement(item.route)">{{ item.title }}</a>
     } @if(!authStore.isLogged()) {
-    <button class="btn-primary w-full" (click)="openModalLogin()">
+    <!-- <button class="btn-primary w-full" (click)="openModalLogin()">
       Entrar
-    </button>
+    </button> -->
     }
 
-    <app-theme-selection />
+    <!-- <app-theme-selection /> -->
   </article>
 </section>
 }

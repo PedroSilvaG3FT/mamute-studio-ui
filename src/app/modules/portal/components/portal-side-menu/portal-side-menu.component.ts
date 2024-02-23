@@ -1,3 +1,4 @@
+import { ViewportScroller } from '@angular/common';
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { RouterModule } from '@angular/router';
@@ -24,7 +25,10 @@ export class PortalSideMenuComponent {
   public authStore = inject(AuthStore);
   public $loginSate!: Subscription;
 
-  constructor(public dialog: MatDialog) {
+  constructor(
+    public dialog: MatDialog,
+    private viewportScroller: ViewportScroller
+  ) {
     this.$loginSate = onLoginStateChange
       .asObservable()
       .subscribe((isLogged) => {
@@ -38,6 +42,11 @@ export class PortalSideMenuComponent {
 
   public openModalLogin(): void {
     this.dialog.open(ModalLoginComponent);
+  }
+
+  public scrollToElement(elementId: string): void {
+    this.handleClose();
+    this.viewportScroller.scrollToAnchor(elementId);
   }
 
   ngOnDestroy() {

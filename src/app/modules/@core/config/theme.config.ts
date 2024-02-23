@@ -7,8 +7,8 @@ export const THEME_CONFIG: ThemeConfigType = {
     textPrimary: '#313131',
   },
   dark: {
-    bgPrimary: '#111418',
-    bgSecondary: '#0f1924',
+    bgPrimary: '#0F0F0F',
+    bgSecondary: '#111418',
     textPrimary: '#fff',
   },
 };
