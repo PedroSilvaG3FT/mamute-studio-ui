@@ -1,0 +1,12 @@
+@import "variables";
+
+#portal-layout {
+  > button {
+    @apply w-14 h-14 rounded-full fixed bottom-4 right-4 shadow-md flex items-center justify-center text-xl transition-transform duration-300;
+    background: $apple-green;
+
+    &:hover {
+      transform: scale(0.96);
+    }
+  }
+}
